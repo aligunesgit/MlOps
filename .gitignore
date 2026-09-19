@@ -1,0 +1,20 @@
+# Vendor reference material — local-only, never pushed to GitHub.
+# Full copy of https://github.com/SkafteNicki/dtu_mlops (Apache 2.0), kept here purely as source
+# material (figures, exercise files, mkdocs/CI config patterns) while building this course's own
+# content. Not meant to be committed or published as-is.
+vendor/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+*.egg-info/
+
+# mkdocs build output
+site/
+
+# OS/editor cruft
+.DS_Store
+.vscode/
+.idea/

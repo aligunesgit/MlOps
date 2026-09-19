@@ -1,0 +1,5 @@
+{
+    "name": "mlops_ai_systems_engineering",
+    "dockerFile": "Dockerfile",
+    "postCreateCommand": "pip install uv && uv sync"
+}

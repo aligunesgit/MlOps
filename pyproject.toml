@@ -1,0 +1,59 @@
+[project]
+name = "mlops-ai-systems-engineering"
+version = "0.1.0"
+description = "1413211011 - MLOps and AI Systems Engineering course material"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+  "codespell<=2.4.1",
+  "invoke<=2.2",
+  "mkdocs-exclude<=1.0.2",
+  "mkdocs-git-revision-date-localized-plugin<=1.4.5",
+  "mkdocs-glightbox<=0.4",
+  "mkdocs-material<=9.7",
+  "mkdocs-material-extensions<=1.3.1",
+  "mkdocs-same-dir<=0.1.3",
+  "pre-commit<=4.1",
+  "pymdown-extensions<=10.14.3",
+  "ruff<=0.14.5",
+]
+
+# Tools used across the module exercises. Grows as each module's exercises are written -
+# add the specific cloud/ML SDK a module needs when that module's content is filled in.
+[dependency-groups]
+exercises = [
+  # M3 Git / M4 CI-CD
+  "pytest<=8.4.2",
+  "coverage<=7.11.3",
+  "mypy<=1.18.2",
+  # M2 versioning
+  "dvc<=3.64",
+  "cookiecutter<=2.6",
+  # M5 Docker & Kubernetes (Python-side tooling only, Docker/kubectl installed separately)
+  # M6 Feature Store
+  "feast<=0.53",
+  # M7 Cloud MLOps deep dive
+  "fastapi<=0.121.2",
+  "uvicorn<=0.38",
+  "boto3<=1.40",
+  "google-cloud-aiplatform<=1.128",
+  "azure-ai-ml<=1.30",
+  # M8 LLMOps
+  "openai<=2.10",
+  "transformers<=4.57.1",
+  # M9 Model monitoring
+  "evidently<=0.7.16",
+  "prometheus-fastapi-instrumentator<=7.1",
+  # M10 AutoML tools
+  "optuna<=4.6",
+  "wandb<=0.23",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+lint.select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.codespell]
+skip = "*.pdf,*.ipynb,*.drawio"

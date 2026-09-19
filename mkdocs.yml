@@ -1,0 +1,97 @@
+site_name: MLOps and AI Systems Engineering
+docs_dir: .
+site_dir: ../site
+repo_url: https://github.com/<your-github-username>/MlOps
+edit_uri: edit/main/
+copyright: Copyright &copy; 2026
+
+theme:
+  language: en
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+  palette:
+    - scheme: default
+      primary: light blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.indexes
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
+    - content.tabs.link
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.tabbed:
+      alternate_style: true
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - exclude:
+      glob:
+        - .venv/**
+        - site/**
+        - vendor/**
+        - reference/**
+        - CURRICULUM_DRAFT.md
+        - reports/README.md
+  - glightbox
+  - same-dir
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+
+nav:
+  - Home: README.md
+  - Introduction: pages/before.md
+  - M1 - MLOps Introduction: m1_mlops_introduction/README.md
+  - M2 - Overview of ML and MLOps Stages: m2_ml_and_mlops_stages/README.md
+  - M3 - Git Essentials: m3_git_essentials/README.md
+  - M4 - CI/CD Strategies: m4_cicd_strategies/README.md
+  - M5 - Docker and Kubernetes: m5_docker_and_kubernetes/README.md
+  - Project Sprint A: sprint_a_project/README.md
+  - M6 - Feature Store: m6_feature_store/README.md
+  - M7 - Cloud MLOps Deep Dive: m7_cloud_mlops_deep_dive/README.md
+  - M8 - LLMOps: m8_llmops/README.md
+  - M9 - Model Monitoring: m9_model_monitoring/README.md
+  - M10 - AutoML Tools: m10_automl_tools/README.md
+  - Project Sprint B: sprint_b_final_project/README.md
+  - Time plan: pages/timeplan.md
+  - Projects: pages/projects.md
+  - FAQ: pages/faq.md
+  - Summary: pages/overview.md
