@@ -38,7 +38,7 @@ exercises = [
   "uvicorn<=0.38",
   "boto3<=1.40",
   "google-cloud-aiplatform<=1.128",
-  "azure-ai-ml<=1.30",
+  "azure-ai-ml<=1.35.0",
   # M8 LLMOps
   "openai<=2.10",
   "transformers<=4.57.1",
