@@ -1,0 +1,1763 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../m3_git_essentials/">
+      
+      
+        <link rel="next" href="../m5_docker_and_kubernetes/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>M4 - CI/CD Strategies - MLOps and AI Systems Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-4-cicd-strategies-for-aws-azure-gcp-and-github-actions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-header__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MLOps and AI Systems Engineering
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              M4 - CI/CD Strategies
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-nav__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MLOps and AI Systems Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/before/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m1_mlops_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 - MLOps Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M2 - Overview of ML and MLOps Stages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m3_git_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M3 - Git Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - CI/CD Strategies
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - CI/CD Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-ci-and-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to CI and CD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cicd-challenges-in-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CI/CD challenges in machine learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-steps-involved-in-cicd-implementation-in-the-ml-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Steps involved in CI/CD implementation in the ML lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-devops-tool-ecosystem-on-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The DevOps tool ecosystem on the cloud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aws-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AWS DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-gcp-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. GCP DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Azure DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-continuous-machine-learning-cml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Continuous Machine Learning (CML)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-a-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing a platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m5_docker_and_kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Docker and Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_a_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m6_feature_store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M6 - Feature Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M7 - Cloud MLOps Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m8_llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M8 - LLMOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m9_model_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M9 - Model Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m10_automl_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M10 - AutoML Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_b_final_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/timeplan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction-to-ci-and-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction to CI and CD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-cicd-challenges-in-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. CI/CD challenges in machine learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-steps-involved-in-cicd-implementation-in-the-ml-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Steps involved in CI/CD implementation in the ML lifecycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-devops-tool-ecosystem-on-the-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The DevOps tool ecosystem on the cloud
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. GitHub Actions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aws-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AWS DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-gcp-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. GCP DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Azure DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-continuous-machine-learning-cml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Continuous Machine Learning (CML)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-choosing-a-platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Choosing a platform
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m4_cicd_strategies/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m4_cicd_strategies/README.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="module-4-cicd-strategies-for-aws-azure-gcp-and-github-actions">Module 4 — CI/CD Strategies for AWS, Azure, GCP, and GitHub Actions</h1>
+<p>Week 4</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<ul>
+<li>Understand CI and CD and the specific challenges they face in machine learning workflows</li>
+<li>Be able to set up a CI/CD pipeline on each of AWS, GCP, Azure, and GitHub Actions</li>
+<li>Understand infrastructure as code (IaC) and its role in a CI/CD pipeline</li>
+</ul>
+<hr />
+<h2 id="1-introduction-to-ci-and-cd">1. Introduction to CI and CD</h2>
+<p><strong>Continuous Integration (CI)</strong> is the practice of automatically building and testing a codebase every
+time it changes, so a bug introduced by one commit is caught in minutes rather than discovered weeks
+later by a user. <strong>Continuous Delivery/Deployment (CD)</strong> picks up where CI leaves off: a change that
+passes its checks is automatically packaged and shipped — to a staging environment (Delivery) or
+straight to production (Deployment), depending on how much a team trusts its own automation.</p>
+<p>As Martin Fowler put it: <em>"Continuous Integration doesn't get rid of bugs, but it does make them
+dramatically easier to find and remove."</em> CI/CD does not make a codebase correct — it makes correctness
+<em>checkable on every change</em>, which is the precondition for moving fast without breaking things.</p>
+<h2 id="2-cicd-challenges-in-machine-learning">2. CI/CD challenges in machine learning</h2>
+<p>Classical CI/CD — lint, unit test, build, deploy — was designed for deterministic code. Machine
+learning breaks that assumption in a specific way: the same code can produce a different, still
+"correct-looking" model depending on the data it was trained on. That single fact cascades into several
+ML-specific CI/CD challenges that have no equivalent in traditional software:</p>
+<ul>
+<li><strong>What do you even test?</strong> A sorting function has one correct output. A model has a <em>distribution</em> of
+  acceptable outputs — testing means checking behavior (does it beat a baseline, is it invariant to
+  irrelevant changes) rather than asserting one exact value.</li>
+<li><strong>Data testing, not just code testing.</strong> A pipeline can pass every unit test and still ship a broken
+  model if the training data silently changed shape, distribution, or label balance.</li>
+<li><strong>Non-deterministic runs.</strong> Training involves randomness (initialization, shuffling, GPU
+  non-determinism), so "did this pass" sometimes means "did this land within an acceptable range," not
+  "did this match exactly."</li>
+<li><strong>Slow feedback loops.</strong> A full training run can take hours, which conflicts with CI's core promise of
+  fast feedback — most teams solve this by testing on a small data subset or a few training steps in CI,
+  and reserving full training for a separate, longer-running pipeline.</li>
+<li><strong>The pipeline has more moving parts to version and gate.</strong> Code, data, features, and model all need
+  their own quality gate, not just the code (Module 2, §3).</li>
+</ul>
+<h2 id="3-steps-involved-in-cicd-implementation-in-the-ml-lifecycle">3. Steps involved in CI/CD implementation in the ML lifecycle</h2>
+<p>Put together, a mature ML pipeline chains several automation layers, each catching a different class of
+problem, each running earlier and faster than the one after it:</p>
+<pre class="mermaid"><code>flowchart LR
+    PC["Pre-commit&lt;br/&gt;(local, before commit)"] --&gt; CI["CI&lt;br/&gt;(lint + unit/data/model tests)"]
+    CI --&gt; CD["CD&lt;br/&gt;(build + package)"]
+    CD --&gt; CML["CML&lt;br/&gt;(ML-specific checks:&lt;br/&gt;metrics, drift, data changes)"]
+    CML --&gt; DEP["Deploy"]
+    DEP -.retrain signal.-&gt; PC</code></pre>
+<ul>
+<li><strong>Pre-commit hooks</strong> run on your machine, before a commit is even created — the cheapest place to
+  catch a problem. A <code>.pre-commit-config.yaml</code> wires checks like trailing-whitespace removal, YAML
+  validation, and <code>ruff</code> linting/formatting into <code>git commit</code> itself:</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">repos</span><span class="p">:</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/pre-commit/pre-commit-hooks</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v3.2.0</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">hooks</span><span class="p">:</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">trailing-whitespace</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">check-yaml</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://github.com/astral-sh/ruff-pre-commit</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">rev</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v0.4.7</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">hooks</span><span class="p">:</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"--fix"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff-format</span>
+</span></code></pre></div>
+<p><code>pre-commit install</code> wires it in; <code>pre-commit run --all-files</code> checks the whole repo, not just staged
+  files. In an emergency, <code>git commit --no-verify</code> skips the hooks — a habit worth using rarely and
+  deliberately, not by default.</p>
+<ul>
+<li>
+<p><strong>CI</strong> runs remotely on every push/PR: unit tests, data tests (does the dataset have the expected
+  shape and label balance), and model tests (does the model produce the expected output shape on a
+  known input) — see Module 3's branching model (§3) for how this gates a pull request before merge.</p>
+</li>
+<li>
+<p><strong>CD</strong> builds and packages what CI just validated — typically a container image (Module 5) tagged
+  with the commit hash, ready to hand to a deployment step.</p>
+</li>
+<li>
+<p><strong>CML</strong> (§9) is the layer unique to ML: automated checks on the <em>training run itself</em> — did it
+  converge, did a tracked metric actually improve, is this the right dataset version.</p>
+</li>
+<li>
+<p><strong>Deploy</strong> ships the packaged, gated artifact, and production monitoring (Module 9) closes the loop by
+  feeding drift/failure signals back into the next round of development.</p>
+</li>
+</ul>
+<h2 id="4-the-devops-tool-ecosystem-on-the-cloud">4. The DevOps tool ecosystem on the cloud</h2>
+<p>Every major cloud (and GitHub itself) offers its own bundle of source-control, build, and deploy
+services that implement the pipeline in §3. The names differ; the roles they play don't:</p>
+<table>
+<thead>
+<tr>
+<th>Role in the pipeline</th>
+<th>AWS</th>
+<th>GCP</th>
+<th>Azure</th>
+<th>GitHub</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source</td>
+<td>CodeCommit</td>
+<td>Cloud Source Repositories</td>
+<td>Azure Repos</td>
+<td>GitHub (repo)</td>
+</tr>
+<tr>
+<td>Build / test</td>
+<td>CodeBuild</td>
+<td>Cloud Build</td>
+<td>Azure Pipelines</td>
+<td>GitHub Actions</td>
+</tr>
+<tr>
+<td>Artifact storage</td>
+<td>(via CodeBuild output / ECR)</td>
+<td>Artifact Registry</td>
+<td>Azure Artifacts</td>
+<td>GitHub Packages</td>
+</tr>
+<tr>
+<td>Deploy</td>
+<td>CodeDeploy</td>
+<td>Cloud Deploy / Cloud Run</td>
+<td>Azure Pipelines (release stage)</td>
+<td>GitHub Actions (deploy job)</td>
+</tr>
+<tr>
+<td>Orchestrator</td>
+<td>CodePipeline</td>
+<td>Cloud Build triggers</td>
+<td>Azure Pipelines</td>
+<td>GitHub Actions (workflow)</td>
+</tr>
+<tr>
+<td>Work tracking</td>
+<td>—</td>
+<td>—</td>
+<td>Azure Boards</td>
+<td>GitHub Issues/Projects</td>
+</tr>
+</tbody>
+</table>
+<p>§5-§8 go one level deeper into each column. Which one a team ends up using is often decided by where
+the rest of their infrastructure already lives, not by any one service being objectively best — a team
+already deep in AWS rarely benefits from bolting on Azure DevOps for CI/CD alone.</p>
+<h2 id="5-github-actions">5. GitHub Actions</h2>
+<p><strong>GitHub Actions</strong> is GitHub's own CI/CD engine, free for 2,000 build-minutes/month on public and many
+private repos. A workflow is a YAML file under <code>.github/workflows/</code>, with four parts:</p>
+<ul>
+<li><code>name</code> — the workflow's display name</li>
+<li><code>on</code> — the trigger: <code>push</code>, <code>pull_request</code>, <code>schedule</code>, <code>workflow_dispatch</code>, each scoped to branches
+  or paths</li>
+<li><code>jobs</code> — one or more jobs, parallel by default, each with a <code>runs-on</code> (the OS/runner) and a list of
+  <code>steps</code></li>
+<li><code>steps</code> — the actual commands, either shell commands or reusable third-party <strong>actions</strong>
+  (<code>uses: actions/checkout@v5</code>)</li>
+</ul>
+<p>A minimal test workflow:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run tests</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">on</span><span class="p">:</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nt">jobs</span><span class="p">:</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.os }}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="nt">fail-fast</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">        </span><span class="nt">os</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ubuntu-latest"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"windows-latest"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"macos-latest"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"3.11"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"3.12"</span><span class="p p-Indicator">]</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v5</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-python@v5</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">          </span><span class="nt">python-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.python-version }}</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="s">"pip"</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest tests/</span>
+</span></code></pre></div>
+<p>The <code>matrix</code> strategy runs every OS × Python-version combination in parallel; <code>fail-fast: false</code> keeps
+the rest running even if one combination fails, so a single flaky combination doesn't hide results for
+the others. <strong>Branch protection rules</strong> (<code>Settings → Rules → Rulesets</code>) turn a green workflow run from a
+nice-to-have into an enforced gate: require a pull request, require this workflow to pass, require a
+reviewer's approval, before a merge into <code>main</code> is even possible. <strong>Dependabot</strong> closes the loop on a
+different axis — it opens PRs automatically when a dependency (or an Action's own pinned version) falls
+out of date:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># .github/dependabot.yaml</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">updates</span><span class="p">:</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">"pip"</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interval</span><span class="p">:</span><span class="w"> </span><span class="s">"weekly"</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">package-ecosystem</span><span class="p">:</span><span class="w"> </span><span class="s">"github-actions"</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="s">"/"</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interval</span><span class="p">:</span><span class="w"> </span><span class="s">"weekly"</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</span></code></pre></div>
+<p><strong>GitHub Pages</strong> is the natural deploy target for a workflow that publishes documentation rather than a
+running service — a push to <code>main</code> triggers a job that builds a static site and publishes it. This
+course's own site is deployed exactly this way: a <code>deploy docs</code> workflow runs <code>mkdocs gh-deploy</code> on
+every push to <code>main</code>, and a separate <code>check docs</code> workflow runs <code>mkdocs build --strict</code> on every pull
+request, so a broken link or a malformed page is caught in review, not after it's live.</p>
+<p><strong>Project: GitHub Actions DevOps Pipeline</strong> — wire a repository with three workflows: a test workflow
+(matrix build + pytest), a lint/format check (<code>ruff</code>), and a docs-or-package deploy step gated by
+<code>branches: [main]</code>, then turn on a branch protection rule that requires the first two to pass before a
+PR can merge.</p>
+<h2 id="6-aws-devops">6. AWS DevOps</h2>
+<p>AWS splits a pipeline into four purpose-built services, coordinated by a fifth:</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph P["AWS CodePipeline (orchestrator)"]
+        CC["CodeCommit&lt;br/&gt;(source)"] --&gt; CB["CodeBuild&lt;br/&gt;(build + test)"]
+        CB --&gt; CDp["CodeDeploy&lt;br/&gt;(deploy)"]
+    end</code></pre>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CodeCommit</strong></td>
+<td>Managed Git-hosted source repository (many teams now point CodePipeline at GitHub instead and use CodeCommit only where full AWS-native hosting is required)</td>
+</tr>
+<tr>
+<td><strong>CodeBuild</strong></td>
+<td>Compiles, tests, and packages code inside a managed build environment, defined by a <code>buildspec.yml</code></td>
+</tr>
+<tr>
+<td><strong>CodeDeploy</strong></td>
+<td>Automates deployment to EC2, Lambda, or ECS, including gradual rollout strategies (canary, linear)</td>
+</tr>
+<tr>
+<td><strong>CodePipeline</strong></td>
+<td>The orchestrator that wires source → build → deploy into one release pipeline, with manual-approval gates where needed</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Project: AWS DevOps Pipeline</strong> — a CodePipeline that pulls from a source repo, runs a CodeBuild step
+executing the test suite, and deploys via CodeDeploy to a target environment on a successful build.</p>
+<h2 id="7-gcp-devops">7. GCP DevOps</h2>
+<p>GCP's equivalent chain adds an explicit artifact-registry step and a serverless deploy target:</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph P["Cloud Build triggers (orchestrator)"]
+        CSR["Cloud Source Repositories&lt;br/&gt;(source)"] --&gt; CB["Cloud Build&lt;br/&gt;(build + test + containerize)"]
+        CB --&gt; AR["Artifact Registry&lt;br/&gt;(store image)"]
+        AR --&gt; CDp["Cloud Deploy&lt;br/&gt;(release pipeline)"]
+        CDp --&gt; CR["Cloud Run&lt;br/&gt;(serve)"]
+    end</code></pre>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cloud Source Repositories</strong></td>
+<td>Git-hosted source on GCP (teams frequently use GitHub as source instead, with a Cloud Build trigger pointed at it)</td>
+</tr>
+<tr>
+<td><strong>Cloud Build</strong></td>
+<td>Runs a <code>cloudbuild.yaml</code> pipeline of build/test steps, typically producing a container image</td>
+</tr>
+<tr>
+<td><strong>Artifact Registry</strong></td>
+<td>Stores the built container image (and other package types), versioned and access-controlled</td>
+</tr>
+<tr>
+<td><strong>Cloud Deploy</strong></td>
+<td>Manages progressive delivery of a new image across environments (dev → staging → prod)</td>
+</tr>
+<tr>
+<td><strong>Cloud Run</strong></td>
+<td>The common deploy target for containerized services — scales to zero, pay-per-request</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Project: GCP DevOps Pipeline</strong> — a Cloud Build trigger that builds a container on every push, pushes
+it to Artifact Registry, and a Cloud Deploy pipeline that promotes it to Cloud Run.</p>
+<h2 id="8-azure-devops">8. Azure DevOps</h2>
+<p>Azure DevOps is the odd one out in this list: it's a single product suite covering project management
+and CI/CD together, not a set of separate point services.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Azure Boards</strong></td>
+<td>Work-item tracking (backlogs, sprints, Kanban boards) — the project-management layer the other three clouds don't bundle in</td>
+</tr>
+<tr>
+<td><strong>Azure Repos</strong></td>
+<td>Git-hosted source repositories</td>
+</tr>
+<tr>
+<td><strong>Azure Pipelines</strong></td>
+<td>Build and release automation, defined in a YAML pipeline file (<code>azure-pipelines.yml</code>)</td>
+</tr>
+<tr>
+<td><strong>Azure Test Plans</strong></td>
+<td>Manual and exploratory test-case tracking, layered on top of automated test results</td>
+</tr>
+<tr>
+<td><strong>Azure Artifacts</strong></td>
+<td>Package feed for build outputs (npm, NuGet, pip, Maven packages)</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    subgraph P["Azure Pipelines (orchestrator)"]
+        AR2["Azure Repos&lt;br/&gt;(source)"] --&gt; AP["Azure Pipelines&lt;br/&gt;(build + test)"]
+        AP --&gt; AA["Azure Artifacts&lt;br/&gt;(store package)"]
+        AA --&gt; DEP["Deploy stage&lt;br/&gt;(e.g. AKS, App Service)"]
+    end</code></pre>
+<p>A minimal <code>azure-pipelines.yml</code> shape mirrors GitHub Actions closely, which makes moving between the
+two conceptually easy once you know one of them:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">trigger</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">branches</span><span class="p">:</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">include</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">main</span><span class="p p-Indicator">]</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nt">pool</span><span class="p">:</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="s">"ubuntu-latest"</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nt">steps</span><span class="p">:</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsePythonVersion@0</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> versionSpec</span><span class="p">:</span><span class="w"> </span><span class="s">"3.12"</span><span class="w"> </span><span class="p p-Indicator">}</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pip install -r requirements.txt</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest tests/</span>
+</span></code></pre></div>
+<p><strong>Infrastructure as Code (IaC) with Azure DevOps.</strong> IaC means defining infrastructure (VMs, networks,
+managed services) in machine-readable files instead of clicking through a console — that definition can
+then be versioned, reviewed in a PR, and applied by a pipeline like any other artifact. <strong>Terraform</strong>
+(HashiCorp) is the most common multi-cloud choice:</p>
+<div class="language-hcl highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"azurerm"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nb">features</span><span class="w"> </span><span class="p">{}</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="p">}</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="kr">resource</span><span class="w"> </span><span class="nc">"azurerm_resource_group"</span><span class="w"> </span><span class="nv">"example"</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="na">name</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"example-resources"</span>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span><span class="na">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"West Europe"</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="p">}</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>terraform<span class="w"> </span>init<span class="w">    </span><span class="c1"># initialize the working directory and providers</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>terraform<span class="w"> </span>plan<span class="w">    </span><span class="c1"># preview what would change</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>terraform<span class="w"> </span>apply<span class="w">   </span><span class="c1"># provision/update infrastructure to match the config</span>
+</span></code></pre></div>
+<p>Wired into Azure Pipelines, a <code>terraform plan</code> typically runs on a pull request (so reviewers see the
+infrastructure diff before merge) and <code>terraform apply</code> runs on merge to <code>main</code> — the same
+CI-then-CD-gate pattern from §3, applied to infrastructure instead of application code.</p>
+<p><strong>Project: Azure DevOps Pipeline</strong> — an <code>azure-pipelines.yml</code> that builds and tests on every PR
+(gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage that
+applies a small Terraform configuration to provision the target environment.</p>
+<h2 id="9-continuous-machine-learning-cml">9. Continuous Machine Learning (CML)</h2>
+<p>Everything in §5-§8 is DevOps automation that applies to any software project. <strong>Continuous Machine
+Learning (CML)</strong> is the layer specific to ML: automating the questions classical CI/CD can't
+answer — <em>did I train on the right data version, did the model converge, did a tracked metric actually
+improve, did I over/underfit.</em> It sits on top of whichever CI/CD engine a team already uses (most
+commonly GitHub Actions) rather than replacing it, and maps onto the top of the MLOps maturity model
+from Module 2, §1.</p>
+<p>Two patterns cover most real CML setups:</p>
+<ul>
+<li><strong>Data-triggered workflows</strong> — a workflow that only fires when tracked data changes (e.g. a <code>.dvc</code>
+  metadata file), pulls the new data version, computes dataset statistics (sample counts, class
+  balance), and posts them as a comment directly on the pull request — so a reviewer sees the <em>data</em>
+  diff, not just the code diff:</li>
+</ul>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">on</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">paths</span><span class="p">:</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"**/*.dvc"</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Model-registry-triggered workflows</strong> — a model registry (e.g. Weights &amp; Biases, MLflow) sends a
+  webhook when a new model version is tagged <code>staging</code>, firing a <code>repository_dispatch</code> event that runs
+  performance tests against it and — if it passes — promotes the model to a <code>production</code> alias via the
+  registry's API.</li>
+</ul>
+<p>The last step is exactly where <strong>human oversight matters most</strong>: a fully automated <code>staging → production</code>
+promotion is appropriate for a low-stakes internal tool, but most teams gate that specific step behind a
+human-approved pull request rather than an unattended merge, especially in regulated or safety-critical
+domains — full automation and full autonomy are not the same target.</p>
+<h2 id="10-choosing-a-platform">10. Choosing a platform</h2>
+<p>No platform in §5-§8 is objectively superior — the right one is almost always whichever cloud the rest
+of a team's infrastructure already runs on, following the same logic as Module 2, §11's cost-benefit
+framing for open-source vs. cloud-native MLOps architectures:</p>
+<table>
+<thead>
+<tr>
+<th>Consideration</th>
+<th>Favors GitHub Actions</th>
+<th>Favors a cloud-native suite (AWS/GCP/Azure)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Where does deploy target live?</td>
+<td>Anywhere (cloud-agnostic runners)</td>
+<td>Same cloud — avoids cross-cloud auth/networking friction</td>
+</tr>
+<tr>
+<td>Team already has Boards/Test Plans needs?</td>
+<td>No (needs separate tooling)</td>
+<td>Azure DevOps bundles project management in</td>
+</tr>
+<tr>
+<td>Free-tier build minutes matter?</td>
+<td>Generous free tier on public repos</td>
+<td>Cloud build minutes are billed per use from the start</td>
+</tr>
+<tr>
+<td>Deep integration with a managed cloud service (SageMaker, Vertex AI, AKS)?</td>
+<td>Possible via CLI/SDK steps</td>
+<td>Native, first-class steps</td>
+</tr>
+</tbody>
+</table>
+<p>Most real-world teams end up using GitHub (or another Git host's) Actions for the "does this code work"
+loop, and reserve the cloud-native services for deployment steps that need deep integration with a
+managed service on that cloud — the two are complementary, not mutually exclusive.</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>CI/CD turns "did this change break anything" from a question answered by hope into one answered by an
+automated pipeline, and ML adds a layer that classical CI/CD was never built for: data and model
+correctness, not just code correctness (§2-§3, §9). The four platforms in §5-§8 implement the same
+source → build → deploy shape with different names and different bundling choices — picking one is a
+question of existing infrastructure, not raw capability (§10). Module 5 picks up immediately after the
+build step here: what actually gets built, packaged, and deployed is a container.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
+  production reliability.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Foundational sources this module's content draws on:</p>
+<ul>
+<li>Fowler, Martin, &amp; Foemmel, Matthew. <a href="https://martinfowler.com/articles/continuousIntegration.html">"Continuous Integration."</a>
+  martinfowler.com. — source for the CI framing and quote in §1.</li>
+<li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
+  <code>s5_continuous_integration/</code> (<code>unittesting.md</code>, <code>github_actions.md</code>, <code>pre_commit.md</code>, <code>cml.md</code>) and
+  <code>s10_extra/infrastructure_as_code.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source
+  material this module's testing pyramid (§3), GitHub Actions walkthrough (§5), and CML section (§9)
+  are adapted from.</li>
+<li>GitHub Docs. <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">"Understanding GitHub Actions"</a>
+  and <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates">"About Dependabot version updates."</a>
+  — source for the workflow anatomy and Dependabot config in §5.</li>
+<li>AWS Documentation. <a href="https://aws.amazon.com/devops/continuous-integration/">"What is CI/CD on AWS?"</a>
+  — source for the CodeCommit/CodeBuild/CodeDeploy/CodePipeline roles in §6.</li>
+<li>Google Cloud Documentation. <a href="https://cloud.google.com/build/docs/overview">"Cloud Build overview"</a> and
+  <a href="https://cloud.google.com/deploy/docs/overview">"Cloud Deploy overview."</a> — source for the GCP
+  pipeline shape in §7.</li>
+<li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/devops/">"Azure DevOps documentation."</a> —
+  source for the Boards/Repos/Pipelines/Test Plans/Artifacts roles and YAML pipeline shape in §8.</li>
+<li>HashiCorp Developer. <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs">"Terraform — AzureRM provider documentation."</a>
+  — source for the IaC example in §8.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../m3_git_essentials/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M3 - Git Essentials">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                M3 - Git Essentials
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../m5_docker_and_kubernetes/" class="md-footer__link md-footer__link--next" aria-label="Next: M5 - Docker and Kubernetes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                M5 - Docker and Kubernetes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.indexes", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

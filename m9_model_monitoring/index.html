@@ -1,0 +1,1631 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../m8_llmops/">
+      
+      
+        <link rel="next" href="../m10_automl_tools/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>M9 - Model Monitoring - MLOps and AI Systems Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-9-understanding-model-monitoring-aws-azure-gcp" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-header__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MLOps and AI Systems Engineering
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              M9 - Model Monitoring
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-nav__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MLOps and AI Systems Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/before/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m1_mlops_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 - MLOps Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M2 - Overview of ML and MLOps Stages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m3_git_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M3 - Git Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m4_cicd_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - CI/CD Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m5_docker_and_kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Docker and Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_a_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m6_feature_store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M6 - Feature Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M7 - Cloud MLOps Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m8_llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M8 - LLMOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M9 - Model Monitoring
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M9 - Model Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-model-monitoring-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why model monitoring matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detecting-data-drift-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detecting data drift in practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-instrumenting-infrastructure-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Instrumenting infrastructure metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-monitoring-ecosystem-across-aws-azure-and-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The monitoring ecosystem across AWS, Azure, and GCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aws-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AWS model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-azure-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Azure model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-gcp-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. GCP model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-optimizing-and-managing-models-at-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Optimizing and managing models at the edge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-common-issues-in-ml-deployment-and-the-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Common issues in ML deployment, and the feedback loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Project: Model &amp; infrastructure monitoring using cloud tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m10_automl_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M10 - AutoML Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_b_final_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/timeplan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-model-monitoring-matters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why model monitoring matters
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-detecting-data-drift-in-practice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Detecting data drift in practice
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-instrumenting-infrastructure-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Instrumenting infrastructure metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-the-monitoring-ecosystem-across-aws-azure-and-gcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. The monitoring ecosystem across AWS, Azure, and GCP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-aws-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. AWS model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-azure-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Azure model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-gcp-model-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. GCP model monitoring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-optimizing-and-managing-models-at-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Optimizing and managing models at the edge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-common-issues-in-ml-deployment-and-the-feedback-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Common issues in ML deployment, and the feedback loop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Project: Model &amp; infrastructure monitoring using cloud tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m9_model_monitoring/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m9_model_monitoring/README.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="module-9-understanding-model-monitoring-aws-azure-gcp">Module 9 — Understanding Model Monitoring (AWS, Azure &amp; GCP)</h1>
+<p>Week 10</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<ul>
+<li>Understand why model monitoring matters and the different types of monitoring</li>
+<li>Be able to monitor a deployed model and its infrastructure on AWS, Azure, and GCP</li>
+<li>Understand approaches to optimizing/managing models at the edge</li>
+<li>Understand the role of the feedback loop in an MLOps system</li>
+</ul>
+<hr />
+<h2 id="1-why-model-monitoring-matters">1. Why model monitoring matters</h2>
+<p>Module 1, §1 named it directly: <strong>software that isn't touched keeps working; a model that isn't
+touched quietly gets worse</strong> as the world it was trained on drifts away from the world it now sees.
+Unlike a crashed service, a decaying model usually keeps returning HTTP 200 the entire time — nothing
+<em>fails</em> in the way traditional infrastructure monitoring is built to catch. Monitoring is what turns
+that silent decay into a signal a team can act on <em>before</em> a business metric drops, rather than after.</p>
+<p>The remaining question is never "should we monitor" — it's <strong>when should retraining actually trigger</strong>,
+which is exactly what §2-§3's drift detection is built to answer, rather than waiting for a human to
+notice something feels off.</p>
+<h2 id="2-types-of-monitoring">2. Types of monitoring</h2>
+<p>Module 2, §8 split monitoring into two categories; this module is where each gets its concrete tooling:</p>
+<ul>
+<li><strong>Infrastructure monitoring</strong> — the same telemetry any production service needs, regardless of
+  whether it happens to serve a model: latency, error rate, throughput, resource usage.</li>
+<li><strong>Model/data monitoring</strong> — signals with no traditional-software equivalent:</li>
+<li><strong>Data drift</strong> — has the <em>distribution of incoming inputs</em> shifted from what the model was trained
+    on?</li>
+<li><strong>Target/prediction drift</strong> — has the <em>distribution of the model's own outputs</em> shifted (e.g. a
+    previously balanced classifier suddenly predicting one class far more often) — often the earliest
+    visible symptom of an upstream problem?</li>
+<li><strong>Data quality</strong> — missing values, schema violations, out-of-range values in the incoming data
+    itself.</li>
+<li><strong>Model quality</strong> — accuracy/precision/recall against ground truth, once ground truth eventually
+    becomes available (frequently delayed — a fraud label might not be confirmed for weeks).</li>
+</ul>
+<p>Underneath both categories, telemetry itself comes in three flavors, and this module focuses on the
+first:</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>What it is</th>
+<th>Example</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>Quantitative, aggregated numbers</td>
+<td>Requests/minute</td>
+<td>Dashboards, overview</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Textual/structured event records</td>
+<td>Error logs</td>
+<td>Debugging, root-cause tracing</td>
+</tr>
+<tr>
+<td><strong>Traces</strong></td>
+<td>Per-transaction flow across components</td>
+<td>Distributed tracing across microservices</td>
+<td>Latency/bottleneck diagnosis</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-detecting-data-drift-in-practice">3. Detecting data drift in practice</h2>
+<p>The standard pattern, regardless of tool: log every production request's input and prediction
+somewhere durable, then periodically compare that <strong>current data</strong> against the <strong>reference data</strong> the
+model was trained on:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.report</span><span class="w"> </span><span class="kn">import</span> <span class="n">Report</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.metric_preset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataDriftPreset</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">reference_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"training_data.csv"</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">current_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"prediction_log.csv"</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">report</span> <span class="o">=</span> <span class="n">Report</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">DataDriftPreset</span><span class="p">()])</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">snapshot</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">snapshot</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span><span class="s2">"report.html"</span><span class="p">)</span>
+</span></code></pre></div>
+<p><a href="https://github.com/evidentlyai/evidently">Evidently</a> is one of several frameworks built for exactly
+this (alternatives: NannyML, WhyLogs, Deepchecks — the same tools named in Module 2, §12 and Module 6,
+§6). Beyond <code>DataDriftPreset</code>, <code>DataQualityPreset</code> flags data-quality issues and <code>TargetDriftPreset</code>
+watches the prediction distribution from §2. For CI integration (Module 4) rather than a one-off HTML
+report, the same checks run as a pass/fail <code>TestSuite</code> instead:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.test_suite</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestSuite</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.tests</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestNumberOfMissingValues</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">data_test</span> <span class="o">=</span> <span class="n">TestSuite</span><span class="p">(</span><span class="n">tests</span><span class="o">=</span><span class="p">[</span><span class="n">TestNumberOfMissingValues</span><span class="p">()])</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">data_test</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">assert</span> <span class="n">data_test</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()[</span><span class="s2">"summary"</span><span class="p">][</span><span class="s2">"all_passed"</span><span class="p">]</span>
+</span></code></pre></div>
+<p>Two caveats worth internalizing rather than just the mechanics above: there is no universal threshold
+for "how much drift is too much" — it's application-specific — and standard tooling only tests
+<strong>marginal</strong> (per-feature) distributions. Data can drift in a way that preserves every individual
+feature's distribution while the <em>joint</em> distribution has shifted; multivariate tests (e.g. Maximum
+Mean Discrepancy) exist for this, and the practical habit worth building is looking at features
+together, not just one at a time. Unstructured data (images/text) needs an extra step first — extract
+structured features (brightness/contrast, or embeddings from a model like CLIP) and run drift detection
+on those, since most drift frameworks only natively support tabular data.</p>
+<h2 id="4-instrumenting-infrastructure-metrics">4. Instrumenting infrastructure metrics</h2>
+<p><a href="https://prometheus.io/">Prometheus</a> is the standard for the metrics half of §2's infrastructure
+monitoring, with four metric types:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Behavior</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Counter</strong></td>
+<td>Monotonically increasing</td>
+<td>Total request count</td>
+</tr>
+<tr>
+<td><strong>Gauge</strong></td>
+<td>Arbitrary up/down value</td>
+<td>Current memory usage</td>
+</tr>
+<tr>
+<td><strong>Histogram</strong></td>
+<td>Bucketed observation counts + sum</td>
+<td>Request duration distribution</td>
+</tr>
+<tr>
+<td><strong>Summary</strong></td>
+<td>Sliding-window quantiles instead of fixed buckets</td>
+<td>Same, with running percentiles</td>
+</tr>
+</tbody>
+</table>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prometheus_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">,</span> <span class="n">CollectorRegistry</span><span class="p">,</span> <span class="n">make_asgi_app</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">registry</span> <span class="o">=</span> <span class="n">CollectorRegistry</span><span class="p">()</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">request_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="s2">"requests_total"</span><span class="p">,</span> <span class="s2">"Total requests"</span><span class="p">,</span> <span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">)</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">inference_time</span> <span class="o">=</span> <span class="n">Histogram</span><span class="p">(</span><span class="s2">"inference_seconds"</span><span class="p">,</span> <span class="s2">"Time to run inference"</span><span class="p">,</span> <span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/metrics"</span><span class="p">,</span> <span class="n">make_asgi_app</span><span class="p">(</span><span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">))</span>
+</span></code></pre></div>
+<p>Using a dedicated <code>CollectorRegistry</code> (rather than the library's implicit default one) keeps the
+<code>/metrics</code> endpoint scoped to your own application's metrics instead of cluttered with the client
+library's internal ones.</p>
+<h2 id="5-the-monitoring-ecosystem-across-aws-azure-and-gcp">5. The monitoring ecosystem across AWS, Azure, and GCP</h2>
+<pre class="mermaid"><code>flowchart LR
+    INF["Inference service&lt;br/&gt;(logs input + output)"] --&gt; STORE["Durable log store&lt;br/&gt;(bucket / database)"]
+    STORE --&gt; MON["Monitoring job&lt;br/&gt;(drift + quality checks, §3)"]
+    MON --&gt; ALERT["Alerting policy"]
+    ALERT -.triggers.-&gt; RETRAIN["Retraining pipeline&lt;br/&gt;(Module 4, §9 — CML)"]
+    RETRAIN -.new model version.-&gt; INF</code></pre>
+<p>A custom metric like §4's Prometheus counter typically needs a <strong>sidecar container</strong> to reach a cloud's
+native monitoring backend — one container runs the app, a second collects <code>/metrics</code> and forwards it.
+Kubernetes (Module 5) solves this natively; lighter managed services (Cloud Run, App Runner/Fargate,
+Azure Container Apps) offer a lighter-weight sidecar option to the same end without a full cluster.</p>
+<table>
+<thead>
+<tr>
+<th>Cloud</th>
+<th>Native infra monitoring</th>
+<th>Model-specific monitoring</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWS</strong></td>
+<td>CloudWatch (metrics, logs, alarms)</td>
+<td>SageMaker Model Monitor (§6)</td>
+</tr>
+<tr>
+<td><strong>GCP</strong></td>
+<td>Cloud Monitoring (metrics, logs, alerting)</td>
+<td>Vertex AI Model Monitoring (§8)</td>
+</tr>
+<tr>
+<td><strong>Azure</strong></td>
+<td>Azure Monitor + Application Insights</td>
+<td>Azure ML model monitoring (§7)</td>
+</tr>
+</tbody>
+</table>
+<p>Every one of these lets you define a <strong>Service Level Objective (SLO)</strong> — e.g. "99% of requests under
+200ms" — and an alerting policy on top of it: notification channel → alerting condition → trigger.
+The core tension is the <strong>Goldilocks problem</strong>: alert on too much and important signals drown in noise
+that gets ignored; alert on too little and real problems go unnoticed. Getting the threshold right is
+often as much work as building the metric itself.</p>
+<h2 id="6-aws-model-monitoring">6. AWS model monitoring</h2>
+<p><strong>SageMaker Model Monitor</strong> schedules a recurring job that compares data captured from a live endpoint
+(enabled via the endpoint's <strong>Data Capture</strong> configuration) against a baseline statistics file computed
+from the training set, across four monitor types:</p>
+<table>
+<thead>
+<tr>
+<th>Monitor</th>
+<th>Detects</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data quality</td>
+<td>Schema violations, missing values, type mismatches in live requests</td>
+</tr>
+<tr>
+<td>Model quality</td>
+<td>Accuracy/precision/recall drift, once ground-truth labels become available</td>
+</tr>
+<tr>
+<td>Bias drift</td>
+<td>Whether a fairness metric measured at training time has shifted in production</td>
+</tr>
+<tr>
+<td>Feature attribution drift</td>
+<td>Whether which features drive predictions (via SHAP values) has changed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-azure-model-monitoring">7. Azure model monitoring</h2>
+<p>Azure ML's <strong>model monitoring</strong> feature attaches to a managed online endpoint's <strong>data collection</strong>
+configuration, which logs request/response payloads to Azure storage; a scheduled monitoring job then
+computes drift signals against a reference dataset, the same shape as §3's Evidently workflow but
+managed inside the Azure ML workspace (Module 7, §4). <strong>Application Insights</strong>, wired into the same
+workspace, covers the infrastructure half from §2 — request rate, latency, and failures — as it would
+for any web service, ML-specific or not.</p>
+<h2 id="8-gcp-model-monitoring">8. GCP model monitoring</h2>
+<p><strong>Vertex AI Model Monitoring</strong> attaches directly to a deployed Vertex AI endpoint (Module 7, §3) and
+supports two detection modes: <strong>skew</strong> detection (current serving data vs. the original training
+baseline) and <strong>drift</strong> detection (current data vs. a previous serving window). Configuration covers
+sampling rate (monitoring every request is rarely necessary or cost-effective) and alerting thresholds
+per feature, with the same email/notification-channel pattern as §5.</p>
+<h2 id="9-optimizing-and-managing-models-at-the-edge">9. Optimizing and managing models at the edge</h2>
+<p>A model destined for a phone, a browser, or any resource-constrained device needs to be smaller and
+faster than its training-time version, and the two standard techniques compress it without simply
+retraining a smaller architecture from scratch:</p>
+<ul>
+<li><strong>Quantization</strong> reduces the numeric precision of a model's weights (e.g. <code>float32</code> → <code>int8</code>), which
+  shrinks it roughly proportionally to the bit-width reduction (an <code>int8</code> model is close to 4x smaller
+  than its <code>float32</code> original). <strong>Post-training quantization</strong> quantizes an already-trained model —
+  simpler, use when raw accuracy matters most and size is a secondary win. <strong>Quantization-aware
+  training</strong> trains the model knowing it will be quantized — more setup, but yields a better-performing
+  quantized model when there's a hard size/speed constraint to hit.</li>
+<li><strong>Calibration</strong> makes a model's confidence scores match its actual accuracy (via temperature scaling,
+  label smoothing, or techniques like Mixup/CutMix during training). This connects directly back to
+  monitoring: a well-calibrated model's confidence score is itself a usable signal for flagging a
+  specific prediction for human review, rather than trusting an overconfident wrong answer.</li>
+</ul>
+<p>Both techniques also matter beyond the edge: a smaller, well-calibrated model is cheaper and faster to
+redeploy through the frequent retraining cycles §1's drift detection triggers.</p>
+<h2 id="10-common-issues-in-ml-deployment-and-the-feedback-loop">10. Common issues in ML deployment, and the feedback loop</h2>
+<p>Beyond drift, a short list of failure modes recur across nearly every production ML system:</p>
+<ul>
+<li><strong>Training/serving skew</strong> (Module 6, §1) — a feature computed differently in training than at
+  inference time, silently degrading predictions without any monitored metric technically failing.</li>
+<li><strong>Silent upstream data pipeline failures</strong> — an upstream system changes a column's units or encoding
+  without the model-serving code ever erroring, since the model happily scores whatever numbers arrive.</li>
+<li><strong>No rollback strategy</strong> — a newly deployed model version underperforms and there's no fast, tested
+  path back to the previous version — the gradual-rollout and automatic-rollback pattern from Module 1,
+  §12 exists specifically to avoid this.</li>
+</ul>
+<p>The <strong>feedback loop</strong> is what closes the whole system into the cycle shown in §5's diagram: production
+outcomes (the eventual ground truth, or a confirmed bad prediction) become part of the next training
+set, monitoring's drift/quality signals decide <em>when</em> that retraining should run, and Module 4, §9's
+Continuous Machine Learning automation is what actually wires the trigger to the retraining pipeline
+without a human having to notice the problem manually.</p>
+<h2 id="11-project-model-infrastructure-monitoring-using-cloud-tools">11. Project: Model &amp; infrastructure monitoring using cloud tools</h2>
+<p>Deploy a model behind an endpoint on any one of the three clouds, then:</p>
+<ol>
+<li>Enable request/response data capture (§6-§8) on the endpoint.</li>
+<li>Run a data-drift check (§3) comparing captured production data against the training baseline, on a
+   schedule.</li>
+<li>Instrument at least one custom infrastructure metric (§4) and confirm it reaches the cloud's native
+   monitoring dashboard (§5).</li>
+<li>Configure one alerting policy with a concrete SLO-style threshold, and confirm it actually fires and
+   delivers a notification when crossed.</li>
+</ol>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Monitoring exists because a decaying model fails silently — the model in §1 that keeps returning valid
+responses while quietly getting worse. Data/target/quality drift (§2-§3) is the model-specific half of
+that problem; infrastructure telemetry (§4) is the half every service needs regardless of what it
+serves. All three clouds (§6-§8) implement the same underlying loop — log, compare against a baseline,
+alert — differing mainly in what they call each piece. What makes any of it worth building is the
+feedback loop it feeds (§10): a monitoring signal is only useful if something downstream — a human, or
+Module 4's CML automation — is actually listening for it.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
+  production reliability.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Foundational sources this module's content draws on:</p>
+<ul>
+<li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
+  <code>s8_monitoring/data_drifting.md</code> and <code>monitoring.md</code>, plus <code>s10_extra/quantization.md</code> and
+  <code>calibration.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source material this module's
+  drift-detection workflow (§3), Prometheus instrumentation (§4), and edge optimization section (§9)
+  are adapted from.</li>
+<li><a href="https://docs.evidentlyai.com/">Evidently AI documentation</a> — source for the drift/quality preset
+  and <code>TestSuite</code> usage in §3.</li>
+<li>Gretton, Arthur, et al. <a href="https://jmlr.org/papers/v13/gretton12a.html">"A Kernel Two-Sample Test."</a>
+  JMLR, 2012. — source for the Maximum Mean Discrepancy multivariate-drift caveat in §3.</li>
+<li>AWS Documentation. <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">"Amazon SageMaker Model Monitor."</a>
+  — source for the four monitor types in §6.</li>
+<li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-monitor-model-performance">"Monitor performance of models deployed to production."</a>
+  — source for the Azure ML model monitoring workflow in §7.</li>
+<li>Google Cloud Documentation. <a href="https://cloud.google.com/vertex-ai/docs/model-monitoring/overview">"Introduction to Vertex AI Model Monitoring."</a>
+  — source for the skew/drift detection modes in §8.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../m8_llmops/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M8 - LLMOps">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                M8 - LLMOps
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../m10_automl_tools/" class="md-footer__link md-footer__link--next" aria-label="Next: M10 - AutoML Tools">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                M10 - AutoML Tools
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.indexes", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

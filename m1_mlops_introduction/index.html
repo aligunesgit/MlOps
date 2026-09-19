@@ -1,0 +1,1648 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pages/before/">
+      
+      
+        <link rel="next" href="../m2_ml_and_mlops_stages/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>M1 - MLOps Introduction - MLOps and AI Systems Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-1-mlops-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-header__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MLOps and AI Systems Engineering
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              M1 - MLOps Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-nav__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MLOps and AI Systems Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/before/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 - MLOps Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 - MLOps Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-mlops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is MLOps?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-state-of-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The state of machine learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-machine-learning-industrialisation-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Machine learning industrialisation challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ai-industrialization-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AI industrialization challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mlops-motivation-high-level-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. MLOps motivation: high-level view
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mlops-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. MLOps challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mlops-challenges-similar-to-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. MLOps challenges similar to DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mlops-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. MLOps components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-machine-learning-life-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The machine learning life cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-how-mlops-relates-to-devops-aiops-modelops-llmops-fmops-and-gitops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. How MLOps relates to DevOps, AIOps, ModelOps, LLMOps, FMOps, and GitOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-major-phases-what-it-takes-to-master-mlops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Major phases — what it takes to master MLOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-cicd-in-production-a-worked-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. CI/CD in production: a worked scenario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M2 - Overview of ML and MLOps Stages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m3_git_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M3 - Git Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m4_cicd_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - CI/CD Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m5_docker_and_kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Docker and Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_a_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m6_feature_store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M6 - Feature Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M7 - Cloud MLOps Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m8_llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M8 - LLMOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m9_model_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M9 - Model Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m10_automl_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M10 - AutoML Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_b_final_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/timeplan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-mlops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is MLOps?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-the-state-of-machine-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. The state of machine learning
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-machine-learning-industrialisation-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Machine learning industrialisation challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ai-industrialization-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. AI industrialization challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mlops-motivation-high-level-view" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. MLOps motivation: high-level view
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-mlops-challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. MLOps challenges
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-mlops-challenges-similar-to-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. MLOps challenges similar to DevOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-mlops-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. MLOps components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-the-machine-learning-life-cycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. The machine learning life cycle
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-how-mlops-relates-to-devops-aiops-modelops-llmops-fmops-and-gitops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. How MLOps relates to DevOps, AIOps, ModelOps, LLMOps, FMOps, and GitOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-major-phases-what-it-takes-to-master-mlops" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Major phases — what it takes to master MLOps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-cicd-in-production-a-worked-scenario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. CI/CD in production: a worked scenario
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m1_mlops_introduction/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m1_mlops_introduction/README.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="module-1-mlops-introduction">Module 1 — MLOps Introduction</h1>
+<p>Week 1</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<ul>
+<li>Understand what MLOps is and why it exists</li>
+<li>Understand the state of machine learning and the industrialisation challenges it faces</li>
+<li>Understand the machine learning life cycle</li>
+<li>Be able to place MLOps in relation to DevOps, AIOps, ModelOps, LLMOps, FMOps, and GitOps</li>
+</ul>
+<hr />
+<h2 id="1-what-is-mlops">1. What is MLOps?</h2>
+<p><strong>MLOps (Machine Learning Operations)</strong> is the set of practices, culture, and tooling that lets a
+team build, deploy, monitor, and continuously improve machine learning models as a reliable part of a
+production system — rather than as a one-off artifact that lives in a notebook.</p>
+<p>A useful way to think about it: training a model is like cooking a great dish once in your own
+kitchen. Getting that model into production, keeping it running correctly for thousands of users, and
+knowing the moment it starts producing bad predictions — that's like running a restaurant. The recipe
+(the model) is necessary but nowhere near sufficient. You need supply chains for ingredients (data
+pipelines), a kitchen that scales under load (infrastructure), staff trained to a consistent standard
+(reproducible processes), and a way to know a dish went out wrong before the customer complains
+(monitoring). MLOps is the discipline of building that "restaurant" around a model.</p>
+<p>Concretely, MLOps borrows the automation and discipline of DevOps — version control, continuous
+integration and delivery, infrastructure as code — and extends it to solve problems that are unique to
+machine learning:</p>
+<ul>
+<li><strong>Data changes the behavior of the system</strong>, not just the code. Two deployments with identical code
+  can behave completely differently if the underlying data distribution shifted.</li>
+<li><strong>Models decay silently.</strong> Software that isn't touched keeps working. A model that isn't touched
+  quietly gets worse as the world it was trained on drifts away from the world it now sees.</li>
+<li><strong>Reproducibility is multidimensional.</strong> Reproducing a result requires pinning code, data, model
+  weights, hyperparameters, and the training environment simultaneously — any one of them changing can
+  change the outcome.</li>
+<li><strong>The artifact is probabilistic, not deterministic.</strong> You can't write a unit test that simply asserts
+  "correct output" the way you can for a sorting function; you need statistical tests, drift
+  detection, and human judgment about acceptable performance.</li>
+</ul>
+<h2 id="2-the-state-of-machine-learning">2. The state of machine learning</h2>
+<p>Machine learning has moved from a research activity practiced by a small number of specialists to a
+default component of most software products. Deep learning in particular has gone from a niche
+technique to the backbone of computer vision, natural language processing, recommendation systems, and
+— most recently — large-scale generative and foundation models that power conversational assistants,
+code generation, and content creation at a scale that didn't exist a few years ago.</p>
+<p>This growth has outpaced the maturity of the tooling and practices needed to run these systems safely
+and cost-effectively in production. Industry surveys over the last several years have repeatedly found
+that a large majority of ML projects that start never reach production at all, and of the ones that do,
+many fail to deliver sustained value because nobody built the operational muscle to keep them healthy.
+Model training gets almost all of the attention in ML education; keeping a model alive, correct, and
+cost-effective for the following two years gets almost none. That gap is precisely what this course
+exists to close.</p>
+<h2 id="3-machine-learning-industrialisation-challenges">3. Machine learning industrialisation challenges</h2>
+<p>Moving from a prototype to an industrial-grade ML system surfaces challenges that a data science
+notebook simply doesn't expose:</p>
+<ul>
+<li><strong>Data engineering at scale</strong> — pipelines that reliably collect, clean, label, and version data,
+  often from multiple upstream systems that were never designed with ML in mind.</li>
+<li><strong>Reproducibility</strong> — being able to recreate a specific model's exact training conditions months
+  later, for debugging, auditing, or compliance.</li>
+<li><strong>Testing a probabilistic system</strong> — validating not just "does the code run" but "is the model's
+  behavior still acceptable," which requires statistical thinking, not just assertions.</li>
+<li><strong>Serving at scale and within latency budgets</strong> — a model that takes 30 seconds to run in a notebook
+  may need to respond in 30 milliseconds in production.</li>
+<li><strong>Organizational silos</strong> — data scientists, ML engineers, platform/DevOps teams, and business
+  stakeholders often work with different tools, different vocabularies, and different incentives.</li>
+<li><strong>Governance and risk</strong> — explainability, fairness, and compliance requirements that barely exist in
+  a research setting become hard constraints in a regulated production one.</li>
+</ul>
+<h2 id="4-ai-industrialization-challenges">4. AI industrialization challenges</h2>
+<p>Zooming out from ML specifically to AI systems broadly, the same industrialisation problem shows up at
+a larger scale: organizations need standardized platforms (rather than one-off pipelines built by every
+team from scratch), a workforce that spans data science, ML/platform engineering, and increasingly
+prompt/LLM engineering, and governance frameworks that can keep pace with systems whose behavior is
+harder to fully specify in advance than traditional software. The rise of generative AI and foundation
+models has intensified this: teams that had barely industrialized "classic" ML are now also expected to
+operationalize LLM-based systems, which carry their own cost, latency, and evaluation challenges (a
+theme this course returns to directly in Module 8, LLMOps).</p>
+<h2 id="5-mlops-motivation-high-level-view">5. MLOps motivation: high-level view</h2>
+<p>Put simply, MLOps exists because <strong>training a good model is not the same as running a good ML
+system.</strong> The motivation for adopting MLOps practices comes down to a small number of recurring
+business pressures:</p>
+<ul>
+<li><strong>Speed</strong> — reducing the time from "we have an idea" to "it's safely serving real users."</li>
+<li><strong>Reliability</strong> — making sure a deployed model keeps behaving the way it did when it was validated.</li>
+<li><strong>Scale</strong> — supporting many models, many teams, and many environments without each one reinventing
+  its own ad-hoc process.</li>
+<li><strong>Cost</strong> — avoiding wasted compute, redundant infrastructure, and the very expensive failure mode of
+  a silently degrading model nobody notices until a business metric drops.</li>
+<li><strong>Trust and governance</strong> — being able to explain, audit, and roll back model behavior when it matters
+  most — regulators, customers, or leadership asking "why did the model do that?"</li>
+</ul>
+<h2 id="6-mlops-challenges">6. MLOps challenges</h2>
+<p>Adopting MLOps is not just "buy some tools." The practical obstacles teams run into again and again
+include:</p>
+<ul>
+<li>Fragmented tooling across the data → training → deployment → monitoring pipeline, often owned by
+  different teams with little shared context.</li>
+<li>A shortage of people who are fluent in <em>both</em> the ML side and the production-engineering side.</li>
+<li>Cultural resistance — data science teams optimizing for model accuracy in isolation, without
+  ownership of what happens after a model ships.</li>
+<li>Monitoring blind spots — most organizations instrument their infrastructure (CPU, memory, latency)
+  far more thoroughly than they instrument the <em>statistical health</em> of their models (drift, skew,
+  fairness).</li>
+<li>Cost sprawl — GPUs, managed cloud ML services, and duplicated environments across teams add up
+  quickly without centralized visibility.</li>
+</ul>
+<h2 id="7-mlops-challenges-similar-to-devops">7. MLOps challenges similar to DevOps</h2>
+<p>Many of MLOps' hardest problems are not new — they're the same problems DevOps solved for traditional
+software, just harder:</p>
+<table>
+<thead>
+<tr>
+<th>DevOps problem</th>
+<th>MLOps equivalent, and why it's harder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version control for code</td>
+<td>Version control for code <strong>and</strong> data <strong>and</strong> models <strong>and</strong> hyperparameters, which are much larger and change independently</td>
+</tr>
+<tr>
+<td>CI (does the code work?)</td>
+<td>CI <strong>and</strong> CT — continuous <em>training</em> (does the model still learn something good on current data?)</td>
+</tr>
+<tr>
+<td>CD (ship the new binary)</td>
+<td>CD <strong>and</strong> continuous <em>evaluation</em> (a new model version needs a quality gate, not just "it compiles")</td>
+</tr>
+<tr>
+<td>Infrastructure monitoring</td>
+<td>Infrastructure monitoring <strong>and</strong> model/data monitoring (drift, skew, fairness — signals that have no equivalent in traditional software)</td>
+</tr>
+<tr>
+<td>Rollback a bad deploy</td>
+<td>Rollback a bad deploy <strong>and</strong> detect a model that is technically running fine but has quietly become wrong</td>
+</tr>
+</tbody>
+</table>
+<p>This is why MLOps is often described as "DevOps plus the parts of the lifecycle that are unique to
+data and models" rather than a wholesale replacement for DevOps thinking.</p>
+<h2 id="8-mlops-components">8. MLOps components</h2>
+<p>A working MLOps setup is made up of a small number of recurring building blocks, most of which get
+their own dedicated module later in this course:</p>
+<ul>
+<li><strong>Version control</strong> for code, data, and models (Module 3)</li>
+<li><strong>CI/CD pipelines</strong> that build, test, and deploy automatically (Module 4)</li>
+<li><strong>Containerization and orchestration</strong> for reproducible, scalable execution (Module 5)</li>
+<li><strong>Feature management</strong> so training and serving use consistent, versioned features (Module 6)</li>
+<li><strong>Managed training/serving infrastructure</strong> on one or more cloud platforms (Module 7)</li>
+<li><strong>Model-specific operational concerns for LLMs and generative AI</strong> (Module 8)</li>
+<li><strong>Monitoring and observability</strong> for both infrastructure and model behavior (Module 9)</li>
+<li><strong>Experiment tracking and hyperparameter optimization</strong> (Module 10)</li>
+</ul>
+<p>Seeing the whole map now is the point of this module — every later module is a deep dive into one of
+these boxes.</p>
+<h2 id="9-the-machine-learning-life-cycle">9. The machine learning life cycle</h2>
+<p>A production ML system moves through three broad phases, and — critically — moves through them
+repeatedly, not once:</p>
+<ol>
+<li><strong>Design</strong> — understand the problem, define success metrics, and figure out what data exists or
+   needs to be sourced. Getting this phase wrong (solving the wrong problem, or on the wrong data)
+   dooms everything downstream, no matter how good the engineering is later.</li>
+<li><strong>Model development</strong> — exploratory data analysis, feature engineering, model selection, training,
+   and offline validation against held-out data.</li>
+<li><strong>Operations</strong> — packaging, deploying, and — the phase most ML curricula skip — continuously
+   monitoring the deployed model, detecting when it degrades, and feeding that signal back into the
+   next iteration of design and development.</li>
+</ol>
+<figure>
+<p>The three phases form a loop, not a line: production monitoring signals (drift, failures, new labeled
+data) are exactly what triggers the next round of model development, which may in turn surface new
+requirements that send the team back to the design phase.</p>
+</figure>
+<p>This course is deliberately weighted toward phase 3 — Operations — because that is the phase most
+people arrive at this course <em>without</em> a toolbox for.</p>
+<h2 id="10-how-mlops-relates-to-devops-aiops-modelops-llmops-fmops-and-gitops">10. How MLOps relates to DevOps, AIOps, ModelOps, LLMOps, FMOps, and GitOps</h2>
+<p>These terms overlap heavily and the industry is not fully consistent about their boundaries, but a
+useful working distinction is:</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Primary focus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DevOps</strong></td>
+<td>Software delivery in general — CI/CD, infrastructure automation, culture of shared ownership between development and operations</td>
+</tr>
+<tr>
+<td><strong>MLOps</strong></td>
+<td>DevOps principles extended to the ML-specific lifecycle: data versioning, experiment tracking, model training pipelines, model deployment, and model monitoring</td>
+</tr>
+<tr>
+<td><strong>AIOps</strong></td>
+<td>Using AI/ML <em>to run IT operations</em> — anomaly detection, automated incident response, log analysis. (Note the direction is reversed from MLOps: AIOps uses ML to operate systems; MLOps operates ML systems.)</td>
+</tr>
+<tr>
+<td><strong>ModelOps</strong></td>
+<td>Often used interchangeably with MLOps, but sometimes scoped narrower — specifically governance, versioning, and lifecycle management of models already in production, less focused on the training side</td>
+</tr>
+<tr>
+<td><strong>LLMOps</strong></td>
+<td>MLOps specialized for large language models: prompt/version management, retrieval pipelines, evaluation of open-ended text output, cost and latency management at inference time (covered in depth in Module 8)</td>
+</tr>
+<tr>
+<td><strong>FMOps</strong></td>
+<td>"Foundation Model Ops" — a broader frame than LLMOps, covering the operational concerns of any large pre-trained foundation model (text, vision, multimodal) that gets adapted/fine-tuned for downstream tasks</td>
+</tr>
+<tr>
+<td><strong>GitOps</strong></td>
+<td>A specific implementation pattern (mostly from the Kubernetes/infrastructure world) where Git is the single source of truth and all changes to a system happen through Git commits + automated reconciliation. MLOps pipelines frequently <em>use</em> GitOps as their deployment mechanism, but GitOps itself is not ML-specific</td>
+</tr>
+</tbody>
+</table>
+<p>The practical takeaway: MLOps is the umbrella most relevant to this course, but you will encounter all
+of these terms in the wild, often used loosely — knowing the distinctions helps you read a job posting,
+a vendor's marketing page, or a conference talk correctly.</p>
+<h2 id="11-major-phases-what-it-takes-to-master-mlops">11. Major phases — what it takes to master MLOps</h2>
+<p>Organizations don't adopt MLOps all at once — they move through recognizable levels of maturity:</p>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>What it looks like</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Ad hoc: manual, notebook-driven, no version control discipline, no monitoring</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Basic DevOps hygiene applied: code is versioned, a simple CI pipeline exists</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Reproducible training pipelines; models and data are versioned and tracked in a registry</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Full CI/CD/CT: automated testing, automated deployment, and production monitoring are all in place</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Continuous training and retraining pipelines trigger automatically based on monitored signals, with human oversight retained at the decision points that matter</td>
+</tr>
+</tbody>
+</table>
+<p>Mastering MLOps doesn't mean reaching Level 4 for every project — a small internal tool and a
+customer-facing fraud model warrant very different levels of investment. Part of the skill this course
+builds is judgment: knowing which level of rigor a given project actually needs.</p>
+<h2 id="12-cicd-in-production-a-worked-scenario">12. CI/CD in production: a worked scenario</h2>
+<p>To make all of the above concrete, walk through a composite, illustrative scenario (not a specific
+real company — a generic pattern that recurs across many production ML systems):</p>
+<p>An e-commerce team ships a model that ranks search results. Every time an engineer merges a change to
+the ranking code, code, or to the training data pipeline:</p>
+<ol>
+<li>A CI pipeline automatically runs unit tests on the code and a smaller-scale training run to confirm
+   the model still trains without errors.</li>
+<li>If those pass, a CD pipeline builds a new container image and deploys it to a staging environment.</li>
+<li>A held-out evaluation set (not seen during training) is scored, and the new model's metrics are
+   compared against the currently deployed model's — this is the "continuous evaluation" gate; if the
+   new model doesn't beat a minimum bar, the pipeline stops here automatically.</li>
+<li>If it passes, the new model is rolled out gradually (e.g. to 5% of traffic first), while a
+   monitoring system compares live business metrics and model-quality metrics between the old and new
+   model.</li>
+<li>If the new model's live metrics hold up, traffic is ramped to 100%. If they don't, the pipeline
+   automatically rolls back to the previous model version — no human had to notice the regression
+   manually at 2 a.m.</li>
+<li>Ongoing production monitoring keeps watching the now-fully-rolled-out model for drift; when it
+   detects the input data distribution has shifted meaningfully, it flags the model for retraining,
+   closing the loop back to step 1.</li>
+</ol>
+<p>Every step in that scenario maps directly onto a module later in this course: step 1-2 is Module 4
+(CI/CD), step 2 is also Module 5 (containerization), step 3 uses tooling from Module 10 (experiment
+tracking), steps 4-5 draw on Module 7 (cloud deployment), and step 6 is Module 9 (monitoring). This
+scenario is worth revisiting after each of those modules — you'll be able to say precisely how you'd
+implement each step yourself.</p>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>MLOps is what turns a trained model into a system other people can actually depend on. It exists
+because production ML has failure modes that classical software testing was never designed to catch,
+and because the gap between "it worked in the notebook" and "it's reliably serving real users" is where
+most ML projects quietly die. The rest of this course is a tour of the concrete tools and practices that
+close that gap — one module, one component of the MLOps stack, at a time.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
+  production reliability.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Foundational industry/academic sources this module's content draws on:</p>
+<ul>
+<li>Sculley, D., et al. <a href="https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf">"Hidden Technical Debt in Machine Learning Systems."</a>
+  NeurIPS, 2015. — the original, widely-cited paper on the industrialisation challenges unique to ML
+  systems (§3, §4).</li>
+<li>Google Cloud. <a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">"MLOps: Continuous Delivery and Automation Pipelines in Machine Learning."</a>
+  Architecture guide. — source for the MLOps components and CI/CD/CT framing (§5, §8, §12).</li>
+<li>Microsoft. <a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/mlops-maturity-model">"MLOps Maturity Model."</a>
+  Azure Architecture Center. — source for the 5-level maturity framework (§11).</li>
+<li><a href="https://arxiv.org/abs/2209.09125">"Operationalizing Machine Learning: An Interview Study."</a>
+  arXiv, 2022. — source for the practitioner-reported MLOps challenges discussed in §6.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../pages/before/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../m2_ml_and_mlops_stages/" class="md-footer__link md-footer__link--next" aria-label="Next: M2 - Overview of ML and MLOps Stages">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                M2 - Overview of ML and MLOps Stages
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.indexes", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>

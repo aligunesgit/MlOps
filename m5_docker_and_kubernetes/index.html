@@ -1,0 +1,1683 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../m4_cicd_strategies/">
+      
+      
+        <link rel="next" href="../sprint_a_project/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>M5 - Docker and Kubernetes - MLOps and AI Systems Engineering</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-5-docker-kubernetes-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-header__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MLOps and AI Systems Engineering
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              M5 - Docker and Kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="light-blue" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MLOps and AI Systems Engineering" class="md-nav__button md-logo" aria-label="MLOps and AI Systems Engineering" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MLOps and AI Systems Engineering
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/aligunesgit/MlOps" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/before/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m1_mlops_introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M1 - MLOps Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M2 - Overview of ML and MLOps Stages
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m3_git_essentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M3 - Git Essentials
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m4_cicd_strategies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - CI/CD Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Docker and Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Docker and Kubernetes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-containers-and-why-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why containers, and why now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Docker core concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-everyday-docker-command-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The everyday Docker command set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-building-an-ml-training-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Building an ML training image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-docker-networking-and-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Docker networking and volumes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sharing-images-and-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sharing images and registries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-docker-compose-multi-container-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Docker Compose: multi-container applications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-docker-swarm-briefly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Docker Swarm, briefly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-kubernetes-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Kubernetes architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-kubernetes-core-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Kubernetes core resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-running-locally-with-minikube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Running locally with Minikube
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-projects-for-this-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Projects for this module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_a_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint A
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m6_feature_store/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M6 - Feature Store
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M7 - Cloud MLOps Deep Dive
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m8_llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M8 - LLMOps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m9_model_monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M9 - Model Monitoring
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m10_automl_tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M10 - AutoML Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sprint_b_final_project/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Project Sprint B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/timeplan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Time plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-why-containers-and-why-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Why containers, and why now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-docker-core-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Docker core concepts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-everyday-docker-command-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. The everyday Docker command set
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-building-an-ml-training-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Building an ML training image
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-docker-networking-and-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Docker networking and volumes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-sharing-images-and-registries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Sharing images and registries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-docker-compose-multi-container-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Docker Compose: multi-container applications
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-docker-swarm-briefly" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Docker Swarm, briefly
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-kubernetes-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Kubernetes architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-kubernetes-core-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Kubernetes core resources
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-running-locally-with-minikube" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Running locally with Minikube
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-projects-for-this-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Projects for this module
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m5_docker_and_kubernetes/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m5_docker_and_kubernetes/README.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+    </a>
+  
+
+
+<h1 id="module-5-docker-kubernetes-overview">Module 5 — Docker &amp; Kubernetes Overview</h1>
+<p>Week 5</p>
+<h2 id="learning-objectives">Learning objectives</h2>
+<ul>
+<li>Understand Docker fundamentals: images, containers, registries, networking, volumes</li>
+<li>Be able to containerize an ML application and orchestrate multi-container apps with Docker Compose</li>
+<li>Understand Kubernetes architecture and core resource types</li>
+<li>Be able to run a local Kubernetes cluster with Minikube</li>
+</ul>
+<hr />
+<h2 id="1-why-containers-and-why-now">1. Why containers, and why now</h2>
+<p>Module 2, §3 named <strong>containers</strong> as one of the five things MLOps needs to version, alongside code,
+data, models, and features — this module is where that claim gets made concrete. Pinning your Python
+packages with <code>uv</code>/<code>conda</code> is not enough for true reproducibility: the operating system, system
+libraries, GPU drivers, and their exact versions all affect whether a training run behaves identically
+on your laptop and on a training cluster six months from now.</p>
+<p><strong>Docker</strong> solves this by packaging an application together with its entire runtime environment into
+an isolated unit that runs identically anywhere Docker itself runs. The same property that makes it
+good for reproducibility also makes it the basis for scale: once an environment is fully captured in an
+image, it conceptually doesn't matter whether you start it once on a laptop or a thousand times across
+a cluster — which is exactly the problem Kubernetes (§9-§11) exists to manage at scale.</p>
+<h2 id="2-docker-core-concepts">2. Docker core concepts</h2>
+<p>Docker reduces to three ideas, each built from the one before it:</p>
+<pre class="mermaid"><code>flowchart LR
+    DF["Dockerfile&lt;br/&gt;(build instructions)"] --&gt;|"docker build"| IMG["Docker image&lt;br/&gt;(static template)"]
+    IMG --&gt;|"docker run"| C1["Container"]
+    IMG --&gt;|"docker push"| REG["Registry&lt;br/&gt;(e.g. Docker Hub)"]
+    REG --&gt;|"docker pull"| IMG</code></pre>
+<ul>
+<li>A <strong>Dockerfile</strong> is a plain-text list of the commands needed to set up and run an application —
+  install dependencies, copy code, specify the command that starts it.</li>
+<li><em>Building</em> a Dockerfile produces a <strong>Docker image</strong>: a static, self-contained package with
+  everything (OS libraries, dependencies, code) needed to run it.</li>
+<li><em>Running</em> an image produces a <strong>Docker container</strong> — a live, isolated process. The same image can be
+  run many times, producing many independent containers.</li>
+</ul>
+<p>Images are built from <strong>stacked, cached layers</strong>: each instruction in a Dockerfile adds one layer, and
+Docker only rebuilds the layers that changed. This is why, in practice, Dockerfiles deliberately install
+dependencies <em>before</em> copying application code (§4) — the slow dependency layer then stays cached
+across every rebuild that only touches code.</p>
+<h2 id="3-the-everyday-docker-command-set">3. The everyday Docker command set</h2>
+<table>
+<thead>
+<tr>
+<th>Command</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>docker run &lt;image&gt;</code></td>
+<td>Starts a new container from an image (<code>--rm</code> auto-removes it on exit, <code>-it</code> for an interactive shell, <code>--name</code> to label it)</td>
+</tr>
+<tr>
+<td><code>docker ps</code> / <code>docker ps -a</code></td>
+<td>Lists running containers / all containers, including stopped ones</td>
+</tr>
+<tr>
+<td><code>docker images</code></td>
+<td>Lists locally available images</td>
+</tr>
+<tr>
+<td><code>docker build -f &lt;file&gt; . -t &lt;tag&gt;</code></td>
+<td>Builds an image from a Dockerfile (the trailing <code>.</code> is the <em>build context</em> — the directory Docker can see while building)</td>
+</tr>
+<tr>
+<td><code>docker exec -it &lt;container&gt; sh</code></td>
+<td>Opens an interactive shell inside an already-running container</td>
+</tr>
+<tr>
+<td><code>docker cp &lt;container&gt;:&lt;path&gt; &lt;local_path&gt;</code></td>
+<td>Copies a file out of (or into) a running container</td>
+</tr>
+<tr>
+<td><code>docker logs &lt;container&gt;</code></td>
+<td>Shows a container's stdout/stderr</td>
+</tr>
+<tr>
+<td><code>docker rm &lt;container&gt;</code> / <code>docker rmi &lt;image&gt;</code></td>
+<td>Removes a stopped container / an image</td>
+</tr>
+<tr>
+<td><code>docker pull &lt;image&gt;</code> / <code>docker push &lt;image&gt;</code></td>
+<td>Downloads an image from a registry / uploads one to it</td>
+</tr>
+</tbody>
+</table>
+<p>Stopped containers pile up disk space over time — <code>docker run --rm</code> auto-removes a container the
+moment it exits, which is the right default for anything short-lived like a training job.</p>
+<h2 id="4-building-an-ml-training-image">4. Building an ML training image</h2>
+<p>A real project Dockerfile splits into two deliberately ordered halves — dependencies, then code —
+exactly to exploit the layer caching from §2:</p>
+<div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>apt<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>gcc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>apt<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c"># 1. Dependencies first — this layer stays cached across every rebuild that only touches code</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">COPY</span><span class="w"> </span>uv.lock<span class="w"> </span>pyproject.toml<span class="w"> </span>README.md<span class="w"> </span>./
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">RUN</span><span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--locked<span class="w"> </span>--no-cache<span class="w"> </span>--no-install-project
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c"># 2. Code last — the layer that actually changes on every commit</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>src/
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"uv"</span><span class="p">,</span><span class="w"> </span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"src/train.py"</span><span class="p">]</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>train.dockerfile<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>train:latest
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>experiment1<span class="w"> </span>train:latest
+</span></code></pre></div>
+<p>On Apple Silicon, building an image meant for a different CPU architecture (e.g. an <code>amd64</code> cloud
+runner) needs <code>--platform linux/amd64</code>, at the cost of a slower emulated build. Getting a trained model
+back out of a finished container uses <code>docker cp</code>, or — for anything ongoing — a bind-mounted volume
+(§5), which is also how a GPU training image would be run, given the Nvidia Container Toolkit
+installed on the host and a CUDA-enabled base image.</p>
+<h2 id="5-docker-networking-and-volumes">5. Docker networking and volumes</h2>
+<p>Two things a container needs beyond its own filesystem: a way to talk to the outside world, and a way
+to keep data alive after the container itself is gone.</p>
+<p><strong>Network types</strong> — set via <code>docker run --network &lt;type&gt;</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Network type</th>
+<th>Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bridge</code> (default)</td>
+<td>An isolated private network per host; containers on it can reach each other, and reach the outside world via NAT</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td>The container shares the host machine's network stack directly — no isolation, fastest, rarely the right default</td>
+</tr>
+<tr>
+<td><code>none</code></td>
+<td>No networking at all — for a task with no need to reach anything</td>
+</tr>
+<tr>
+<td>user-defined bridge</td>
+<td>Like the default bridge, but containers can resolve each other <strong>by name</strong> — this is what Docker Compose (§7) sets up automatically for a multi-container app</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Volumes</strong> — a container's filesystem is deleted with the container by default, so anything that must
+survive needs an explicit volume:</p>
+<ul>
+<li>A <strong>bind mount</strong> (<code>-v /host/path:/container/path</code>) maps a specific host directory straight into the
+  container — the simplest option for local development.</li>
+<li>A <strong>named volume</strong> (<code>-v my_data:/container/path</code>) is managed by Docker itself rather than pointing at
+  a specific host path — the better choice for anything meant to outlive a single machine's directory
+  layout, including in production.</li>
+</ul>
+<h2 id="6-sharing-images-and-registries">6. Sharing images and registries</h2>
+<p>A built image is only useful to others once it's shared, and there are two ways to do that:</p>
+<ul>
+<li><strong>Commit the Dockerfile itself</strong> to the repository (it's just a text file) and let others build the
+  image locally — simplest, but means everyone pays the build cost.</li>
+<li><strong>Push the built image to a registry</strong> — <a href="https://hub.docker.com/">Docker Hub</a> is the public default;
+  most cloud providers also run their own (AWS ECR, GCP Artifact Registry from Module 4, §7, Azure
+  Container Registry) — so others can <code>docker pull</code> and run it immediately, no build step required.</li>
+</ul>
+<p>Committing the Dockerfile is what CI (Module 4) actually does on every push: build the image fresh
+inside the pipeline, run tests against it, and only push the image to a registry once it passes.</p>
+<h2 id="7-docker-compose-multi-container-applications">7. Docker Compose: multi-container applications</h2>
+<p>A real ML application is rarely one container — a training/inference service, a lightweight frontend,
+and maybe a database each want their own image, wired together. <strong>Docker Compose</strong> describes that
+whole stack declaratively in one <code>docker-compose.yml</code> instead of a sequence of manual <code>docker run</code>
+commands:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">services</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./backend</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8000:8000"</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./frontend</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8501:8501"</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w">      </span><span class="c1"># builds (if needed) and starts every service</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w">    </span><span class="c1"># stops and removes them</span>
+</span></code></pre></div>
+<p>Compose automatically creates a user-defined bridge network (§5) for the stack, so <code>frontend</code> can reach
+<code>backend</code> by service name — no manual IP wiring, no port-hardcoding. This is the direct precursor to
+Kubernetes' <code>Service</code> resource (§10): Compose gives you name-based networking on one machine; Kubernetes
+gives you the same idea across a whole cluster.</p>
+<h2 id="8-docker-swarm-briefly">8. Docker Swarm, briefly</h2>
+<p><strong>Docker Swarm</strong> is Docker's own native clustering/orchestration mode — turning several Docker hosts
+into one virtual host, with built-in service discovery and load balancing, activated with a single
+<code>docker swarm init</code>. It is simpler to adopt than Kubernetes because it ships inside Docker itself with
+no separate installation. In practice, the industry consolidated around Kubernetes as the dominant
+orchestrator instead — broader ecosystem, every major cloud offers a managed version (Module 7) — which
+is why the rest of this module, and the rest of this course, goes deep on Kubernetes rather than Swarm.</p>
+<h2 id="9-kubernetes-architecture">9. Kubernetes architecture</h2>
+<p><strong>Kubernetes (K8s)</strong> automates deploying, scaling, and healing containerized applications across a
+cluster of machines — restarting a crashed container, spreading replicas across nodes, routing traffic
+to whichever replicas are healthy. It follows a client-server split between a <strong>control plane</strong> that
+makes decisions and <strong>worker nodes</strong> that run the actual containers:</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph CP["Control plane"]
+        API["API server&lt;br/&gt;(front door for kubectl&lt;br/&gt;and every internal component)"]
+        ETCD["etcd&lt;br/&gt;(cluster state store)"]
+        SCHED["Scheduler&lt;br/&gt;(assigns Pods to nodes)"]
+        CM["Controller manager&lt;br/&gt;(reconciles actual vs. desired state)"]
+    end
+    subgraph WN["Worker node"]
+        KUBELET["kubelet&lt;br/&gt;(node agent)"]
+        PROXY["kube-proxy&lt;br/&gt;(node networking rules)"]
+        CR["Container runtime"]
+        POD["Pod(s)"]
+    end
+    API &lt;--&gt; KUBELET
+    KUBELET --&gt; CR
+    CR --&gt; POD
+    PROXY -.-&gt; POD</code></pre>
+<ul>
+<li>The <strong>API server</strong> is the single front door every request — from <code>kubectl</code>, from other control-plane
+  components, from the kubelet on each node — goes through.</li>
+<li><strong>etcd</strong> is the consistent key-value store holding the entire cluster's actual state.</li>
+<li>The <strong>scheduler</strong> decides which node a new Pod should run on; the <strong>controller manager</strong> continuously
+  compares desired state (what you asked for) against actual state and corrects any drift — this
+  reconciliation loop is the mechanism behind everything in §10.</li>
+<li>On each <strong>worker node</strong>, the <strong>kubelet</strong> is the agent that actually starts/stops containers as told,
+  the <strong>container runtime</strong> runs them, and <strong>kube-proxy</strong> implements the networking rules that let
+  Services (§10) route traffic to the right Pods.</li>
+<li><code>kubectl</code> is the CLI every one of these interactions goes through, whether run by a human or a CI/CD
+  pipeline.</li>
+</ul>
+<h2 id="10-kubernetes-core-resources">10. Kubernetes core resources</h2>
+<p>Everything you deploy is expressed as one of a small set of resource types, each solving a distinct
+problem a Docker Compose file (§7) doesn't have to, because it now spans an entire cluster rather than
+one machine:</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pod</strong></td>
+<td>The smallest deployable unit — one or more tightly-coupled containers that share networking and storage</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Declaratively manages a set of identical Pod replicas: how many, which image, and how to roll out an update without downtime</td>
+</tr>
+<tr>
+<td><strong>Service</strong></td>
+<td>A stable network name/address that routes traffic to whichever Pods currently match it — Pods come and go, the Service address doesn't</td>
+</tr>
+<tr>
+<td><strong>Ingress</strong></td>
+<td>Routes external HTTP(S) traffic into the cluster, to the right Service, based on hostname/path rules</td>
+</tr>
+<tr>
+<td><strong>ConfigMap</strong></td>
+<td>Non-secret configuration values, injected into Pods as environment variables or mounted files</td>
+</tr>
+<tr>
+<td><strong>Secret</strong></td>
+<td>The same idea as a ConfigMap, for sensitive values (API keys, credentials) — access-controlled and encoded at rest</td>
+</tr>
+<tr>
+<td><strong>StatefulSet</strong></td>
+<td>Like a Deployment, but for Pods that need a stable identity and stable storage across restarts (databases, anything not safely interchangeable)</td>
+</tr>
+<tr>
+<td><strong>DaemonSet</strong></td>
+<td>Guarantees exactly one copy of a Pod runs on every node — the standard shape for log collectors and monitoring agents</td>
+</tr>
+<tr>
+<td><strong>PersistentVolumeClaim (PVC)</strong></td>
+<td>A Pod's request for durable storage that outlives the Pod itself, decoupling storage lifetime from container lifetime</td>
+</tr>
+</tbody>
+</table>
+<p>A <code>Deployment</code> + <code>Service</code> pair is the minimum needed to run an ML model behind a stable address that
+survives a Pod crashing and being replaced — which is exactly the shape §11's project builds.</p>
+<h2 id="11-running-locally-with-minikube">11. Running locally with Minikube</h2>
+<p><strong>Minikube</strong> runs a real, single-node Kubernetes cluster inside a local VM/container — enough to learn
+and test every resource in §10 without needing an actual multi-machine cluster or a cloud bill:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>minikube<span class="w"> </span>start<span class="w">          </span><span class="c1"># boots the local cluster</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w">       </span><span class="c1"># confirms kubectl can talk to it</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+</span></code></pre></div>
+<p>Everything written against Minikube — the YAML manifests, the <code>kubectl</code> commands — is what you'd run
+unchanged against a managed cluster in production (Module 7 covers AWS EKS, GCP GKE, and Azure AKS
+specifically). For model-serving specifically, platforms like <a href="https://github.com/bentoml/Yatai">BentoML's
+Yatai</a> build on top of exactly this Deployment/Service pattern to
+simplify packaging and scaling a served model on Kubernetes — worth knowing the name exists once you're
+past the fundamentals here.</p>
+<h2 id="12-projects-for-this-module">12. Projects for this module</h2>
+<p>Four projects, each building directly on the section before it:</p>
+<ol>
+<li><strong>Deploy a Node.js app in a Docker container</strong> — write a Dockerfile for a minimal Node.js app,
+   build it, and run it with a published port (§2-§4).</li>
+<li><strong>Deploy an ML model in a Docker container</strong> — apply the training/serving Dockerfile pattern from
+   §4 to a real model, including getting the trained artifact out via a volume (§5).</li>
+<li><strong>Deploy a complete end-to-end ML model with Docker Compose</strong> — wire a model-serving backend and a
+   simple frontend together with <code>docker-compose.yml</code> (§7), talking to each other by service name.</li>
+<li><strong>Deploy an ML model in a Kubernetes cluster</strong> — take the image from project 2, run it on Minikube
+   behind a <code>Deployment</code> + <code>Service</code> (§9-§11), and confirm it survives a Pod being deleted and
+   recreated.</li>
+</ol>
+<hr />
+<h2 id="summary">Summary</h2>
+<p>Containers close the last gap in the reproducibility story from Module 2, §3: pinning code, data, and
+model versions means little if the operating system underneath them can still drift. Docker (§1-§8)
+solves that for one machine or one multi-container stack; Kubernetes (§9-§11) solves the same problem at
+cluster scale, replacing Compose's single-host, name-based networking with a control plane that
+continuously reconciles desired state against actual state across many machines. Module 7 picks this up
+directly: every managed cloud ML platform ultimately runs your container on top of a Kubernetes-shaped
+control plane, whether or not it calls itself that.</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
+  production reliability.</li>
+</ul>
+<h2 id="references">References</h2>
+<p>Foundational sources this module's content draws on:</p>
+<ul>
+<li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
+  <code>s3_reproducibility/docker.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source material
+  this module's Docker concepts, Dockerfile pattern, and command walkthrough (§1-§6) are adapted from.</li>
+<li>Docker Docs. <a href="https://docs.docker.com/get-started/docker-overview/">"Docker overview"</a> and
+  <a href="https://docs.docker.com/engine/network/">"Networking overview."</a> — source for the image/container
+  model (§2) and network types (§5).</li>
+<li>Docker Docs. <a href="https://docs.docker.com/compose/compose-file/">"Compose file reference."</a> — source for
+  the Compose example in §7.</li>
+<li>Kubernetes Documentation. <a href="https://kubernetes.io/docs/concepts/overview/components/">"Kubernetes Components"</a>
+  and <a href="https://kubernetes.io/docs/concepts/workloads/">"Workloads."</a> — source for the control
+  plane/node architecture (§9) and the resource list (§10).</li>
+<li><a href="https://minikube.sigs.k8s.io/docs/">Minikube documentation</a> — source for the local-cluster workflow
+  in §11.</li>
+</ul>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../m4_cicd_strategies/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M4 - CI/CD Strategies">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                M4 - CI/CD Strategies
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../sprint_a_project/" class="md-footer__link md-footer__link--next" aria-label="Next: Project Sprint A">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Project Sprint A
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.indexes", "navigation.footer", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view", "content.tabs.link", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
