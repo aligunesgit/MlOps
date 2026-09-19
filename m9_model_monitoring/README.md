@@ -5,7 +5,8 @@ Week 10
 ## Learning objectives
 
 * Understand why model monitoring matters and the different types of monitoring
-* Be able to monitor a deployed model and its infrastructure on AWS, Azure, and GCP
+* Be able to monitor a deployed model and its infrastructure hands-on on Azure, and recognize the
+  equivalent monitoring services on AWS and GCP
 * Understand approaches to optimizing/managing models at the edge
 * Understand the role of the feedback loop in an MLOps system
 
@@ -214,9 +215,11 @@ set, monitoring's drift/quality signals decide *when* that retraining should run
 Continuous Machine Learning automation is what actually wires the trigger to the retraining pipeline
 without a human having to notice the problem manually.
 
-## 11. Project: Model & infrastructure monitoring using cloud tools
+## 11. Project: Model & infrastructure monitoring using cloud tools (required, on Azure)
 
-Deploy a model behind an endpoint on any one of the three clouds, then:
+This course's required hands-on monitoring project uses Azure (§7), per the [Setup
+page](../pages/before.md#setup) — §6 and §8 (AWS, GCP) are conceptual coverage so you recognize the
+equivalent monitor on either. Deploy a model behind an Azure ML managed endpoint, then:
 
 1. Enable request/response data capture (§6-§8) on the endpoint.
 2. Run a data-drift check (§3) comparing captured production data against the training baseline, on a

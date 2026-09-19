@@ -50,6 +50,72 @@ To get the most out of this course, you should have prior experience with:
 * Docker and command line basics
 * At least 1 year of general programming experience
 
+## Setup
+
+Everything below is worth installing and setting up **before Week 1**, even though some of it (Docker,
+`kubectl`, the cloud CLIs) isn't touched until later modules — the goal is to remove "I couldn't
+install X" as a reason to fall behind once the course actually needs it.
+
+### Languages used in this course
+
+* **Python 3.11+** — the primary language for essentially every exercise: training scripts, APIs,
+  pipeline definitions, and every cloud SDK (`boto3`, `google-cloud-aiplatform`, `azure-ai-ml`).
+* **YAML** — configuration and pipeline definitions: GitHub Actions workflows (Module 4), Kubernetes
+  manifests (Module 5), Azure Pipelines (Module 4), and this site's own `mkdocs.yml`.
+* **Bash/shell** — every CLI command in every module, plus `Dockerfile` `RUN` steps and CI scripts.
+* **Dockerfile syntax** (Module 5) and **HCL** (Terraform, Module 4, for infrastructure as code) — not
+  full programming languages, but you'll read and write both.
+
+You don't need to know all of these on day one — Python is the only one you should already be
+comfortable with (see Prerequisites above). The rest are taught as they come up.
+
+### Accounts to create
+
+| Account | Needed from | Notes |
+|---|---|---|
+| **GitHub** | Module 3 | Free. Used for every module's exercises and the group project repo. |
+| **Azure ([Azure for Students](https://azure.microsoft.com/en-us/free/students))** | Module 4, 7, 9 | No credit card required — verified with your academic email. $100 credit for 12 months plus 65+ always-free services, renewable every year you're still a student. This is the only cloud account this course requires; see the note below on why. |
+| **Weights & Biases** | Module 10 | Free for personal/academic use. |
+
+If you're signing up for Azure with a university-managed account, create your course
+subscription under "no organization" where possible — organization-managed accounts sometimes block
+creating the service-account keys/credentials you'll need later (e.g. for GitHub Actions to
+authenticate to the cloud).
+
+**Why Azure only, and not AWS/GCP too:** AWS's no-credit-card option (AWS Educate's Starter Account) is
+a heavily restricted sandbox (one region, no IAM/billing dashboard, session timeouts), and GCP's
+standard student credit still requires entering a card at signup. Azure for Students is the one option
+that's genuinely free, uncapped-in-scope within its credit, and requires no card — so this course
+standardizes on it for every cloud exercise. Module 4, 7, and 9 still *cover* AWS and GCP conceptually
+(so you recognize the equivalent service on either), but every hands-on project in those modules should
+be done on Azure.
+
+### Tools to install locally
+
+| Tool | Needed from | Install |
+|---|---|---|
+| **Python 3.11+** | Module 1 | [python.org/downloads](https://www.python.org/downloads/) or a version manager like `pyenv` |
+| **uv** | Module 1 | [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/) — this repo's dependency manager; `uv sync` installs everything in `pyproject.toml` |
+| **Git** | Module 3 | [git-scm.com/downloads](https://git-scm.com/downloads/) |
+| **A code editor** | Module 1 | [VS Code](https://code.visualstudio.com/) is recommended — this repo ships a `.devcontainer/`, so opening it in VS Code (or GitHub Codespaces) can set up Python + `uv` for you automatically |
+| **Docker Desktop** (or OrbStack on macOS) | Module 5 | [docs.docker.com/get-docker](https://docs.docker.com/get-docker/) |
+| **kubectl** | Module 5 | [kubernetes.io/docs/tasks/tools](https://kubernetes.io/docs/tasks/tools/) |
+| **Minikube** | Module 5 | [minikube.sigs.k8s.io/docs/start](https://minikube.sigs.k8s.io/docs/start/) |
+| **Azure CLI** (`az`) | Module 4, 7, 9 | [learn.microsoft.com/cli/azure/install-azure-cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) |
+
+Once Python, `uv`, and Git are installed, clone the course repository and run:
+
+```bash
+git clone https://github.com/aligunesgit/MlOps.git
+cd MlOps
+uv sync
+```
+
+This installs every dependency listed in `pyproject.toml`, including the per-module exercise
+dependencies (Feast, FastAPI, the cloud SDKs, Evidently, Optuna, W&B, and the rest) tracked under
+`[dependency-groups.exercises]` — check that file if you want to see exactly which package a given
+module's exercises will need.
+
 ## Prescribed books
 
 The following books are suggested reading for the course:

@@ -4,9 +4,8 @@ Week 8
 
 ## Learning objectives
 
-* Be able to build, train and deploy a model end-to-end on AWS SageMaker
-* Be able to build, train and deploy a model end-to-end on GCP Vertex AI
 * Be able to build, train and deploy a model end-to-end on Azure Machine Learning
+* Understand the equivalent build/train/deploy workflow on AWS SageMaker and GCP Vertex AI
 * Understand each platform's pipeline/registry concepts and how they compare
 
 ---
@@ -32,6 +31,10 @@ platform well makes the other two mostly a vocabulary exercise:
 | CI/CD (Module 4) | Cloud Build | CodePipeline/CodeBuild | Azure DevOps / Pipelines |
 | **Managed ML platform** | **Vertex AI** | **SageMaker** | **Azure Machine Learning** |
 | Feature store (Module 6) | Vertex AI Feature Store | SageMaker Feature Store | *(no direct native equivalent)* |
+
+**This course's required hands-on platform is Azure Machine Learning (§4)** — see the [Setup
+page](../pages/before.md#setup) for why. §2-§3 cover SageMaker and Vertex AI in full so you recognize
+the equivalent concepts on either platform, but they're conceptual here rather than a required project.
 
 ## 2. AWS SageMaker
 
@@ -69,7 +72,8 @@ response = runtime.invoke_endpoint(
 )
 ```
 
-**Project: end-to-end MLOps pipeline using SageMaker Studio** — from a Studio domain, build a
+*Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+§4.* If you have your own AWS access, the equivalent exercise is: from a Studio domain, build a
 SageMaker Pipeline (process → train → evaluate → conditionally register), promote the registered model
 through the model registry, and deploy it to a real-time endpoint you can invoke.
 
@@ -115,9 +119,10 @@ flowchart LR
   typically re-triggered by exactly the kind of drift signal those modules define, not run purely on a
   fixed schedule.
 
-**Project: end-to-end MLOps pipeline using Vertex AI** — import a labeled dataset, run a custom
-training job through a Vertex AI Pipeline defined via the `aiplatform` SDK, register the resulting
-model, and deploy it to an endpoint that serves online predictions.
+*Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+§4.* If you have your own GCP access, the equivalent exercise is: import a labeled dataset, run a
+custom training job through a Vertex AI Pipeline defined via the `aiplatform` SDK, register the
+resulting model, and deploy it to an endpoint that serves online predictions.
 
 ## 4. Azure Machine Learning
 
@@ -147,9 +152,9 @@ flowchart LR
   registration, and Azure DevOps/GitHub Actions releases into one opinionated, production-ready
   starting point, rather than something built from scratch every time.
 
-**Project: end-to-end MLOps v2 pipeline using Azure Machine Learning** — starting from the MLOps v2
-accelerator's structure, define at least one Azure ML component, chain it into a pipeline, register the
-trained model, and wire a deploy stage triggered from an Azure Pipelines YAML file.
+**Project: end-to-end MLOps v2 pipeline using Azure Machine Learning (required)** — starting from the
+MLOps v2 accelerator's structure, define at least one Azure ML component, chain it into a pipeline,
+register the trained model, and wire a deploy stage triggered from an Azure Pipelines YAML file.
 
 ## 5. Comparing the three platforms
 

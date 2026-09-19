@@ -5,7 +5,8 @@ Week 4
 ## Learning objectives
 
 * Understand CI and CD and the specific challenges they face in machine learning workflows
-* Be able to set up a CI/CD pipeline on each of AWS, GCP, Azure, and GitHub Actions
+* Be able to set up a CI/CD pipeline hands-on with GitHub Actions and Azure DevOps, and recognize the
+  equivalent services on AWS and GCP
 * Understand infrastructure as code (IaC) and its role in a CI/CD pipeline
 
 ---
@@ -111,6 +112,12 @@ services that implement the pipeline in §3. The names differ; the roles they pl
 the rest of their infrastructure already lives, not by any one service being objectively best — a team
 already deep in AWS rarely benefits from bolting on Azure DevOps for CI/CD alone.
 
+**This course's required hands-on projects use GitHub Actions (§5) and Azure DevOps (§8)
+specifically** — see the [Setup page](../pages/before.md#setup) for why (Azure for Students is the one
+no-credit-card option that covers everything this course needs). §6-§7 still cover AWS and GCP in full,
+so you can recognize the equivalent service on whichever cloud a future job actually uses, but they're
+conceptual here rather than a required project.
+
 ## 5. GitHub Actions
 
 **GitHub Actions** is GitHub's own CI/CD engine, free for 2,000 build-minutes/month on public and many
@@ -177,7 +184,7 @@ course's own site is deployed exactly this way: a `deploy docs` workflow runs `m
 every push to `main`, and a separate `check docs` workflow runs `mkdocs build --strict` on every pull
 request, so a broken link or a malformed page is caught in review, not after it's live.
 
-**Project: GitHub Actions DevOps Pipeline** — wire a repository with three workflows: a test workflow
+**Project: GitHub Actions DevOps Pipeline (required)** — wire a repository with three workflows: a test workflow
 (matrix build + pytest), a lint/format check (`ruff`), and a docs-or-package deploy step gated by
 `branches: [main]`, then turn on a branch protection rule that requires the first two to pass before a
 PR can merge.
@@ -201,8 +208,10 @@ flowchart LR
 | **CodeDeploy** | Automates deployment to EC2, Lambda, or ECS, including gradual rollout strategies (canary, linear) |
 | **CodePipeline** | The orchestrator that wires source → build → deploy into one release pipeline, with manual-approval gates where needed |
 
-**Project: AWS DevOps Pipeline** — a CodePipeline that pulls from a source repo, runs a CodeBuild step
-executing the test suite, and deploys via CodeDeploy to a target environment on a successful build.
+*Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.*
+If you have your own AWS access, the equivalent exercise is the same shape: a CodePipeline that pulls
+from a source repo, runs a CodeBuild step executing the test suite, and deploys via CodeDeploy to a
+target environment on a successful build.
 
 ## 7. GCP DevOps
 
@@ -226,8 +235,10 @@ flowchart LR
 | **Cloud Deploy** | Manages progressive delivery of a new image across environments (dev → staging → prod) |
 | **Cloud Run** | The common deploy target for containerized services — scales to zero, pay-per-request |
 
-**Project: GCP DevOps Pipeline** — a Cloud Build trigger that builds a container on every push, pushes
-it to Artifact Registry, and a Cloud Deploy pipeline that promotes it to Cloud Run.
+*Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.*
+If you have your own GCP access, the equivalent exercise is the same shape: a Cloud Build trigger that
+builds a container on every push, pushes it to Artifact Registry, and a Cloud Deploy pipeline that
+promotes it to Cloud Run.
 
 ## 8. Azure DevOps
 
@@ -293,9 +304,9 @@ Wired into Azure Pipelines, a `terraform plan` typically runs on a pull request 
 infrastructure diff before merge) and `terraform apply` runs on merge to `main` — the same
 CI-then-CD-gate pattern from §3, applied to infrastructure instead of application code.
 
-**Project: Azure DevOps Pipeline** — an `azure-pipelines.yml` that builds and tests on every PR
-(gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage that
-applies a small Terraform configuration to provision the target environment.
+**Project: Azure DevOps Pipeline (required)** — an `azure-pipelines.yml` that builds and tests on every
+PR (gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage
+that applies a small Terraform configuration to provision the target environment.
 
 ## 9. Continuous Machine Learning (CML)
 
