@@ -65,4 +65,3 @@ The following books are suggested reading for the course:
 None are required to follow the course, but each is a good deeper dive on a theme that recurs across
 several modules: applied ML product-building, production reliability practices for ML, hands-on ML
 engineering, and the distributed-systems foundations underneath most cloud MLOps tooling.
-

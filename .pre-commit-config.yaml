@@ -9,6 +9,8 @@ repos:
       - id: trailing-whitespace
       - id: check-toml
       - id: check-yaml
+        # mkdocs.yml uses !!python/name: tags (pymdownx.emoji) that only --unsafe accepts.
+        args: ["--unsafe"]
       - id: check-added-large-files
       - id: detect-private-key
 
@@ -25,3 +27,5 @@ repos:
       - id: codespell
         additional_dependencies: [tomli]
         exclude: pyproject.toml
+        # AKS = Azure Kubernetes Service, ROUGE = the NLP evaluation metric — both real terms, not typos.
+        args: ["-L", "aks,rouge"]

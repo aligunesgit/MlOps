@@ -84,4 +84,3 @@ The following books are suggested reading for the course:
 * Ben Wilson — *Machine Learning Engineering in Action* (O'Reilly)
 * Martin Kleppmann — *Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable,
   and Maintainable Systems* (O'Reilly)
-
