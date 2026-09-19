@@ -1,7 +1,7 @@
 site_name: MLOps and AI Systems Engineering
 docs_dir: .
 site_dir: ../site
-repo_url: https://github.com/<your-github-username>/MlOps
+repo_url: https://github.com/aligunesgit/MlOps
 edit_uri: edit/main/
 copyright: Copyright &copy; 2026
 
