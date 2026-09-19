@@ -1165,7 +1165,8 @@
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
 <li>Understand CI and CD and the specific challenges they face in machine learning workflows</li>
-<li>Be able to set up a CI/CD pipeline on each of AWS, GCP, Azure, and GitHub Actions</li>
+<li>Be able to set up a CI/CD pipeline hands-on with GitHub Actions and Azure DevOps, and recognize the
+  equivalent services on AWS and GCP</li>
 <li>Understand infrastructure as code (IaC) and its role in a CI/CD pipeline</li>
 </ul>
 <hr />
@@ -1308,6 +1309,11 @@ services that implement the pipeline in §3. The names differ; the roles they pl
 <p>§5-§8 go one level deeper into each column. Which one a team ends up using is often decided by where
 the rest of their infrastructure already lives, not by any one service being objectively best — a team
 already deep in AWS rarely benefits from bolting on Azure DevOps for CI/CD alone.</p>
+<p><strong>This course's required hands-on projects use GitHub Actions (§5) and Azure DevOps (§8)
+specifically</strong> — see the <a href="../pages/before/#setup">Setup page</a> for why (Azure for Students is the one
+no-credit-card option that covers everything this course needs). §6-§7 still cover AWS and GCP in full,
+so you can recognize the equivalent service on whichever cloud a future job actually uses, but they're
+conceptual here rather than a required project.</p>
 <h2 id="5-github-actions">5. GitHub Actions</h2>
 <p><strong>GitHub Actions</strong> is GitHub's own CI/CD engine, free for 2,000 build-minutes/month on public and many
 private repos. A workflow is a YAML file under <code>.github/workflows/</code>, with four parts:</p>
@@ -1366,7 +1372,7 @@ running service — a push to <code>main</code> triggers a job that builds a sta
 course's own site is deployed exactly this way: a <code>deploy docs</code> workflow runs <code>mkdocs gh-deploy</code> on
 every push to <code>main</code>, and a separate <code>check docs</code> workflow runs <code>mkdocs build --strict</code> on every pull
 request, so a broken link or a malformed page is caught in review, not after it's live.</p>
-<p><strong>Project: GitHub Actions DevOps Pipeline</strong> — wire a repository with three workflows: a test workflow
+<p><strong>Project: GitHub Actions DevOps Pipeline (required)</strong> — wire a repository with three workflows: a test workflow
 (matrix build + pytest), a lint/format check (<code>ruff</code>), and a docs-or-package deploy step gated by
 <code>branches: [main]</code>, then turn on a branch protection rule that requires the first two to pass before a
 PR can merge.</p>
@@ -1403,8 +1409,10 @@ PR can merge.</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Project: AWS DevOps Pipeline</strong> — a CodePipeline that pulls from a source repo, runs a CodeBuild step
-executing the test suite, and deploys via CodeDeploy to a target environment on a successful build.</p>
+<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.</em>
+If you have your own AWS access, the equivalent exercise is the same shape: a CodePipeline that pulls
+from a source repo, runs a CodeBuild step executing the test suite, and deploys via CodeDeploy to a
+target environment on a successful build.</p>
 <h2 id="7-gcp-devops">7. GCP DevOps</h2>
 <p>GCP's equivalent chain adds an explicit artifact-registry step and a serverless deploy target:</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1444,8 +1452,10 @@ executing the test suite, and deploys via CodeDeploy to a target environment on 
 </tr>
 </tbody>
 </table>
-<p><strong>Project: GCP DevOps Pipeline</strong> — a Cloud Build trigger that builds a container on every push, pushes
-it to Artifact Registry, and a Cloud Deploy pipeline that promotes it to Cloud Run.</p>
+<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.</em>
+If you have your own GCP access, the equivalent exercise is the same shape: a Cloud Build trigger that
+builds a container on every push, pushes it to Artifact Registry, and a Cloud Deploy pipeline that
+promotes it to Cloud Run.</p>
 <h2 id="8-azure-devops">8. Azure DevOps</h2>
 <p>Azure DevOps is the odd one out in this list: it's a single product suite covering project management
 and CI/CD together, not a set of separate point services.</p>
@@ -1518,9 +1528,9 @@ then be versioned, reviewed in a PR, and applied by a pipeline like any other ar
 <p>Wired into Azure Pipelines, a <code>terraform plan</code> typically runs on a pull request (so reviewers see the
 infrastructure diff before merge) and <code>terraform apply</code> runs on merge to <code>main</code> — the same
 CI-then-CD-gate pattern from §3, applied to infrastructure instead of application code.</p>
-<p><strong>Project: Azure DevOps Pipeline</strong> — an <code>azure-pipelines.yml</code> that builds and tests on every PR
-(gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage that
-applies a small Terraform configuration to provision the target environment.</p>
+<p><strong>Project: Azure DevOps Pipeline (required)</strong> — an <code>azure-pipelines.yml</code> that builds and tests on every
+PR (gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage
+that applies a small Terraform configuration to provision the target environment.</p>
 <h2 id="9-continuous-machine-learning-cml">9. Continuous Machine Learning (CML)</h2>
 <p>Everything in §5-§8 is DevOps automation that applies to any software project. <strong>Continuous Machine
 Learning (CML)</strong> is the layer specific to ML: automating the questions classical CI/CD can't
@@ -1646,7 +1656,7 @@ build step here: what actually gets built, packaged, and deployed is a container
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
   </span>
 
     

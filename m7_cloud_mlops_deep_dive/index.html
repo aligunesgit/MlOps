@@ -1054,9 +1054,8 @@
 <p>Week 8</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
-<li>Be able to build, train and deploy a model end-to-end on AWS SageMaker</li>
-<li>Be able to build, train and deploy a model end-to-end on GCP Vertex AI</li>
 <li>Be able to build, train and deploy a model end-to-end on Azure Machine Learning</li>
+<li>Understand the equivalent build/train/deploy workflow on AWS SageMaker and GCP Vertex AI</li>
 <li>Understand each platform's pipeline/registry concepts and how they compare</li>
 </ul>
 <hr />
@@ -1123,6 +1122,9 @@ platform well makes the other two mostly a vocabulary exercise:</p>
 </tr>
 </tbody>
 </table>
+<p><strong>This course's required hands-on platform is Azure Machine Learning (§4)</strong> — see the <a href="../pages/before/#setup">Setup
+page</a> for why. §2-§3 cover SageMaker and Vertex AI in full so you recognize
+the equivalent concepts on either platform, but they're conceptual here rather than a required project.</p>
 <h2 id="2-aws-sagemaker">2. AWS SageMaker</h2>
 <p>SageMaker organizes the ML lifecycle around a chain of managed, ephemeral steps rather than one
 long-lived server you maintain yourself:</p>
@@ -1182,7 +1184,8 @@ long-lived server you maintain yourself:</p>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">Body</span><span class="o">=</span><span class="n">json_payload</span><span class="p">,</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
 </span></code></pre></div>
-<p><strong>Project: end-to-end MLOps pipeline using SageMaker Studio</strong> — from a Studio domain, build a
+<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+§4.</em> If you have your own AWS access, the equivalent exercise is: from a Studio domain, build a
 SageMaker Pipeline (process → train → evaluate → conditionally register), promote the registered model
 through the model registry, and deploy it to a real-time endpoint you can invoke.</p>
 <h2 id="3-gcp-vertex-ai">3. GCP Vertex AI</h2>
@@ -1222,9 +1225,10 @@ loop built into the pipeline concept from the start:</p>
   typically re-triggered by exactly the kind of drift signal those modules define, not run purely on a
   fixed schedule.</li>
 </ul>
-<p><strong>Project: end-to-end MLOps pipeline using Vertex AI</strong> — import a labeled dataset, run a custom
-training job through a Vertex AI Pipeline defined via the <code>aiplatform</code> SDK, register the resulting
-model, and deploy it to an endpoint that serves online predictions.</p>
+<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+§4.</em> If you have your own GCP access, the equivalent exercise is: import a labeled dataset, run a
+custom training job through a Vertex AI Pipeline defined via the <code>aiplatform</code> SDK, register the
+resulting model, and deploy it to an endpoint that serves online predictions.</p>
 <h2 id="4-azure-machine-learning">4. Azure Machine Learning</h2>
 <p>Azure ML is organized around a workspace (Studio) containing reusable <strong>components</strong>, which is the one
 structurally distinct idea worth calling out relative to §2-§3:</p>
@@ -1249,9 +1253,9 @@ structurally distinct idea worth calling out relative to §2-§3:</p>
   registration, and Azure DevOps/GitHub Actions releases into one opinionated, production-ready
   starting point, rather than something built from scratch every time.</li>
 </ul>
-<p><strong>Project: end-to-end MLOps v2 pipeline using Azure Machine Learning</strong> — starting from the MLOps v2
-accelerator's structure, define at least one Azure ML component, chain it into a pipeline, register the
-trained model, and wire a deploy stage triggered from an Azure Pipelines YAML file.</p>
+<p><strong>Project: end-to-end MLOps v2 pipeline using Azure Machine Learning (required)</strong> — starting from the
+MLOps v2 accelerator's structure, define at least one Azure ML component, chain it into a pipeline,
+register the trained model, and wire a deploy stage triggered from an Azure Pipelines YAML file.</p>
 <h2 id="5-comparing-the-three-platforms">5. Comparing the three platforms</h2>
 <table>
 <thead>
@@ -1349,7 +1353,7 @@ traffic once it clears whatever gate the pipeline defines.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
   </span>
 
     

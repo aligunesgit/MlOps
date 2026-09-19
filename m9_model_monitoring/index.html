@@ -745,10 +745,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools" class="md-nav__link">
+  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Project: Model &amp; infrastructure monitoring using cloud tools
+        11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)
       
     </span>
   </a>
@@ -1106,10 +1106,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools" class="md-nav__link">
+  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure" class="md-nav__link">
     <span class="md-ellipsis">
       
-        11. Project: Model &amp; infrastructure monitoring using cloud tools
+        11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)
       
     </span>
   </a>
@@ -1187,7 +1187,8 @@
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
 <li>Understand why model monitoring matters and the different types of monitoring</li>
-<li>Be able to monitor a deployed model and its infrastructure on AWS, Azure, and GCP</li>
+<li>Be able to monitor a deployed model and its infrastructure hands-on on Azure, and recognize the
+  equivalent monitoring services on AWS and GCP</li>
 <li>Understand approaches to optimizing/managing models at the edge</li>
 <li>Understand the role of the feedback loop in an MLOps system</li>
 </ul>
@@ -1448,8 +1449,10 @@ outcomes (the eventual ground truth, or a confirmed bad prediction) become part 
 set, monitoring's drift/quality signals decide <em>when</em> that retraining should run, and Module 4, §9's
 Continuous Machine Learning automation is what actually wires the trigger to the retraining pipeline
 without a human having to notice the problem manually.</p>
-<h2 id="11-project-model-infrastructure-monitoring-using-cloud-tools">11. Project: Model &amp; infrastructure monitoring using cloud tools</h2>
-<p>Deploy a model behind an endpoint on any one of the three clouds, then:</p>
+<h2 id="11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure">11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)</h2>
+<p>This course's required hands-on monitoring project uses Azure (§7), per the <a href="../pages/before/#setup">Setup
+page</a> — §6 and §8 (AWS, GCP) are conceptual coverage so you recognize the
+equivalent monitor on either. Deploy a model behind an Azure ML managed endpoint, then:</p>
 <ol>
 <li>Enable request/response data capture (§6-§8) on the endpoint.</li>
 <li>Run a data-drift check (§3) comparing captured production data against the training baseline, on a
@@ -1514,7 +1517,7 @@ Module 4's CML automation — is actually listening for it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
   </span>
 
     

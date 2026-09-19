@@ -387,6 +387,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#languages-used-in-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Languages used in this course
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accounts-to-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts to create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-to-install-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools to install locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prescribed-books" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -897,6 +947,56 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#languages-used-in-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Languages used in this course
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accounts-to-create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts to create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-to-install-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools to install locally
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#prescribed-books" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -983,6 +1083,121 @@ calls for one of these tools you know where to start.</p>
 <li>Docker and command line basics</li>
 <li>At least 1 year of general programming experience</li>
 </ul>
+<h2 id="setup">Setup</h2>
+<p>Everything below is worth installing and setting up <strong>before Week 1</strong>, even though some of it (Docker,
+<code>kubectl</code>, the cloud CLIs) isn't touched until later modules — the goal is to remove "I couldn't
+install X" as a reason to fall behind once the course actually needs it.</p>
+<h3 id="languages-used-in-this-course">Languages used in this course</h3>
+<ul>
+<li><strong>Python 3.11+</strong> — the primary language for essentially every exercise: training scripts, APIs,
+  pipeline definitions, and every cloud SDK (<code>boto3</code>, <code>google-cloud-aiplatform</code>, <code>azure-ai-ml</code>).</li>
+<li><strong>YAML</strong> — configuration and pipeline definitions: GitHub Actions workflows (Module 4), Kubernetes
+  manifests (Module 5), Azure Pipelines (Module 4), and this site's own <code>mkdocs.yml</code>.</li>
+<li><strong>Bash/shell</strong> — every CLI command in every module, plus <code>Dockerfile</code> <code>RUN</code> steps and CI scripts.</li>
+<li><strong>Dockerfile syntax</strong> (Module 5) and <strong>HCL</strong> (Terraform, Module 4, for infrastructure as code) — not
+  full programming languages, but you'll read and write both.</li>
+</ul>
+<p>You don't need to know all of these on day one — Python is the only one you should already be
+comfortable with (see Prerequisites above). The rest are taught as they come up.</p>
+<h3 id="accounts-to-create">Accounts to create</h3>
+<table>
+<thead>
+<tr>
+<th>Account</th>
+<th>Needed from</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GitHub</strong></td>
+<td>Module 3</td>
+<td>Free. Used for every module's exercises and the group project repo.</td>
+</tr>
+<tr>
+<td><strong>Azure (<a href="https://azure.microsoft.com/en-us/free/students">Azure for Students</a>)</strong></td>
+<td>Module 4, 7, 9</td>
+<td>No credit card required — verified with your academic email. $100 credit for 12 months plus 65+ always-free services, renewable every year you're still a student. This is the only cloud account this course requires; see the note below on why.</td>
+</tr>
+<tr>
+<td><strong>Weights &amp; Biases</strong></td>
+<td>Module 10</td>
+<td>Free for personal/academic use.</td>
+</tr>
+</tbody>
+</table>
+<p>If you're signing up for Azure with a university-managed account, create your course
+subscription under "no organization" where possible — organization-managed accounts sometimes block
+creating the service-account keys/credentials you'll need later (e.g. for GitHub Actions to
+authenticate to the cloud).</p>
+<p><strong>Why Azure only, and not AWS/GCP too:</strong> AWS's no-credit-card option (AWS Educate's Starter Account) is
+a heavily restricted sandbox (one region, no IAM/billing dashboard, session timeouts), and GCP's
+standard student credit still requires entering a card at signup. Azure for Students is the one option
+that's genuinely free, uncapped-in-scope within its credit, and requires no card — so this course
+standardizes on it for every cloud exercise. Module 4, 7, and 9 still <em>cover</em> AWS and GCP conceptually
+(so you recognize the equivalent service on either), but every hands-on project in those modules should
+be done on Azure.</p>
+<h3 id="tools-to-install-locally">Tools to install locally</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Needed from</th>
+<th>Install</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Python 3.11+</strong></td>
+<td>Module 1</td>
+<td><a href="https://www.python.org/downloads/">python.org/downloads</a> or a version manager like <code>pyenv</code></td>
+</tr>
+<tr>
+<td><strong>uv</strong></td>
+<td>Module 1</td>
+<td><a href="https://docs.astral.sh/uv/getting-started/installation/">docs.astral.sh/uv</a> — this repo's dependency manager; <code>uv sync</code> installs everything in <code>pyproject.toml</code></td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>Module 3</td>
+<td><a href="https://git-scm.com/downloads/">git-scm.com/downloads</a></td>
+</tr>
+<tr>
+<td><strong>A code editor</strong></td>
+<td>Module 1</td>
+<td><a href="https://code.visualstudio.com/">VS Code</a> is recommended — this repo ships a <code>.devcontainer/</code>, so opening it in VS Code (or GitHub Codespaces) can set up Python + <code>uv</code> for you automatically</td>
+</tr>
+<tr>
+<td><strong>Docker Desktop</strong> (or OrbStack on macOS)</td>
+<td>Module 5</td>
+<td><a href="https://docs.docker.com/get-docker/">docs.docker.com/get-docker</a></td>
+</tr>
+<tr>
+<td><strong>kubectl</strong></td>
+<td>Module 5</td>
+<td><a href="https://kubernetes.io/docs/tasks/tools/">kubernetes.io/docs/tasks/tools</a></td>
+</tr>
+<tr>
+<td><strong>Minikube</strong></td>
+<td>Module 5</td>
+<td><a href="https://minikube.sigs.k8s.io/docs/start/">minikube.sigs.k8s.io/docs/start</a></td>
+</tr>
+<tr>
+<td><strong>Azure CLI</strong> (<code>az</code>)</td>
+<td>Module 4, 7, 9</td>
+<td><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">learn.microsoft.com/cli/azure/install-azure-cli</a></td>
+</tr>
+</tbody>
+</table>
+<p>Once Python, <code>uv</code>, and Git are installed, clone the course repository and run:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aligunesgit/MlOps.git
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>MlOps
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uv<span class="w"> </span>sync
+</span></code></pre></div>
+<p>This installs every dependency listed in <code>pyproject.toml</code>, including the per-module exercise
+dependencies (Feast, FastAPI, the cloud SDKs, Evidently, Optuna, W&amp;B, and the rest) tracked under
+<code>[dependency-groups.exercises]</code> — check that file if you want to see exactly which package a given
+module's exercises will need.</p>
 <h2 id="prescribed-books">Prescribed books</h2>
 <p>The following books are suggested reading for the course:</p>
 <ul>
@@ -1019,7 +1234,7 @@ engineering, and the distributed-systems foundations underneath most cloud MLOps
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:36:29">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
   </span>
 
     
