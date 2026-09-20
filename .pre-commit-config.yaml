@@ -12,6 +12,8 @@ repos:
         # mkdocs.yml uses !!python/name: tags (pymdownx.emoji) that only --unsafe accepts.
         args: ["--unsafe"]
       - id: check-added-large-files
+        # Default 500KB is too small for lecture-deck PDFs (slides/*.pdf); allow up to 10MB.
+        args: ["--maxkb=10240"]
       - id: detect-private-key
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
