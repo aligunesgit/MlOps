@@ -17,12 +17,11 @@ This checklist is *exhaustive* — nobody is expected to check every box. See th
 checklist on the [Projects page](../pages/projects.md) for the full list; this is a condensed version
 for quick reference while filling out the report.
 
-* [ ] Repository set up with Git, branching strategy, CI, pre-commit, Docker (M3-M5, Sprint A)
-* [ ] Feature store set up (if applicable) (M6)
-* [ ] Model trained/deployed end-to-end on a cloud provider (M7)
-* [ ] LLM component (if applicable) considered from an LLMOps angle (M8)
-* [ ] Monitoring instrumented on the deployed application (M9)
-* [ ] Experiments tracked / hyperparameters searched (M10)
+* [ ] Repository set up with Git, branching strategy, CI, pre-commit, Docker, Hydra (M2-M3, M5, Sprint A)
+* [ ] Debugging, profiling, and logging used during development (M4)
+* [ ] Model trained on Google Cloud, deployed end-to-end (M6, M7)
+* [ ] Monitoring instrumented on the deployed application (M8)
+* [ ] Experiments tracked / hyperparameters searched (M4, M10)
 * [ ] Report filled out and submitted (Sprint B)
 
 ## Group information
@@ -98,23 +97,21 @@ for quick reference while filling out the report.
 
 --- answer here ---
 
-## Feature store (Module 6)
+## The Cloud (Module 6)
 
-### Question 9 — Feature store usage
+### Question 9 — Cloud setup
 
-> Did you set up a feature store for your project? If yes, describe what it stores and how it's used
-> (online vs. offline). If not, explain where a feature store would have helped.
+> Did you set up a Google Cloud project for your work? If yes, describe what you used it for. If not,
+> explain what you would have used it for.
 >
 > _Recommended length: 100-200 words._
 
 --- answer here ---
 
-## Cloud deployment (Module 7)
-
 ### Question 10 — Cloud services used
 
-> Which cloud provider(s) and services did you use (e.g. SageMaker, Vertex AI, Azure ML)? What was
-> each one responsible for?
+> Which Google Cloud services did you use (e.g. Compute Engine, Cloud Storage, Cloud Build, Artifact
+> Registry)? What was each one responsible for?
 >
 > _Recommended length: 100-200 words._
 
@@ -135,19 +132,18 @@ for quick reference while filling out the report.
 
 --- answer here ---
 
-## LLMOps (Module 8, if applicable)
+## Debugging, profiling, and logging (Module 4)
 
-### Question 13 — LLM component
+### Question 13 — Debugging, profiling, and logging
 
-> Did your project include an LLM-driven component? If yes, describe it and any LLMOps-specific
-> concerns you had to address (prompt versioning, evaluation, cost, latency). If not, skip this
-> question.
+> Describe a bug you tracked down with a debugger, a bottleneck you found with a profiler, or what
+> you logged during training and why it mattered.
 >
-> _Recommended length: 0-200 words._
+> _Recommended length: 100-200 words._
 
 --- answer here ---
 
-## Deployment and testing
+## Deployment and testing (Module 7)
 
 ### Question 14 — API
 
@@ -173,7 +169,7 @@ for quick reference while filling out the report.
 
 --- answer here ---
 
-## Monitoring (Module 9)
+## Monitoring (Module 8)
 
 ### Question 17 — Monitoring
 
@@ -184,7 +180,7 @@ for quick reference while filling out the report.
 
 --- answer here ---
 
-## Experiment tracking (Module 10)
+## Experiment tracking (Module 4 / Module 10)
 
 ### Question 18 — Experiment tracking
 

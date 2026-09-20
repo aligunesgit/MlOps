@@ -19,8 +19,7 @@ needed in the future.
 learning model from a one-off experiment to a robust, scalable, monitored system running in production.
 It borrows heavily from DevOps (version control, CI/CD, containerization, infrastructure automation) and
 extends those ideas to the parts of the ML lifecycle that are unique to machine learning: data
-versioning, experiment tracking, model registries, data/model drift monitoring, and, increasingly, the
-operational concerns specific to large language models and feature stores.
+versioning, experiment tracking, reproducible configuration, and data/model drift monitoring.
 
 The lifecycle a production ML system moves through is usually described in three phases:
 
@@ -41,9 +40,9 @@ own group project. See the [time plan](timeplan.md) for the full week-by-week br
 [projects page](projects.md) for how the group project and grading work.
 
 Think of this course as a toolbox, not a certification. You will not leave as an expert in every single
-tool covered: Docker, Kubernetes, three different cloud platforms, half a dozen MLOps frameworks. The
-goal is that you leave knowing *what exists* and *when to reach for it*, so that when a real project
-calls for one of these tools you know where to start.
+tool covered: Docker, Hydra, Google Cloud, distributed training. The goal is that you leave knowing
+*what exists* and *when to reach for it*, so that when a real project calls for one of these tools you
+know where to start.
 
 ## Prerequisites
 
@@ -53,26 +52,24 @@ To get the most out of this course, you should have prior experience with:
   underfitting, etc.)
 * Basic knowledge of deep learning (backpropagation, convolutional neural networks, autoencoders,
   etc.)
-* Coding in PyTorch. On the first day, we provide some exercises in PyTorch to get everyone's skills
-  up to date as fast as possible.
-* Docker and command line basics
+* Coding in PyTorch. Module 1 includes a PyTorch refresher to get everyone's skills up to date as fast
+  as possible.
 * At least 1 year of general programming experience
 
 ## Setup
 
 Everything below is worth installing and setting up **before Week 1**, even though some of it (Docker,
-`kubectl`, the cloud CLIs) isn't touched until later modules. The goal is to remove "I couldn't
-install X" as a reason to fall behind once the course actually needs it.
+the `gcloud` CLI) isn't touched until later modules. The goal is to remove "I couldn't install X" as a
+reason to fall behind once the course actually needs it.
 
 ### Languages used in this course
 
 * **Python 3.11+**, the primary language for essentially every exercise: training scripts, APIs,
-  pipeline definitions, and every cloud SDK (`boto3`, `google-cloud-aiplatform`, `azure-ai-ml`).
-* **YAML**, configuration and pipeline definitions: GitHub Actions workflows (Module 4), Kubernetes
-  manifests (Module 5), Azure Pipelines (Module 4), and this site's own `mkdocs.yml`.
+  pipeline definitions, and the `google-cloud-aiplatform` SDK.
+* **YAML**, configuration and pipeline definitions: GitHub Actions workflows (Module 5), Hydra config
+  files (Module 3), and this site's own `mkdocs.yml`.
 * **Bash/shell**: every CLI command in every module, plus `Dockerfile` `RUN` steps and CI scripts.
-* **Dockerfile syntax** (Module 5) and **HCL** (Terraform, Module 4, for infrastructure as code): not
-  full programming languages, but you'll read and write both.
+* **Dockerfile syntax** (Module 3): not a full programming language, but you'll read and write it.
 
 You don't need to know all of these on day one. Python is the only one you should already be
 comfortable with (see Prerequisites above); the rest are taught as they come up.
@@ -81,22 +78,13 @@ comfortable with (see Prerequisites above); the rest are taught as they come up.
 
 | Account | Needed from | Notes |
 |---|---|---|
-| **GitHub** | Module 3 | Free. Used for every module's exercises and the group project repo. |
-| **Azure ([Azure for Students](https://azure.microsoft.com/en-us/free/students))** | Module 4, 7, 9 | No credit card required: verified with your academic email. $100 credit for 12 months plus 65+ always-free services, renewable every year you're still a student. This is the only cloud account this course requires; see the note below on why. |
-| **Weights & Biases** | Module 10 | Free for personal/academic use. |
+| **GitHub** | Module 2 | Free. Used for every module's exercises and the group project repo. |
+| **Google Cloud (GCP)** | Module 6, 7, 8 | Claim your institution's education credits if available, or GCP's own free-trial credit otherwise. A credit card is typically required to activate a free trial even though it isn't charged automatically; watch the billing dashboard regardless. |
+| **Weights & Biases** | Module 4 | Free for personal/academic use. |
 
-If you're signing up for Azure with a university-managed account, create your course
-subscription under "no organization" where possible: organization-managed accounts sometimes block
-creating the service-account keys/credentials you'll need later (e.g. for GitHub Actions to
-authenticate to the cloud).
-
-**Why Azure only, and not AWS/GCP too:** AWS's no-credit-card option (AWS Educate's Starter Account) is
-a heavily restricted sandbox (one region, no IAM/billing dashboard, session timeouts), and GCP's
-standard student credit still requires entering a card at signup. Azure for Students is the one option
-that's genuinely free, uncapped-in-scope within its credit, and requires no card, so this course
-standardizes on it for every cloud exercise. Module 4, 7, and 9 still *cover* AWS and GCP conceptually
-(so you recognize the equivalent service on either), but every hands-on project in those modules should
-be done on Azure.
+If you're signing up for GCP with a university-managed account, create your course project under "No
+organization" where possible: organization-managed accounts sometimes block creating the
+service-account keys you'll need later (e.g. for GitHub Actions to authenticate to the cloud).
 
 ### Tools to install locally
 
@@ -104,12 +92,10 @@ be done on Azure.
 |---|---|---|
 | **Python 3.11+** | Module 1 | [python.org/downloads](https://www.python.org/downloads/) or a version manager like `pyenv` |
 | **uv** | Module 1 | [docs.astral.sh/uv](https://docs.astral.sh/uv/getting-started/installation/): this repo's dependency manager; `uv sync` installs everything in `pyproject.toml` |
-| **Git** | Module 3 | [git-scm.com/downloads](https://git-scm.com/downloads/) |
+| **Git** | Module 2 | [git-scm.com/downloads](https://git-scm.com/downloads/) |
 | **A code editor** | Module 1 | [VS Code](https://code.visualstudio.com/) is recommended: this repo ships a `.devcontainer/`, so opening it in VS Code (or GitHub Codespaces) can set up Python + `uv` for you automatically |
-| **Docker Desktop** (or OrbStack on macOS) | Module 5 | [docs.docker.com/get-docker](https://docs.docker.com/get-docker/) |
-| **kubectl** | Module 5 | [kubernetes.io/docs/tasks/tools](https://kubernetes.io/docs/tasks/tools/) |
-| **Minikube** | Module 5 | [minikube.sigs.k8s.io/docs/start](https://minikube.sigs.k8s.io/docs/start/) |
-| **Azure CLI** (`az`) | Module 4, 7, 9 | [learn.microsoft.com/cli/azure/install-azure-cli](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) |
+| **Docker Desktop** (or OrbStack on macOS) | Module 3 | [docs.docker.com/get-docker](https://docs.docker.com/get-docker/) |
+| **Google Cloud CLI** (`gcloud`) | Module 6, 7, 8 | [cloud.google.com/sdk/docs/install](https://cloud.google.com/sdk/docs/install) |
 
 Once Python, `uv`, and Git are installed, clone the course repository and run:
 
@@ -120,7 +106,7 @@ uv sync
 ```
 
 This installs every dependency listed in `pyproject.toml`, including the per-module exercise
-dependencies (Feast, FastAPI, the cloud SDKs, Evidently, Optuna, W&B, and the rest) tracked under
+dependencies (Hydra, FastAPI, the Google Cloud SDK, Evidently, Optuna, W&B, and the rest) tracked under
 `[dependency-groups.exercises]`. Check that file if you want to see exactly which package a given
 module's exercises will need.
 

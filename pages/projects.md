@@ -24,7 +24,8 @@ Pass/Fail, based on a midterm, a final, and the project report, per the
    model with none of the MLOps tooling wired up.
 2. **Write a short project description** (what's the goal, what data, what model) and commit it to the
    project repository's `README.md`.
-3. **Scaffold the repository** using Module 3's Git workflow and a project template (see Sprint A).
+3. **Scaffold the repository** from a cookiecutter template using Module 2's project-structure and Git
+   workflow (see Sprint A).
 
 ## Project checklist
 
@@ -34,26 +35,28 @@ to.
 
 ### Weeks 1-6 (Modules 1-5, Sprint A)
 
-* [ ] Create a Git repository; all team members have write access (M3)
-* [ ] Adopt a branching strategy (dev/feature/bugfix/release) (M3)
-* [ ] Scaffold the project from a template (cookiecutter or equivalent)
-* [ ] Keep the dependency file in sync with what the code actually imports
-* [ ] Comply with good coding practices (linting, formatting) while developing
-* [ ] Set up CI running unit tests and linting on push (M4)
-* [ ] Add pre-commit hooks
-* [ ] Containerize the application with a Dockerfile (M5)
-* [ ] Build and run the Docker image locally
-* [ ] (If applicable) draft an initial Kubernetes/Compose setup (M5)
+* [ ] Scaffold the project from a cookiecutter template (M2)
+* [ ] Create a Git repository; all team members have write access (M2)
+* [ ] Adopt a branching strategy (dev/feature/bugfix/release) (M2)
+* [ ] Keep the dependency file in sync with what the code actually imports (M2)
+* [ ] Comply with good coding practices (linting, formatting, typing) while developing (M2)
+* [ ] Containerize the application with a Dockerfile (M3)
+* [ ] Move hardcoded hyperparameters into a Hydra config file (M3)
+* [ ] Set up logging and use a debugger/profiler on at least one slow or broken piece of code (M4)
+* [ ] Set up CI running unit tests and linting on push (M5)
+* [ ] Add pre-commit hooks (M5)
 
 ### Weeks 7-11 (Modules 6-10)
 
-* [ ] Set up a feature store (online and/or offline) for the project's features (M6)
-* [ ] Train/deploy a model end-to-end on Azure Machine Learning (M7)
-* [ ] Create a CI/CD pipeline using GitHub Actions and Azure DevOps (M4/M7)
-* [ ] (If relevant to the project) prototype an LLM-driven component and consider its LLMOps needs (M8)
-* [ ] Instrument the deployed model/application with monitoring (M9)
-* [ ] Set up at least one alert for the monitored application (M9)
+* [ ] Set up a Google Cloud project and claim any available credits (M6)
+* [ ] Train the model on Google Cloud, and store data/artifacts in Cloud Storage (M6)
+* [ ] Wrap the model in a FastAPI service and write at least one API test (M7)
+* [ ] Deploy the service to Cloud Functions or Cloud Run (M7)
+* [ ] Instrument the deployed application with monitoring and data drift detection (M8)
+* [ ] Set up at least one alert for the monitored application (M8)
+* [ ] (If relevant to the project) parallelize data loading, or scale training across multiple devices (M9)
 * [ ] Track experiments and/or run a hyperparameter sweep using an experiment tracker (M10)
+* [ ] Publish API documentation for the project (M10)
 
 ### Extra
 

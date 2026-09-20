@@ -27,5 +27,3 @@ repos:
       - id: codespell
         additional_dependencies: [tomli]
         exclude: pyproject.toml
-        # AKS = Azure Kubernetes Service, ROUGE = the NLP evaluation metric — both real terms, not typos.
-        args: ["-L", "aks,rouge"]

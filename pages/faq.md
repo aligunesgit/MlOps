@@ -6,8 +6,8 @@
 
 To get the most out of this course, you should have prior experience with a general understanding of
 machine learning (datasets, probability, classifiers, overfitting/underfitting), basic knowledge of
-deep learning (backpropagation, CNNs, autoencoders), coding in PyTorch, Docker and command line
-basics, and at least 1 year of general programming experience.
+deep learning (backpropagation, CNNs, autoencoders), coding in PyTorch, and at least 1 year of general
+programming experience. Module 1 includes a PyTorch refresher, so this isn't a hard gate.
 
 ## How many people should be in a project group?
 

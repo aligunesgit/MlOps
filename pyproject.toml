@@ -20,34 +20,41 @@ dependencies = [
 ]
 
 # Tools used across the module exercises. Grows as each module's exercises are written -
-# add the specific cloud/ML SDK a module needs when that module's content is filled in.
+# add the specific SDK a module needs when that module's content is filled in.
 [dependency-groups]
 exercises = [
-  # M3 Git / M4 CI-CD
+  # M1 Development environment
+  "python-dotenv<=1.2",
+  "nbconvert<=7.16",
+  # M2 Organisation and version control
+  "cookiecutter<=2.6",
+  "dvc<=3.64",
+  "typer<=0.19",
+  "mypy<=1.18.2",
+  # M3 Reproducibility (Docker itself is installed separately, not a Python package)
+  "hydra-core<=1.4",
+  "omegaconf<=2.4",
+  # M4 Debugging, profiling and logging
+  "wandb<=0.23",
+  # M5 Continuous integration
   "pytest<=8.4.2",
   "coverage<=7.11.3",
-  "mypy<=1.18.2",
-  # M2 versioning
-  "dvc<=3.64",
-  "cookiecutter<=2.6",
-  # M5 Docker & Kubernetes (Python-side tooling only, Docker/kubectl installed separately)
-  # M6 Feature Store
-  "feast<=0.53",
-  # M7 Cloud MLOps deep dive
+  # M6 The cloud (Python-side SDK only, gcloud CLI installed separately)
+  "google-cloud-storage<=3.4",
+  "google-cloud-aiplatform<=1.128",
+  # M7 Deployment
   "fastapi<=0.121.2",
   "uvicorn<=0.38",
-  "boto3<=1.40",
-  "google-cloud-aiplatform<=1.128",
-  "azure-ai-ml<=1.30",
-  # M8 LLMOps
-  "openai<=2.10",
-  "transformers<=4.57.1",
-  # M9 Model monitoring
+  "onnx<=1.19",
+  "onnxruntime<=1.23",
+  "streamlit<=1.51",
+  "locust<=2.42",
+  # M8 Monitoring
   "evidently<=0.7.16",
   "prometheus-fastapi-instrumentator<=7.1",
-  # M10 AutoML tools
+  # M10 Extra
+  "mkdocstrings[python]<=0.31",
   "optuna<=4.6",
-  "wandb<=0.23",
 ]
 
 [tool.ruff]

@@ -79,17 +79,17 @@ plugins:
 nav:
   - Home: README.md
   - Introduction: pages/before.md
-  - M1 - MLOps Introduction: m1_mlops_introduction/README.md
-  - M2 - Overview of ML and MLOps Stages: m2_ml_and_mlops_stages/README.md
-  - M3 - Git Essentials: m3_git_essentials/README.md
-  - M4 - CI/CD Strategies: m4_cicd_strategies/README.md
-  - M5 - Docker and Kubernetes: m5_docker_and_kubernetes/README.md
+  - M1 - Development Environment: m1_development_environment/README.md
+  - M2 - Organisation and Version Control: m2_version_control/README.md
+  - M3 - Reproducibility: m3_reproducibility/README.md
+  - M4 - Debugging, Profiling and Logging: m4_debugging_profiling_logging/README.md
+  - M5 - Continuous Integration: m5_continuous_integration/README.md
   - Project Sprint A: sprint_a_project/README.md
-  - M6 - Feature Store: m6_feature_store/README.md
-  - M7 - Cloud MLOps Deep Dive: m7_cloud_mlops_deep_dive/README.md
-  - M8 - LLMOps: m8_llmops/README.md
-  - M9 - Model Monitoring: m9_model_monitoring/README.md
-  - M10 - AutoML Tools: m10_automl_tools/README.md
+  - M6 - The Cloud: m6_the_cloud/README.md
+  - M7 - Deployment: m7_deployment/README.md
+  - M8 - Monitoring: m8_monitoring/README.md
+  - M9 - Scalable Applications: m9_scalable_applications/README.md
+  - M10 - Extra: m10_extra/README.md
   - Project Sprint B: sprint_b_final_project/README.md
   - Time plan: pages/timeplan.md
   - Projects: pages/projects.md

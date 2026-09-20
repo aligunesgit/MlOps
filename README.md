@@ -33,7 +33,8 @@
       underfitting, etc.)
     * Basic knowledge of deep learning (backpropagation, convolutional neural networks, autoencoders,
       etc.)
-    * Docker and command line basics
+    * Coding in PyTorch. Module 1 includes a PyTorch refresher to bring everyone's skills up to date
+      as fast as possible.
     * At least 1 year of general programming experience
 
 ## ❔ Learning objectives
@@ -43,21 +44,25 @@
 This course exists to take a student who already knows how to *build* a machine learning model and
 teach them how to *run* one: organizing, versioning, automating, scaling, monitoring, and deploying it
 as a system other people can actually rely on, whether in a research or a production setting. The
-emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker,
-Kubernetes, Azure, Feast, Weights & Biases, and more) rather than staying at the level of theory.
+emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker, DVC,
+Hydra, GitHub Actions, Google Cloud, Weights & Biases, and more) rather than staying at the level of
+theory.
 
 This includes:
 
-* Structure and version-control an ML codebase so it stays maintainable and easy to collaborate on
+* Set up a proper development environment: command line fluency, a package manager, an editor, and a
+  working deep learning stack
+* Structure and version-control an ML codebase, including its data, so it stays maintainable and easy
+  to collaborate on
 * Understand reproducibility, and package experiments and applications into reproducible containers
+  with versioned configuration
+* Debug, profile, and log experiments so a failure or a slowdown is diagnosable rather than mysterious
 * Apply continuous integration and continuous machine learning (CI/CML) to automate the path from a
   code change to a validated, deployable model
-* Debug, track, and visualize experiments, and monitor a deployed model's behavior and infrastructure
-  over time
 * Use a cloud-based platform to scale training and serving beyond a single machine
-* Build and query a feature store for consistent online/offline feature serving
-* Understand the operational concerns specific to large language models and generative AI
-* Deploy machine learning models, both locally and in the cloud
+* Deploy a machine learning model as a tested, monitored service, both locally and in the cloud
+* Detect data drift and monitor a deployed model's behavior and infrastructure over time
+* Scale training and inference across multiple devices and machines when a single one isn't enough
 * Conduct a project in collaboration with fellow students, applying every framework taught in the
   course end to end
 * Have fun along the way. Most of MLOps is genuinely learned by watching something fail first :)
@@ -88,7 +93,7 @@ git clone https://github.com/aligunesgit/MlOps.git
 ```
 
 No Git installed yet? Grab the ZIP from this page's "Code" button and unzip it into that same folder
-for now (Module 3 covers Git itself in depth). This repository does get updated during the semester, so
+for now (Module 2 covers Git itself in depth). This repository does get updated during the semester, so
 get in the habit of running `git pull` from time to time to pick up the latest changes. See the
 [Setup section](https://aligunesgit.github.io/MlOps/pages/before/#setup) of the Introduction page for
 the full account/tool checklist.
@@ -110,17 +115,17 @@ has its own folder with a `README.md` and `exercise_files/`.
 
 | Week | Module | Topic |
 |------|--------|-------|
-| 1  | [M1](m1_mlops_introduction/README.md)  | MLOps Introduction |
-| 2  | [M2](m2_ml_and_mlops_stages/README.md)  | Overview of ML and MLOps Stages |
-| 3  | [M3](m3_git_essentials/README.md)  | Git Essentials for MLOps Practitioners |
-| 4  | [M4](m4_cicd_strategies/README.md)  | CI/CD Strategies for AWS, Azure, GCP, and GitHub Actions |
-| 5  | [M5](m5_docker_and_kubernetes/README.md)  | Docker & Kubernetes Overview |
+| 1  | [M1](m1_development_environment/README.md)  | Development Environment |
+| 2  | [M2](m2_version_control/README.md)  | Organisation and Version Control |
+| 3  | [M3](m3_reproducibility/README.md)  | Reproducibility |
+| 4  | [M4](m4_debugging_profiling_logging/README.md)  | Debugging, Profiling and Logging |
+| 5  | [M5](m5_continuous_integration/README.md)  | Continuous Integration |
 | 6  | [Sprint A](sprint_a_project/README.md) | Project Sprint A |
-| 7  | [M6](m6_feature_store/README.md)  | Feature Store |
-| 8  | [M7](m7_cloud_mlops_deep_dive/README.md)  | Deep Dive into MLOps Cloud Services |
-| 9  | [M8](m8_llmops/README.md)  | MLOps for LLMs (LLMOps) |
-| 10 | [M9](m9_model_monitoring/README.md)  | Understanding Model Monitoring |
-| 11 | [M10](m10_automl_tools/README.md) | Introduction to AutoML Tools |
+| 7  | [M6](m6_the_cloud/README.md)  | The Cloud |
+| 8  | [M7](m7_deployment/README.md)  | Deployment |
+| 9  | [M8](m8_monitoring/README.md)  | Monitoring |
+| 10 | [M9](m9_scalable_applications/README.md)  | Scalable Applications |
+| 11 | [M10](m10_extra/README.md) | Extra |
 | 12 | [Sprint B](sprint_b_final_project/README.md) | Project Sprint B (final) |
 
 ## 🏗️ Recommended folder structure
@@ -136,8 +141,8 @@ mlops-course/                        # call this whatever you like
     │   ├── .venv/
     │   ├── uv.lock
     │   ├── pyproject.toml
-    │   ├── m1_mlops_introduction/exercise_files/
-    │   ├── m2_ml_and_mlops_stages/exercise_files/
+    │   ├── m1_development_environment/exercise_files/
+    │   ├── m2_version_control/exercise_files/
     │   └── ...                      # one exercise_files/ per module
     ├── group-project/                # your own repo, created in Sprint A (Week 6)
     │   ├── .git/
@@ -151,7 +156,7 @@ mlops-course/                        # call this whatever you like
 * `MlOps/` is this repository. Every module's hands-on exercises live inside its own
   `exercise_files/` folder, so there's no separate exercises folder to maintain outside of it.
 * `group-project/` is a completely separate repository that you and your teammates create yourselves
-  in Sprint A (see Module 3 for the Git workflow) and carry through to submission in Sprint B. Keeping
+  in Sprint A (see Module 2 for the Git workflow) and carry through to submission in Sprint B. Keeping
   it separate means its `pyproject.toml`/`uv.lock` and virtual environment never conflict with this
   repository's.
 

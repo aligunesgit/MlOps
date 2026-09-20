@@ -14,14 +14,14 @@ Dedicated project work. No new lecture content this week; apply Modules 1–5 to
 
 ## Checklist (module-tagged)
 
-* [ ] Git repository created, team has write access (M3)
-* [ ] Standard branching strategy adopted (dev/feature/bugfix/release) (M3)
-* [ ] Project scaffolded from a template (cookiecutter or equivalent)
-* [ ] Dependency file (`pyproject.toml`/`requirements.txt`) kept in sync with actual imports
-* [ ] CI pipeline running on push (lint + at least one test) (M4)
-* [ ] Pre-commit hooks installed
-* [ ] Application containerized with a working Dockerfile (M5)
-* [ ] (If applicable) initial Kubernetes/Compose setup drafted
+* [ ] Project scaffolded from a cookiecutter template (M2)
+* [ ] Git repository created, team has write access (M2)
+* [ ] Standard branching strategy adopted (dev/feature/bugfix/release) (M2)
+* [ ] Dependency file (`pyproject.toml`) kept in sync with actual imports (M2)
+* [ ] Application containerized with a working Dockerfile (M3)
+* [ ] Hardcoded hyperparameters moved into a Hydra config file (M3)
+* [ ] CI pipeline running on push (lint + at least one test) (M5)
+* [ ] Pre-commit hooks installed (M5)
 
 ## Reference material
 
