@@ -77,6 +77,18 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       fallback_to_build_date: true
+  - redirects:
+      redirect_maps:
+        m1_mlops_introduction/README.md: m1_development_environment/README.md
+        m2_ml_and_mlops_stages/README.md: m2_version_control/README.md
+        m3_git_essentials/README.md: m3_reproducibility/README.md
+        m4_cicd_strategies/README.md: m4_debugging_profiling_logging/README.md
+        m5_docker_and_kubernetes/README.md: m5_continuous_integration/README.md
+        m6_feature_store/README.md: m6_the_cloud/README.md
+        m7_cloud_mlops_deep_dive/README.md: m7_deployment/README.md
+        m8_llmops/README.md: m8_monitoring/README.md
+        m9_model_monitoring/README.md: m9_scalable_applications/README.md
+        m10_automl_tools/README.md: m10_extra/README.md
 
 nav:
   - Home: README.md
