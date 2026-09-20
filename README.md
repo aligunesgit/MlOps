@@ -19,7 +19,7 @@
 | Announcements | Atlas-OIS |
 | FAQ | [FAQ page](https://aligunesgit.github.io/MlOps/pages/faq/) |
 
-## Course information
+## ℹ️ Course information { #course-information }
 
 * Course responsible
     * Assistant Professor <a href="https://www.atlas.edu.tr/akademik-kadro/ali-gunes" target="_blank" rel="noopener noreferrer">Ali Gunes</a>, ali.gunes@atlas.edu.tr

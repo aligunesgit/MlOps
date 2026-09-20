@@ -8,6 +8,8 @@ copyright: Copyright &copy; 2026
 theme:
   language: en
   name: material
+  logo: figures/mlops_diagram.png
+  favicon: figures/mlops_diagram.png
   icon:
     repo: fontawesome/brands/github
     edit: material/pencil
@@ -79,18 +81,18 @@ plugins:
 nav:
   - Home: README.md
   - Introduction: pages/before.md
-  - M1 - Development Environment: m1_development_environment/README.md
-  - M2 - Organisation and Version Control: m2_version_control/README.md
-  - M3 - Reproducibility: m3_reproducibility/README.md
-  - M4 - Debugging, Profiling and Logging: m4_debugging_profiling_logging/README.md
-  - M5 - Continuous Integration: m5_continuous_integration/README.md
-  - Project Sprint A: sprint_a_project/README.md
-  - M6 - The Cloud: m6_the_cloud/README.md
-  - M7 - Deployment: m7_deployment/README.md
-  - M8 - Monitoring: m8_monitoring/README.md
-  - M9 - Scalable Applications: m9_scalable_applications/README.md
-  - M10 - Extra: m10_extra/README.md
-  - Project Sprint B: sprint_b_final_project/README.md
+  - 💻 M1 - Development Environment: m1_development_environment/README.md
+  - 📁 M2 - Organisation and Version Control: m2_version_control/README.md
+  - ♻️ M3 - Reproducibility: m3_reproducibility/README.md
+  - ⏱️ M4 - Debugging, Profiling and Logging: m4_debugging_profiling_logging/README.md
+  - ✔️ M5 - Continuous Integration: m5_continuous_integration/README.md
+  - 🚀 Project Sprint A: sprint_a_project/README.md
+  - 🌐 M6 - The Cloud: m6_the_cloud/README.md
+  - 📦 M7 - Deployment: m7_deployment/README.md
+  - 📊 M8 - Monitoring: m8_monitoring/README.md
+  - ⚖️ M9 - Scalable Applications: m9_scalable_applications/README.md
+  - 🔥 M10 - Extra: m10_extra/README.md
+  - 🏁 Project Sprint B: sprint_b_final_project/README.md
   - Time plan: pages/timeplan.md
   - Projects: pages/projects.md
   - FAQ: pages/faq.md
