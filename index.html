@@ -472,14 +472,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m1_mlops_introduction/" class="md-nav__link">
+      <a href="m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -499,14 +499,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -526,14 +526,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m3_git_essentials/" class="md-nav__link">
+      <a href="m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -553,14 +553,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m4_cicd_strategies/" class="md-nav__link">
+      <a href="m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -580,14 +580,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -634,14 +634,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m6_feature_store/" class="md-nav__link">
+      <a href="m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -661,14 +661,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -688,14 +688,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m8_llmops/" class="md-nav__link">
+      <a href="m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -715,14 +715,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m9_model_monitoring/" class="md-nav__link">
+      <a href="m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -742,14 +742,14 @@
   
   
     <li class="md-nav__item">
-      <a href="m10_automl_tools/" class="md-nav__link">
+      <a href="m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -1128,7 +1128,8 @@
   underfitting, etc.)</li>
 <li>Basic knowledge of deep learning (backpropagation, convolutional neural networks, autoencoders,
   etc.)</li>
-<li>Docker and command line basics</li>
+<li>Coding in PyTorch. Module 1 includes a PyTorch refresher to bring everyone's skills up to date
+  as fast as possible.</li>
 <li>At least 1 year of general programming experience</li>
 </ul>
 </li>
@@ -1138,20 +1139,24 @@
 <p>This course exists to take a student who already knows how to <em>build</em> a machine learning model and
 teach them how to <em>run</em> one: organizing, versioning, automating, scaling, monitoring, and deploying it
 as a system other people can actually rely on, whether in a research or a production setting. The
-emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker,
-Kubernetes, Azure, Feast, Weights &amp; Biases, and more) rather than staying at the level of theory.</p>
+emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker, DVC,
+Hydra, GitHub Actions, Google Cloud, Weights &amp; Biases, and more) rather than staying at the level of
+theory.</p>
 <p>This includes:</p>
 <ul>
-<li>Structure and version-control an ML codebase so it stays maintainable and easy to collaborate on</li>
-<li>Understand reproducibility, and package experiments and applications into reproducible containers</li>
+<li>Set up a proper development environment: command line fluency, a package manager, an editor, and a
+  working deep learning stack</li>
+<li>Structure and version-control an ML codebase, including its data, so it stays maintainable and easy
+  to collaborate on</li>
+<li>Understand reproducibility, and package experiments and applications into reproducible containers
+  with versioned configuration</li>
+<li>Debug, profile, and log experiments so a failure or a slowdown is diagnosable rather than mysterious</li>
 <li>Apply continuous integration and continuous machine learning (CI/CML) to automate the path from a
   code change to a validated, deployable model</li>
-<li>Debug, track, and visualize experiments, and monitor a deployed model's behavior and infrastructure
-  over time</li>
 <li>Use a cloud-based platform to scale training and serving beyond a single machine</li>
-<li>Build and query a feature store for consistent online/offline feature serving</li>
-<li>Understand the operational concerns specific to large language models and generative AI</li>
-<li>Deploy machine learning models, both locally and in the cloud</li>
+<li>Deploy a machine learning model as a tested, monitored service, both locally and in the cloud</li>
+<li>Detect data drift and monitor a deployed model's behavior and infrastructure over time</li>
+<li>Scale training and inference across multiple devices and machines when a single one isn't enough</li>
 <li>Conduct a project in collaboration with fellow students, applying every framework taught in the
   course end to end</li>
 <li>Have fun along the way. Most of MLOps is genuinely learned by watching something fail first :)</li>
@@ -1172,7 +1177,7 @@ soft introduction to MLOps and how this course is organized, then follow the
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aligunesgit/MlOps.git
 </span></code></pre></div>
 <p>No Git installed yet? Grab the ZIP from this page's "Code" button and unzip it into that same folder
-for now (Module 3 covers Git itself in depth). This repository does get updated during the semester, so
+for now (Module 2 covers Git itself in depth). This repository does get updated during the semester, so
 get in the habit of running <code>git pull</code> from time to time to pick up the latest changes. See the
 <a href="https://aligunesgit.github.io/MlOps/pages/before/#setup">Setup section</a> of the Introduction page for
 the full account/tool checklist.</p>
@@ -1198,28 +1203,28 @@ has its own folder with a <code>README.md</code> and <code>exercise_files/</code
 <tbody>
 <tr>
 <td>1</td>
-<td><a href="m1_mlops_introduction/">M1</a></td>
-<td>MLOps Introduction</td>
+<td><a href="m1_development_environment/">M1</a></td>
+<td>Development Environment</td>
 </tr>
 <tr>
 <td>2</td>
-<td><a href="m2_ml_and_mlops_stages/">M2</a></td>
-<td>Overview of ML and MLOps Stages</td>
+<td><a href="m2_version_control/">M2</a></td>
+<td>Organisation and Version Control</td>
 </tr>
 <tr>
 <td>3</td>
-<td><a href="m3_git_essentials/">M3</a></td>
-<td>Git Essentials for MLOps Practitioners</td>
+<td><a href="m3_reproducibility/">M3</a></td>
+<td>Reproducibility</td>
 </tr>
 <tr>
 <td>4</td>
-<td><a href="m4_cicd_strategies/">M4</a></td>
-<td>CI/CD Strategies for AWS, Azure, GCP, and GitHub Actions</td>
+<td><a href="m4_debugging_profiling_logging/">M4</a></td>
+<td>Debugging, Profiling and Logging</td>
 </tr>
 <tr>
 <td>5</td>
-<td><a href="m5_docker_and_kubernetes/">M5</a></td>
-<td>Docker &amp; Kubernetes Overview</td>
+<td><a href="m5_continuous_integration/">M5</a></td>
+<td>Continuous Integration</td>
 </tr>
 <tr>
 <td>6</td>
@@ -1228,28 +1233,28 @@ has its own folder with a <code>README.md</code> and <code>exercise_files/</code
 </tr>
 <tr>
 <td>7</td>
-<td><a href="m6_feature_store/">M6</a></td>
-<td>Feature Store</td>
+<td><a href="m6_the_cloud/">M6</a></td>
+<td>The Cloud</td>
 </tr>
 <tr>
 <td>8</td>
-<td><a href="m7_cloud_mlops_deep_dive/">M7</a></td>
-<td>Deep Dive into MLOps Cloud Services</td>
+<td><a href="m7_deployment/">M7</a></td>
+<td>Deployment</td>
 </tr>
 <tr>
 <td>9</td>
-<td><a href="m8_llmops/">M8</a></td>
-<td>MLOps for LLMs (LLMOps)</td>
+<td><a href="m8_monitoring/">M8</a></td>
+<td>Monitoring</td>
 </tr>
 <tr>
 <td>10</td>
-<td><a href="m9_model_monitoring/">M9</a></td>
-<td>Understanding Model Monitoring</td>
+<td><a href="m9_scalable_applications/">M9</a></td>
+<td>Scalable Applications</td>
 </tr>
 <tr>
 <td>11</td>
-<td><a href="m10_automl_tools/">M10</a></td>
-<td>Introduction to AutoML Tools</td>
+<td><a href="m10_extra/">M10</a></td>
+<td>Extra</td>
 </tr>
 <tr>
 <td>12</td>
@@ -1268,8 +1273,8 @@ setup section above:</p>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    │   ├── .venv/
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    │   ├── uv.lock
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    │   ├── pyproject.toml
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    │   ├── m1_mlops_introduction/exercise_files/
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   ├── m2_ml_and_mlops_stages/exercise_files/
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    │   ├── m1_development_environment/exercise_files/
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    │   ├── m2_version_control/exercise_files/
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    │   └── ...                      # one exercise_files/ per module
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    ├── group-project/                # your own repo, created in Sprint A (Week 6)
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    │   ├── .git/
@@ -1283,7 +1288,7 @@ setup section above:</p>
 <li><code>MlOps/</code> is this repository. Every module's hands-on exercises live inside its own
   <code>exercise_files/</code> folder, so there's no separate exercises folder to maintain outside of it.</li>
 <li><code>group-project/</code> is a completely separate repository that you and your teammates create yourselves
-  in Sprint A (see Module 3 for the Git workflow) and carry through to submission in Sprint B. Keeping
+  in Sprint A (see Module 2 for the Git workflow) and carry through to submission in Sprint B. Keeping
   it separate means its <code>pyproject.toml</code>/<code>uv.lock</code> and virtual environment never conflict with this
   repository's.</li>
 </ul>
@@ -1345,7 +1350,7 @@ exercise files from this repository for your group project, just copy the releva
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 10:15:20">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     

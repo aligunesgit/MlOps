@@ -321,14 +321,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -348,14 +348,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="../../m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -375,14 +375,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m3_git_essentials/" class="md-nav__link">
+      <a href="../../m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -402,14 +402,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m4_cicd_strategies/" class="md-nav__link">
+      <a href="../../m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -429,14 +429,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="../../m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -483,14 +483,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m6_feature_store/" class="md-nav__link">
+      <a href="../../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -510,14 +510,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -537,14 +537,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m8_llmops/" class="md-nav__link">
+      <a href="../../m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -564,14 +564,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m9_model_monitoring/" class="md-nav__link">
+      <a href="../../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -591,14 +591,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m10_automl_tools/" class="md-nav__link">
+      <a href="../../m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -1059,7 +1059,8 @@ apply the tools taught in this course to a real (if modest) end-to-end system.</
    model with none of the MLOps tooling wired up.</li>
 <li><strong>Write a short project description</strong> (what's the goal, what data, what model) and commit it to the
    project repository's <code>README.md</code>.</li>
-<li><strong>Scaffold the repository</strong> using Module 3's Git workflow and a project template (see Sprint A).</li>
+<li><strong>Scaffold the repository</strong> from a cookiecutter template using Module 2's project-structure and Git
+   workflow (see Sprint A).</li>
 </ol>
 <h2 id="project-checklist">Project checklist</h2>
 <p>This checklist is <em>exhaustive</em>: it lists everything that could be done across the whole curriculum.
@@ -1067,26 +1068,28 @@ Nobody is expected to check every box. The module tag in parentheses shows which
 to.</p>
 <h3 id="weeks-1-6-modules-1-5-sprint-a">Weeks 1-6 (Modules 1-5, Sprint A)</h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create a Git repository; all team members have write access (M3)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Adopt a branching strategy (dev/feature/bugfix/release) (M3)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scaffold the project from a template (cookiecutter or equivalent)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Keep the dependency file in sync with what the code actually imports</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Comply with good coding practices (linting, formatting) while developing</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up CI running unit tests and linting on push (M4)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add pre-commit hooks</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Containerize the application with a Dockerfile (M5)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Build and run the Docker image locally</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> (If applicable) draft an initial Kubernetes/Compose setup (M5)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scaffold the project from a cookiecutter template (M2)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create a Git repository; all team members have write access (M2)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Adopt a branching strategy (dev/feature/bugfix/release) (M2)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Keep the dependency file in sync with what the code actually imports (M2)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Comply with good coding practices (linting, formatting, typing) while developing (M2)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Containerize the application with a Dockerfile (M3)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Move hardcoded hyperparameters into a Hydra config file (M3)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up logging and use a debugger/profiler on at least one slow or broken piece of code (M4)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up CI running unit tests and linting on push (M5)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add pre-commit hooks (M5)</li>
 </ul>
 <h3 id="weeks-7-11-modules-6-10">Weeks 7-11 (Modules 6-10)</h3>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up a feature store (online and/or offline) for the project's features (M6)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Train/deploy a model end-to-end on Azure Machine Learning (M7)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Create a CI/CD pipeline using GitHub Actions and Azure DevOps (M4/M7)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> (If relevant to the project) prototype an LLM-driven component and consider its LLMOps needs (M8)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Instrument the deployed model/application with monitoring (M9)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up at least one alert for the monitored application (M9)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up a Google Cloud project and claim any available credits (M6)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Train the model on Google Cloud, and store data/artifacts in Cloud Storage (M6)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Wrap the model in a FastAPI service and write at least one API test (M7)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Deploy the service to Cloud Functions or Cloud Run (M7)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Instrument the deployed application with monitoring and data drift detection (M8)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Set up at least one alert for the monitored application (M8)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> (If relevant to the project) parallelize data loading, or scale training across multiple devices (M9)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Track experiments and/or run a hyperparameter sweep using an experiment tracker (M10)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Publish API documentation for the project (M10)</li>
 </ul>
 <h3 id="extra">Extra</h3>
 <ul class="task-list">
@@ -1121,7 +1124,7 @@ repository and fill it out. <em>Deadline TBD once the semester dates are fixed.<
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 10:15:20">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     

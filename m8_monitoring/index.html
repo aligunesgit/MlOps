@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../m8_llmops/">
+        <link rel="prev" href="../m7_deployment/">
       
       
-        <link rel="next" href="../m10_automl_tools/">
+        <link rel="next" href="../m9_scalable_applications/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>M9 - Model Monitoring - MLOps and AI Systems Engineering</title>
+        <title>M8 - Monitoring - MLOps and AI Systems Engineering</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#module-9-understanding-model-monitoring-aws-azure-gcp" class="md-skip">
+        <a href="#module-8-monitoring" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              M9 - Model Monitoring
+              M8 - Monitoring
             
           </span>
         </div>
@@ -321,14 +321,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -348,14 +348,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="../m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -375,14 +375,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m3_git_essentials/" class="md-nav__link">
+      <a href="../m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -402,14 +402,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m4_cicd_strategies/" class="md-nav__link">
+      <a href="../m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -429,14 +429,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="../m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -483,14 +483,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m6_feature_store/" class="md-nav__link">
+      <a href="../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -510,41 +510,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../m8_llmops/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    M8 - LLMOps
+    M7 - Deployment
   
 
     
@@ -580,7 +553,7 @@
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M8 - Monitoring
   
 
     
@@ -598,7 +571,7 @@
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M8 - Monitoring
   
 
     
@@ -635,10 +608,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-why-model-monitoring-matters" class="md-nav__link">
+  <a href="#1-why-a-deployed-model-needs-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Why model monitoring matters
+        1. Why a deployed model needs monitoring
       
     </span>
   </a>
@@ -646,10 +619,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-types-of-monitoring" class="md-nav__link">
+  <a href="#2-detecting-data-drift-with-evidently" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Types of monitoring
+        2. Detecting data drift with Evidently
       
     </span>
   </a>
@@ -657,10 +630,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-detecting-data-drift-in-practice" class="md-nav__link">
+  <a href="#3-telemetry-metrics-logs-and-traces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Detecting data drift in practice
+        3. Telemetry: metrics, logs, and traces
       
     </span>
   </a>
@@ -668,10 +641,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instrumenting-infrastructure-metrics" class="md-nav__link">
+  <a href="#4-instrumenting-metrics-with-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Instrumenting infrastructure metrics
+        4. Instrumenting metrics with Prometheus
       
     </span>
   </a>
@@ -679,10 +652,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-the-monitoring-ecosystem-across-aws-azure-and-gcp" class="md-nav__link">
+  <a href="#5-cloud-native-monitoring-on-google-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. The monitoring ecosystem across AWS, Azure, and GCP
+        5. Cloud-native monitoring on Google Cloud
       
     </span>
   </a>
@@ -690,65 +663,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-aws-model-monitoring" class="md-nav__link">
+  <a href="#6-project-monitor-a-deployed-model-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. AWS model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-azure-model-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Azure model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-gcp-model-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. GCP model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-optimizing-and-managing-models-at-the-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Optimizing and managing models at the edge
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-common-issues-in-ml-deployment-and-the-feedback-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Common issues in ML deployment, and the feedback loop
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)
+        6. Project: monitor a deployed model (required)
       
     </span>
   </a>
@@ -803,14 +721,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../m10_automl_tools/" class="md-nav__link">
+      <a href="../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M9 - Scalable Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m10_extra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M10 - Extra
   
 
     
@@ -996,10 +941,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-why-model-monitoring-matters" class="md-nav__link">
+  <a href="#1-why-a-deployed-model-needs-monitoring" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Why model monitoring matters
+        1. Why a deployed model needs monitoring
       
     </span>
   </a>
@@ -1007,10 +952,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-types-of-monitoring" class="md-nav__link">
+  <a href="#2-detecting-data-drift-with-evidently" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Types of monitoring
+        2. Detecting data drift with Evidently
       
     </span>
   </a>
@@ -1018,10 +963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-detecting-data-drift-in-practice" class="md-nav__link">
+  <a href="#3-telemetry-metrics-logs-and-traces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Detecting data drift in practice
+        3. Telemetry: metrics, logs, and traces
       
     </span>
   </a>
@@ -1029,10 +974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-instrumenting-infrastructure-metrics" class="md-nav__link">
+  <a href="#4-instrumenting-metrics-with-prometheus" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Instrumenting infrastructure metrics
+        4. Instrumenting metrics with Prometheus
       
     </span>
   </a>
@@ -1040,10 +985,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-the-monitoring-ecosystem-across-aws-azure-and-gcp" class="md-nav__link">
+  <a href="#5-cloud-native-monitoring-on-google-cloud" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. The monitoring ecosystem across AWS, Azure, and GCP
+        5. Cloud-native monitoring on Google Cloud
       
     </span>
   </a>
@@ -1051,65 +996,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-aws-model-monitoring" class="md-nav__link">
+  <a href="#6-project-monitor-a-deployed-model-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. AWS model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-azure-model-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Azure model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-gcp-model-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. GCP model monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-optimizing-and-managing-models-at-the-edge" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Optimizing and managing models at the edge
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-common-issues-in-ml-deployment-and-the-feedback-loop" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Common issues in ML deployment, and the feedback loop
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)
+        6. Project: monitor a deployed model (required)
       
     </span>
   </a>
@@ -1166,7 +1056,7 @@
 
 
   
-    <a href="https://github.com/aligunesgit/MlOps/edit/main/m9_model_monitoring/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m8_monitoring/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1175,51 +1065,72 @@
     
       
     
-    <a href="https://github.com/aligunesgit/MlOps/raw/main/m9_model_monitoring/README.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m8_monitoring/README.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="module-9-understanding-model-monitoring-aws-azure-gcp">Module 9: Understanding Model Monitoring (AWS, Azure &amp; GCP)</h1>
-<p>Week 10</p>
+<h1 id="module-8-monitoring">Module 8: Monitoring</h1>
+<p>Week 9</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
-<li>Understand why model monitoring matters and the different types of monitoring</li>
-<li>Be able to monitor a deployed model and its infrastructure hands-on on Azure, and recognize the
-  equivalent monitoring services on AWS and GCP</li>
-<li>Understand approaches to optimizing/managing models at the edge</li>
-<li>Understand the role of the feedback loop in an MLOps system</li>
+<li>Understand why data drift causes production model accuracy to decay silently</li>
+<li>Be able to detect data drift with Evidently, comparing production requests against training data</li>
+<li>Understand the three kinds of telemetry, and be able to instrument custom metrics with Prometheus</li>
+<li>Be able to set up cloud-native monitoring and alerting on Google Cloud</li>
 </ul>
 <hr />
-<h2 id="1-why-model-monitoring-matters">1. Why model monitoring matters</h2>
-<p>Module 1, §1 named it directly: <strong>software that isn't touched keeps working; a model that isn't
-touched quietly gets worse</strong> as the world it was trained on drifts away from the world it now sees.
-Unlike a crashed service, a decaying model usually keeps returning HTTP 200 the entire time: nothing
-<em>fails</em> in the way traditional infrastructure monitoring is built to catch. Monitoring is what turns
-that silent decay into a signal a team can act on <em>before</em> a business metric drops, rather than after.</p>
-<p>The remaining question is never "should we monitor"; it's <strong>when should retraining actually trigger</strong>,
-which is exactly what §2-§3's drift detection is built to answer, rather than waiting for a human to
-notice something feels off.</p>
-<h2 id="2-types-of-monitoring">2. Types of monitoring</h2>
-<p>Module 2, §8 split monitoring into two categories; this module is where each gets its concrete tooling:</p>
-<ul>
-<li><strong>Infrastructure monitoring</strong>: the same telemetry any production service needs, regardless of
-  whether it happens to serve a model: latency, error rate, throughput, resource usage.</li>
-<li><strong>Model/data monitoring</strong>: signals with no traditional-software equivalent:</li>
-<li><strong>Data drift</strong>: has the <em>distribution of incoming inputs</em> shifted from what the model was trained
-    on?</li>
-<li><strong>Target/prediction drift</strong>: has the <em>distribution of the model's own outputs</em> shifted (e.g. a
-    previously balanced classifier suddenly predicting one class far more often), often the earliest
-    visible symptom of an upstream problem?</li>
-<li><strong>Data quality</strong>: missing values, schema violations, out-of-range values in the incoming data
-    itself.</li>
-<li><strong>Model quality</strong>: accuracy/precision/recall against ground truth, once ground truth eventually
-    becomes available (frequently delayed, since a fraud label might not be confirmed for weeks).</li>
-</ul>
-<p>Underneath both categories, telemetry itself comes in three flavors, and this module focuses on the
-first:</p>
+<h2 id="1-why-a-deployed-model-needs-monitoring">1. Why a deployed model needs monitoring</h2>
+<p>A deployed model doesn't announce when it starts failing. Unlike a crashed service, a decaying model
+usually keeps returning a valid-looking HTTP 200 the entire time it's quietly getting worse, because
+the input data it now receives has drifted away from the distribution it was trained on. <strong>Data drift</strong>
+is that change in input distribution, and it's one of the core reasons production accuracy decays over
+time. The usual remedy is to retrain on newly received data and redeploy, a cycle that repeats for the
+life of the application. The real question monitoring exists to answer is <em>when</em>: waiting until
+performance visibly degrades means you've already been serving bad predictions for a while.</p>
+<h2 id="2-detecting-data-drift-with-evidently">2. Detecting data drift with Evidently</h2>
+<p>The standard pattern, regardless of tool, is to log every production request's input and prediction
+somewhere durable, then periodically compare that <strong>current data</strong> against the <strong>reference data</strong> the
+model was trained on:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.report</span><span class="w"> </span><span class="kn">import</span> <span class="n">Report</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.metric_preset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataDriftPreset</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">reference_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"training_data.csv"</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">current_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"prediction_log.csv"</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">report</span> <span class="o">=</span> <span class="n">Report</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">DataDriftPreset</span><span class="p">()])</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">snapshot</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">snapshot</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span><span class="s2">"report.html"</span><span class="p">)</span>
+</span></code></pre></div>
+<p><a href="https://github.com/evidentlyai/evidently">Evidently</a> is one framework built for exactly this
+(alternatives worth knowing: NannyML, WhyLogs, Deepchecks). Beyond <code>DataDriftPreset</code>,
+<code>DataQualityPreset</code> flags missing values and quality issues, and <code>TargetDriftPreset</code> watches whether
+the <em>predicted label distribution itself</em> has shifted, often the earliest visible symptom of an
+upstream problem. For CI integration rather than a one-off HTML report, the same checks run as a
+pass/fail <code>TestSuite</code> instead:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.test_suite</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestSuite</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.tests</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestNumberOfMissingValues</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">data_test</span> <span class="o">=</span> <span class="n">TestSuite</span><span class="p">(</span><span class="n">tests</span><span class="o">=</span><span class="p">[</span><span class="n">TestNumberOfMissingValues</span><span class="p">()])</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">data_test</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">assert</span> <span class="n">data_test</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()[</span><span class="s2">"summary"</span><span class="p">][</span><span class="s2">"all_passed"</span><span class="p">]</span>
+</span></code></pre></div>
+<p>The structural pattern behind a full production setup: (1) the inference service logs input/output
+data somewhere durable, a Cloud Storage bucket works well here, (2) a separate monitoring service or
+job periodically compares that logged data against the training distribution, and (3) the result
+should be a structured JSON/metrics output that feeds a dashboard, not just a one-off HTML report
+someone has to remember to open.</p>
+<p>Two caveats worth internalizing: there's no universal threshold for how much drift is "bad enough" to
+act on, it's application-specific, and standard tooling only tests <strong>marginal</strong> (per-feature)
+distributions. Data can drift in a way that preserves every individual feature's distribution while
+the <em>joint</em> distribution has shifted; multivariate tests (e.g. Maximum Mean Discrepancy) exist for
+this, and the practical habit worth building is looking at features together, not one at a time.
+Unstructured data (images, text) needs an extra step first: extract structured features (brightness,
+contrast, or embeddings from a model like CLIP) and run drift detection on those.</p>
+<h2 id="3-telemetry-metrics-logs-and-traces">3. Telemetry: metrics, logs, and traces</h2>
 <table>
 <thead>
 <tr>
@@ -1250,75 +1161,12 @@ first:</p>
 </tr>
 </tbody>
 </table>
-<h2 id="3-detecting-data-drift-in-practice">3. Detecting data drift in practice</h2>
-<p>The standard pattern, regardless of tool: log every production request's input and prediction
-somewhere durable, then periodically compare that <strong>current data</strong> against the <strong>reference data</strong> the
-model was trained on:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.report</span><span class="w"> </span><span class="kn">import</span> <span class="n">Report</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.metric_preset</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataDriftPreset</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">reference_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"training_data.csv"</span><span class="p">)</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">current_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"prediction_log.csv"</span><span class="p">)</span>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">report</span> <span class="o">=</span> <span class="n">Report</span><span class="p">(</span><span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="n">DataDriftPreset</span><span class="p">()])</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">snapshot</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">snapshot</span><span class="o">.</span><span class="n">save_html</span><span class="p">(</span><span class="s2">"report.html"</span><span class="p">)</span>
-</span></code></pre></div>
-<p><a href="https://github.com/evidentlyai/evidently">Evidently</a> is one of several frameworks built for exactly
-this (alternatives: NannyML, WhyLogs, Deepchecks, the same tools named in Module 2, §12 and Module 6,
-§6). Beyond <code>DataDriftPreset</code>, <code>DataQualityPreset</code> flags data-quality issues and <code>TargetDriftPreset</code>
-watches the prediction distribution from §2. For CI integration (Module 4) rather than a one-off HTML
-report, the same checks run as a pass/fail <code>TestSuite</code> instead:</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.test_suite</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestSuite</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">evidently.legacy.tests</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestNumberOfMissingValues</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">data_test</span> <span class="o">=</span> <span class="n">TestSuite</span><span class="p">(</span><span class="n">tests</span><span class="o">=</span><span class="p">[</span><span class="n">TestNumberOfMissingValues</span><span class="p">()])</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">data_test</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">reference_data</span><span class="o">=</span><span class="n">reference_data</span><span class="p">,</span> <span class="n">current_data</span><span class="o">=</span><span class="n">current_data</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">assert</span> <span class="n">data_test</span><span class="o">.</span><span class="n">as_dict</span><span class="p">()[</span><span class="s2">"summary"</span><span class="p">][</span><span class="s2">"all_passed"</span><span class="p">]</span>
-</span></code></pre></div>
-<p>Two caveats worth internalizing rather than just the mechanics above: there is no universal threshold
-for "how much drift is too much" (it's application-specific), and standard tooling only tests
-<strong>marginal</strong> (per-feature) distributions. Data can drift in a way that preserves every individual
-feature's distribution while the <em>joint</em> distribution has shifted; multivariate tests (e.g. Maximum
-Mean Discrepancy) exist for this, and the practical habit worth building is looking at features
-together, not just one at a time. Unstructured data (images/text) needs an extra step first: extract
-structured features (brightness/contrast, or embeddings from a model like CLIP) and run drift detection
-on those, since most drift frameworks only natively support tabular data.</p>
-<h2 id="4-instrumenting-infrastructure-metrics">4. Instrumenting infrastructure metrics</h2>
-<p><a href="https://prometheus.io/">Prometheus</a> is the standard for the metrics half of §2's infrastructure
-monitoring, with four metric types:</p>
-<table>
-<thead>
-<tr>
-<th>Type</th>
-<th>Behavior</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Counter</strong></td>
-<td>Monotonically increasing</td>
-<td>Total request count</td>
-</tr>
-<tr>
-<td><strong>Gauge</strong></td>
-<td>Arbitrary up/down value</td>
-<td>Current memory usage</td>
-</tr>
-<tr>
-<td><strong>Histogram</strong></td>
-<td>Bucketed observation counts + sum</td>
-<td>Request duration distribution</td>
-</tr>
-<tr>
-<td><strong>Summary</strong></td>
-<td>Sliding-window quantiles instead of fixed buckets</td>
-<td>Same, with running percentiles</td>
-</tr>
-</tbody>
-</table>
+<p>This module focuses on metrics, the telemetry type most teams instrument first.</p>
+<h2 id="4-instrumenting-metrics-with-prometheus">4. Instrumenting metrics with Prometheus</h2>
+<p><a href="https://prometheus.io/">Prometheus</a> defines four metric types: a <strong>Counter</strong> only increases (total
+request count), a <strong>Gauge</strong> moves up and down (current memory usage), a <strong>Histogram</strong> buckets
+observation counts plus a sum (request duration distribution), and a <strong>Summary</strong> computes sliding
+quantiles instead of fixed buckets.</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">prometheus_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span><span class="p">,</span> <span class="n">Histogram</span><span class="p">,</span> <span class="n">CollectorRegistry</span><span class="p">,</span> <span class="n">make_asgi_app</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">registry</span> <span class="o">=</span> <span class="n">CollectorRegistry</span><span class="p">()</span>
@@ -1327,150 +1175,41 @@ monitoring, with four metric types:</p>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/metrics"</span><span class="p">,</span> <span class="n">make_asgi_app</span><span class="p">(</span><span class="n">registry</span><span class="o">=</span><span class="n">registry</span><span class="p">))</span>
 </span></code></pre></div>
-<p>Using a dedicated <code>CollectorRegistry</code> (rather than the library's implicit default one) keeps the
+<p>Using a dedicated <code>CollectorRegistry</code>, rather than the library's implicit default one, keeps the
 <code>/metrics</code> endpoint scoped to your own application's metrics instead of cluttered with the client
-library's internal ones.</p>
-<h2 id="5-the-monitoring-ecosystem-across-aws-azure-and-gcp">5. The monitoring ecosystem across AWS, Azure, and GCP</h2>
+library's own internal ones.</p>
+<h2 id="5-cloud-native-monitoring-on-google-cloud">5. Cloud-native monitoring on Google Cloud</h2>
+<p><strong>Cloud Monitoring</strong> instruments Google Cloud services out of the box with default metrics, but a
+custom application metric like the Prometheus counter above typically needs a <strong>sidecar container</strong>
+pattern to reach it: one container runs the app and exposes <code>/metrics</code>, a second collects from it and
+forwards to the monitoring backend. Cloud Run (Module 7) offers a lighter-weight sidecar option to
+achieve the same thing without managing a full cluster yourself.</p>
 <pre class="mermaid"><code>flowchart LR
-    INF["Inference service&lt;br/&gt;(logs input + output)"] --&gt; STORE["Durable log store&lt;br/&gt;(bucket / database)"]
-    STORE --&gt; MON["Monitoring job&lt;br/&gt;(drift + quality checks, §3)"]
+    INF["Inference service&lt;br/&gt;(logs input + output)"] --&gt; STORE["Cloud Storage bucket"]
+    STORE --&gt; MON["Monitoring job&lt;br/&gt;(Evidently drift check, §2)"]
     MON --&gt; ALERT["Alerting policy"]
-    ALERT -.triggers.-&gt; RETRAIN["Retraining pipeline&lt;br/&gt;(Module 4, §9: CML)"]
+    ALERT -.triggers.-&gt; RETRAIN["Retraining pipeline"]
     RETRAIN -.new model version.-&gt; INF</code></pre>
-<p>A custom metric like §4's Prometheus counter typically needs a <strong>sidecar container</strong> to reach a cloud's
-native monitoring backend: one container runs the app, a second collects <code>/metrics</code> and forwards it.
-Kubernetes (Module 5) solves this natively; lighter managed services (Cloud Run, App Runner/Fargate,
-Azure Container Apps) offer a lighter-weight sidecar option to the same end without a full cluster.</p>
-<table>
-<thead>
-<tr>
-<th>Cloud</th>
-<th>Native infra monitoring</th>
-<th>Model-specific monitoring</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>AWS</strong></td>
-<td>CloudWatch (metrics, logs, alarms)</td>
-<td>SageMaker Model Monitor (§6)</td>
-</tr>
-<tr>
-<td><strong>GCP</strong></td>
-<td>Cloud Monitoring (metrics, logs, alerting)</td>
-<td>Vertex AI Model Monitoring (§8)</td>
-</tr>
-<tr>
-<td><strong>Azure</strong></td>
-<td>Azure Monitor + Application Insights</td>
-<td>Azure ML model monitoring (§7)</td>
-</tr>
-</tbody>
-</table>
-<p>Every one of these lets you define a <strong>Service Level Objective (SLO)</strong>, e.g. "99% of requests under
-200ms", and an alerting policy on top of it: notification channel → alerting condition → trigger.
-The core tension is the <strong>Goldilocks problem</strong>: alert on too much and important signals drown in noise
-that gets ignored; alert on too little and real problems go unnoticed. Getting the threshold right is
-often as much work as building the metric itself.</p>
-<h2 id="6-aws-model-monitoring">6. AWS model monitoring</h2>
-<p><strong>SageMaker Model Monitor</strong> schedules a recurring job that compares data captured from a live endpoint
-(enabled via the endpoint's <strong>Data Capture</strong> configuration) against a baseline statistics file computed
-from the training set, across four monitor types:</p>
-<table>
-<thead>
-<tr>
-<th>Monitor</th>
-<th>Detects</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Data quality</td>
-<td>Schema violations, missing values, type mismatches in live requests</td>
-</tr>
-<tr>
-<td>Model quality</td>
-<td>Accuracy/precision/recall drift, once ground-truth labels become available</td>
-</tr>
-<tr>
-<td>Bias drift</td>
-<td>Whether a fairness metric measured at training time has shifted in production</td>
-</tr>
-<tr>
-<td>Feature attribution drift</td>
-<td>Whether which features drive predictions (via SHAP values) has changed</td>
-</tr>
-</tbody>
-</table>
-<h2 id="7-azure-model-monitoring">7. Azure model monitoring</h2>
-<p>Azure ML's <strong>model monitoring</strong> feature attaches to a managed online endpoint's <strong>data collection</strong>
-configuration, which logs request/response payloads to Azure storage; a scheduled monitoring job then
-computes drift signals against a reference dataset, the same shape as §3's Evidently workflow but
-managed inside the Azure ML workspace (Module 7, §4). <strong>Application Insights</strong>, wired into the same
-workspace, covers the infrastructure half from §2 (request rate, latency, and failures) as it would
-for any web service, ML-specific or not.</p>
-<h2 id="8-gcp-model-monitoring">8. GCP model monitoring</h2>
-<p><strong>Vertex AI Model Monitoring</strong> attaches directly to a deployed Vertex AI endpoint (Module 7, §3) and
-supports two detection modes: <strong>skew</strong> detection (current serving data vs. the original training
-baseline) and <strong>drift</strong> detection (current data vs. a previous serving window). Configuration covers
-sampling rate (monitoring every request is rarely necessary or cost-effective) and alerting thresholds
-per feature, with the same email/notification-channel pattern as §5.</p>
-<h2 id="9-optimizing-and-managing-models-at-the-edge">9. Optimizing and managing models at the edge</h2>
-<p>A model destined for a phone, a browser, or any resource-constrained device needs to be smaller and
-faster than its training-time version, and the two standard techniques compress it without simply
-retraining a smaller architecture from scratch:</p>
-<ul>
-<li><strong>Quantization</strong> reduces the numeric precision of a model's weights (e.g. <code>float32</code> → <code>int8</code>), which
-  shrinks it roughly proportionally to the bit-width reduction (an <code>int8</code> model is close to 4x smaller
-  than its <code>float32</code> original). <strong>Post-training quantization</strong> quantizes an already-trained model; it's
-  simpler, so use it when raw accuracy matters most and size is a secondary win. <strong>Quantization-aware
-  training</strong> trains the model knowing it will be quantized; that takes more setup, but yields a
-  better-performing quantized model when there's a hard size/speed constraint to hit.</li>
-<li><strong>Calibration</strong> makes a model's confidence scores match its actual accuracy (via temperature scaling,
-  label smoothing, or techniques like Mixup/CutMix during training). This connects directly back to
-  monitoring: a well-calibrated model's confidence score is itself a usable signal for flagging a
-  specific prediction for human review, rather than trusting an overconfident wrong answer.</li>
-</ul>
-<p>Both techniques also matter beyond the edge: a smaller, well-calibrated model is cheaper and faster to
-redeploy through the frequent retraining cycles §1's drift detection triggers.</p>
-<h2 id="10-common-issues-in-ml-deployment-and-the-feedback-loop">10. Common issues in ML deployment, and the feedback loop</h2>
-<p>Beyond drift, a short list of failure modes recur across nearly every production ML system:</p>
-<ul>
-<li><strong>Training/serving skew</strong> (Module 6, §1): a feature computed differently in training than at
-  inference time, silently degrading predictions without any monitored metric technically failing.</li>
-<li><strong>Silent upstream data pipeline failures</strong>: an upstream system changes a column's units or encoding
-  without the model-serving code ever erroring, since the model happily scores whatever numbers arrive.</li>
-<li><strong>No rollback strategy</strong>: a newly deployed model version underperforms and there's no fast, tested
-  path back to the previous version. The gradual-rollout and automatic-rollback pattern from Module 1,
-  §12 exists specifically to avoid this.</li>
-</ul>
-<p>The <strong>feedback loop</strong> is what closes the whole system into the cycle shown in §5's diagram: production
-outcomes (the eventual ground truth, or a confirmed bad prediction) become part of the next training
-set, monitoring's drift/quality signals decide <em>when</em> that retraining should run, and Module 4, §9's
-Continuous Machine Learning automation is what actually wires the trigger to the retraining pipeline
-without a human having to notice the problem manually.</p>
-<h2 id="11-project-model-infrastructure-monitoring-using-cloud-tools-required-on-azure">11. Project: Model &amp; infrastructure monitoring using cloud tools (required, on Azure)</h2>
-<p>This course's required hands-on monitoring project uses Azure (§7), per the <a href="../pages/before/#setup">Setup
-page</a>; §6 and §8 (AWS, GCP) are conceptual coverage so you recognize the
-equivalent monitor on either. Deploy a model behind an Azure ML managed endpoint, then:</p>
-<ol>
-<li>Enable request/response data capture (§6-§8) on the endpoint.</li>
-<li>Run a data-drift check (§3) comparing captured production data against the training baseline, on a
-   schedule.</li>
-<li>Instrument at least one custom infrastructure metric (§4) and confirm it reaches the cloud's native
-   monitoring dashboard (§5).</li>
-<li>Configure one alerting policy with a concrete SLO-style threshold, and confirm it actually fires and
-   delivers a notification when crossed.</li>
-</ol>
+<p>A <strong>Service Level Objective (SLO)</strong>, for example "99% of requests under 200ms", is defined per service
+in the monitoring console and gives an alerting policy a concrete target to check against. The typical
+alert setup is a chain: a notification channel (email, say) is attached to an alerting condition (e.g.
+"error rate exceeds 5% over 5 minutes"), which triggers and delivers to that channel.</p>
+<p>The core tension in alerting is the <strong>Goldilocks problem</strong>: too many alerts and important ones get
+lost in the noise; too few and real problems go unnoticed. Getting the threshold right is often as
+much work as building the metric itself.</p>
+<h2 id="6-project-monitor-a-deployed-model-required">6. Project: monitor a deployed model (required)</h2>
+<p>Take the service deployed in Module 7, add request/response logging to a Cloud Storage bucket, and run
+a data-drift check (§2) comparing captured production data against the training baseline on a
+schedule. Instrument at least one custom Prometheus metric (§4) and confirm it reaches Cloud Monitoring
+(§5). Configure one alerting policy with a concrete SLO-style threshold, and confirm it actually fires
+when crossed.</p>
 <hr />
 <h2 id="summary">Summary</h2>
-<p>Monitoring exists because a decaying model fails silently: the model in §1 that keeps returning valid
-responses while quietly getting worse. Data/target/quality drift (§2-§3) is the model-specific half of
-that problem; infrastructure telemetry (§4) is the half every service needs regardless of what it
-serves. All three clouds (§6-§8) implement the same underlying loop (log, compare against a baseline,
-alert), differing mainly in what they call each piece. What makes any of it worth building is the
-feedback loop it feeds (§10): a monitoring signal is only useful if something downstream (a human, or
-Module 4's CML automation) is actually listening for it.</p>
+<p>A model that decays silently is the central problem this module answers: data drift detection (§2)
+catches the model-specific half, while infrastructure telemetry (§3-§4) catches the half every service
+needs regardless of what it serves. Cloud Monitoring (§5) implements the same underlying loop, log,
+compare against a baseline, alert, that any monitoring setup needs, and it's only useful if something
+downstream, a human or an automated retraining pipeline, is actually listening for the signal it sends.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
@@ -1480,20 +1219,16 @@ Module 4's CML automation) is actually listening for it.</p>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
-  <code>s8_monitoring/data_drifting.md</code> and <code>monitoring.md</code>, plus <code>s10_extra/quantization.md</code> and
-  <code>calibration.md</code>. DTU course 02476, Apache 2.0 licensed. This module's drift-detection workflow (§3),
-  Prometheus instrumentation (§4), and edge optimization section (§9) are adapted from this primary
-  source material.</li>
-<li><a href="https://docs.evidentlyai.com/">Evidently AI documentation</a>: source for the drift/quality preset
-  and <code>TestSuite</code> usage in §3.</li>
+  <code>s8_monitoring/</code> (<code>data_drifting.md</code>, <code>monitoring.md</code>). DTU course 02476, Apache 2.0 licensed.
+  Primary source material this module's drift-detection and telemetry content is adapted from.</li>
+<li><a href="https://docs.evidentlyai.com/">Evidently AI documentation</a>. Source for the drift/quality preset and
+  <code>TestSuite</code> usage in §2.</li>
 <li>Gretton, Arthur, et al. <a href="https://jmlr.org/papers/v13/gretton12a.html">"A Kernel Two-Sample Test."</a>
-  JMLR, 2012. Source for the Maximum Mean Discrepancy multivariate-drift caveat in §3.</li>
-<li>AWS Documentation. <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html">"Amazon SageMaker Model Monitor."</a>
-  Source for the four monitor types in §6.</li>
-<li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-monitor-model-performance">"Monitor performance of models deployed to production."</a>
-  Source for the Azure ML model monitoring workflow in §7.</li>
-<li>Google Cloud Documentation. <a href="https://cloud.google.com/vertex-ai/docs/model-monitoring/overview">"Introduction to Vertex AI Model Monitoring."</a>
-  Source for the skew/drift detection modes in §8.</li>
+  JMLR, 2012. Source for the Maximum Mean Discrepancy multivariate-drift caveat in §2.</li>
+<li><a href="https://prometheus.io/docs/introduction/overview/">Prometheus documentation</a>. Source for the metric
+  types and instrumentation in §4.</li>
+<li>Google Cloud Documentation. <a href="https://cloud.google.com/monitoring/docs">"Cloud Monitoring overview."</a>
+  Source for the SLO and alerting workflow in §5.</li>
 </ul>
 
 
@@ -1517,7 +1252,7 @@ Module 4's CML automation) is actually listening for it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1527,7 +1262,7 @@ Module 4's CML automation) is actually listening for it.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1558,7 +1293,7 @@ Module 4's CML automation) is actually listening for it.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../m8_llmops/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M8 - LLMOps">
+          <a href="../m7_deployment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M7 - Deployment">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1568,20 +1303,20 @@ Module 4's CML automation) is actually listening for it.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                M8 - LLMOps
+                M7 - Deployment
               </div>
             </div>
           </a>
         
         
           
-          <a href="../m10_automl_tools/" class="md-footer__link md-footer__link--next" aria-label="Next: M10 - AutoML Tools">
+          <a href="../m9_scalable_applications/" class="md-footer__link md-footer__link--next" aria-label="Next: M9 - Scalable Applications">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                M10 - AutoML Tools
+                M9 - Scalable Applications
               </div>
             </div>
             <div class="md-footer__button md-icon">

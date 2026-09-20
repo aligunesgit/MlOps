@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../m1_mlops_introduction/">
+        <link rel="prev" href="../m1_development_environment/">
       
       
-        <link rel="next" href="../m3_git_essentials/">
+        <link rel="next" href="../m3_reproducibility/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>M2 - Overview of ML and MLOps Stages - MLOps and AI Systems Engineering</title>
+        <title>M2 - Organisation and Version Control - MLOps and AI Systems Engineering</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#module-2-overview-of-ml-and-mlops-stages" class="md-skip">
+        <a href="#module-2-organisation-and-version-control" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              M2 - Overview of ML and MLOps Stages
+              M2 - Organisation and Version Control
             
           </span>
         </div>
@@ -321,14 +321,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -364,7 +364,7 @@
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -382,7 +382,7 @@
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -419,10 +419,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-the-mlops-maturity-model" class="md-nav__link">
+  <a href="#1-why-organization-matters-as-a-project-grows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. The MLOps maturity model
+        1. Why organization matters as a project grows
       
     </span>
   </a>
@@ -430,10 +430,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-detailed-mlops-stages" class="md-nav__link">
+  <a href="#2-git-essentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Detailed MLOps stages
+        2. Git essentials
       
     </span>
   </a>
@@ -441,10 +441,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-versioning-data-code-model-features-containers" class="md-nav__link">
+  <a href="#3-a-standard-branching-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Versioning: data, code, model, features &amp; containers
+        3. A standard branching strategy
       
     </span>
   </a>
@@ -452,10 +452,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-testing" class="md-nav__link">
+  <a href="#4-project-structure-with-cookiecutter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Testing
+        4. Project structure with Cookiecutter
       
     </span>
   </a>
@@ -463,10 +463,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-automation-cicd" class="md-nav__link">
+  <a href="#5-good-coding-practice" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Automation (CI/CD)
+        5. Good coding practice
       
     </span>
   </a>
@@ -474,10 +474,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-reproducibility" class="md-nav__link">
+  <a href="#6-command-line-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Reproducibility
+        6. Command-line interfaces
       
     </span>
   </a>
@@ -485,104 +485,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-deployment" class="md-nav__link">
+  <a href="#7-data-version-control-with-dvc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Deployment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-automated-ml-pipelines-vs-cicd-ml-pipelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Automated ML pipelines vs. CI/CD ML pipelines
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-mlops-architectures" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. MLOps architectures
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. MLOps architectures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-source-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open-source tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-native-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cloud-native tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-cost-benefit-approach-architecture-choice-and-mlops-maturity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Cost-benefit approach: architecture choice and MLOps maturity
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-the-mlops-tool-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. The MLOps tool ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-roles-involved-in-mlops" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        13. Roles involved in MLOps
+        7. Data version control with DVC
       
     </span>
   </a>
@@ -637,14 +543,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m3_git_essentials/" class="md-nav__link">
+      <a href="../m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -664,14 +570,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m4_cicd_strategies/" class="md-nav__link">
+      <a href="../m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -691,14 +597,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="../m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -745,14 +651,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m6_feature_store/" class="md-nav__link">
+      <a href="../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -772,14 +678,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -799,14 +705,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m8_llmops/" class="md-nav__link">
+      <a href="../m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -826,14 +732,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m9_model_monitoring/" class="md-nav__link">
+      <a href="../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -853,14 +759,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m10_automl_tools/" class="md-nav__link">
+      <a href="../m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -1046,10 +952,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-the-mlops-maturity-model" class="md-nav__link">
+  <a href="#1-why-organization-matters-as-a-project-grows" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. The MLOps maturity model
+        1. Why organization matters as a project grows
       
     </span>
   </a>
@@ -1057,10 +963,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-detailed-mlops-stages" class="md-nav__link">
+  <a href="#2-git-essentials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Detailed MLOps stages
+        2. Git essentials
       
     </span>
   </a>
@@ -1068,10 +974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-versioning-data-code-model-features-containers" class="md-nav__link">
+  <a href="#3-a-standard-branching-strategy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Versioning: data, code, model, features &amp; containers
+        3. A standard branching strategy
       
     </span>
   </a>
@@ -1079,10 +985,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-testing" class="md-nav__link">
+  <a href="#4-project-structure-with-cookiecutter" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Testing
+        4. Project structure with Cookiecutter
       
     </span>
   </a>
@@ -1090,10 +996,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-automation-cicd" class="md-nav__link">
+  <a href="#5-good-coding-practice" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Automation (CI/CD)
+        5. Good coding practice
       
     </span>
   </a>
@@ -1101,10 +1007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-reproducibility" class="md-nav__link">
+  <a href="#6-command-line-interfaces" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Reproducibility
+        6. Command-line interfaces
       
     </span>
   </a>
@@ -1112,104 +1018,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-deployment" class="md-nav__link">
+  <a href="#7-data-version-control-with-dvc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Deployment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-monitoring" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. Monitoring
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#9-automated-ml-pipelines-vs-cicd-ml-pipelines" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        9. Automated ML pipelines vs. CI/CD ML pipelines
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-mlops-architectures" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. MLOps architectures
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="10. MLOps architectures">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#open-source-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Open-source tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cloud-native-tools" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cloud-native tools
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-cost-benefit-approach-architecture-choice-and-mlops-maturity" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Cost-benefit approach: architecture choice and MLOps maturity
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-the-mlops-tool-ecosystem" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. The MLOps tool ecosystem
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#13-roles-involved-in-mlops" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        13. Roles involved in MLOps
+        7. Data version control with DVC
       
     </span>
   </a>
@@ -1266,7 +1078,7 @@
 
 
   
-    <a href="https://github.com/aligunesgit/MlOps/edit/main/m2_ml_and_mlops_stages/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m2_version_control/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1275,349 +1087,267 @@
     
       
     
-    <a href="https://github.com/aligunesgit/MlOps/raw/main/m2_ml_and_mlops_stages/README.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m2_version_control/README.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="module-2-overview-of-ml-and-mlops-stages">Module 2: Overview of ML and MLOps Stages</h1>
+<h1 id="module-2-organisation-and-version-control">Module 2: Organisation and Version Control</h1>
 <p>Week 2</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
-<li>Understand the MLOps maturity model and where a team/org sits on it</li>
-<li>Understand the stages of an MLOps pipeline: versioning, testing, automation, reproducibility,
-  deployment, monitoring</li>
-<li>Be able to compare open-source vs. cloud-native MLOps architectures</li>
-<li>Understand the tool ecosystem and the roles involved in MLOps</li>
+<li>Understand core Git concepts (commits, branches, remotes) and a standard branching strategy</li>
+<li>Be able to scaffold a project from a template so its structure is consistent and shareable</li>
+<li>Apply good coding practice: documentation, style, and type hints</li>
+<li>Be able to version-control a dataset with DVC, the same way Git version-controls code</li>
+<li>Be comfortable building a simple command-line interface for a project</li>
 </ul>
 <hr />
-<h2 id="1-the-mlops-maturity-model">1. The MLOps maturity model</h2>
-<p>Organizations don't wake up one day fully "MLOps-mature"; they move through recognizable levels,
-and two framings are widely used in industry:</p>
-<p><strong>Google Cloud's 3-level model</strong> (the more commonly cited version for describing pipeline automation):</p>
-<table>
-<thead>
-<tr>
-<th>Level</th>
-<th>Name</th>
-<th>What it looks like</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>Manual process</td>
-<td>Every step (data prep, training, validation, deployment) is run by hand from a notebook. No CI/CD, no automated retraining.</td>
-</tr>
-<tr>
-<td>1</td>
-<td>ML pipeline automation</td>
-<td>Training itself is automated into a repeatable pipeline, enabling continuous training (CT), but deployment of the resulting model is still a manual step.</td>
-</tr>
-<tr>
-<td>2</td>
-<td>CI/CD pipeline automation</td>
-<td>A robust, automated CI/CD system builds, tests, and deploys both pipeline components and models: the full loop is automated end to end.</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Microsoft's 5-level model</strong> (covered in Module 1, §11) is a finer-grained version of the same idea,
-adding explicit levels for basic DevOps hygiene and for continuous training with human oversight.
-Both models agree on the essential point: <strong>maturity is measured by how much of the pipeline is
-automated versus manual</strong>, not by how sophisticated any individual model is.</p>
+<h2 id="1-why-organization-matters-as-a-project-grows">1. Why organization matters as a project grows</h2>
+<p>A single script is easy to keep in your head. The moment a project has more than one file, more than
+one contributor, or data too large for Git, informal organization stops working: nobody can find
+anything, two people's changes collide, and "which version of the data produced this result" becomes
+unanswerable. This module covers the five things that keep a growing ML codebase navigable: version
+control for code (§2-§3), a consistent project structure (§4), coding style that reads the same across
+contributors (§5), a proper way to invoke your own code (§6), and version control for data (§7), since
+Git alone was never designed to track anything data-sized.</p>
+<h2 id="2-git-essentials">2. Git essentials</h2>
+<p><strong>Git</strong> is a distributed version control system: every clone holds the full history, not just a
+checkout of the current state, so you can commit and inspect history entirely offline. Its model
+reduces to two ideas: a graph of <strong>commits</strong> (each one a full snapshot, identified by a hash) and a
+<strong>staging area</strong> sitting between your files and that graph.</p>
 <pre class="mermaid"><code>flowchart LR
-    A["Level 0&lt;br/&gt;Manual process"] --&gt; B["Level 1&lt;br/&gt;ML pipeline automation (CT)"]
-    B --&gt; C["Level 2&lt;br/&gt;Full CI/CD/CT automation"]</code></pre>
-<p>A team's job is not to chase Level 2 for every project; it's to match the level of automation to how
-much a project's value depends on speed, reliability, and scale.</p>
-<h2 id="2-detailed-mlops-stages">2. Detailed MLOps stages</h2>
-<p>Zooming into what actually happens inside a mature MLOps pipeline, six recurring stages show up
-across almost every real system, regardless of industry or model type:</p>
-<pre class="mermaid"><code>flowchart LR
-    V["Versioning"] --&gt; T["Testing"]
-    T --&gt; AU["Automation (CI/CD)"]
-    AU --&gt; R["Reproducibility"]
-    R --&gt; D["Deployment"]
-    D --&gt; M["Monitoring"]
-    M -.feedback.-&gt; V</code></pre>
-<p>The rest of this module walks through each stage, then zooms back out to the architectures and tools
-that implement them.</p>
-<h2 id="3-versioning-data-code-model-features-containers">3. Versioning: data, code, model, features &amp; containers</h2>
-<p>Traditional software only needs to version one thing: code. MLOps needs to version <strong>five</strong> things
-that all change independently, and a working system needs a story for keeping them in sync:</p>
-<ul>
-<li><strong>Code</strong>: the usual Git-based version control (Module 3).</li>
-<li><strong>Data</strong>: the raw and processed datasets used for training, since the same code trained on
-  different data produces a different model (tools like DVC, LakeFS).</li>
-<li><strong>Models</strong>: trained weights/artifacts, tracked with enough metadata to know exactly what code and
-  data produced them (model registries; see Module 10).</li>
-<li><strong>Features</strong>: engineered features need their own versioning once they're shared across multiple
-  models, so training and serving don't silently drift apart (Module 6, Feature Store).</li>
-<li><strong>Containers</strong>: the exact runtime environment (OS, libraries, drivers) a model was trained and is
-  served in (Module 5, Docker).</li>
-</ul>
-<p>The unifying idea: reproducing <em>any</em> result requires knowing the exact combination of all five,
-pinned together, not just the code.</p>
-<h2 id="4-testing">4. Testing</h2>
-<p>Testing an ML system needs everything traditional software testing does, plus tests that have no
-equivalent in traditional software because the "logic" is learned from data rather than written by a
-developer:</p>
-<ul>
-<li><strong>Unit tests</strong>: the usual code-correctness tests (does the preprocessing function do what it should).</li>
-<li><strong>Data tests</strong>: schema validation, range checks, and distribution checks on incoming data.</li>
-<li><strong>Model tests</strong>: behavioral tests on the model itself, checking whether it beats a trivial baseline,
-  performs acceptably on known edge cases and slices of the data, and is invariant to changes that
-  shouldn't matter (e.g. a name swap in a resume-screening model).</li>
-<li><strong>Integration tests</strong>: does the full pipeline, end to end, actually produce a servable model.</li>
-</ul>
-<h2 id="5-automation-cicd">5. Automation (CI/CD)</h2>
-<p>Automation is what turns the stages above from a manual checklist into something that runs on every
-change without a human remembering to do it. In MLOps this splits into two related but distinct
-loops:</p>
-<ul>
-<li><strong>CI (Continuous Integration)</strong>: every code change automatically triggers linting, unit tests, and
-  a fast validation training run.</li>
-<li><strong>CD (Continuous Delivery/Deployment)</strong>: a model that passes its quality gates is automatically
-  packaged and deployed, often progressively (canary or shadow deployment) rather than all at once.</li>
-</ul>
-<p>Module 4 covers this in depth across AWS, GCP, Azure, and GitHub Actions specifically.</p>
-<h2 id="6-reproducibility">6. Reproducibility</h2>
-<p>Reproducibility is the property that lets someone (including future-you) recreate a specific result
-exactly. It depends on all of the versioning from §3 being pinned simultaneously: same code, same
-data, same feature definitions, same container, and the same configuration/hyperparameters (typically
-captured in structured config files rather than hardcoded). Without this, debugging a production
-incident ("why did the model behave this way on March 3rd?") becomes close to impossible.</p>
-<h2 id="7-deployment">7. Deployment</h2>
-<p>Deployment is the act of making a trained model available to receive real input and return real
-predictions. The two dimensions that matter most:</p>
-<ul>
-<li><strong>How</strong>: as a batch job that scores a dataset periodically, or as a real-time service behind an
-  API that responds to individual requests.</li>
-<li><strong>Where</strong>: locally, on a self-managed cluster, or on a managed cloud service (Module 7 covers AWS
-  SageMaker, GCP Vertex AI, and Azure ML specifically).</li>
-</ul>
-<h2 id="8-monitoring">8. Monitoring</h2>
-<p>Monitoring is what tells you a deployed model needs attention <em>before</em> a business metric tells you the
-hard way. Two categories matter, and most teams only build the first:</p>
-<ul>
-<li><strong>Infrastructure monitoring</strong>: latency, throughput, error rate, resource usage (the same telemetry
-  any production service needs).</li>
-<li><strong>Model/data monitoring</strong>: is the input data drifting from what the model was trained on, is the
-  model's own confidence/accuracy degrading, are predictions becoming skewed toward one class. This
-  category has no equivalent in traditional software monitoring (Module 9).</li>
-</ul>
-<h2 id="9-automated-ml-pipelines-vs-cicd-ml-pipelines">9. Automated ML pipelines vs. CI/CD ML pipelines</h2>
-<p>These two automation loops are easy to conflate but answer different questions:</p>
+    W["Working directory"] --&gt;|"git add"| S["Staging area"]
+    S --&gt;|"git commit"| L["Local repository"]
+    L --&gt;|"git push"| R["Remote (e.g. GitHub)"]
+    R --&gt;|"git pull"| L</code></pre>
 <table>
 <thead>
 <tr>
-<th></th>
-<th>Automated ML (training) pipeline</th>
-<th>CI/CD ML pipeline</th>
+<th>Command</th>
+<th>What it does</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Triggered by</td>
-<td>A schedule, or a data/drift signal</td>
-<td>A code change (commit, pull request, merge)</td>
+<td><code>git init</code> / <code>git clone &lt;url&gt;</code></td>
+<td>Starts a new repository, or downloads a full copy of an existing one</td>
 </tr>
 <tr>
-<td>Question it answers</td>
-<td>"Should we retrain, given new data?"</td>
-<td>"Is this new code/model change safe to ship?"</td>
+<td><code>git status</code> / <code>git log</code></td>
+<td>Shows what's staged and unstaged right now, or the commit history</td>
 </tr>
 <tr>
-<td>Output</td>
-<td>A new candidate model</td>
-<td>A deployed (or rejected) model version</td>
+<td><code>git add &lt;file&gt;</code></td>
+<td>Stages a file's changes for the next commit</td>
+</tr>
+<tr>
+<td><code>git commit -m "&lt;message&gt;"</code></td>
+<td>Creates a commit from everything staged</td>
+</tr>
+<tr>
+<td><code>git push</code> / <code>git pull</code></td>
+<td>Uploads local commits to the remote, or fetches and merges the remote's new commits</td>
+</tr>
+<tr>
+<td><code>git branch</code> / <code>git switch &lt;branch&gt;</code></td>
+<td>Lists branches, or switches to one (<code>git switch -c &lt;name&gt;</code> creates and switches)</td>
+</tr>
+<tr>
+<td><code>git merge &lt;branch&gt;</code></td>
+<td>Merges the named branch into the current one</td>
 </tr>
 </tbody>
 </table>
-<p>A mature system runs both loops continuously and connects them: a CI/CD pipeline promotes a model that
-an automated training pipeline just produced, only after it clears its quality gates.</p>
-<h2 id="10-mlops-architectures">10. MLOps architectures</h2>
-<p>Once a team commits to automating the stages above, they have to choose a platform to build that
-automation on. Broadly, two families of architecture dominate:</p>
-<h3 id="open-source-tools">Open-source tools</h3>
+<p>A <strong>branch</strong> is just a movable pointer to a commit, cheap to create since it copies no files, which is
+what makes it safe to try something without touching working code.</p>
+<h2 id="3-a-standard-branching-strategy">3. A standard branching strategy</h2>
+<p>Once more than one or two people commit to the same repository, an explicit strategy is what keeps
+parallel work from colliding:</p>
 <table>
 <thead>
 <tr>
-<th>Tool</th>
-<th>What it's known for</th>
+<th>Branch</th>
+<th>Branched from</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Kubeflow</strong></td>
-<td>Kubernetes-native ML pipeline orchestration; the "default" open-source choice if you're already running Kubernetes</td>
+<td><code>main</code></td>
+<td>-</td>
+<td>Always deployable</td>
 </tr>
 <tr>
-<td><strong>MLflow</strong></td>
-<td>Experiment tracking, model registry, and packaging; often adopted first because it's lightweight and framework-agnostic</td>
+<td><code>development</code></td>
+<td><code>main</code></td>
+<td>Long-lived integration branch, ahead of <code>main</code></td>
 </tr>
 <tr>
-<td><strong>Metaflow</strong></td>
-<td>Pipeline authoring designed for data scientists, originally built at Netflix, strong on human-friendly workflow definition</td>
+<td><code>feature/*</code></td>
+<td><code>development</code></td>
+<td>One feature, merged back via pull request</td>
 </tr>
 <tr>
-<td><strong>Kedro</strong></td>
-<td>Opinionated project structure and pipeline framework for reproducible data science code</td>
+<td><code>bugfix/*</code></td>
+<td><code>development</code> (or <code>main</code> for hotfixes)</td>
+<td>Fixes one specific defect</td>
 </tr>
 <tr>
-<td><strong>ZenML</strong></td>
-<td>A pipeline abstraction layer designed to be portable across many backends (local, cloud, Kubeflow, etc.)</td>
-</tr>
-<tr>
-<td><strong>MLRun</strong></td>
-<td>An open-source MLOps orchestration framework with a strong focus on feature store integration</td>
-</tr>
-<tr>
-<td><strong>CML (Continuous Machine Learning)</strong></td>
-<td>Brings CI/CD-style automation (by iterative.ai, the makers of DVC) specifically to ML pipelines on top of existing CI systems like GitHub Actions</td>
+<td><code>release/*</code></td>
+<td><code>development</code></td>
+<td>Stabilization window before shipping</td>
 </tr>
 </tbody>
 </table>
-<h3 id="cloud-native-tools">Cloud-native tools</h3>
-<table>
-<thead>
-<tr>
-<th>Provider</th>
-<th>Platform</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>AWS</strong></td>
-<td>SageMaker: training, tuning, deployment, and pipelines as a managed service</td>
-</tr>
-<tr>
-<td><strong>GCP</strong></td>
-<td>Vertex AI: unified training, feature store, and deployment platform</td>
-</tr>
-<tr>
-<td><strong>Azure</strong></td>
-<td>Azure Machine Learning: pipelines, model registry, and managed endpoints</td>
-</tr>
-</tbody>
-</table>
-<p>Module 7 goes hands-on with all three cloud-native platforms.</p>
-<h2 id="11-cost-benefit-approach-architecture-choice-and-mlops-maturity">11. Cost-benefit approach: architecture choice and MLOps maturity</h2>
-<p>Neither family is "better" in the abstract; the right choice depends on where a team sits on the
-maturity model from §1:</p>
+<p>The point is to keep <code>main</code> always in a known-good state, and make the path from a laptop to
+production an explicit, reviewable sequence of merges rather than direct commits to <code>main</code>. A <strong>merge
+conflict</strong> happens when two commits touch the same lines; Git marks both versions inline with
+<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>/<code>=======</code>/<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> markers, and resolving it means editing the file into the version you
+actually want, then removing the markers before committing.</p>
+<h2 id="4-project-structure-with-cookiecutter">4. Project structure with Cookiecutter</h2>
+<p>Two teams following the same project template can understand each other's code faster, because the
+layout follows the same rules every time. <strong>Cookiecutter</strong> generates a new project from a template
+repository instead of everyone inventing their own layout from scratch:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>cookiecutter
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>cookiecutter<span class="w"> </span>&lt;url-to-template&gt;
+</span></code></pre></div>
+<p>A minimal Python package structure:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>src/
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    my_project/
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>        __init__.py
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>        data.py
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        model.py
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        train.py
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>pyproject.toml
+</span></code></pre></div>
+<p><code>pyproject.toml</code> is the modern standard (PEP 621) for a project's metadata and dependencies, replacing
+the older <code>setup.py</code>/<code>setup.cfg</code> pair, and can hold tool configuration (ruff, mypy) in the same file.
+Installing a project in <strong>editable mode</strong> (<code>pip install -e .</code>, or <code>uv sync</code> for a <code>uv</code>-managed project)
+means code changes take effect immediately without reinstalling, essential for iterative development.
+Project name conventions follow PEP 8: lowercase with underscores (<code>my_project</code>, not <code>MyProject</code>), and
+never starting with a digit.</p>
+<p><strong>Project: scaffold the group project (required):</strong> generate the group project's repository from a
+cookiecutter template, install it in editable mode, and confirm <code>import my_project</code> works from a
+Python shell without any path hacks.</p>
+<h2 id="5-good-coding-practice">5. Good coding practice</h2>
+<p>Consistency matters more than any specific rule, since the goal is a codebase every teammate can read
+the same way:</p>
 <ul>
-<li><strong>Cloud-native</strong> tools generally win on <em>time-to-value</em>: a team can get a working pipeline running
-  in days, with less infrastructure to own, at the cost of some vendor lock-in and (at scale) higher
-  ongoing spend.</li>
-<li><strong>Open-source</strong> tools generally win on <em>control and portability</em>: no vendor lock-in, and often
-  cheaper at large scale, at the cost of needing in-house platform engineering capacity to run and
-  maintain them.</li>
+<li><strong>Documentation.</strong> Under-documented code leaves hard things unexplained; over-documented code gets
+  skipped because nobody reads walls of comments. As the saying goes, code tells you <em>how</em>, comments
+  should tell you <em>why</em>. <a href="https://peps.python.org/pep-0257/">Docstrings</a> with standard <code>Args</code>/<code>Returns</code>
+  sections cover the middle ground.</li>
+<li><strong>Styling.</strong> <a href="https://peps.python.org/pep-0008/">PEP 8</a> is Python's official style guide.
+  <a href="https://github.com/astral-sh/ruff"><code>ruff</code></a> has replaced the older <code>flake8</code>/<code>black</code>/<code>isort</code> combo as
+  a single, fast linter and formatter:</li>
 </ul>
-<p>A useful rule of thumb: teams early in their MLOps maturity journey (Level 0-1) are usually better
-served starting cloud-native, since they don't yet have the platform engineering capacity open-source
-tooling assumes. Teams that have already reached Level 2 maturity and are running at real scale often
-find the economics flip toward investing in an open-source, self-hosted stack.</p>
-<h2 id="12-the-mlops-tool-ecosystem">12. The MLOps tool ecosystem</h2>
-<p>Pulling §3-§10 together into one map, here is a representative (not exhaustive) tool for each stage:</p>
-<table>
-<thead>
-<tr>
-<th>Stage</th>
-<th>Representative tools</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Versioning (code / data / model)</td>
-<td>Git, DVC, MLflow Model Registry</td>
-</tr>
-<tr>
-<td>Testing</td>
-<td>pytest, Great Expectations, Deepchecks</td>
-</tr>
-<tr>
-<td>Automation (CI/CD/CT)</td>
-<td>GitHub Actions, GitLab CI, Argo Workflows, CML</td>
-</tr>
-<tr>
-<td>Reproducibility</td>
-<td>Docker, Hydra, Conda/<code>uv</code></td>
-</tr>
-<tr>
-<td>Deployment</td>
-<td>Kubernetes, Seldon Core, BentoML, cloud-managed endpoints</td>
-</tr>
-<tr>
-<td>Monitoring</td>
-<td>Prometheus/Grafana (infra), Evidently AI, WhyLabs (data/model)</td>
-</tr>
-</tbody>
-</table>
-<p>Every one of these tools gets a hands-on treatment somewhere later in this course.</p>
-<h2 id="13-roles-involved-in-mlops">13. Roles involved in MLOps</h2>
-<p>MLOps is a team sport. The same pipeline typically involves several distinct roles, each with
-different priorities:</p>
-<table>
-<thead>
-<tr>
-<th>Role</th>
-<th>Primary responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Data Scientist</strong></td>
-<td>Model design, offline experimentation, and evaluation</td>
-</tr>
-<tr>
-<td><strong>ML Engineer</strong></td>
-<td>Turning a validated model into productionized, tested, deployable code</td>
-</tr>
-<tr>
-<td><strong>Data Engineer</strong></td>
-<td>Building and maintaining the pipelines that produce clean, reliable training data</td>
-</tr>
-<tr>
-<td><strong>MLOps / Platform Engineer</strong></td>
-<td>Building and maintaining the shared infrastructure (CI/CD, orchestration, monitoring) that every model rides on</td>
-</tr>
-<tr>
-<td><strong>DevOps / SRE</strong></td>
-<td>Infrastructure reliability, incident response, and the non-ML-specific parts of the production stack</td>
-</tr>
-<tr>
-<td><strong>Product owner / domain expert</strong></td>
-<td>Defines what "good" looks like for the business problem, and is accountable for the model's real-world impact</td>
-</tr>
-</tbody>
-</table>
-<p>In a small team, one person may wear three of these hats; in a large organization, each is a distinct
-job title. Either way, naming the responsibilities explicitly is what prevents a model from being
-"someone else's problem" the moment it leaves the notebook.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ruff<span class="w"> </span>check<span class="w"> </span>.<span class="w">     </span><span class="c1"># lint</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>ruff<span class="w"> </span>format<span class="w"> </span>.<span class="w">    </span><span class="c1"># auto-format</span>
+</span></code></pre></div>
+<ul>
+<li><strong>Typing.</strong> Type hints aren't required, but they improve readability and let a static checker catch
+  a whole class of bugs before the code ever runs:</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span></code></pre></div>
+<p><a href="https://mypy.readthedocs.io/"><code>mypy</code></a> checks that type hints are internally consistent without
+  executing the code; <a href="https://docs.astral.sh/ty/"><code>ty</code></a> is a newer, faster alternative from the same
+  team behind <code>ruff</code> and <code>uv</code>.</p>
+<h2 id="6-command-line-interfaces">6. Command-line interfaces</h2>
+<p>Once a script grows past <code>python my_script.py</code>, a proper CLI gives it a documented, discoverable
+entry point. Three layers, often used together:</p>
+<ul>
+<li><strong>Project scripts</strong> in <code>pyproject.toml</code> turn a function into a bare command:</li>
+</ul>
+<div class="language-toml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[project.scripts]</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">train</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"my_project.train:main"</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>uv<span class="w"> </span>run<span class="w"> </span>train<span class="w">   </span><span class="c1"># runs my_project.train:main directly</span>
+</span></code></pre></div>
+<ul>
+<li><strong><code>typer</code></strong> extends <code>argparse</code>-style flags to git-style subcommands:</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">typer</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">app</span> <span class="o">=</span> <span class="n">typer</span><span class="o">.</span><span class="n">Typer</span><span class="p">()</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">32</span><span class="p">):</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="o">...</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
+</span><span id="__span-6-8"><a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-6-9"><a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="n">app</span><span class="p">()</span>
+</span></code></pre></div>
+<ul>
+<li><strong><code>invoke</code></strong> automates whole project tasks, a Python-native alternative to a Makefile:</li>
+</ul>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">invoke</span><span class="w"> </span><span class="kn">import</span> <span class="n">task</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nd">@task</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">preprocess_data</span><span class="p">(</span><span class="n">ctx</span><span class="p">):</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="n">ctx</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">"python src/my_project/data.py"</span><span class="p">)</span>
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>invoke<span class="w"> </span>--list
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>invoke<span class="w"> </span>preprocess-data
+</span></code></pre></div>
+<h2 id="7-data-version-control-with-dvc">7. Data version control with DVC</h2>
+<p>Git was designed for code: text files, typically under a gigabyte. Machine learning needs to track
+datasets that can run into the gigabytes or terabytes, which makes committing data directly to Git
+impractical. <strong>DVC (Data Version Control)</strong> extends the same Git workflow to data by storing small
+"pointer" metafiles in Git while the actual data lives in a remote (a bucket, or a Google Drive folder
+for a zero-setup starting point; Module 6 covers pointing it at a Google Cloud Storage bucket instead):</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>pip<span class="w"> </span>install<span class="w"> </span>dvc<span class="w"> </span>dvc-gdrive
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>dvc<span class="w"> </span>init
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>dvc<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>-d<span class="w"> </span>storage<span class="w"> </span>gdrive://&lt;folder-id&gt;
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>git<span class="w"> </span>add<span class="w"> </span>.dvc/config
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>dvc<span class="w"> </span>add<span class="w"> </span>data/<span class="w">                 </span><span class="c1"># tracks the data folder, writes a small metafile</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>add<span class="w"> </span>data.dvc<span class="w"> </span>.gitignore
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">"First dataset version"</span>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span><span class="s2">"v1.0"</span><span class="w"> </span>-m<span class="w"> </span><span class="s2">"data v1.0"</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>dvc<span class="w"> </span>push<span class="w">                      </span><span class="c1"># uploads the actual data to the remote</span>
+</span></code></pre></div>
+<p>Cloning the repository now needs one extra step to get the data back:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>git<span class="w"> </span>clone<span class="w"> </span>&lt;repository_url&gt;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>dvc<span class="w"> </span>pull<span class="w">   </span><span class="c1"># downloads the data DVC is tracking, alongside git pull for the code</span>
+</span></code></pre></div>
+<p>Reverting to a previous data version is symmetric to Git's own history: <code>git checkout v1.0</code> followed
+by <code>dvc checkout</code> restores both the code and the data pointer from that tag. DVC struggles with
+datasets made of many small files; compressing into a single archive, or converting to a columnar
+format like Parquet, avoids that overhead.</p>
+<p><strong>Project: version a dataset with DVC (required):</strong> initialize DVC in the group project's repository,
+add a remote, track the project's dataset, and confirm a fresh clone can recover both the code and the
+data with <code>git clone</code> followed by <code>dvc pull</code>.</p>
 <hr />
 <h2 id="summary">Summary</h2>
-<p>An MLOps pipeline is not one thing: it's six recurring stages (versioning, testing, automation,
-reproducibility, deployment, monitoring) that a team automates progressively as it matures, built on
-top of either an open-source or cloud-native architecture chosen based on where that team's maturity
-and scale actually sit. The tool ecosystem and the role split exist to make that automation a shared,
-sustainable responsibility rather than a single person's heroics.</p>
+<p>A project survives more than one contributor, and more than one dataset version, only if it has answers
+to two questions: what changed in the code, and what changed in the data. Git and a standard branching
+strategy (§2-§3) answer the first; DVC (§7) answers the second, using the exact same mental model just
+pointed at a remote instead of GitHub. Cookiecutter, coding style, and CLIs (§4-§6) are what keep the
+<em>shape</em> of the answer consistent across every project a team ever starts, so the next person who opens
+the repository already knows where to look.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
   production reliability.</li>
 </ul>
 <h2 id="references">References</h2>
-<p>Foundational industry sources this module's content draws on:</p>
+<p>Foundational sources this module's content draws on:</p>
 <ul>
-<li>Google Cloud. <a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">"MLOps: Continuous Delivery and Automation Pipelines in Machine Learning."</a>
-  Architecture guide. Source for the 3-level maturity model in §1.</li>
-<li>Microsoft. <a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/mlops-maturity-model">"MLOps Maturity Model."</a>
-  Azure Architecture Center. The 5-level model referenced alongside Google's in §1 (see also Module 1, §11).</li>
-<li>Official documentation for the tools named in §10 and §12 (Kubeflow, MLflow, Metaflow, Kedro,
-  ZenML, MLRun, CML, and the AWS/GCP/Azure ML platforms), consulted for accuracy of each tool's
-  positioning, not quoted directly.</li>
+<li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
+  <code>s2_organisation_and_version_control/</code> (<code>git.md</code>, <code>code_structure.md</code>, <code>good_coding_practice.md</code>,
+  <code>data_version_control.md</code>, <code>cli.md</code>). DTU course 02476, Apache 2.0 licensed. Primary source material
+  this entire module is adapted from.</li>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git</a>, Chacon, Scott &amp; Straub, Ben. Source for the commit/staging/
+  branch model in §2.</li>
+<li><a href="https://cookiecutter.readthedocs.io/">Cookiecutter documentation</a>. Source for the templating
+  workflow in §4.</li>
+<li><a href="https://docs.astral.sh/ruff/">Ruff documentation</a> and <a href="https://mypy.readthedocs.io/">mypy documentation</a>.
+  Source for the styling and typing tools in §5.</li>
+<li><a href="https://dvc.org/doc">DVC documentation</a>. Source for the data-versioning workflow in §7.</li>
 </ul>
 
 
@@ -1641,7 +1371,7 @@ sustainable responsibility rather than a single person's heroics.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1651,7 +1381,7 @@ sustainable responsibility rather than a single person's heroics.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1682,7 +1412,7 @@ sustainable responsibility rather than a single person's heroics.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../m1_mlops_introduction/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M1 - MLOps Introduction">
+          <a href="../m1_development_environment/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M1 - Development Environment">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1692,20 +1422,20 @@ sustainable responsibility rather than a single person's heroics.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                M1 - MLOps Introduction
+                M1 - Development Environment
               </div>
             </div>
           </a>
         
         
           
-          <a href="../m3_git_essentials/" class="md-footer__link md-footer__link--next" aria-label="Next: M3 - Git Essentials">
+          <a href="../m3_reproducibility/" class="md-footer__link md-footer__link--next" aria-label="Next: M3 - Reproducibility">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                M3 - Git Essentials
+                M3 - Reproducibility
               </div>
             </div>
             <div class="md-footer__button md-icon">

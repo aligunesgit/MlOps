@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../m4_cicd_strategies/">
+        <link rel="prev" href="../m2_version_control/">
       
       
-        <link rel="next" href="../sprint_a_project/">
+        <link rel="next" href="../m4_debugging_profiling_logging/">
       
       
         
@@ -23,7 +23,7 @@
     
     
       
-        <title>M5 - Docker and Kubernetes - MLOps and AI Systems Engineering</title>
+        <title>M3 - Reproducibility - MLOps and AI Systems Engineering</title>
       
     
     
@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#module-5-docker-kubernetes-overview" class="md-skip">
+        <a href="#module-3-reproducibility" class="md-skip">
           Skip to content
         </a>
       
@@ -119,7 +119,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              M5 - Docker and Kubernetes
+              M3 - Reproducibility
             
           </span>
         </div>
@@ -321,14 +321,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -348,68 +348,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="../m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../m3_git_essentials/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    M3 - Git Essentials
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../m4_cicd_strategies/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    M4 - CI/CD Strategies
+    M2 - Organisation and Version Control
   
 
     
@@ -445,7 +391,7 @@
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M3 - Reproducibility
   
 
     
@@ -463,7 +409,7 @@
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M3 - Reproducibility
   
 
     
@@ -500,10 +446,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-why-containers-and-why-now" class="md-nav__link">
+  <a href="#1-why-reproducibility-needs-more-than-pinned-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Why containers, and why now
+        1. Why reproducibility needs more than pinned packages
       
     </span>
   </a>
@@ -533,10 +479,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-building-an-ml-training-image" class="md-nav__link">
+  <a href="#4-building-a-training-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Building an ML training image
+        4. Building a training image
       
     </span>
   </a>
@@ -544,10 +490,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-docker-networking-and-volumes" class="md-nav__link">
+  <a href="#5-sharing-images-and-registries" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Docker networking and volumes
+        5. Sharing images and registries
       
     </span>
   </a>
@@ -555,10 +501,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-sharing-images-and-registries" class="md-nav__link">
+  <a href="#6-project-containerize-a-training-script-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Sharing images and registries
+        6. Project: containerize a training script (required)
       
     </span>
   </a>
@@ -566,10 +512,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-docker-compose-multi-container-applications" class="md-nav__link">
+  <a href="#7-the-problem-with-hardcoded-hyperparameters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Docker Compose: multi-container applications
+        7. The problem with hardcoded hyperparameters
       
     </span>
   </a>
@@ -577,10 +523,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-docker-swarm-briefly" class="md-nav__link">
+  <a href="#8-config-files-with-hydra-and-omegaconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Docker Swarm, briefly
+        8. Config files with Hydra and OmegaConf
       
     </span>
   </a>
@@ -588,43 +534,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-kubernetes-architecture" class="md-nav__link">
+  <a href="#9-project-migrate-a-training-script-to-hydra-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Kubernetes architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-kubernetes-core-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Kubernetes core resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-running-locally-with-minikube" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Running locally with Minikube
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-projects-for-this-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. Projects for this module
+        9. Project: migrate a training script to Hydra (required)
       
     </span>
   </a>
@@ -679,6 +592,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../m4_debugging_profiling_logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M4 - Debugging, Profiling and Logging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../m5_continuous_integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    M5 - Continuous Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../sprint_a_project/" class="md-nav__link">
         
   
@@ -706,14 +673,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m6_feature_store/" class="md-nav__link">
+      <a href="../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -733,14 +700,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -760,14 +727,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m8_llmops/" class="md-nav__link">
+      <a href="../m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -787,14 +754,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m9_model_monitoring/" class="md-nav__link">
+      <a href="../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -814,14 +781,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../m10_automl_tools/" class="md-nav__link">
+      <a href="../m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -1007,10 +974,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-why-containers-and-why-now" class="md-nav__link">
+  <a href="#1-why-reproducibility-needs-more-than-pinned-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Why containers, and why now
+        1. Why reproducibility needs more than pinned packages
       
     </span>
   </a>
@@ -1040,10 +1007,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-building-an-ml-training-image" class="md-nav__link">
+  <a href="#4-building-a-training-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. Building an ML training image
+        4. Building a training image
       
     </span>
   </a>
@@ -1051,10 +1018,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-docker-networking-and-volumes" class="md-nav__link">
+  <a href="#5-sharing-images-and-registries" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Docker networking and volumes
+        5. Sharing images and registries
       
     </span>
   </a>
@@ -1062,10 +1029,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-sharing-images-and-registries" class="md-nav__link">
+  <a href="#6-project-containerize-a-training-script-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        6. Sharing images and registries
+        6. Project: containerize a training script (required)
       
     </span>
   </a>
@@ -1073,10 +1040,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-docker-compose-multi-container-applications" class="md-nav__link">
+  <a href="#7-the-problem-with-hardcoded-hyperparameters" class="md-nav__link">
     <span class="md-ellipsis">
       
-        7. Docker Compose: multi-container applications
+        7. The problem with hardcoded hyperparameters
       
     </span>
   </a>
@@ -1084,10 +1051,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-docker-swarm-briefly" class="md-nav__link">
+  <a href="#8-config-files-with-hydra-and-omegaconf" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Docker Swarm, briefly
+        8. Config files with Hydra and OmegaConf
       
     </span>
   </a>
@@ -1095,43 +1062,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-kubernetes-architecture" class="md-nav__link">
+  <a href="#9-project-migrate-a-training-script-to-hydra-required" class="md-nav__link">
     <span class="md-ellipsis">
       
-        9. Kubernetes architecture
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-kubernetes-core-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. Kubernetes core resources
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-running-locally-with-minikube" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. Running locally with Minikube
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#12-projects-for-this-module" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        12. Projects for this module
+        9. Project: migrate a training script to Hydra (required)
       
     </span>
   </a>
@@ -1188,7 +1122,7 @@
 
 
   
-    <a href="https://github.com/aligunesgit/MlOps/edit/main/m5_docker_and_kubernetes/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/aligunesgit/MlOps/edit/main/m3_reproducibility/README.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -1197,53 +1131,57 @@
     
       
     
-    <a href="https://github.com/aligunesgit/MlOps/raw/main/m5_docker_and_kubernetes/README.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/aligunesgit/MlOps/raw/main/m3_reproducibility/README.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
     </a>
   
 
 
-<h1 id="module-5-docker-kubernetes-overview">Module 5: Docker &amp; Kubernetes Overview</h1>
-<p>Week 5</p>
+<h1 id="module-3-reproducibility">Module 3: Reproducibility</h1>
+<p>Week 3</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
-<li>Understand Docker fundamentals: images, containers, registries, networking, volumes</li>
-<li>Be able to containerize an ML application and orchestrate multi-container apps with Docker Compose</li>
-<li>Understand Kubernetes architecture and core resource types</li>
-<li>Be able to run a local Kubernetes cluster with Minikube</li>
+<li>Understand why reproducibility needs more than a pinned <code>requirements.txt</code></li>
+<li>Be able to containerize a training script with Docker</li>
+<li>Be able to replace hardcoded hyperparameters with a versioned configuration file, using Hydra and
+  OmegaConf</li>
 </ul>
 <hr />
-<h2 id="1-why-containers-and-why-now">1. Why containers, and why now</h2>
-<p>Module 2, §3 named <strong>containers</strong> as one of the five things MLOps needs to version, alongside code,
-data, models, and features; this module is where that claim gets made concrete. Pinning your Python
-packages with <code>uv</code>/<code>conda</code> is not enough for true reproducibility: the operating system, system
-libraries, GPU drivers, and their exact versions all affect whether a training run behaves identically
-on your laptop and on a training cluster six months from now.</p>
-<p><strong>Docker</strong> solves this by packaging an application together with its entire runtime environment into
-an isolated unit that runs identically anywhere Docker itself runs. The same property that makes it
-good for reproducibility also makes it the basis for scale: once an environment is fully captured in an
-image, it conceptually doesn't matter whether you start it once on a laptop or a thousand times across
-a cluster, which is exactly the problem Kubernetes (§9-§11) exists to manage at scale.</p>
+<h2 id="1-why-reproducibility-needs-more-than-pinned-packages">1. Why reproducibility needs more than pinned packages</h2>
+<p>Module 2's version control gets code history right, but reproducing a specific training run needs two
+things pinning <code>uv</code>/<code>pip</code> alone does not give you:</p>
+<ul>
+<li><strong>The system underneath Python.</strong> The operating system, system libraries, and GPU drivers all affect
+  whether a training run behaves identically on your laptop and on a teammate's machine, even with the
+  exact same <code>pyproject.toml</code>.</li>
+<li><strong>The exact hyperparameters used.</strong> A learning rate or batch size hardcoded inside a script, or typed
+  once on the command line and never written down, is effectively lost the moment the terminal closes.</li>
+</ul>
+<p>Docker solves the first problem by packaging the whole runtime environment, not just the Python
+packages, into something that runs identically anywhere. Hydra and OmegaConf solve the second by
+turning hyperparameters into a versioned file instead of a value living only in your head or your shell
+history. This module covers both, since together they are what "reproduce this exact result" actually
+requires.</p>
 <h2 id="2-docker-core-concepts">2. Docker core concepts</h2>
 <p>Docker reduces to three ideas, each built from the one before it:</p>
 <pre class="mermaid"><code>flowchart LR
     DF["Dockerfile&lt;br/&gt;(build instructions)"] --&gt;|"docker build"| IMG["Docker image&lt;br/&gt;(static template)"]
-    IMG --&gt;|"docker run"| C1["Container"]
+    IMG --&gt;|"docker run"| C["Container"]
     IMG --&gt;|"docker push"| REG["Registry&lt;br/&gt;(e.g. Docker Hub)"]
     REG --&gt;|"docker pull"| IMG</code></pre>
 <ul>
 <li>A <strong>Dockerfile</strong> is a plain-text list of the commands needed to set up and run an application:
   install dependencies, copy code, specify the command that starts it.</li>
-<li><em>Building</em> a Dockerfile produces a <strong>Docker image</strong>: a static, self-contained package with
-  everything (OS libraries, dependencies, code) needed to run it.</li>
-<li><em>Running</em> an image produces a <strong>Docker container</strong>: a live, isolated process. The same image can be
+<li><em>Building</em> a Dockerfile produces a <strong>Docker image</strong>, a static, self-contained package with everything
+  (OS libraries, dependencies, code) needed to run it.</li>
+<li><em>Running</em> an image produces a <strong>Docker container</strong>, a live, isolated process. The same image can be
   run many times, producing many independent containers.</li>
 </ul>
-<p>Images are built from <strong>stacked, cached layers</strong>: each instruction in a Dockerfile adds one layer, and
-Docker only rebuilds the layers that changed. This is why, in practice, Dockerfiles deliberately install
-dependencies <em>before</em> copying application code (§4): the slow dependency layer then stays cached
-across every rebuild that only touches code.</p>
+<p>Images are built from stacked, cached layers: each instruction in a Dockerfile adds one layer, and
+Docker only rebuilds the layers that changed. This is why, in practice, a Dockerfile installs
+dependencies before copying application code (§3): the slow dependency layer then stays cached across
+every rebuild that only touches code.</p>
 <h2 id="3-the-everyday-docker-command-set">3. The everyday Docker command set</h2>
 <table>
 <thead>
@@ -1255,11 +1193,11 @@ across every rebuild that only touches code.</p>
 <tbody>
 <tr>
 <td><code>docker run &lt;image&gt;</code></td>
-<td>Starts a new container from an image (<code>--rm</code> auto-removes it on exit, <code>-it</code> for an interactive shell, <code>--name</code> to label it)</td>
+<td>Starts a new container from an image (<code>--rm</code> auto-removes it on exit, <code>-it</code> for an interactive shell)</td>
 </tr>
 <tr>
 <td><code>docker ps</code> / <code>docker ps -a</code></td>
-<td>Lists running containers / all containers, including stopped ones</td>
+<td>Lists running containers, or all containers including stopped ones</td>
 </tr>
 <tr>
 <td><code>docker images</code></td>
@@ -1267,7 +1205,7 @@ across every rebuild that only touches code.</p>
 </tr>
 <tr>
 <td><code>docker build -f &lt;file&gt; . -t &lt;tag&gt;</code></td>
-<td>Builds an image from a Dockerfile (the trailing <code>.</code> is the <em>build context</em>: the directory Docker can see while building)</td>
+<td>Builds an image from a Dockerfile (the trailing <code>.</code> is the build context)</td>
 </tr>
 <tr>
 <td><code>docker exec -it &lt;container&gt; sh</code></td>
@@ -1275,27 +1213,23 @@ across every rebuild that only touches code.</p>
 </tr>
 <tr>
 <td><code>docker cp &lt;container&gt;:&lt;path&gt; &lt;local_path&gt;</code></td>
-<td>Copies a file out of (or into) a running container</td>
-</tr>
-<tr>
-<td><code>docker logs &lt;container&gt;</code></td>
-<td>Shows a container's stdout/stderr</td>
+<td>Copies a file out of, or into, a running container</td>
 </tr>
 <tr>
 <td><code>docker rm &lt;container&gt;</code> / <code>docker rmi &lt;image&gt;</code></td>
-<td>Removes a stopped container / an image</td>
+<td>Removes a stopped container, or an image</td>
 </tr>
 <tr>
 <td><code>docker pull &lt;image&gt;</code> / <code>docker push &lt;image&gt;</code></td>
-<td>Downloads an image from a registry / uploads one to it</td>
+<td>Downloads an image from a registry, or uploads one to it</td>
 </tr>
 </tbody>
 </table>
-<p>Stopped containers pile up disk space over time; <code>docker run --rm</code> auto-removes a container the
-moment it exits, which is the right default for anything short-lived like a training job.</p>
-<h2 id="4-building-an-ml-training-image">4. Building an ML training image</h2>
-<p>A real project Dockerfile splits into two deliberately ordered halves (dependencies, then code)
-exactly to exploit the layer caching from §2:</p>
+<p>Stopped containers pile up disk space over time. <code>docker run --rm</code> auto-removes a container the moment
+it exits, which is the right default for a short-lived job like training.</p>
+<h2 id="4-building-a-training-image">4. Building a training image</h2>
+<p>A real project Dockerfile splits into two deliberately ordered halves, dependencies then code, exactly
+to exploit the layer caching from §2:</p>
 <div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">RUN</span><span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
@@ -1313,215 +1247,88 @@ exactly to exploit the layer caching from §2:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-f<span class="w"> </span>train.dockerfile<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span>train:latest
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--name<span class="w"> </span>experiment1<span class="w"> </span>train:latest
 </span></code></pre></div>
-<p>On Apple Silicon, building an image meant for a different CPU architecture (e.g. an <code>amd64</code> cloud
-runner) needs <code>--platform linux/amd64</code>, at the cost of a slower emulated build. Getting a trained model
-back out of a finished container uses <code>docker cp</code>, or, for anything ongoing, a bind-mounted volume
-(§5), which is also how a GPU training image would be run, given the Nvidia Container Toolkit
-installed on the host and a CUDA-enabled base image.</p>
-<h2 id="5-docker-networking-and-volumes">5. Docker networking and volumes</h2>
-<p>Two things a container needs beyond its own filesystem: a way to talk to the outside world, and a way
-to keep data alive after the container itself is gone.</p>
-<p><strong>Network types</strong> (set via <code>docker run --network &lt;type&gt;</code>):</p>
-<table>
-<thead>
-<tr>
-<th>Network type</th>
-<th>Behavior</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>bridge</code> (default)</td>
-<td>An isolated private network per host; containers on it can reach each other, and reach the outside world via NAT</td>
-</tr>
-<tr>
-<td><code>host</code></td>
-<td>The container shares the host machine's network stack directly: no isolation, fastest, rarely the right default</td>
-</tr>
-<tr>
-<td><code>none</code></td>
-<td>No networking at all, for a task with no need to reach anything</td>
-</tr>
-<tr>
-<td>user-defined bridge</td>
-<td>Like the default bridge, but containers can resolve each other <strong>by name</strong>: this is what Docker Compose (§7) sets up automatically for a multi-container app</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Volumes.</strong> A container's filesystem is deleted with the container by default, so anything that must
-survive needs an explicit volume:</p>
+<p>On Apple Silicon, building an image meant for a different CPU architecture (for instance an <code>amd64</code>
+cloud runner) needs <code>--platform linux/amd64</code>, at the cost of a slower emulated build. GPU training
+needs the Nvidia Container Toolkit installed on the host and a CUDA-enabled base image, run with
+<code>docker run --gpus all</code>.</p>
+<h2 id="5-sharing-images-and-registries">5. Sharing images and registries</h2>
+<p>A built image is only useful to others once it is shared, in one of two ways:</p>
 <ul>
-<li>A <strong>bind mount</strong> (<code>-v /host/path:/container/path</code>) maps a specific host directory straight into the
-  container, the simplest option for local development.</li>
-<li>A <strong>named volume</strong> (<code>-v my_data:/container/path</code>) is managed by Docker itself rather than pointing at
-  a specific host path, the better choice for anything meant to outlive a single machine's directory
-  layout, including in production.</li>
+<li><strong>Commit the Dockerfile itself</strong> to the repository (it is just a text file) and let others build the
+  image locally: simplest, but everyone pays the build cost.</li>
+<li><strong>Push the built image to a registry</strong>, such as <a href="https://hub.docker.com/">Docker Hub</a> or a cloud
+  provider's own registry (Module 6 covers Google Artifact Registry specifically), so others can
+  <code>docker pull</code> and run it immediately, no build step required.</li>
 </ul>
-<h2 id="6-sharing-images-and-registries">6. Sharing images and registries</h2>
-<p>A built image is only useful to others once it's shared, and there are two ways to do that:</p>
-<ul>
-<li><strong>Commit the Dockerfile itself</strong> to the repository (it's just a text file) and let others build the
-  image locally: simplest, but means everyone pays the build cost.</li>
-<li><strong>Push the built image to a registry</strong>: <a href="https://hub.docker.com/">Docker Hub</a> is the public default;
-  most cloud providers also run their own (AWS ECR, GCP Artifact Registry from Module 4, §7, Azure
-  Container Registry), so others can <code>docker pull</code> and run it immediately, no build step required.</li>
-</ul>
-<p>Committing the Dockerfile is what CI (Module 4) actually does on every push: build the image fresh
-inside the pipeline, run tests against it, and only push the image to a registry once it passes.</p>
-<h2 id="7-docker-compose-multi-container-applications">7. Docker Compose: multi-container applications</h2>
-<p>A real ML application is rarely one container: a training/inference service, a lightweight frontend,
-and maybe a database each want their own image, wired together. <strong>Docker Compose</strong> describes that
-whole stack declaratively in one <code>docker-compose.yml</code> instead of a sequence of manual <code>docker run</code>
-commands:</p>
-<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">services</span><span class="p">:</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">backend</span><span class="p">:</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./backend</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8000:8000"</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">frontend</span><span class="p">:</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./frontend</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"8501:8501"</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">backend</span>
+<h2 id="6-project-containerize-a-training-script-required">6. Project: containerize a training script (required)</h2>
+<p>Write a <code>train.dockerfile</code> for a real training script (per §4), build it, run it, and confirm the
+trained model artifact can be retrieved afterward, either via <code>docker cp</code> or a bind-mounted volume
+(<code>-v $(pwd)/models:/models</code>). Write a second, smaller Dockerfile for evaluation that mounts the trained
+model and test data as volumes at run time rather than baking them into the image.</p>
+<h2 id="7-the-problem-with-hardcoded-hyperparameters">7. The problem with hardcoded hyperparameters</h2>
+<p>A learning rate typed directly into a script is invisible to version control unless the script itself
+changes, and a value passed only on the command line is not written down anywhere once the terminal
+closes. Command-line arguments (<code>argparse</code>, <code>typer</code>) are more configurable than a hardcoded value, but
+still do not guarantee that a specific run's exact configuration gets systematically tracked.</p>
+<h2 id="8-config-files-with-hydra-and-omegaconf">8. Config files with Hydra and OmegaConf</h2>
+<p><strong>OmegaConf</strong> is a YAML-based hierarchical configuration library; <strong>Hydra</strong> builds on top of it to wire
+a config file directly into a script's entry point. A <code>config.yaml</code>:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">hyperparameters</span><span class="p">:</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">batch_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">64</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="nt">learning_rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e-4</span>
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w">      </span><span class="c1"># builds (if needed) and starts every service</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w">    </span><span class="c1"># stops and removes them</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">omegaconf</span><span class="w"> </span><span class="kn">import</span> <span class="n">OmegaConf</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">config</span> <span class="o">=</span> <span class="n">OmegaConf</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">"config.yaml"</span><span class="p">)</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">dl</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">hyperparameters</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span>
 </span></code></pre></div>
-<p>Compose automatically creates a user-defined bridge network (§5) for the stack, so <code>frontend</code> can reach
-<code>backend</code> by service name: no manual IP wiring, no port-hardcoding. This is the direct precursor to
-Kubernetes' <code>Service</code> resource (§10): Compose gives you name-based networking on one machine; Kubernetes
-gives you the same idea across a whole cluster.</p>
-<h2 id="8-docker-swarm-briefly">8. Docker Swarm, briefly</h2>
-<p><strong>Docker Swarm</strong> is Docker's own native clustering/orchestration mode, turning several Docker hosts
-into one virtual host, with built-in service discovery and load balancing, activated with a single
-<code>docker swarm init</code>. It is simpler to adopt than Kubernetes because it ships inside Docker itself with
-no separate installation. In practice, the industry consolidated around Kubernetes as the dominant
-orchestrator instead: broader ecosystem, every major cloud offers a managed version (Module 7); this
-is why the rest of this module, and the rest of this course, goes deep on Kubernetes rather than Swarm.</p>
-<h2 id="9-kubernetes-architecture">9. Kubernetes architecture</h2>
-<p><strong>Kubernetes (K8s)</strong> automates deploying, scaling, and healing containerized applications across a
-cluster of machines: restarting a crashed container, spreading replicas across nodes, routing traffic
-to whichever replicas are healthy. It follows a client-server split between a <strong>control plane</strong> that
-makes decisions and <strong>worker nodes</strong> that run the actual containers:</p>
-<pre class="mermaid"><code>flowchart TB
-    subgraph CP["Control plane"]
-        API["API server&lt;br/&gt;(front door for kubectl&lt;br/&gt;and every internal component)"]
-        ETCD["etcd&lt;br/&gt;(cluster state store)"]
-        SCHED["Scheduler&lt;br/&gt;(assigns Pods to nodes)"]
-        CM["Controller manager&lt;br/&gt;(reconciles actual vs. desired state)"]
-    end
-    subgraph WN["Worker node"]
-        KUBELET["kubelet&lt;br/&gt;(node agent)"]
-        PROXY["kube-proxy&lt;br/&gt;(node networking rules)"]
-        CR["Container runtime"]
-        POD["Pod(s)"]
-    end
-    API &lt;--&gt; KUBELET
-    KUBELET --&gt; CR
-    CR --&gt; POD
-    PROXY -.-&gt; POD</code></pre>
-<ul>
-<li>The <strong>API server</strong> is the single front door every request (from <code>kubectl</code>, from other control-plane
-  components, from the kubelet on each node) goes through.</li>
-<li><strong>etcd</strong> is the consistent key-value store holding the entire cluster's actual state.</li>
-<li>The <strong>scheduler</strong> decides which node a new Pod should run on; the <strong>controller manager</strong> continuously
-  compares desired state (what you asked for) against actual state and corrects any drift; this
-  reconciliation loop is the mechanism behind everything in §10.</li>
-<li>On each <strong>worker node</strong>, the <strong>kubelet</strong> is the agent that actually starts/stops containers as told,
-  the <strong>container runtime</strong> runs them, and <strong>kube-proxy</strong> implements the networking rules that let
-  Services (§10) route traffic to the right Pods.</li>
-<li><code>kubectl</code> is the CLI every one of these interactions goes through, whether run by a human or a CI/CD
-  pipeline.</li>
-</ul>
-<h2 id="10-kubernetes-core-resources">10. Kubernetes core resources</h2>
-<p>Everything you deploy is expressed as one of a small set of resource types, each solving a distinct
-problem a Docker Compose file (§7) doesn't have to, because it now spans an entire cluster rather than
-one machine:</p>
-<table>
-<thead>
-<tr>
-<th>Resource</th>
-<th>Role</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Pod</strong></td>
-<td>The smallest deployable unit: one or more tightly-coupled containers that share networking and storage</td>
-</tr>
-<tr>
-<td><strong>Deployment</strong></td>
-<td>Declaratively manages a set of identical Pod replicas: how many, which image, and how to roll out an update without downtime</td>
-</tr>
-<tr>
-<td><strong>Service</strong></td>
-<td>A stable network name/address that routes traffic to whichever Pods currently match it: Pods come and go, but the Service address doesn't</td>
-</tr>
-<tr>
-<td><strong>Ingress</strong></td>
-<td>Routes external HTTP(S) traffic into the cluster, to the right Service, based on hostname/path rules</td>
-</tr>
-<tr>
-<td><strong>ConfigMap</strong></td>
-<td>Non-secret configuration values, injected into Pods as environment variables or mounted files</td>
-</tr>
-<tr>
-<td><strong>Secret</strong></td>
-<td>The same idea as a ConfigMap, for sensitive values (API keys, credentials), access-controlled and encoded at rest</td>
-</tr>
-<tr>
-<td><strong>StatefulSet</strong></td>
-<td>Like a Deployment, but for Pods that need a stable identity and stable storage across restarts (databases, anything not safely interchangeable)</td>
-</tr>
-<tr>
-<td><strong>DaemonSet</strong></td>
-<td>Guarantees exactly one copy of a Pod runs on every node: the standard shape for log collectors and monitoring agents</td>
-</tr>
-<tr>
-<td><strong>PersistentVolumeClaim (PVC)</strong></td>
-<td>A Pod's request for durable storage that outlives the Pod itself, decoupling storage lifetime from container lifetime</td>
-</tr>
-</tbody>
-</table>
-<p>A <code>Deployment</code> + <code>Service</code> pair is the minimum needed to run an ML model behind a stable address that
-survives a Pod crashing and being replaced, which is exactly the shape §11's project builds.</p>
-<h2 id="11-running-locally-with-minikube">11. Running locally with Minikube</h2>
-<p><strong>Minikube</strong> runs a real, single-node Kubernetes cluster inside a local VM/container, enough to learn
-and test every resource in §10 without needing an actual multi-machine cluster or a cloud bill:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>minikube<span class="w"> </span>start<span class="w">          </span><span class="c1"># boots the local cluster</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w">       </span><span class="c1"># confirms kubectl can talk to it</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
+<p>Hydra's decorator wires the same file directly into a script's main function, and every value can then
+be overridden from the command line without touching the file:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">hydra</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nd">@hydra</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">config_name</span><span class="o">=</span><span class="s2">"config.yaml"</span><span class="p">)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">cfg</span><span class="p">):</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">hyperparameters</span><span class="o">.</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">cfg</span><span class="o">.</span><span class="n">hyperparameters</span><span class="o">.</span><span class="n">learning_rate</span><span class="p">)</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">main</span><span class="p">()</span>
 </span></code></pre></div>
-<p>Everything written against Minikube (the YAML manifests, the <code>kubectl</code> commands) is what you'd run
-unchanged against a managed cluster in production (Module 7 covers AWS EKS, GCP GKE, and Azure AKS
-specifically). For model-serving specifically, platforms like <a href="https://github.com/bentoml/Yatai">BentoML's
-Yatai</a> build on top of exactly this Deployment/Service pattern to
-simplify packaging and scaling a served model on Kubernetes; it's worth knowing the name exists once you're
-past the fundamentals here.</p>
-<h2 id="12-projects-for-this-module">12. Projects for this module</h2>
-<p>Four projects, each building directly on the section before it:</p>
-<ol>
-<li><strong>Deploy a Node.js app in a Docker container</strong>: write a Dockerfile for a minimal Node.js app,
-   build it, and run it with a published port (§2-§4).</li>
-<li><strong>Deploy an ML model in a Docker container</strong>: apply the training/serving Dockerfile pattern from
-   §4 to a real model, including getting the trained artifact out via a volume (§5).</li>
-<li><strong>Deploy a complete end-to-end ML model with Docker Compose</strong>: wire a model-serving backend and a
-   simple frontend together with <code>docker-compose.yml</code> (§7), talking to each other by service name.</li>
-<li><strong>Deploy an ML model in a Kubernetes cluster</strong>: take the image from project 2, run it on Minikube
-   behind a <code>Deployment</code> + <code>Service</code> (§9-§11), and confirm it survives a Pod being deleted and
-   recreated.</li>
-</ol>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python<span class="w"> </span>train.py<span class="w"> </span>hyperparameters.learning_rate<span class="o">=</span>1e-3
+</span></code></pre></div>
+<p>Hydra automatically writes a timestamped output directory per run, capturing the exact resolved
+configuration alongside whatever the script logs to it, which is the mechanism that actually delivers
+on this module's reproducibility promise: given that output directory, any run's exact settings are
+recoverable later. For a larger project, configs split hierarchically:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>conf/
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    config.yaml
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    experiments/
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>        exp1.yaml
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>        exp2.yaml
+</span></code></pre></div>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>python<span class="w"> </span>train.py<span class="w"> </span><span class="nv">experiment</span><span class="o">=</span>exp2
+</span></code></pre></div>
+<p>Hydra's <code>instantiate</code> utility goes one step further, constructing an actual Python object (an optimizer,
+a model class) directly from a config block instead of just reading scalar values:</p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">optimizer</span><span class="p">:</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">_target_</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">torch.optim.Adam</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span><span class="nt">lr</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1e-3</span>
+</span></code></pre></div>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">hydra</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">instantiate</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
+</span></code></pre></div>
+<h2 id="9-project-migrate-a-training-script-to-hydra-required">9. Project: migrate a training script to Hydra (required)</h2>
+<p>Take the training script from §6's Docker project, identify every hardcoded hyperparameter (learning
+rate, batch size, epoch count, seed), move them into a <code>config.yaml</code>, and decorate the script's entry
+point with <code>@hydra.main</code>. Confirm the same run can be reproduced exactly by pointing at a past run's
+saved output directory, and confirm a single hyperparameter can be overridden from the command line
+without editing the file.</p>
 <hr />
 <h2 id="summary">Summary</h2>
-<p>Containers close the last gap in the reproducibility story from Module 2, §3: pinning code, data, and
-model versions means little if the operating system underneath them can still drift. Docker (§1-§8)
-solves that for one machine or one multi-container stack; Kubernetes (§9-§11) solves the same problem at
-cluster scale, replacing Compose's single-host, name-based networking with a control plane that
-continuously reconciles desired state against actual state across many machines. Module 7 picks this up
-directly: every managed cloud ML platform ultimately runs your container on top of a Kubernetes-shaped
-control plane, whether or not it calls itself that.</p>
+<p>Reproducibility fails in two different, equally common ways: the environment underneath the code
+drifts, or the configuration used for a specific run is never actually written down anywhere. Docker
+(§2-§6) fixes the first by packaging the whole runtime, not just Python packages; Hydra and OmegaConf
+(§7-§9) fix the second by making every hyperparameter a versioned, overridable file instead of a value
+that only ever lived in a script or a terminal. Module 5 picks this up directly: a CI pipeline that
+rebuilds this same Docker image on every push is the automation layer this module's manual <code>docker
+build</code> becomes part of.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
@@ -1531,18 +1338,14 @@ control plane, whether or not it calls itself that.</p>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
-  <code>s3_reproducibility/docker.md</code>. DTU course 02476, Apache 2.0 licensed. Primary source material
-  this module's Docker concepts, Dockerfile pattern, and command walkthrough (§1-§6) are adapted from.</li>
-<li>Docker Docs. <a href="https://docs.docker.com/get-started/docker-overview/">"Docker overview"</a> and
-  <a href="https://docs.docker.com/engine/network/">"Networking overview."</a>. Source for the image/container
-  model (§2) and network types (§5).</li>
-<li>Docker Docs. <a href="https://docs.docker.com/compose/compose-file/">"Compose file reference."</a>. Source for
-  the Compose example in §7.</li>
-<li>Kubernetes Documentation. <a href="https://kubernetes.io/docs/concepts/overview/components/">"Kubernetes Components"</a>
-  and <a href="https://kubernetes.io/docs/concepts/workloads/">"Workloads."</a>. Source for the control
-  plane/node architecture (§9) and the resource list (§10).</li>
-<li><a href="https://minikube.sigs.k8s.io/docs/">Minikube documentation</a>. Source for the local-cluster workflow
-  in §11.</li>
+  <code>s3_reproducibility/docker.md</code> and <code>config_files.md</code>. DTU course 02476, Apache 2.0 licensed. Primary
+  source material this module's Docker and Hydra content is adapted from.</li>
+<li>Docker Docs. <a href="https://docs.docker.com/get-started/docker-overview/">"Docker overview."</a> Source for
+  the image and container model in §2.</li>
+<li><a href="https://hydra.cc/docs/intro/">Hydra documentation</a>. Source for the config composition, override, and
+  <code>instantiate</code> behavior in §8.</li>
+<li><a href="https://omegaconf.readthedocs.io/">OmegaConf documentation</a>. Source for the hierarchical YAML config
+  model underneath Hydra in §8.</li>
 </ul>
 
 
@@ -1566,7 +1369,7 @@ control plane, whether or not it calls itself that.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1576,7 +1379,7 @@ control plane, whether or not it calls itself that.</p>
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1607,7 +1410,7 @@ control plane, whether or not it calls itself that.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../m4_cicd_strategies/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M4 - CI/CD Strategies">
+          <a href="../m2_version_control/" class="md-footer__link md-footer__link--prev" aria-label="Previous: M2 - Organisation and Version Control">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1617,20 +1420,20 @@ control plane, whether or not it calls itself that.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                M4 - CI/CD Strategies
+                M2 - Organisation and Version Control
               </div>
             </div>
           </a>
         
         
           
-          <a href="../sprint_a_project/" class="md-footer__link md-footer__link--next" aria-label="Next: Project Sprint A">
+          <a href="../m4_debugging_profiling_logging/" class="md-footer__link md-footer__link--next" aria-label="Next: M4 - Debugging, Profiling and Logging">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Project Sprint A
+                M4 - Debugging, Profiling and Logging
               </div>
             </div>
             <div class="md-footer__button md-icon">

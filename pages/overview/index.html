@@ -319,14 +319,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -346,14 +346,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="../../m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -373,14 +373,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m3_git_essentials/" class="md-nav__link">
+      <a href="../../m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -400,14 +400,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m4_cicd_strategies/" class="md-nav__link">
+      <a href="../../m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -427,14 +427,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="../../m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -481,14 +481,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m6_feature_store/" class="md-nav__link">
+      <a href="../../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -508,14 +508,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -535,14 +535,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m8_llmops/" class="md-nav__link">
+      <a href="../../m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -562,14 +562,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m9_model_monitoring/" class="md-nav__link">
+      <a href="../../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -589,14 +589,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m10_automl_tools/" class="md-nav__link">
+      <a href="../../m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -817,83 +817,133 @@
 </thead>
 <tbody>
 <tr>
+<td>Command line, <code>.env</code> files</td>
+<td>Terminal fluency, environment variables</td>
+<td>M1</td>
+</tr>
+<tr>
+<td><code>uv</code> (or Conda + pip)</td>
+<td>Package/dependency management</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>VS Code, GitHub Copilot</td>
+<td>Editor, AI-assisted coding</td>
+<td>M1</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>Deep learning framework</td>
+<td>M1</td>
+</tr>
+<tr>
 <td>Git / GitHub</td>
 <td>Version control, collaboration</td>
-<td>M3</td>
+<td>M2</td>
 </tr>
 <tr>
-<td>GitHub Actions</td>
-<td>CI/CD</td>
-<td>M3 / M4</td>
+<td>Cookiecutter</td>
+<td>Project templating</td>
+<td>M2</td>
 </tr>
 <tr>
-<td>AWS CodePipeline / CodeBuild / CodeDeploy</td>
-<td>CI/CD on AWS</td>
-<td>M4</td>
+<td>Ruff, mypy</td>
+<td>Linting, formatting, type checking</td>
+<td>M2</td>
 </tr>
 <tr>
-<td>GCP Cloud Build / Cloud Deploy / Artifact Registry</td>
-<td>CI/CD on GCP</td>
-<td>M4</td>
+<td>DVC</td>
+<td>Data version control</td>
+<td>M2</td>
 </tr>
 <tr>
-<td>Azure Pipelines / Boards / Repos</td>
-<td>CI/CD on Azure</td>
-<td>M4</td>
-</tr>
-<tr>
-<td>Terraform (or equivalent)</td>
-<td>Infrastructure as Code</td>
-<td>M4</td>
+<td>Typer, Invoke</td>
+<td>CLIs, task automation</td>
+<td>M2</td>
 </tr>
 <tr>
 <td>Docker</td>
 <td>Containerization</td>
-<td>M5</td>
+<td>M3</td>
 </tr>
 <tr>
-<td>Kubernetes / Minikube</td>
-<td>Container orchestration</td>
-<td>M5</td>
+<td>Hydra, OmegaConf</td>
+<td>Configuration management</td>
+<td>M3</td>
 </tr>
 <tr>
-<td>Feast (or equivalent)</td>
-<td>Feature store</td>
-<td>M6</td>
-</tr>
-<tr>
-<td>AWS SageMaker</td>
-<td>Managed training/deployment (AWS)</td>
-<td>M7</td>
-</tr>
-<tr>
-<td>GCP Vertex AI</td>
-<td>Managed training/deployment (GCP)</td>
-<td>M7</td>
-</tr>
-<tr>
-<td>Azure Machine Learning</td>
-<td>Managed training/deployment (Azure)</td>
-<td>M7</td>
-</tr>
-<tr>
-<td>Vector database + embedding model (RAG)</td>
-<td>LLMOps</td>
-<td>M8</td>
-</tr>
-<tr>
-<td>Evidently AI (or equivalent)</td>
-<td>Data/model drift monitoring</td>
-<td>M9</td>
-</tr>
-<tr>
-<td>Cloud-native monitoring (CloudWatch/Cloud Monitoring/Azure Monitor)</td>
-<td>Observability</td>
-<td>M9</td>
+<td>Python debugger, profiler</td>
+<td>Debugging, profiling</td>
+<td>M4</td>
 </tr>
 <tr>
 <td>Weights &amp; Biases</td>
-<td>Experiment tracking, sweeps</td>
+<td>Experiment logging</td>
+<td>M4</td>
+</tr>
+<tr>
+<td>pytest</td>
+<td>Unit/data/model testing</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>GitHub Actions</td>
+<td>CI/CD</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>pre-commit</td>
+<td>Local quality gates</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>CML (Continuous Machine Learning)</td>
+<td>ML-specific CI automation</td>
+<td>M5</td>
+</tr>
+<tr>
+<td>Google Cloud Platform (Compute, Storage, Cloud Build, Secret Manager)</td>
+<td>Cloud compute, storage, build</td>
+<td>M6</td>
+</tr>
+<tr>
+<td>FastAPI</td>
+<td>Serving API</td>
+<td>M7</td>
+</tr>
+<tr>
+<td>ONNX, BentoML</td>
+<td>Portable model format, ML deployment</td>
+<td>M7</td>
+</tr>
+<tr>
+<td>Streamlit</td>
+<td>Frontend</td>
+<td>M7</td>
+</tr>
+<tr>
+<td>Cloud Functions, Cloud Run</td>
+<td>Deployment targets</td>
+<td>M7</td>
+</tr>
+<tr>
+<td>Evidently AI</td>
+<td>Data/model drift monitoring</td>
+<td>M8</td>
+</tr>
+<tr>
+<td>Prometheus, Cloud Monitoring</td>
+<td>System/infrastructure monitoring</td>
+<td>M8</td>
+</tr>
+<tr>
+<td>PyTorch DistributedDataParallel (DDP)</td>
+<td>Distributed training</td>
+<td>M9</td>
+</tr>
+<tr>
+<td>MkDocs Material, mkdocstrings</td>
+<td>Documentation</td>
 <td>M10</td>
 </tr>
 <tr>
@@ -902,8 +952,8 @@
 <td>M10</td>
 </tr>
 <tr>
-<td>H2O MLOps / Valohai / Domino / neptune.ai / Iguazio</td>
-<td>AutoML/MLOps platforms (survey only)</td>
+<td>SLURM (or equivalent scheduler)</td>
+<td>High performance clusters</td>
 <td>M10</td>
 </tr>
 </tbody>
@@ -930,7 +980,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 10:15:20">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     

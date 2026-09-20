@@ -12,7 +12,7 @@
         <link rel="prev" href="../..">
       
       
-        <link rel="next" href="../../m1_mlops_introduction/">
+        <link rel="next" href="../../m1_development_environment/">
       
       
         
@@ -462,14 +462,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m1_mlops_introduction/" class="md-nav__link">
+      <a href="../../m1_development_environment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M1 - MLOps Introduction
+    M1 - Development Environment
   
 
     
@@ -489,14 +489,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m2_ml_and_mlops_stages/" class="md-nav__link">
+      <a href="../../m2_version_control/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M2 - Overview of ML and MLOps Stages
+    M2 - Organisation and Version Control
   
 
     
@@ -516,14 +516,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m3_git_essentials/" class="md-nav__link">
+      <a href="../../m3_reproducibility/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M3 - Git Essentials
+    M3 - Reproducibility
   
 
     
@@ -543,14 +543,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m4_cicd_strategies/" class="md-nav__link">
+      <a href="../../m4_debugging_profiling_logging/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M4 - CI/CD Strategies
+    M4 - Debugging, Profiling and Logging
   
 
     
@@ -570,14 +570,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m5_docker_and_kubernetes/" class="md-nav__link">
+      <a href="../../m5_continuous_integration/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M5 - Docker and Kubernetes
+    M5 - Continuous Integration
   
 
     
@@ -624,14 +624,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m6_feature_store/" class="md-nav__link">
+      <a href="../../m6_the_cloud/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M6 - Feature Store
+    M6 - The Cloud
   
 
     
@@ -651,14 +651,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m7_cloud_mlops_deep_dive/" class="md-nav__link">
+      <a href="../../m7_deployment/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M7 - Cloud MLOps Deep Dive
+    M7 - Deployment
   
 
     
@@ -678,14 +678,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m8_llmops/" class="md-nav__link">
+      <a href="../../m8_monitoring/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M8 - LLMOps
+    M8 - Monitoring
   
 
     
@@ -705,14 +705,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m9_model_monitoring/" class="md-nav__link">
+      <a href="../../m9_scalable_applications/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M9 - Model Monitoring
+    M9 - Scalable Applications
   
 
     
@@ -732,14 +732,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../m10_automl_tools/" class="md-nav__link">
+      <a href="../../m10_extra/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    M10 - AutoML Tools
+    M10 - Extra
   
 
     
@@ -1056,8 +1056,7 @@ needed in the future.</p>
 learning model from a one-off experiment to a robust, scalable, monitored system running in production.
 It borrows heavily from DevOps (version control, CI/CD, containerization, infrastructure automation) and
 extends those ideas to the parts of the ML lifecycle that are unique to machine learning: data
-versioning, experiment tracking, model registries, data/model drift monitoring, and, increasingly, the
-operational concerns specific to large language models and feature stores.</p>
+versioning, experiment tracking, reproducible configuration, and data/model drift monitoring.</p>
 <p>The lifecycle a production ML system moves through is usually described in three phases:</p>
 <ol>
 <li><strong>Design</strong>: understand the problem, the requirements, and what data is available or needs sourcing.</li>
@@ -1074,9 +1073,9 @@ modern MLOps, plus two dedicated project sprints (Week 6 and Week 12) for applyi
 own group project. See the <a href="../timeplan/">time plan</a> for the full week-by-week breakdown and the
 <a href="../projects/">projects page</a> for how the group project and grading work.</p>
 <p>Think of this course as a toolbox, not a certification. You will not leave as an expert in every single
-tool covered: Docker, Kubernetes, three different cloud platforms, half a dozen MLOps frameworks. The
-goal is that you leave knowing <em>what exists</em> and <em>when to reach for it</em>, so that when a real project
-calls for one of these tools you know where to start.</p>
+tool covered: Docker, Hydra, Google Cloud, distributed training. The goal is that you leave knowing
+<em>what exists</em> and <em>when to reach for it</em>, so that when a real project calls for one of these tools you
+know where to start.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>To get the most out of this course, you should have prior experience with:</p>
 <ul>
@@ -1084,24 +1083,22 @@ calls for one of these tools you know where to start.</p>
   underfitting, etc.)</li>
 <li>Basic knowledge of deep learning (backpropagation, convolutional neural networks, autoencoders,
   etc.)</li>
-<li>Coding in PyTorch. On the first day, we provide some exercises in PyTorch to get everyone's skills
-  up to date as fast as possible.</li>
-<li>Docker and command line basics</li>
+<li>Coding in PyTorch. Module 1 includes a PyTorch refresher to get everyone's skills up to date as fast
+  as possible.</li>
 <li>At least 1 year of general programming experience</li>
 </ul>
 <h2 id="setup">Setup</h2>
 <p>Everything below is worth installing and setting up <strong>before Week 1</strong>, even though some of it (Docker,
-<code>kubectl</code>, the cloud CLIs) isn't touched until later modules. The goal is to remove "I couldn't
-install X" as a reason to fall behind once the course actually needs it.</p>
+the <code>gcloud</code> CLI) isn't touched until later modules. The goal is to remove "I couldn't install X" as a
+reason to fall behind once the course actually needs it.</p>
 <h3 id="languages-used-in-this-course">Languages used in this course</h3>
 <ul>
 <li><strong>Python 3.11+</strong>, the primary language for essentially every exercise: training scripts, APIs,
-  pipeline definitions, and every cloud SDK (<code>boto3</code>, <code>google-cloud-aiplatform</code>, <code>azure-ai-ml</code>).</li>
-<li><strong>YAML</strong>, configuration and pipeline definitions: GitHub Actions workflows (Module 4), Kubernetes
-  manifests (Module 5), Azure Pipelines (Module 4), and this site's own <code>mkdocs.yml</code>.</li>
+  pipeline definitions, and the <code>google-cloud-aiplatform</code> SDK.</li>
+<li><strong>YAML</strong>, configuration and pipeline definitions: GitHub Actions workflows (Module 5), Hydra config
+  files (Module 3), and this site's own <code>mkdocs.yml</code>.</li>
 <li><strong>Bash/shell</strong>: every CLI command in every module, plus <code>Dockerfile</code> <code>RUN</code> steps and CI scripts.</li>
-<li><strong>Dockerfile syntax</strong> (Module 5) and <strong>HCL</strong> (Terraform, Module 4, for infrastructure as code): not
-  full programming languages, but you'll read and write both.</li>
+<li><strong>Dockerfile syntax</strong> (Module 3): not a full programming language, but you'll read and write it.</li>
 </ul>
 <p>You don't need to know all of these on day one. Python is the only one you should already be
 comfortable with (see Prerequisites above); the rest are taught as they come up.</p>
@@ -1117,32 +1114,24 @@ comfortable with (see Prerequisites above); the rest are taught as they come up.
 <tbody>
 <tr>
 <td><strong>GitHub</strong></td>
-<td>Module 3</td>
+<td>Module 2</td>
 <td>Free. Used for every module's exercises and the group project repo.</td>
 </tr>
 <tr>
-<td><strong>Azure (<a href="https://azure.microsoft.com/en-us/free/students">Azure for Students</a>)</strong></td>
-<td>Module 4, 7, 9</td>
-<td>No credit card required: verified with your academic email. $100 credit for 12 months plus 65+ always-free services, renewable every year you're still a student. This is the only cloud account this course requires; see the note below on why.</td>
+<td><strong>Google Cloud (GCP)</strong></td>
+<td>Module 6, 7, 8</td>
+<td>Claim your institution's education credits if available, or GCP's own free-trial credit otherwise. A credit card is typically required to activate a free trial even though it isn't charged automatically; watch the billing dashboard regardless.</td>
 </tr>
 <tr>
 <td><strong>Weights &amp; Biases</strong></td>
-<td>Module 10</td>
+<td>Module 4</td>
 <td>Free for personal/academic use.</td>
 </tr>
 </tbody>
 </table>
-<p>If you're signing up for Azure with a university-managed account, create your course
-subscription under "no organization" where possible: organization-managed accounts sometimes block
-creating the service-account keys/credentials you'll need later (e.g. for GitHub Actions to
-authenticate to the cloud).</p>
-<p><strong>Why Azure only, and not AWS/GCP too:</strong> AWS's no-credit-card option (AWS Educate's Starter Account) is
-a heavily restricted sandbox (one region, no IAM/billing dashboard, session timeouts), and GCP's
-standard student credit still requires entering a card at signup. Azure for Students is the one option
-that's genuinely free, uncapped-in-scope within its credit, and requires no card, so this course
-standardizes on it for every cloud exercise. Module 4, 7, and 9 still <em>cover</em> AWS and GCP conceptually
-(so you recognize the equivalent service on either), but every hands-on project in those modules should
-be done on Azure.</p>
+<p>If you're signing up for GCP with a university-managed account, create your course project under "No
+organization" where possible: organization-managed accounts sometimes block creating the
+service-account keys you'll need later (e.g. for GitHub Actions to authenticate to the cloud).</p>
 <h3 id="tools-to-install-locally">Tools to install locally</h3>
 <table>
 <thead>
@@ -1165,7 +1154,7 @@ be done on Azure.</p>
 </tr>
 <tr>
 <td><strong>Git</strong></td>
-<td>Module 3</td>
+<td>Module 2</td>
 <td><a href="https://git-scm.com/downloads/">git-scm.com/downloads</a></td>
 </tr>
 <tr>
@@ -1175,23 +1164,13 @@ be done on Azure.</p>
 </tr>
 <tr>
 <td><strong>Docker Desktop</strong> (or OrbStack on macOS)</td>
-<td>Module 5</td>
+<td>Module 3</td>
 <td><a href="https://docs.docker.com/get-docker/">docs.docker.com/get-docker</a></td>
 </tr>
 <tr>
-<td><strong>kubectl</strong></td>
-<td>Module 5</td>
-<td><a href="https://kubernetes.io/docs/tasks/tools/">kubernetes.io/docs/tasks/tools</a></td>
-</tr>
-<tr>
-<td><strong>Minikube</strong></td>
-<td>Module 5</td>
-<td><a href="https://minikube.sigs.k8s.io/docs/start/">minikube.sigs.k8s.io/docs/start</a></td>
-</tr>
-<tr>
-<td><strong>Azure CLI</strong> (<code>az</code>)</td>
-<td>Module 4, 7, 9</td>
-<td><a href="https://learn.microsoft.com/en-us/cli/azure/install-azure-cli">learn.microsoft.com/cli/azure/install-azure-cli</a></td>
+<td><strong>Google Cloud CLI</strong> (<code>gcloud</code>)</td>
+<td>Module 6, 7, 8</td>
+<td><a href="https://cloud.google.com/sdk/docs/install">cloud.google.com/sdk/docs/install</a></td>
 </tr>
 </tbody>
 </table>
@@ -1201,7 +1180,7 @@ be done on Azure.</p>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uv<span class="w"> </span>sync
 </span></code></pre></div>
 <p>This installs every dependency listed in <code>pyproject.toml</code>, including the per-module exercise
-dependencies (Feast, FastAPI, the cloud SDKs, Evidently, Optuna, W&amp;B, and the rest) tracked under
+dependencies (Hydra, FastAPI, the Google Cloud SDK, Evidently, Optuna, W&amp;B, and the rest) tracked under
 <code>[dependency-groups.exercises]</code>. Check that file if you want to see exactly which package a given
 module's exercises will need.</p>
 <h2 id="prescribed-books">Prescribed books</h2>
@@ -1240,7 +1219,7 @@ engineering, and the distributed-systems foundations underneath most cloud MLOps
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
   </span>
 
     
@@ -1298,13 +1277,13 @@ engineering, and the distributed-systems foundations underneath most cloud MLOps
         
         
           
-          <a href="../../m1_mlops_introduction/" class="md-footer__link md-footer__link--next" aria-label="Next: M1 - MLOps Introduction">
+          <a href="../../m1_development_environment/" class="md-footer__link md-footer__link--next" aria-label="Next: M1 - Development Environment">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                M1 - MLOps Introduction
+                M1 - Development Environment
               </div>
             </div>
             <div class="md-footer__button md-icon">
