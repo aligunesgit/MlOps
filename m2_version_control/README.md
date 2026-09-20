@@ -29,6 +29,12 @@ checkout of the current state, so you can commit and inspect history entirely of
 reduces to two ideas: a graph of **commits** (each one a full snapshot, identified by a hash) and a
 **staging area** sitting between your files and that graph.
 
+<figure markdown>
+![xkcd: Git](https://imgs.xkcd.com/comics/git.png)
+<figcaption><a href="https://xkcd.com/1597/">xkcd #1597</a>, CC BY-NC 2.5. DTU's own Git module uses
+the same comic to make the same point.</figcaption>
+</figure>
+
 ```mermaid
 flowchart LR
     W["Working directory"] -->|"git add"| S["Staging area"]
