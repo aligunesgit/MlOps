@@ -38,7 +38,7 @@ exercises = [
   # M4 Debugging, profiling and logging
   "wandb<=0.23",
   # M5 Continuous integration
-  "pytest<=8.4.2",
+  "pytest<=9.1.1",
   "coverage<=7.11.3",
   # M6 The cloud (Python-side SDK only, gcloud CLI installed separately)
   "google-cloud-storage<=3.4",
