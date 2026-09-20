@@ -31,7 +31,7 @@ exercises = [
   "cookiecutter<=2.6",
   "dvc<=3.64",
   "typer<=0.19",
-  "mypy<=1.18.2",
+  "mypy<=2.3.1",
   # M3 Reproducibility (Docker itself is installed separately, not a Python package)
   "hydra-core<=1.4",
   "omegaconf<=2.4",
