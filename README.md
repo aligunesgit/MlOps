@@ -14,9 +14,9 @@
 | Course materials | *TBD* |
 | Video lectures | [YouTube playlist](https://www.youtube.com/playlist?list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK) |
 | Documentation | *TBD* |
-| Course platform (deadlines, homework) | *TBD* |
-| Communication channel | *TBD* |
-| Announcements | *TBD* |
+| Course platform (deadlines, homework) | Atlas-OIS |
+| Communication channel | Atlas-OIS |
+| Announcements | Atlas-OIS |
 | FAQ | *TBD* |
 
 ## Course information
@@ -72,10 +72,41 @@ Specifically, start at the [Introduction page](https://aligunesgit.github.io/MlO
 soft introduction to MLOps and how this course is organized, then follow the
 [Time plan](https://aligunesgit.github.io/MlOps/pages/timeplan/) week by week.
 
-## Course organization
+## 💻 Course setup
 
-The course is organized into 10 content modules (M1-M10) and 2 project sprint weeks (Sprint A, Sprint
-B). Each module has its own folder with a `README.md` and `exercise_files/`.
+Start by creating one parent folder on your machine to hold everything for this course:
+
+```
+mlops-course/   # call this whatever you like
+    └── ...
+```
+
+Inside it, clone this repository:
+
+```bash
+git clone https://github.com/aligunesgit/MlOps.git
+```
+
+No Git installed yet? Grab the ZIP from this page's "Code" button and unzip it into that same folder
+for now — Module 3 covers Git itself in depth. This repository does get updated during the semester, so
+get in the habit of running `git pull` from time to time to pick up the latest changes. See the
+[Setup section](https://aligunesgit.github.io/MlOps/pages/before/#setup) of the Introduction page for
+the full account/tool checklist.
+
+## 📢 Communication
+
+This course uses **Atlas-OIS** for official announcements, deadlines, and course materials — check it
+at least once a day during the semester so you don't miss an update. For a question about a specific
+module or the group project, email the course instructor directly rather than waiting for the next
+session — there's a good chance someone else has the exact same question, so don't hesitate to ask
+early.
+
+## 📂 Course organization
+
+Every module below is required — unlike some MLOps courses, there's no optional/core split, since the
+group project in Sprint A and Sprint B builds directly on tools introduced in each one. The course is
+organized into 10 content modules (M1-M10) and 2 project sprint weeks (Sprint A, Sprint B). Each module
+has its own folder with a `README.md` and `exercise_files/`.
 
 | Week | Module | Topic |
 |------|--------|-------|
@@ -91,6 +122,41 @@ B). Each module has its own folder with a `README.md` and `exercise_files/`.
 | 10 | [M9](m9_model_monitoring/README.md)  | Understanding Model Monitoring |
 | 11 | [M10](m10_automl_tools/README.md) | Introduction to AutoML Tools |
 | 12 | [Sprint B](sprint_b_final_project/README.md) | Project Sprint B (final) |
+
+## 🏗️ Recommended folder structure
+
+Keeping this repository and your own group project in separate folders, each with its own virtual
+environment, avoids dependency conflicts between the two. Inside the parent folder from the Course
+setup section above:
+
+```
+mlops-course/                        # call this whatever you like
+    ├── MlOps/                       # this repository
+    │   ├── .git/
+    │   ├── .venv/
+    │   ├── uv.lock
+    │   ├── pyproject.toml
+    │   ├── m1_mlops_introduction/exercise_files/
+    │   ├── m2_ml_and_mlops_stages/exercise_files/
+    │   └── ...                      # one exercise_files/ per module
+    ├── group-project/                # your own repo, created in Sprint A (Week 6)
+    │   ├── .git/
+    │   ├── .venv/
+    │   ├── uv.lock
+    │   ├── pyproject.toml
+    │   └── ...                      # carried through to submission in Sprint B (Week 12)
+    └── ...                           # any other personal notes
+```
+
+* `MlOps/` is this repository — every module's hands-on exercises live inside its own
+  `exercise_files/` folder, so there's no separate exercises folder to maintain outside of it.
+* `group-project/` is a completely separate repository that you and your teammates create yourselves
+  in Sprint A (see Module 3 for the Git workflow) and carry through to submission in Sprint B. Keeping
+  it separate means its `pyproject.toml`/`uv.lock` and virtual environment never conflict with this
+  repository's.
+
+Avoid spaces in folder names — command-line tools handle them poorly. If you need example code or
+exercise files from this repository for your group project, just copy the relevant file over.
 
 ## Course books
 
