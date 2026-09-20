@@ -1160,7 +1160,7 @@
   
 
 
-<h1 id="module-4-cicd-strategies-for-aws-azure-gcp-and-github-actions">Module 4 — CI/CD Strategies for AWS, Azure, GCP, and GitHub Actions</h1>
+<h1 id="module-4-cicd-strategies-for-aws-azure-gcp-and-github-actions">Module 4: CI/CD Strategies for AWS, Azure, GCP, and GitHub Actions</h1>
 <p>Week 4</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1174,19 +1174,19 @@
 <p><strong>Continuous Integration (CI)</strong> is the practice of automatically building and testing a codebase every
 time it changes, so a bug introduced by one commit is caught in minutes rather than discovered weeks
 later by a user. <strong>Continuous Delivery/Deployment (CD)</strong> picks up where CI leaves off: a change that
-passes its checks is automatically packaged and shipped — to a staging environment (Delivery) or
+passes its checks is automatically packaged and shipped, either to a staging environment (Delivery) or
 straight to production (Deployment), depending on how much a team trusts its own automation.</p>
 <p>As Martin Fowler put it: <em>"Continuous Integration doesn't get rid of bugs, but it does make them
-dramatically easier to find and remove."</em> CI/CD does not make a codebase correct — it makes correctness
+dramatically easier to find and remove."</em> CI/CD does not make a codebase correct; it makes correctness
 <em>checkable on every change</em>, which is the precondition for moving fast without breaking things.</p>
 <h2 id="2-cicd-challenges-in-machine-learning">2. CI/CD challenges in machine learning</h2>
-<p>Classical CI/CD — lint, unit test, build, deploy — was designed for deterministic code. Machine
+<p>Classical CI/CD (lint, unit test, build, deploy) was designed for deterministic code. Machine
 learning breaks that assumption in a specific way: the same code can produce a different, still
 "correct-looking" model depending on the data it was trained on. That single fact cascades into several
 ML-specific CI/CD challenges that have no equivalent in traditional software:</p>
 <ul>
 <li><strong>What do you even test?</strong> A sorting function has one correct output. A model has a <em>distribution</em> of
-  acceptable outputs — testing means checking behavior (does it beat a baseline, is it invariant to
+  acceptable outputs: testing means checking behavior (does it beat a baseline, is it invariant to
   irrelevant changes) rather than asserting one exact value.</li>
 <li><strong>Data testing, not just code testing.</strong> A pipeline can pass every unit test and still ship a broken
   model if the training data silently changed shape, distribution, or label balance.</li>
@@ -1194,7 +1194,7 @@ ML-specific CI/CD challenges that have no equivalent in traditional software:</p
   non-determinism), so "did this pass" sometimes means "did this land within an acceptable range," not
   "did this match exactly."</li>
 <li><strong>Slow feedback loops.</strong> A full training run can take hours, which conflicts with CI's core promise of
-  fast feedback — most teams solve this by testing on a small data subset or a few training steps in CI,
+  fast feedback; most teams solve this by testing on a small data subset or a few training steps in CI,
   and reserving full training for a separate, longer-running pipeline.</li>
 <li><strong>The pipeline has more moving parts to version and gate.</strong> Code, data, features, and model all need
   their own quality gate, not just the code (Module 2, §3).</li>
@@ -1209,7 +1209,7 @@ problem, each running earlier and faster than the one after it:</p>
     CML --&gt; DEP["Deploy"]
     DEP -.retrain signal.-&gt; PC</code></pre>
 <ul>
-<li><strong>Pre-commit hooks</strong> run on your machine, before a commit is even created — the cheapest place to
+<li><strong>Pre-commit hooks</strong> run on your machine, before a commit is even created: the cheapest place to
   catch a problem. A <code>.pre-commit-config.yaml</code> wires checks like trailing-whitespace removal, YAML
   validation, and <code>ruff</code> linting/formatting into <code>git commit</code> itself:</li>
 </ul>
@@ -1227,21 +1227,22 @@ problem, each running earlier and faster than the one after it:</p>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ruff-format</span>
 </span></code></pre></div>
 <p><code>pre-commit install</code> wires it in; <code>pre-commit run --all-files</code> checks the whole repo, not just staged
-  files. In an emergency, <code>git commit --no-verify</code> skips the hooks — a habit worth using rarely and
+  files. In an emergency, <code>git commit --no-verify</code> skips the hooks; it's a habit worth using rarely and
   deliberately, not by default.</p>
 <ul>
 <li>
 <p><strong>CI</strong> runs remotely on every push/PR: unit tests, data tests (does the dataset have the expected
   shape and label balance), and model tests (does the model produce the expected output shape on a
-  known input) — see Module 3's branching model (§3) for how this gates a pull request before merge.</p>
+  known input). See Module 3's branching model (§3) for how this gates a pull request before merge.</p>
 </li>
 <li>
-<p><strong>CD</strong> builds and packages what CI just validated — typically a container image (Module 5) tagged
+<p><strong>CD</strong> builds and packages what CI just validated: typically a container image (Module 5) tagged
   with the commit hash, ready to hand to a deployment step.</p>
 </li>
 <li>
-<p><strong>CML</strong> (§9) is the layer unique to ML: automated checks on the <em>training run itself</em> — did it
-  converge, did a tracked metric actually improve, is this the right dataset version.</p>
+<p><strong>CML</strong> (§9) is the layer unique to ML: automated checks on the <em>training run itself</em>, such as
+  whether it converged, whether a tracked metric actually improved, and whether this is the right
+  dataset version.</p>
 </li>
 <li>
 <p><strong>Deploy</strong> ships the packaged, gated artifact, and production monitoring (Module 9) closes the loop by
@@ -1299,18 +1300,18 @@ services that implement the pipeline in §3. The names differ; the roles they pl
 </tr>
 <tr>
 <td>Work tracking</td>
-<td>—</td>
-<td>—</td>
+<td>N/A</td>
+<td>N/A</td>
 <td>Azure Boards</td>
 <td>GitHub Issues/Projects</td>
 </tr>
 </tbody>
 </table>
 <p>§5-§8 go one level deeper into each column. Which one a team ends up using is often decided by where
-the rest of their infrastructure already lives, not by any one service being objectively best — a team
+the rest of their infrastructure already lives, not by any one service being objectively best: a team
 already deep in AWS rarely benefits from bolting on Azure DevOps for CI/CD alone.</p>
 <p><strong>This course's required hands-on projects use GitHub Actions (§5) and Azure DevOps (§8)
-specifically</strong> — see the <a href="../pages/before/#setup">Setup page</a> for why (Azure for Students is the one
+specifically</strong>. See the <a href="../pages/before/#setup">Setup page</a> for why (Azure for Students is the one
 no-credit-card option that covers everything this course needs). §6-§7 still cover AWS and GCP in full,
 so you can recognize the equivalent service on whichever cloud a future job actually uses, but they're
 conceptual here rather than a required project.</p>
@@ -1318,12 +1319,12 @@ conceptual here rather than a required project.</p>
 <p><strong>GitHub Actions</strong> is GitHub's own CI/CD engine, free for 2,000 build-minutes/month on public and many
 private repos. A workflow is a YAML file under <code>.github/workflows/</code>, with four parts:</p>
 <ul>
-<li><code>name</code> — the workflow's display name</li>
-<li><code>on</code> — the trigger: <code>push</code>, <code>pull_request</code>, <code>schedule</code>, <code>workflow_dispatch</code>, each scoped to branches
+<li><code>name</code>: the workflow's display name</li>
+<li><code>on</code>: the trigger, one of <code>push</code>, <code>pull_request</code>, <code>schedule</code>, <code>workflow_dispatch</code>, each scoped to branches
   or paths</li>
-<li><code>jobs</code> — one or more jobs, parallel by default, each with a <code>runs-on</code> (the OS/runner) and a list of
+<li><code>jobs</code>: one or more jobs, parallel by default, each with a <code>runs-on</code> (the OS/runner) and a list of
   <code>steps</code></li>
-<li><code>steps</code> — the actual commands, either shell commands or reusable third-party <strong>actions</strong>
+<li><code>steps</code>: the actual commands, either shell commands or reusable third-party <strong>actions</strong>
   (<code>uses: actions/checkout@v5</code>)</li>
 </ul>
 <p>A minimal test workflow:</p>
@@ -1355,7 +1356,7 @@ the rest running even if one combination fails, so a single flaky combination do
 the others. <strong>Branch protection rules</strong> (<code>Settings → Rules → Rulesets</code>) turn a green workflow run from a
 nice-to-have into an enforced gate: require a pull request, require this workflow to pass, require a
 reviewer's approval, before a merge into <code>main</code> is even possible. <strong>Dependabot</strong> closes the loop on a
-different axis — it opens PRs automatically when a dependency (or an Action's own pinned version) falls
+different axis, opening PRs automatically when a dependency (or an Action's own pinned version) falls
 out of date:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># .github/dependabot.yaml</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
@@ -1368,11 +1369,11 @@ out of date:</p>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nt"> interval</span><span class="p">:</span><span class="w"> </span><span class="s">"weekly"</span><span class="w"> </span><span class="p p-Indicator">}</span>
 </span></code></pre></div>
 <p><strong>GitHub Pages</strong> is the natural deploy target for a workflow that publishes documentation rather than a
-running service — a push to <code>main</code> triggers a job that builds a static site and publishes it. This
+running service: a push to <code>main</code> triggers a job that builds a static site and publishes it. This
 course's own site is deployed exactly this way: a <code>deploy docs</code> workflow runs <code>mkdocs gh-deploy</code> on
 every push to <code>main</code>, and a separate <code>check docs</code> workflow runs <code>mkdocs build --strict</code> on every pull
 request, so a broken link or a malformed page is caught in review, not after it's live.</p>
-<p><strong>Project: GitHub Actions DevOps Pipeline (required)</strong> — wire a repository with three workflows: a test workflow
+<p><strong>Project: GitHub Actions DevOps Pipeline (required).</strong> Wire a repository with three workflows: a test workflow
 (matrix build + pytest), a lint/format check (<code>ruff</code>), and a docs-or-package deploy step gated by
 <code>branches: [main]</code>, then turn on a branch protection rule that requires the first two to pass before a
 PR can merge.</p>
@@ -1409,7 +1410,7 @@ PR can merge.</p>
 </tr>
 </tbody>
 </table>
-<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.</em>
+<p><em>Conceptual coverage only: this course's required hands-on pipeline project is the Azure one in §8.</em>
 If you have your own AWS access, the equivalent exercise is the same shape: a CodePipeline that pulls
 from a source repo, runs a CodeBuild step executing the test suite, and deploys via CodeDeploy to a
 target environment on a successful build.</p>
@@ -1448,11 +1449,11 @@ target environment on a successful build.</p>
 </tr>
 <tr>
 <td><strong>Cloud Run</strong></td>
-<td>The common deploy target for containerized services — scales to zero, pay-per-request</td>
+<td>The common deploy target for containerized services: scales to zero, pay-per-request</td>
 </tr>
 </tbody>
 </table>
-<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure one in §8.</em>
+<p><em>Conceptual coverage only: this course's required hands-on pipeline project is the Azure one in §8.</em>
 If you have your own GCP access, the equivalent exercise is the same shape: a Cloud Build trigger that
 builds a container on every push, pushes it to Artifact Registry, and a Cloud Deploy pipeline that
 promotes it to Cloud Run.</p>
@@ -1469,7 +1470,7 @@ and CI/CD together, not a set of separate point services.</p>
 <tbody>
 <tr>
 <td><strong>Azure Boards</strong></td>
-<td>Work-item tracking (backlogs, sprints, Kanban boards) — the project-management layer the other three clouds don't bundle in</td>
+<td>Work-item tracking (backlogs, sprints, Kanban boards), the project-management layer the other three clouds don't bundle in</td>
 </tr>
 <tr>
 <td><strong>Azure Repos</strong></td>
@@ -1509,7 +1510,7 @@ two conceptually easy once you know one of them:</p>
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pytest tests/</span>
 </span></code></pre></div>
 <p><strong>Infrastructure as Code (IaC) with Azure DevOps.</strong> IaC means defining infrastructure (VMs, networks,
-managed services) in machine-readable files instead of clicking through a console — that definition can
+managed services) in machine-readable files instead of clicking through a console; that definition can
 then be versioned, reviewed in a PR, and applied by a pipeline like any other artifact. <strong>Terraform</strong>
 (HashiCorp) is the most common multi-cloud choice:</p>
 <div class="language-hcl highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kr">provider</span><span class="w"> </span><span class="nv">"azurerm"</span><span class="w"> </span><span class="p">{</span>
@@ -1526,23 +1527,23 @@ then be versioned, reviewed in a PR, and applied by a pipeline like any other ar
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>terraform<span class="w"> </span>apply<span class="w">   </span><span class="c1"># provision/update infrastructure to match the config</span>
 </span></code></pre></div>
 <p>Wired into Azure Pipelines, a <code>terraform plan</code> typically runs on a pull request (so reviewers see the
-infrastructure diff before merge) and <code>terraform apply</code> runs on merge to <code>main</code> — the same
+infrastructure diff before merge) and <code>terraform apply</code> runs on merge to <code>main</code>: the same
 CI-then-CD-gate pattern from §3, applied to infrastructure instead of application code.</p>
-<p><strong>Project: Azure DevOps Pipeline (required)</strong> — an <code>azure-pipelines.yml</code> that builds and tests on every
+<p><strong>Project: Azure DevOps Pipeline (required).</strong> An <code>azure-pipelines.yml</code> that builds and tests on every
 PR (gated by Azure Test Plans results), publishes a package to Azure Artifacts, and a release stage
 that applies a small Terraform configuration to provision the target environment.</p>
 <h2 id="9-continuous-machine-learning-cml">9. Continuous Machine Learning (CML)</h2>
 <p>Everything in §5-§8 is DevOps automation that applies to any software project. <strong>Continuous Machine
 Learning (CML)</strong> is the layer specific to ML: automating the questions classical CI/CD can't
-answer — <em>did I train on the right data version, did the model converge, did a tracked metric actually
+answer: <em>did I train on the right data version, did the model converge, did a tracked metric actually
 improve, did I over/underfit.</em> It sits on top of whichever CI/CD engine a team already uses (most
 commonly GitHub Actions) rather than replacing it, and maps onto the top of the MLOps maturity model
 from Module 2, §1.</p>
 <p>Two patterns cover most real CML setups:</p>
 <ul>
-<li><strong>Data-triggered workflows</strong> — a workflow that only fires when tracked data changes (e.g. a <code>.dvc</code>
+<li><strong>Data-triggered workflows</strong>: a workflow that only fires when tracked data changes (e.g. a <code>.dvc</code>
   metadata file), pulls the new data version, computes dataset statistics (sample counts, class
-  balance), and posts them as a comment directly on the pull request — so a reviewer sees the <em>data</em>
+  balance), and posts them as a comment directly on the pull request, so a reviewer sees the <em>data</em>
   diff, not just the code diff:</li>
 </ul>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nt">on</span><span class="p">:</span>
@@ -1551,17 +1552,17 @@ from Module 2, §1.</p>
 </span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">"**/*.dvc"</span>
 </span></code></pre></div>
 <ul>
-<li><strong>Model-registry-triggered workflows</strong> — a model registry (e.g. Weights &amp; Biases, MLflow) sends a
+<li><strong>Model-registry-triggered workflows</strong>: a model registry (e.g. Weights &amp; Biases, MLflow) sends a
   webhook when a new model version is tagged <code>staging</code>, firing a <code>repository_dispatch</code> event that runs
-  performance tests against it and — if it passes — promotes the model to a <code>production</code> alias via the
+  performance tests against it and, if it passes, promotes the model to a <code>production</code> alias via the
   registry's API.</li>
 </ul>
 <p>The last step is exactly where <strong>human oversight matters most</strong>: a fully automated <code>staging → production</code>
 promotion is appropriate for a low-stakes internal tool, but most teams gate that specific step behind a
 human-approved pull request rather than an unattended merge, especially in regulated or safety-critical
-domains — full automation and full autonomy are not the same target.</p>
+domains. Full automation and full autonomy are not the same target.</p>
 <h2 id="10-choosing-a-platform">10. Choosing a platform</h2>
-<p>No platform in §5-§8 is objectively superior — the right one is almost always whichever cloud the rest
+<p>No platform in §5-§8 is objectively superior: the right one is almost always whichever cloud the rest
 of a team's infrastructure already runs on, following the same logic as Module 2, §11's cost-benefit
 framing for open-source vs. cloud-native MLOps architectures:</p>
 <table>
@@ -1576,7 +1577,7 @@ framing for open-source vs. cloud-native MLOps architectures:</p>
 <tr>
 <td>Where does deploy target live?</td>
 <td>Anywhere (cloud-agnostic runners)</td>
-<td>Same cloud — avoids cross-cloud auth/networking friction</td>
+<td>Same cloud (avoids cross-cloud auth/networking friction)</td>
 </tr>
 <tr>
 <td>Team already has Boards/Test Plans needs?</td>
@@ -1597,13 +1598,13 @@ framing for open-source vs. cloud-native MLOps architectures:</p>
 </table>
 <p>Most real-world teams end up using GitHub (or another Git host's) Actions for the "does this code work"
 loop, and reserve the cloud-native services for deployment steps that need deep integration with a
-managed service on that cloud — the two are complementary, not mutually exclusive.</p>
+managed service on that cloud; the two are complementary, not mutually exclusive.</p>
 <hr />
 <h2 id="summary">Summary</h2>
 <p>CI/CD turns "did this change break anything" from a question answered by hope into one answered by an
 automated pipeline, and ML adds a layer that classical CI/CD was never built for: data and model
 correctness, not just code correctness (§2-§3, §9). The four platforms in §5-§8 implement the same
-source → build → deploy shape with different names and different bundling choices — picking one is a
+source → build → deploy shape with different names and different bundling choices: picking one is a
 question of existing infrastructure, not raw capability (§10). Module 5 picks up immediately after the
 build step here: what actually gets built, packaged, and deployed is a container.</p>
 <h2 id="further-reading">Further reading</h2>
@@ -1615,24 +1616,24 @@ build step here: what actually gets built, packaged, and deployed is a container
 <p>Foundational sources this module's content draws on:</p>
 <ul>
 <li>Fowler, Martin, &amp; Foemmel, Matthew. <a href="https://martinfowler.com/articles/continuousIntegration.html">"Continuous Integration."</a>
-  martinfowler.com. — source for the CI framing and quote in §1.</li>
+  martinfowler.com. Source for the CI framing and quote in §1.</li>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
   <code>s5_continuous_integration/</code> (<code>unittesting.md</code>, <code>github_actions.md</code>, <code>pre_commit.md</code>, <code>cml.md</code>) and
-  <code>s10_extra/infrastructure_as_code.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source
+  <code>s10_extra/infrastructure_as_code.md</code>. DTU course 02476, Apache 2.0 licensed. Primary source
   material this module's testing pyramid (§3), GitHub Actions walkthrough (§5), and CML section (§9)
   are adapted from.</li>
 <li>GitHub Docs. <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">"Understanding GitHub Actions"</a>
-  and <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates">"About Dependabot version updates."</a>
-  — source for the workflow anatomy and Dependabot config in §5.</li>
-<li>AWS Documentation. <a href="https://aws.amazon.com/devops/continuous-integration/">"What is CI/CD on AWS?"</a>
-  — source for the CodeCommit/CodeBuild/CodeDeploy/CodePipeline roles in §6.</li>
+  and <a href="https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/about-dependabot-version-updates">"About Dependabot version updates."</a>.
+  Source for the workflow anatomy and Dependabot config in §5.</li>
+<li>AWS Documentation. <a href="https://aws.amazon.com/devops/continuous-integration/">"What is CI/CD on AWS?"</a>.
+  Source for the CodeCommit/CodeBuild/CodeDeploy/CodePipeline roles in §6.</li>
 <li>Google Cloud Documentation. <a href="https://cloud.google.com/build/docs/overview">"Cloud Build overview"</a> and
-  <a href="https://cloud.google.com/deploy/docs/overview">"Cloud Deploy overview."</a> — source for the GCP
+  <a href="https://cloud.google.com/deploy/docs/overview">"Cloud Deploy overview."</a>. Source for the GCP
   pipeline shape in §7.</li>
-<li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/devops/">"Azure DevOps documentation."</a> —
-  source for the Boards/Repos/Pipelines/Test Plans/Artifacts roles and YAML pipeline shape in §8.</li>
-<li>HashiCorp Developer. <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs">"Terraform — AzureRM provider documentation."</a>
-  — source for the IaC example in §8.</li>
+<li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/devops/">"Azure DevOps documentation."</a>.
+  Source for the Boards/Repos/Pipelines/Test Plans/Artifacts roles and YAML pipeline shape in §8.</li>
+<li>HashiCorp Developer. <a href="https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs">"Terraform: AzureRM provider documentation."</a>.
+  Source for the IaC example in §8.</li>
 </ul>
 
 
@@ -1656,7 +1657,7 @@ build step here: what actually gets built, packaged, and deployed is a container
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

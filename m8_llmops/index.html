@@ -1072,7 +1072,7 @@
   
 
 
-<h1 id="module-8-mlops-for-llms-llmops">Module 8 — MLOps for LLMs (LLMOps)</h1>
+<h1 id="module-8-mlops-for-llms-llmops">Module 8: MLOps for LLMs (LLMOps)</h1>
 <p>Week 9</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1088,42 +1088,42 @@
 text to predict the next token in a sequence, at a scale (billions of parameters, trained on trillions
 of tokens) where that simple objective produces broad, general-purpose language ability rather than a
 model useful for only one narrow task. That generality is exactly what makes it a <strong>foundation
-model</strong>: instead of training a new model per task, you <em>adapt</em> one pretrained model — through
-prompting, retrieval, or fine-tuning — to many different downstream tasks.</p>
+model</strong>: instead of training a new model per task, you <em>adapt</em> one pretrained model (through
+prompting, retrieval, or fine-tuning) to many different downstream tasks.</p>
 <p>This is the key operational difference from every model in Modules 1-7: a classical ML model is trained
 by <em>you</em>, on <em>your</em> labeled data, for <em>one</em> task. An LLM is usually trained by someone else, on data you
 don't control, and adapted rather than trained from scratch for whatever task you point it at.</p>
 <h2 id="2-why-llms-need-their-own-mlops">2. Why LLMs need their own MLOps</h2>
-<p>The core MLOps challenges from Module 1, §1 — data changes system behavior, models decay silently,
-reproducibility is multidimensional, the artifact is probabilistic — all still apply to an LLM. Three
+<p>The core MLOps challenges from Module 1, §1 (data changes system behavior, models decay silently,
+reproducibility is multidimensional, the artifact is probabilistic) all still apply to an LLM. Three
 things change enough to warrant a discipline of their own:</p>
 <ul>
 <li><strong>There's often no ground truth to test against.</strong> A classification model has a correct label; an
   LLM's output is open-ended text, so "is this response correct" becomes a judgment call, not an
   assertion (§6 covers how teams approximate this anyway).</li>
-<li><strong>Cost and latency are now per-request, metered concerns</strong>, not just infrastructure to amortize —
+<li><strong>Cost and latency are now per-request, metered concerns</strong>, not just infrastructure to amortize:
   every call to a hosted LLM API is billed by the token, and a slow response is a direct user-facing
   failure in a way a nightly batch job's runtime never was.</li>
 <li><strong>A new component enters the versioning story.</strong> Beyond code, data, model, and features (Module 2,
   §3), an LLM application typically adds <strong>prompts</strong> and, for retrieval-augmented systems, a
-  <strong>retrieval index</strong> — both of which change behavior just as much as the model weights do, and both
+  <strong>retrieval index</strong>, both of which change behavior just as much as the model weights do, and both
   now need the same versioning discipline.</li>
 </ul>
 <h2 id="3-fmopsllmops-operationalizing-generative-ai">3. FMOps/LLMOps: operationalizing generative AI</h2>
 <p>Module 1, §10 placed these terms on a map relative to DevOps/MLOps/AIOps/ModelOps/GitOps. Restated with
 the operational specifics that matter day to day:</p>
 <ul>
-<li><strong>FMOps ("Foundation Model Ops")</strong> is the broader frame — the operational concerns of adapting <em>any</em>
+<li><strong>FMOps ("Foundation Model Ops")</strong> is the broader frame: the operational concerns of adapting <em>any</em>
   large pretrained foundation model (text, vision, multimodal, audio) for downstream use.</li>
 <li><strong>LLMOps</strong> is FMOps specialized to text-generation models specifically, and adds four concrete
   practices on top of classical MLOps:</li>
-<li><strong>Prompt/version management</strong> — treating a prompt template as a versioned artifact with its own
+<li><strong>Prompt/version management</strong>: treating a prompt template as a versioned artifact with its own
      change history, the same seriousness Module 3 gives code.</li>
-<li><strong>Retrieval pipeline management</strong> — for retrieval-augmented generation (RAG, §5), versioning the
+<li><strong>Retrieval pipeline management</strong>: for retrieval-augmented generation (RAG, §5), versioning the
      document chunks, the embedding model, and the vector index snapshot that produced a given answer.</li>
-<li><strong>Evaluation of open-ended output</strong> — the ground-truth problem from §2, addressed with the
+<li><strong>Evaluation of open-ended output</strong>: the ground-truth problem from §2, addressed with the
      techniques in §6.</li>
-<li><strong>Cost and latency management at inference time</strong> — caching, model routing, and streaming
+<li><strong>Cost and latency management at inference time</strong>: caching, model routing, and streaming
      responses, because unlike a classical model's fixed inference cost, an LLM's cost scales with
      both input and output token count.</li>
 </ul>
@@ -1139,16 +1139,16 @@ model call itself:</p>
 <ul>
 <li><strong>Input guardrails</strong> catch malformed input, obviously unsafe requests, and prompt-injection attempts
   before they ever reach the model.</li>
-<li><strong>Context assembly</strong> is where the prompt template from §3 gets filled in — with the user's input,
+<li><strong>Context assembly</strong> is where the prompt template from §3 gets filled in, with the user's input,
   any conversation history, and (for RAG systems) retrieved context from §5.</li>
-<li><strong>Output guardrails</strong> validate the model's response before it reaches the user — checking it against
+<li><strong>Output guardrails</strong> validate the model's response before it reaches the user, checking it against
   a required output format/schema, or running a lighter-weight safety classifier over it.</li>
 </ul>
 <p>Whether the LLM itself is called through a hosted API (OpenAI, Anthropic, Google) or is a self-hosted
 open-weight model behind your own endpoint (Module 5, Module 7) is a deployment decision; the guardrail
 shape around it stays the same either way.</p>
 <h2 id="5-high-level-view-of-an-llm-driven-application">5. High-level view of an LLM-driven application</h2>
-<p>The most common concrete architecture — <strong>retrieval-augmented generation (RAG)</strong> — splits into an
+<p>The most common concrete architecture, <strong>retrieval-augmented generation (RAG)</strong>, splits into an
 offline ingestion path and an online serving path, the same offline/online split Module 6 introduced
 for feature stores, applied to unstructured documents instead of tabular features:</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1165,8 +1165,8 @@ for feature stores, applied to unstructured documents instead of tabular feature
         GEN --&gt; RESP["Response"]
     end
     VDB -.-&gt; RET</code></pre>
-<p>The ingestion pipeline runs whenever source documents change — new content chunked, embedded, and
-written into the vector database — while the serving path runs on every user query, embedding it, using
+<p>The ingestion pipeline runs whenever source documents change (new content chunked, embedded, and
+written into the vector database) while the serving path runs on every user query, embedding it, using
 that embedding to retrieve the most relevant chunks, and handing both the query and the retrieved
 chunks to the LLM as context. This is exactly why the retrieval index counts as a versioned artifact in
 §2 and §3: the <em>same</em> query against a <em>different</em> ingestion snapshot can produce a materially different
@@ -1187,11 +1187,11 @@ answer.</p>
 </tr>
 <tr>
 <td><strong>Testing</strong></td>
-<td>No single correct output to assert against — use a curated evaluation set scored by human rubric review, reference-based metrics (ROUGE/BLEU) where a reference answer exists, or an <strong>LLM-as-judge</strong>: a second model scoring the first model's output against a rubric. Regression-test prompt changes against the eval set the same way a code change gets regression-tested against unit tests</td>
+<td>No single correct output to assert against; use a curated evaluation set scored by human rubric review, reference-based metrics (ROUGE/BLEU) where a reference answer exists, or an <strong>LLM-as-judge</strong>: a second model scoring the first model's output against a rubric. Regression-test prompt changes against the eval set the same way a code change gets regression-tested against unit tests</td>
 </tr>
 <tr>
 <td><strong>Automation (CI/CD)</strong></td>
-<td>A prompt or retrieval-index change goes through the same CI/CD gate as a code change (Module 4) — re-run the evaluation set before merge, not just unit tests</td>
+<td>A prompt or retrieval-index change goes through the same CI/CD gate as a code change (Module 4); re-run the evaluation set before merge, not just unit tests</td>
 </tr>
 <tr>
 <td><strong>Reproducibility</strong></td>
@@ -1203,7 +1203,7 @@ answer.</p>
 </tr>
 <tr>
 <td><strong>Monitoring</strong></td>
-<td>Beyond the usual latency/error-rate telemetry: <strong>cost per request</strong> (token-metered billing), hallucination/guardrail-trigger rate, and drift in the <em>distribution of user queries themselves</em> — not just input-feature drift, but what people are actually asking for changing over time (Module 9 covers the monitoring infrastructure this plugs into)</td>
+<td>Beyond the usual latency/error-rate telemetry: <strong>cost per request</strong> (token-metered billing), hallucination/guardrail-trigger rate, and drift in the <em>distribution of user queries themselves</em>, not just input-feature drift, but what people are actually asking for changing over time (Module 9 covers the monitoring infrastructure this plugs into)</td>
 </tr>
 </tbody>
 </table>
@@ -1214,8 +1214,8 @@ the classical MLOps assumption that you own the whole training process. LLMOps (
 gap: version prompts and retrieval indexes the way Module 2 already versions code and data (§2, §6),
 evaluate open-ended output with rubrics and LLM-judges instead of exact-match assertions (§6), and treat
 cost and latency as first-class, per-request metrics rather than background infrastructure concerns.
-The system shape in §4-§5 — guardrails around a model call, an offline ingestion path feeding an online
-serving path — recurs across nearly every production LLM application regardless of what it's built to
+The system shape in §4-§5 (guardrails around a model call, an offline ingestion path feeding an online
+serving path) recurs across nearly every production LLM application regardless of what it's built to
 do.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
@@ -1225,16 +1225,16 @@ do.</p>
 <h2 id="references">References</h2>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
-<li>Vaswani, Ashish, et al. <a href="https://arxiv.org/abs/1706.03762">"Attention Is All You Need."</a> NeurIPS,</li>
-<li>— source for the transformer architecture underlying every LLM (§1).</li>
+<li>Vaswani, Ashish, et al. <a href="https://arxiv.org/abs/1706.03762">"Attention Is All You Need."</a> NeurIPS,
+  2017, the source for the transformer architecture underlying every LLM (§1).</li>
 <li>Huyen, Chip. <a href="https://www.oreilly.com/library/view/designing-machine-learning/9781098107956/">"Designing Machine Learning Systems"</a>
-  and her essay <a href="https://huyen.me/blog/2023/building-llm-applications-for-production/">"Building LLM Applications for Production."</a>
-  — source for the LLM system design and RAG architecture framing (§4-§5).</li>
+  and her essay <a href="https://huyen.me/blog/2023/building-llm-applications-for-production/">"Building LLM Applications for Production."</a>,
+  the source for the LLM system design and RAG architecture framing (§4-§5).</li>
 <li>Lewis, Patrick, et al. <a href="https://arxiv.org/abs/2005.11401">"Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks."</a>
-  NeurIPS, 2020. — source for the retrieval-augmented generation pattern in §5.</li>
+  NeurIPS, 2020, the source for the retrieval-augmented generation pattern in §5.</li>
 <li>Google Cloud. <a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">"MLOps: Continuous Delivery and Automation Pipelines in Machine Learning"</a>
-  and the accompanying <a href="https://cloud.google.com/architecture/gen-ai-development-and-mlops-disciplines-guide">generative AI operations discussion</a>
-  — source for the FMOps/LLMOps framing extending the maturity model from Module 2 (§3, §6).</li>
+  and the accompanying <a href="https://cloud.google.com/architecture/gen-ai-development-and-mlops-disciplines-guide">generative AI operations discussion</a>,
+  the source for the FMOps/LLMOps framing extending the maturity model from Module 2 (§3, §6).</li>
 </ul>
 
 
@@ -1258,7 +1258,7 @@ do.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

@@ -1050,7 +1050,7 @@
   
 
 
-<h1 id="module-7-deep-dive-into-mlops-cloud-services-aws-azure-gcp">Module 7 — Deep Dive into MLOps Cloud Services (AWS, Azure &amp; GCP)</h1>
+<h1 id="module-7-deep-dive-into-mlops-cloud-services-aws-azure-gcp">Module 7: Deep Dive into MLOps Cloud Services (AWS, Azure &amp; GCP)</h1>
 <p>Week 8</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1061,8 +1061,8 @@
 <hr />
 <h2 id="1-from-generic-cloud-primitives-to-a-managed-ml-platform">1. From generic cloud primitives to a managed ML platform</h2>
 <p>Module 4 covered generic CI/CD services (CodePipeline, Cloud Build, Azure Pipelines), and Module 5
-covered generic containers and Kubernetes. A <strong>managed ML platform</strong> — SageMaker, Vertex AI, Azure
-Machine Learning — is what each cloud builds <em>on top of</em> those same primitives, specifically for the ML
+covered generic containers and Kubernetes. A <strong>managed ML platform</strong> (SageMaker, Vertex AI, Azure
+Machine Learning) is what each cloud builds <em>on top of</em> those same primitives, specifically for the ML
 lifecycle: a managed notebook environment, managed training jobs that provision and tear down their own
 compute, a model registry, and a one-command inference endpoint, all wired together rather than
 assembled by hand from EC2 instances and S3 buckets.</p>
@@ -1122,7 +1122,7 @@ platform well makes the other two mostly a vocabulary exercise:</p>
 </tr>
 </tbody>
 </table>
-<p><strong>This course's required hands-on platform is Azure Machine Learning (§4)</strong> — see the <a href="../pages/before/#setup">Setup
+<p><strong>This course's required hands-on platform is Azure Machine Learning (§4).</strong> See the <a href="../pages/before/#setup">Setup
 page</a> for why. §2-§3 cover SageMaker and Vertex AI in full so you recognize
 the equivalent concepts on either platform, but they're conceptual here rather than a required project.</p>
 <h2 id="2-aws-sagemaker">2. AWS SageMaker</h2>
@@ -1147,11 +1147,11 @@ long-lived server you maintain yourself:</p>
 </tr>
 <tr>
 <td><strong>SageMaker Studio &amp; domain</strong></td>
-<td>The unified IDE — notebooks, pipelines, experiments, registry, and endpoints in one interface, scoped under a <strong>domain</strong>: a shared workspace/permissions boundary for a team</td>
+<td>The unified IDE (notebooks, pipelines, experiments, registry, and endpoints) in one interface, scoped under a <strong>domain</strong>: a shared workspace/permissions boundary for a team</td>
 </tr>
 <tr>
 <td><strong>Training job</strong></td>
-<td>A managed, ephemeral compute job: a container image + entry script + IAM role that trains a model, writes artifacts to S3, and shuts itself down automatically when finished — no VM to remember to stop</td>
+<td>A managed, ephemeral compute job: a container image + entry script + IAM role that trains a model, writes artifacts to S3, and shuts itself down automatically when finished; no VM to remember to stop</td>
 </tr>
 <tr>
 <td><strong>SageMaker Pipelines</strong></td>
@@ -1159,7 +1159,7 @@ long-lived server you maintain yourself:</p>
 </tr>
 <tr>
 <td><strong>SageMaker Projects &amp; repositories</strong></td>
-<td>A project scaffolds a linked Git repository plus a pre-wired CI/CD pipeline template for an ML workflow — the SageMaker-native equivalent of the repo templates from Module 3</td>
+<td>A project scaffolds a linked Git repository plus a pre-wired CI/CD pipeline template for an ML workflow: the SageMaker-native equivalent of the repo templates from Module 3</td>
 </tr>
 <tr>
 <td><strong>Experiments</strong></td>
@@ -1184,7 +1184,7 @@ long-lived server you maintain yourself:</p>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">Body</span><span class="o">=</span><span class="n">json_payload</span><span class="p">,</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">)</span>
 </span></code></pre></div>
-<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+<p><em>Conceptual coverage only: this course's required hands-on pipeline project is the Azure ML one in
 §4.</em> If you have your own AWS access, the equivalent exercise is: from a Studio domain, build a
 SageMaker Pipeline (process → train → evaluate → conditionally register), promote the registered model
 through the model registry, and deploy it to a real-time endpoint you can invoke.</p>
@@ -1197,15 +1197,15 @@ loop built into the pipeline concept from the start:</p>
     MODEL --&gt; EP["Endpoint&lt;br/&gt;(online prediction)"]
     EP -.drift signal.-&gt; DS</code></pre>
 <ul>
-<li><strong>Datasets</strong> — Vertex AI can import and manage labeling for image, text, tabular, and video data
+<li><strong>Datasets</strong>: Vertex AI can import and manage labeling for image, text, tabular, and video data
   directly, rather than requiring a separately built labeling pipeline.</li>
-<li><strong>Build, train &amp; deploy</strong> — either <strong>AutoML</strong> (no custom training code, Vertex AI searches
+<li><strong>Build, train &amp; deploy</strong>: either <strong>AutoML</strong> (no custom training code, Vertex AI searches
   architectures/hyperparameters itself) or a <strong>custom training job</strong> (your own container, the same
   managed-and-torn-down-automatically pattern as a SageMaker training job).</li>
-<li><strong>Model management</strong> — every trained model is versioned in the Model Registry with its evaluation
+<li><strong>Model management</strong>: every trained model is versioned in the Model Registry with its evaluation
   metrics attached, so "manage your models with confidence" means comparing versions before promoting
   one to an endpoint, not just overwriting the previous one.</li>
-<li><strong>Vertex AI Pipelines</strong> — defined with the <code>google-cloud-aiplatform</code> Python SDK (built on Kubeflow
+<li><strong>Vertex AI Pipelines</strong>: defined with the <code>google-cloud-aiplatform</code> Python SDK (built on Kubeflow
   Pipelines under the hood), the direct equivalent of SageMaker Pipelines:</li>
 </ul>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">google.cloud</span><span class="w"> </span><span class="kn">import</span> <span class="n">aiplatform</span>
@@ -1220,12 +1220,12 @@ loop built into the pipeline concept from the start:</p>
 </span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">job</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
 <ul>
-<li><strong>Adapting to changes in data</strong> — this is Module 6's feature-drift monitoring and Module 9's
+<li><strong>Adapting to changes in data</strong>: this is Module 6's feature-drift monitoring and Module 9's
   production monitoring, closing the loop back into retraining: a pipeline like the one above is
   typically re-triggered by exactly the kind of drift signal those modules define, not run purely on a
   fixed schedule.</li>
 </ul>
-<p><em>Conceptual coverage only — this course's required hands-on pipeline project is the Azure ML one in
+<p><em>Conceptual coverage only: this course's required hands-on pipeline project is the Azure ML one in
 §4.</em> If you have your own GCP access, the equivalent exercise is: import a labeled dataset, run a
 custom training job through a Vertex AI Pipeline defined via the <code>aiplatform</code> SDK, register the
 resulting model, and deploy it to an endpoint that serves online predictions.</p>
@@ -1238,22 +1238,22 @@ structurally distinct idea worth calling out relative to §2-§3:</p>
     PIPE --&gt; REG["Model registry"]
     REG --&gt; EP["Managed endpoint"]</code></pre>
 <ul>
-<li><strong>Azure Machine Learning Studio</strong> — the browser-based workspace: notebooks, compute, pipelines,
+<li><strong>Azure Machine Learning Studio</strong>: the browser-based workspace: notebooks, compute, pipelines,
   registered models, and endpoints, scoped to a workspace the same way SageMaker scopes things to a
   domain.</li>
-<li><strong>Azure ML components</strong> — a component is a self-contained, versioned, reusable pipeline <em>step</em>
-  (inputs, outputs, a command to run), defined once and composed into many different pipelines — closer
+<li><strong>Azure ML components</strong>: a component is a self-contained, versioned, reusable pipeline <em>step</em>
+  (inputs, outputs, a command to run), defined once and composed into many different pipelines, closer
   in spirit to a well-factored function library than to SageMaker's or Vertex AI's more monolithic
   pipeline-step definitions.</li>
-<li><strong>Azure MLOps + DevOps</strong> — Azure ML pipelines are triggered from Azure Pipelines (Module 4, §8)
+<li><strong>Azure MLOps + DevOps</strong>: Azure ML pipelines are triggered from Azure Pipelines (Module 4, §8)
   exactly like any other build/release stage, so a model retraining run can sit in the same YAML
   pipeline as the application's own CI/CD, gated by the same approvals.</li>
-<li><strong>MLOps v2</strong> — Microsoft's own reference architecture and accelerator for <strong>"fully automated
+<li><strong>MLOps v2</strong>, Microsoft's own reference architecture and accelerator for <strong>"fully automated
   end-to-end CI/CD ML pipelines"</strong>: a template project wiring together Azure ML pipelines, model
   registration, and Azure DevOps/GitHub Actions releases into one opinionated, production-ready
   starting point, rather than something built from scratch every time.</li>
 </ul>
-<p><strong>Project: end-to-end MLOps v2 pipeline using Azure Machine Learning (required)</strong> — starting from the
+<p><strong>Project: end-to-end MLOps v2 pipeline using Azure Machine Learning (required).</strong> Starting from the
 MLOps v2 accelerator's structure, define at least one Azure ML component, chain it into a pipeline,
 register the trained model, and wire a deploy stage triggered from an Azure Pipelines YAML file.</p>
 <h2 id="5-comparing-the-three-platforms">5. Comparing the three platforms</h2>
@@ -1299,13 +1299,13 @@ register the trained model, and wire a deploy stage triggered from an Azure Pipe
 </tr>
 </tbody>
 </table>
-<p>As in Module 4, §10, none of these is objectively superior — the right one is almost always whichever
+<p>As in Module 4, §10, none of these is objectively superior: the right one is almost always whichever
 cloud a team's data and infrastructure already live on, since cross-cloud data egress and identity
 friction usually outweighs any feature difference between the three registries above.</p>
 <hr />
 <h2 id="summary">Summary</h2>
-<p>SageMaker, Vertex AI, and Azure ML all wrap the same underlying idea — managed notebooks, managed
-training, a versioned model registry, and a deployable endpoint — around the generic CI/CD (Module 4)
+<p>SageMaker, Vertex AI, and Azure ML all wrap the same underlying idea (managed notebooks, managed
+training, a versioned model registry, and a deployable endpoint) around the generic CI/CD (Module 4)
 and container (Module 5) primitives each cloud already offers. The vocabulary differs (domain / project
 / workspace, model groups / registry / registry), but a pipeline built on any one of them answers the
 same question: given new data, produce a new registered model version, and only promote it to serving
@@ -1319,16 +1319,16 @@ traffic once it clears whatever gate the pipeline defines.</p>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
-  <code>s6_the_cloud/cloud_setup.md</code> and <code>using_the_cloud.md</code>. DTU course 02476, Apache 2.0 licensed. —
+  <code>s6_the_cloud/cloud_setup.md</code> and <code>using_the_cloud.md</code>. DTU course 02476, Apache 2.0 licensed, the
   source for the cross-cloud service mapping table in §1.</li>
 <li>AWS Documentation. <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html">"What is Amazon SageMaker?"</a>
-  and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html">"SageMaker Pipelines."</a> — source
+  and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/pipelines.html">"SageMaker Pipelines."</a>, the source
   for the SageMaker concepts and pipeline shape in §2.</li>
 <li>Google Cloud Documentation. <a href="https://cloud.google.com/vertex-ai/docs">"Vertex AI documentation"</a> and
-  <a href="https://cloud.google.com/vertex-ai/docs/pipelines/introduction">"Vertex AI Pipelines."</a> — source for
+  <a href="https://cloud.google.com/vertex-ai/docs/pipelines/introduction">"Vertex AI Pipelines."</a>, the source for
   the Vertex AI concepts and <code>aiplatform</code> SDK usage in §3.</li>
 <li>Microsoft Learn. <a href="https://learn.microsoft.com/en-us/azure/machine-learning/overview-what-is-azure-machine-learning">"What is Azure Machine Learning?"</a>
-  and the <a href="https://github.com/Azure/mlops-v2">MLOps v2 solution accelerator</a>. — source for the
+  and the <a href="https://github.com/Azure/mlops-v2">MLOps v2 solution accelerator</a>, the source for the
   workspace/components model and MLOps v2 in §4.</li>
 </ul>
 
@@ -1353,7 +1353,7 @@ traffic once it clears whatever gate the pipeline defines.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:58:52">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

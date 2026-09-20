@@ -1028,7 +1028,7 @@
   
 
 
-<h1 id="module-10-introduction-to-automl-tools">Module 10 — Introduction to AutoML Tools</h1>
+<h1 id="module-10-introduction-to-automl-tools">Module 10: Introduction to AutoML Tools</h1>
 <p>Week 11</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1044,21 +1044,21 @@
 <p>The tools this module surveys split into the same two families Module 2, §11 already introduced for
 MLOps architectures in general, just at the tool-selection level instead of the platform level:</p>
 <ul>
-<li><strong>Point solutions</strong> — a single, focused capability (track experiments, search hyperparameters) that
+<li><strong>Point solutions</strong>: a single, focused capability (track experiments, search hyperparameters) that
   a team bolts onto whatever pipeline they already have. §2-§3 cover the two most widely adopted:
   <strong>Weights &amp; Biases</strong> for experiment tracking, and <strong>Optuna</strong> for hyperparameter search.</li>
-<li><strong>Full-lifecycle platforms</strong> — a product that tries to own the whole loop from §2's tracking through
+<li><strong>Full-lifecycle platforms</strong>: a product that tries to own the whole loop from §2's tracking through
   training, deployment, and monitoring in one system, the same "buy the whole stack" trade-off Module
   2, §11 described for cloud-native MLOps architectures. §4 surveys five of these.</li>
 </ul>
-<p>Neither family is objectively better — a team already happy with its own CI/CD (Module 4) and cloud
+<p>Neither family is objectively better: a team already happy with its own CI/CD (Module 4) and cloud
 platform (Module 7) usually only needs the point solutions; a team without that infrastructure already
 built gets more value from a platform that bundles it.</p>
 <h2 id="2-experiment-tracking-with-weights-biases">2. Experiment tracking with Weights &amp; Biases</h2>
 <p>Logging loss/accuracy to a plain file and plotting it with matplotlib works for a single script run
 alone, but breaks down the moment more than one run needs comparing, or more than one person is
-running experiments. <strong>Weights &amp; Biases (W&amp;B)</strong> — free for personal/academic use, alongside
-open-source-first alternatives like MLflow, Neptune, or Comet — is one standard answer:</p>
+running experiments. <strong>Weights &amp; Biases (W&amp;B)</strong>, free for personal/academic use, alongside
+open-source-first alternatives like MLflow, Neptune, or Comet, is one standard answer:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>wandb
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>wandb<span class="w"> </span>login<span class="w">   </span><span class="c1"># paste the API key from wandb.ai</span>
 </span></code></pre></div>
@@ -1075,7 +1075,7 @@ open-source-first alternatives like MLflow, Neptune, or Comet — is one standar
   for dashboard filtering.</li>
 </ul>
 <p><strong>The reproducibility payoff</strong> is what makes this more than a nicer plot: every run's page
-automatically records the exact git commit, the exact launch command, and a full dependency snapshot —
+automatically records the exact git commit, the exact launch command, and a full dependency snapshot:
 reproducing a run becomes clone → checkout that commit → install from the snapshot → re-run the logged
 command, closing the loop on Module 1, §3's "reproducibility is multidimensional" problem in practice.</p>
 <p><strong>Model registry.</strong> A trained model gets logged as a versioned, immutable <strong>artifact</strong>, then linked
@@ -1092,7 +1092,7 @@ in the promotion path:</p>
 <code>repository_dispatch</code> webhook fires when an alias changes to <code>staging</code>, runs performance tests, and
 only flips it to <code>production</code> once they pass.</p>
 <h2 id="3-hyperparameter-search-wb-sweeps-and-optuna">3. Hyperparameter search: W&amp;B Sweeps and Optuna</h2>
-<p>Both tools answer the same question — which hyperparameter combination performs best — with different
+<p>Both tools answer the same question (which hyperparameter combination performs best) with different
 levels of infrastructure.</p>
 <p><strong>W&amp;B Sweeps</strong> run directly inside the tracking setup from §2:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># sweep.yaml</span>
@@ -1112,7 +1112,7 @@ levels of infrastructure.</p>
 <p>The sweep dashboard adds parallel-coordinates plots (spotting hyperparameter tendencies across runs)
 and importance/correlation plots (which hyperparameters actually mattered) on top of the regular
 run-comparison view.</p>
-<p><strong>Optuna</strong> is the standalone alternative, built around three concepts — a <strong>trial</strong> (one hyperparameter
+<p><strong>Optuna</strong> is the standalone alternative, built around three concepts: a <strong>trial</strong> (one hyperparameter
 combination), a <strong>study</strong> (a collection of trials), and an <strong>objective</strong> (the function scoring a
 trial):</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">optuna</span>
@@ -1127,7 +1127,7 @@ trial):</p>
 </span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
 </span></code></pre></div>
 <p>Optuna defaults to sample-efficient Bayesian optimization rather than exhaustive grid search, and its
-<strong>pruning</strong> (<code>MedianPruner</code> above) stops clearly-unpromising trials early to save compute — a trade-off
+<strong>pruning</strong> (<code>MedianPruner</code> above) stops clearly-unpromising trials early to save compute, a trade-off
 worth naming explicitly: pruning can discard a trial that would have improved later (e.g. one with a
 learning-rate warmup that looks temporarily worse early on), so anything affecting training dynamics
 over time makes pruning riskier to rely on blindly. For a search too large to run on one machine,
@@ -1151,7 +1151,7 @@ architectures generally:</p>
 <tr>
 <td><strong>H2O MLOps</strong></td>
 <td>Full-lifecycle platform</td>
-<td>Pairs H2O's AutoML model training (Driverless AI) with a deployment/monitoring platform — automates architecture/hyperparameter search <em>and</em> the path to production</td>
+<td>Pairs H2O's AutoML model training (Driverless AI) with a deployment/monitoring platform, automating architecture/hyperparameter search <em>and</em> the path to production</td>
 </tr>
 <tr>
 <td><strong>Valohai</strong></td>
@@ -1166,7 +1166,7 @@ architectures generally:</p>
 <tr>
 <td><strong>neptune.ai</strong></td>
 <td>Point solution</td>
-<td>An experiment tracker positioned as a lighter-weight, lower-cost alternative to W&amp;B — same job as §2, smaller footprint</td>
+<td>An experiment tracker positioned as a lighter-weight, lower-cost alternative to W&amp;B (same job as §2, smaller footprint)</td>
 </tr>
 <tr>
 <td><strong>Iguazio</strong></td>
@@ -1183,8 +1183,8 @@ adopt one platform's opinions about the whole lifecycle than assemble Modules 3-
 <p>Weights &amp; Biases and Optuna (§2-§3) are the point-solution answer to "track my experiments" and "search
 my hyperparameters efficiently," and both integrate cleanly into a pipeline built from everything in
 Modules 3-9. H2O MLOps, Valohai, Domino, and Iguazio (§4) are the opposite bet: adopt one platform that
-already bundles most of those modules together. Knowing which family a tool belongs to — and that
-neither family is inherently the right answer — is the actual skill this module builds; the specific
+already bundles most of those modules together. Knowing which family a tool belongs to (and that
+neither family is inherently the right answer) is the actual skill this module builds; the specific
 tool names will keep changing.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
@@ -1196,15 +1196,15 @@ tool names will keep changing.</p>
 <ul>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
   <code>s4_debugging_and_logging/logging.md</code> (W&amp;B half) and <code>s10_extra/hyperparameters.md</code> (Optuna). DTU
-  course 02476, Apache 2.0 licensed. — primary source material this module's W&amp;B and Optuna sections
-  (§2-§3) are adapted from.</li>
-<li><a href="https://docs.wandb.ai/">Weights &amp; Biases documentation</a> — source for the model registry/artifact
+  course 02476, Apache 2.0 licensed. This module's W&amp;B and Optuna sections
+  (§2-§3) are adapted from this primary source material.</li>
+<li><a href="https://docs.wandb.ai/">Weights &amp; Biases documentation</a>: source for the model registry/artifact
   alias mechanism in §2.</li>
-<li><a href="https://optuna.readthedocs.io/">Optuna documentation</a> — source for the trial/study/objective model
+<li><a href="https://optuna.readthedocs.io/">Optuna documentation</a>: source for the trial/study/objective model
   and pruning behavior in §3.</li>
 <li>Vendor documentation for the platforms in §4 (<a href="https://h2o.ai/platform/enterprise-mlops/">H2O MLOps</a>,
   <a href="https://valohai.com/">Valohai</a>, <a href="https://domino.ai/">Domino Data Lab</a>, <a href="https://neptune.ai/">neptune.ai</a>,
-  <a href="https://www.iguazio.com/">Iguazio</a>) — consulted for accuracy of each platform's positioning in the
+  <a href="https://www.iguazio.com/">Iguazio</a>), consulted for accuracy of each platform's positioning in the
   comparison table, not quoted directly.</li>
 </ul>
 
@@ -1229,7 +1229,7 @@ tool names will keep changing.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

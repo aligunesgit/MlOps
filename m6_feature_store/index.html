@@ -1094,7 +1094,7 @@
   
 
 
-<h1 id="module-6-feature-store">Module 6 — Feature Store</h1>
+<h1 id="module-6-feature-store">Module 6: Feature Store</h1>
 <p>Week 7</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1106,19 +1106,19 @@
 <hr />
 <h2 id="1-what-problem-a-feature-store-solves">1. What problem a feature store solves</h2>
 <p>Module 2, §3 named <strong>features</strong> as one of the five things an MLOps pipeline needs to version, alongside
-code, data, models, and containers — this module is where that need becomes concrete. Two problems show
+code, data, models, and containers. This module is where that need becomes concrete. Two problems show
 up the moment more than one model, or more than one team, needs the same engineered feature:</p>
 <ul>
 <li><strong>Training/serving skew.</strong> A feature engineered one way in an offline training notebook and
   re-implemented slightly differently in the online serving path is one of the most common, hardest to
-  detect sources of a model that performs well offline and poorly in production — the two code paths
+  detect sources of a model that performs well offline and poorly in production: the two code paths
   silently drift apart.</li>
 <li><strong>Duplicated work.</strong> Without a shared place to define and reuse features, every team recomputes the
   same "average order value over the last 30 days" from scratch, each with its own subtly different
   definition.</li>
 </ul>
 <p>A <strong>feature store</strong> is the piece of infrastructure that fixes both: one place where a feature is
-defined once, computed once, and served consistently to both training and inference — the same
+defined once, computed once, and served consistently to both training and inference. It's the same
 underlying idea as a package registry, applied to features instead of code.</p>
 <h2 id="2-online-vs-offline-the-core-split">2. Online vs. offline: the core split</h2>
 <p>Every feature store is organized around a split that mirrors the two moments a feature actually gets
@@ -1130,15 +1130,15 @@ used:</p>
     OFF --&gt;|"point-in-time join"| TRAIN["Model training"]
     ON --&gt;|"single-row lookup"| SERVE["Online serving"]</code></pre>
 <ul>
-<li>The <strong>offline store</strong> holds the full historical record of every feature value over time — large
+<li>The <strong>offline store</strong> holds the full historical record of every feature value over time: large
   volume, optimized for batch reads, typically backed by a data warehouse or object storage (BigQuery,
   S3 + Parquet, Snowflake). Training reads from it with a <strong>point-in-time join</strong>: for each training
-  example's timestamp, pull the feature values <em>as they were at that moment</em>, not the latest values —
-  getting this wrong (using future information) is a specific, common form of data leakage.</li>
+  example's timestamp, pull the feature values <em>as they were at that moment</em>, not the latest values.
+  Getting this wrong (using future information) is a specific, common form of data leakage.</li>
 <li>The <strong>online store</strong> holds only the <em>current</em> value of each feature, indexed for millisecond-latency
-  single-row lookups — optimized for read speed, typically backed by a key-value store (DynamoDB,
+  single-row lookups, optimized for read speed, typically backed by a key-value store (DynamoDB,
   Redis, Bigtable). A live prediction request reads from here.</li>
-<li><strong>Materialization</strong> is the job that keeps the online store in sync with the offline store — computing
+<li><strong>Materialization</strong> is the job that keeps the online store in sync with the offline store: computing
   the latest feature values and pushing them into the low-latency store on a schedule.</li>
 </ul>
 <p>Getting the same feature definition to produce both a historical column in the offline store and a
@@ -1194,10 +1194,10 @@ specifically because it's the one option usable identically on a laptop and on a
 <p>Feast organizes everything around three declared objects, defined once in Python and applied to a
 registry:</p>
 <ul>
-<li>An <strong>Entity</strong> — the join key features are looked up by, e.g. <code>user_id</code> or <code>product_id</code>.</li>
-<li>A <strong>data source</strong> — where raw feature values already live (a Parquet file, a BigQuery table), with a
+<li>An <strong>Entity</strong>: the join key features are looked up by, e.g. <code>user_id</code> or <code>product_id</code>.</li>
+<li>A <strong>data source</strong>: where raw feature values already live (a Parquet file, a BigQuery table), with a
   timestamp column Feast uses for point-in-time correctness.</li>
-<li>A <strong>FeatureView</strong> — which columns from a data source count as features, grouped together with a
+<li>A <strong>FeatureView</strong>: which columns from a data source count as features, grouped together with a
   freshness TTL.</li>
 </ul>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">feast</span><span class="w"> </span><span class="kn">import</span> <span class="n">Entity</span><span class="p">,</span> <span class="n">FeatureView</span><span class="p">,</span> <span class="n">Field</span><span class="p">,</span> <span class="n">FileSource</span>
@@ -1225,13 +1225,13 @@ on:</p>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">store</span> <span class="o">=</span> <span class="n">FeatureStore</span><span class="p">(</span><span class="n">repo_path</span><span class="o">=</span><span class="s2">"."</span><span class="p">)</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Training — point-in-time correct historical values, joined against your own labeled examples</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># Training: point-in-time correct historical values, joined against your own labeled examples</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">training_df</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get_historical_features</span><span class="p">(</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">entity_df</span><span class="o">=</span><span class="n">entity_df</span><span class="p">,</span>  <span class="c1"># has user_id + event_timestamp columns</span>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="s2">"user_order_stats:avg_order_value_30d"</span><span class="p">],</span>
 </span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="p">)</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
 </span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># Serving — the current value for one specific user, in milliseconds</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># Serving: the current value for one specific user, in milliseconds</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="n">online_features</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get_online_features</span><span class="p">(</span>
 </span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="s2">"user_order_stats:avg_order_value_30d"</span><span class="p">],</span>
 </span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">entity_rows</span><span class="o">=</span><span class="p">[{</span><span class="s2">"user_id"</span><span class="p">:</span> <span class="mi">123</span><span class="p">}],</span>
@@ -1239,7 +1239,7 @@ on:</p>
 </span></code></pre></div>
 <h2 id="5-feast-on-the-cloud">5. Feast on the cloud</h2>
 <p>The same three Python objects from §4 stay identical; what changes is the <code>feature_store.yaml</code> backend
-configuration. Locally, Feast defaults to a file-based offline store and a local SQLite online store —
+configuration. Locally, Feast defaults to a file-based offline store and a local SQLite online store,
 enough to develop and test against. Pointed at a cloud:</p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">project</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my_project</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data/registry.db</span>
@@ -1249,14 +1249,14 @@ enough to develop and test against. Pointed at a cloud:</p>
 </span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nt">online_store</span><span class="p">:</span>
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dynamodb</span><span class="w">        </span><span class="c1"># or: redis, datastore, sqlite</span>
 </span></code></pre></div>
-<p>only the <code>offline_store</code>/<code>online_store</code> blocks change — a BigQuery/Snowflake/Redshift offline store
+<p>only the <code>offline_store</code>/<code>online_store</code> blocks change: a BigQuery/Snowflake/Redshift offline store
 paired with a DynamoDB/Redis/Datastore online store, run on whichever cloud a team's other
-infrastructure already lives on (Module 7 covers the managed ML platforms — SageMaker, Vertex AI, Azure
-ML — those backends plug into).</p>
+infrastructure already lives on (Module 7 covers the managed ML platforms those backends plug into:
+SageMaker, Vertex AI, and Azure ML).</p>
 <h2 id="6-monitoring-features-programmatically-and-visualizing-drift-over-time">6. Monitoring features programmatically, and visualizing drift over time</h2>
 <p>Module 2, §8 named model/data monitoring as the category with no equivalent in traditional software.
 A feature store is exactly where that monitoring should attach, because it's the one place every
-feature's history — training-time and serving-time — already lives.</p>
+feature's history (training-time and serving-time) already lives.</p>
 <p><strong>What to compute.</strong> The question is always the same: has the <em>distribution</em> of a feature's values in
 current online traffic diverged from the distribution it had at training time? Three standard
 statistical tests answer this:</p>
@@ -1270,7 +1270,7 @@ statistical tests answer this:</p>
 <tbody>
 <tr>
 <td><strong>Population Stability Index (PSI)</strong></td>
-<td>A single score summarizing how much a distribution has shifted between two time windows — the standard industry threshold is PSI &gt; 0.25 signaling a real shift worth investigating</td>
+<td>A single score summarizing how much a distribution has shifted between two time windows; the standard industry threshold is PSI &gt; 0.25, signaling a real shift worth investigating</td>
 </tr>
 <tr>
 <td><strong>Kolmogorov–Smirnov (KS) test</strong></td>
@@ -1282,11 +1282,11 @@ statistical tests answer this:</p>
 </tr>
 </tbody>
 </table>
-<p><strong>Where to run it.</strong> In practice, nobody hand-rolls PSI/KS/KL every day — tools like <a href="https://docs.evidentlyai.com/">Evidently
+<p><strong>Where to run it.</strong> In practice, nobody hand-rolls PSI/KS/KL every day; tools like <a href="https://docs.evidentlyai.com/">Evidently
 AI</a> or WhyLabs (both already named in Module 2, §12's tool ecosystem
 table) compute these automatically over a reference window (e.g. the training set) versus a current
 window (e.g. the last day of served traffic), and can render them as a drift report or a time series of
-drift scores per feature — the visualization half of this section's learning objective. Module 9 covers
+drift scores per feature: the visualization half of this section's learning objective. Module 9 covers
 wiring that report into a production alerting pipeline; this module's job is knowing which numbers feed
 into it and why they're computed against the feature store specifically, rather than against raw logs.</p>
 <h2 id="7-project-deploy-feast-onlineoffline-feature-store">7. Project: Deploy Feast online/offline feature store</h2>
@@ -1295,7 +1295,7 @@ into it and why they're computed against the feature store specifically, rather 
 <li>Define at least one <code>Entity</code> and one <code>FeatureView</code> (§4) against a local Parquet data source.</li>
 <li>Run <code>feast apply</code>, then materialize features into a local online store.</li>
 <li>Pull a training dataframe with <code>get_historical_features</code> and confirm the point-in-time join is
-   correct — no feature value should reflect information from <em>after</em> its row's timestamp.</li>
+   correct: no feature value should reflect information from <em>after</em> its row's timestamp.</li>
 <li>Pull the same feature for a single entity with <code>get_online_features</code> and confirm it matches the most
    recent materialized value.</li>
 <li>Compute a PSI or KS score (§6) comparing the feature's distribution in the training data against a
@@ -1306,8 +1306,8 @@ into it and why they're computed against the feature store specifically, rather 
 <p>A feature store turns "the training script and the serving code compute this feature slightly
 differently" from a routine, hard-to-catch bug into an impossible one, by making every feature's
 definition, its historical values, and its current value all trace back to one registered source
-(§1-§4). The online/offline split (§2) is the entire idea; everything else — which backend, which cloud,
-which drift metric (§5-§6) — is an implementation detail on top of it.</p>
+(§1-§4). The online/offline split (§2) is the entire idea; everything else, including which backend,
+which cloud, and which drift metric (§5-§6), is an implementation detail on top of it.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
 <li>See the <a href="../#course-books">Course books</a> for deeper dives on applied ML engineering and
@@ -1316,15 +1316,15 @@ which drift metric (§5-§6) — is an implementation detail on top of it.</p>
 <h2 id="references">References</h2>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
-<li><a href="https://docs.feast.dev/">Feast documentation</a> — source for the core object model, point-in-time
+<li><a href="https://docs.feast.dev/">Feast documentation</a>. Source for the core object model, point-in-time
   join semantics, and the <code>feature_store.yaml</code> configuration in §4-§5.</li>
 <li>AWS Documentation. <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html">"Amazon SageMaker Feature Store."</a>
-  — source for the SageMaker Feature Store entry in §3.</li>
+  Source for the SageMaker Feature Store entry in §3.</li>
 <li>Google Cloud Documentation. <a href="https://cloud.google.com/vertex-ai/docs/featurestore/overview">"Vertex AI Feature Store overview."</a>
-  — source for the Vertex AI Feature Store entry in §3.</li>
+  Source for the Vertex AI Feature Store entry in §3.</li>
 <li>Databricks Documentation. <a href="https://docs.databricks.com/en/machine-learning/feature-store/index.html">"Databricks Feature Store."</a>
-  — source for the Databricks Feature Store entry in §3.</li>
-<li><a href="https://docs.evidentlyai.com/">Evidently AI documentation</a> — source for the PSI/KS/KL drift
+  Source for the Databricks Feature Store entry in §3.</li>
+<li><a href="https://docs.evidentlyai.com/">Evidently AI documentation</a>. Source for the PSI/KS/KL drift
   detection methodology and reporting workflow in §6.</li>
 </ul>
 
@@ -1349,7 +1349,7 @@ which drift metric (§5-§6) — is an implementation detail on top of it.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

@@ -1204,7 +1204,7 @@
   
 
 
-<h1 id="module-5-docker-kubernetes-overview">Module 5 — Docker &amp; Kubernetes Overview</h1>
+<h1 id="module-5-docker-kubernetes-overview">Module 5: Docker &amp; Kubernetes Overview</h1>
 <p>Week 5</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1216,7 +1216,7 @@
 <hr />
 <h2 id="1-why-containers-and-why-now">1. Why containers, and why now</h2>
 <p>Module 2, §3 named <strong>containers</strong> as one of the five things MLOps needs to version, alongside code,
-data, models, and features — this module is where that claim gets made concrete. Pinning your Python
+data, models, and features; this module is where that claim gets made concrete. Pinning your Python
 packages with <code>uv</code>/<code>conda</code> is not enough for true reproducibility: the operating system, system
 libraries, GPU drivers, and their exact versions all affect whether a training run behaves identically
 on your laptop and on a training cluster six months from now.</p>
@@ -1224,7 +1224,7 @@ on your laptop and on a training cluster six months from now.</p>
 an isolated unit that runs identically anywhere Docker itself runs. The same property that makes it
 good for reproducibility also makes it the basis for scale: once an environment is fully captured in an
 image, it conceptually doesn't matter whether you start it once on a laptop or a thousand times across
-a cluster — which is exactly the problem Kubernetes (§9-§11) exists to manage at scale.</p>
+a cluster, which is exactly the problem Kubernetes (§9-§11) exists to manage at scale.</p>
 <h2 id="2-docker-core-concepts">2. Docker core concepts</h2>
 <p>Docker reduces to three ideas, each built from the one before it:</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1233,16 +1233,16 @@ a cluster — which is exactly the problem Kubernetes (§9-§11) exists to manag
     IMG --&gt;|"docker push"| REG["Registry&lt;br/&gt;(e.g. Docker Hub)"]
     REG --&gt;|"docker pull"| IMG</code></pre>
 <ul>
-<li>A <strong>Dockerfile</strong> is a plain-text list of the commands needed to set up and run an application —
+<li>A <strong>Dockerfile</strong> is a plain-text list of the commands needed to set up and run an application:
   install dependencies, copy code, specify the command that starts it.</li>
 <li><em>Building</em> a Dockerfile produces a <strong>Docker image</strong>: a static, self-contained package with
   everything (OS libraries, dependencies, code) needed to run it.</li>
-<li><em>Running</em> an image produces a <strong>Docker container</strong> — a live, isolated process. The same image can be
+<li><em>Running</em> an image produces a <strong>Docker container</strong>: a live, isolated process. The same image can be
   run many times, producing many independent containers.</li>
 </ul>
 <p>Images are built from <strong>stacked, cached layers</strong>: each instruction in a Dockerfile adds one layer, and
 Docker only rebuilds the layers that changed. This is why, in practice, Dockerfiles deliberately install
-dependencies <em>before</em> copying application code (§4) — the slow dependency layer then stays cached
+dependencies <em>before</em> copying application code (§4): the slow dependency layer then stays cached
 across every rebuild that only touches code.</p>
 <h2 id="3-the-everyday-docker-command-set">3. The everyday Docker command set</h2>
 <table>
@@ -1267,7 +1267,7 @@ across every rebuild that only touches code.</p>
 </tr>
 <tr>
 <td><code>docker build -f &lt;file&gt; . -t &lt;tag&gt;</code></td>
-<td>Builds an image from a Dockerfile (the trailing <code>.</code> is the <em>build context</em> — the directory Docker can see while building)</td>
+<td>Builds an image from a Dockerfile (the trailing <code>.</code> is the <em>build context</em>: the directory Docker can see while building)</td>
 </tr>
 <tr>
 <td><code>docker exec -it &lt;container&gt; sh</code></td>
@@ -1291,10 +1291,10 @@ across every rebuild that only touches code.</p>
 </tr>
 </tbody>
 </table>
-<p>Stopped containers pile up disk space over time — <code>docker run --rm</code> auto-removes a container the
+<p>Stopped containers pile up disk space over time; <code>docker run --rm</code> auto-removes a container the
 moment it exits, which is the right default for anything short-lived like a training job.</p>
 <h2 id="4-building-an-ml-training-image">4. Building an ML training image</h2>
-<p>A real project Dockerfile splits into two deliberately ordered halves — dependencies, then code —
+<p>A real project Dockerfile splits into two deliberately ordered halves (dependencies, then code)
 exactly to exploit the layer caching from §2:</p>
 <div class="language-dockerfile highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">python:3.12-slim</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1302,11 +1302,11 @@ exactly to exploit the layer caching from §2:</p>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span>apt<span class="w"> </span>install<span class="w"> </span>--no-install-recommends<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>gcc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>apt<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c"># 1. Dependencies first — this layer stays cached across every rebuild that only touches code</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c"># 1. Dependencies first: this layer stays cached across every rebuild that only touches code</span>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">COPY</span><span class="w"> </span>uv.lock<span class="w"> </span>pyproject.toml<span class="w"> </span>README.md<span class="w"> </span>./
 </span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">RUN</span><span class="w"> </span>uv<span class="w"> </span>sync<span class="w"> </span>--locked<span class="w"> </span>--no-cache<span class="w"> </span>--no-install-project
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c"># 2. Code last — the layer that actually changes on every commit</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c"># 2. Code last: the layer that actually changes on every commit</span>
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">COPY</span><span class="w"> </span>src/<span class="w"> </span>src/
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">"uv"</span><span class="p">,</span><span class="w"> </span><span class="s2">"run"</span><span class="p">,</span><span class="w"> </span><span class="s2">"src/train.py"</span><span class="p">]</span>
 </span></code></pre></div>
@@ -1315,13 +1315,13 @@ exactly to exploit the layer caching from §2:</p>
 </span></code></pre></div>
 <p>On Apple Silicon, building an image meant for a different CPU architecture (e.g. an <code>amd64</code> cloud
 runner) needs <code>--platform linux/amd64</code>, at the cost of a slower emulated build. Getting a trained model
-back out of a finished container uses <code>docker cp</code>, or — for anything ongoing — a bind-mounted volume
+back out of a finished container uses <code>docker cp</code>, or, for anything ongoing, a bind-mounted volume
 (§5), which is also how a GPU training image would be run, given the Nvidia Container Toolkit
 installed on the host and a CUDA-enabled base image.</p>
 <h2 id="5-docker-networking-and-volumes">5. Docker networking and volumes</h2>
 <p>Two things a container needs beyond its own filesystem: a way to talk to the outside world, and a way
 to keep data alive after the container itself is gone.</p>
-<p><strong>Network types</strong> — set via <code>docker run --network &lt;type&gt;</code>:</p>
+<p><strong>Network types</strong> (set via <code>docker run --network &lt;type&gt;</code>):</p>
 <table>
 <thead>
 <tr>
@@ -1336,40 +1336,40 @@ to keep data alive after the container itself is gone.</p>
 </tr>
 <tr>
 <td><code>host</code></td>
-<td>The container shares the host machine's network stack directly — no isolation, fastest, rarely the right default</td>
+<td>The container shares the host machine's network stack directly: no isolation, fastest, rarely the right default</td>
 </tr>
 <tr>
 <td><code>none</code></td>
-<td>No networking at all — for a task with no need to reach anything</td>
+<td>No networking at all, for a task with no need to reach anything</td>
 </tr>
 <tr>
 <td>user-defined bridge</td>
-<td>Like the default bridge, but containers can resolve each other <strong>by name</strong> — this is what Docker Compose (§7) sets up automatically for a multi-container app</td>
+<td>Like the default bridge, but containers can resolve each other <strong>by name</strong>: this is what Docker Compose (§7) sets up automatically for a multi-container app</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Volumes</strong> — a container's filesystem is deleted with the container by default, so anything that must
+<p><strong>Volumes.</strong> A container's filesystem is deleted with the container by default, so anything that must
 survive needs an explicit volume:</p>
 <ul>
 <li>A <strong>bind mount</strong> (<code>-v /host/path:/container/path</code>) maps a specific host directory straight into the
-  container — the simplest option for local development.</li>
+  container, the simplest option for local development.</li>
 <li>A <strong>named volume</strong> (<code>-v my_data:/container/path</code>) is managed by Docker itself rather than pointing at
-  a specific host path — the better choice for anything meant to outlive a single machine's directory
+  a specific host path, the better choice for anything meant to outlive a single machine's directory
   layout, including in production.</li>
 </ul>
 <h2 id="6-sharing-images-and-registries">6. Sharing images and registries</h2>
 <p>A built image is only useful to others once it's shared, and there are two ways to do that:</p>
 <ul>
 <li><strong>Commit the Dockerfile itself</strong> to the repository (it's just a text file) and let others build the
-  image locally — simplest, but means everyone pays the build cost.</li>
-<li><strong>Push the built image to a registry</strong> — <a href="https://hub.docker.com/">Docker Hub</a> is the public default;
+  image locally: simplest, but means everyone pays the build cost.</li>
+<li><strong>Push the built image to a registry</strong>: <a href="https://hub.docker.com/">Docker Hub</a> is the public default;
   most cloud providers also run their own (AWS ECR, GCP Artifact Registry from Module 4, §7, Azure
-  Container Registry) — so others can <code>docker pull</code> and run it immediately, no build step required.</li>
+  Container Registry), so others can <code>docker pull</code> and run it immediately, no build step required.</li>
 </ul>
 <p>Committing the Dockerfile is what CI (Module 4) actually does on every push: build the image fresh
 inside the pipeline, run tests against it, and only push the image to a registry once it passes.</p>
 <h2 id="7-docker-compose-multi-container-applications">7. Docker Compose: multi-container applications</h2>
-<p>A real ML application is rarely one container — a training/inference service, a lightweight frontend,
+<p>A real ML application is rarely one container: a training/inference service, a lightweight frontend,
 and maybe a database each want their own image, wired together. <strong>Docker Compose</strong> describes that
 whole stack declaratively in one <code>docker-compose.yml</code> instead of a sequence of manual <code>docker run</code>
 commands:</p>
@@ -1389,19 +1389,19 @@ commands:</p>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w">    </span><span class="c1"># stops and removes them</span>
 </span></code></pre></div>
 <p>Compose automatically creates a user-defined bridge network (§5) for the stack, so <code>frontend</code> can reach
-<code>backend</code> by service name — no manual IP wiring, no port-hardcoding. This is the direct precursor to
+<code>backend</code> by service name: no manual IP wiring, no port-hardcoding. This is the direct precursor to
 Kubernetes' <code>Service</code> resource (§10): Compose gives you name-based networking on one machine; Kubernetes
 gives you the same idea across a whole cluster.</p>
 <h2 id="8-docker-swarm-briefly">8. Docker Swarm, briefly</h2>
-<p><strong>Docker Swarm</strong> is Docker's own native clustering/orchestration mode — turning several Docker hosts
+<p><strong>Docker Swarm</strong> is Docker's own native clustering/orchestration mode, turning several Docker hosts
 into one virtual host, with built-in service discovery and load balancing, activated with a single
 <code>docker swarm init</code>. It is simpler to adopt than Kubernetes because it ships inside Docker itself with
 no separate installation. In practice, the industry consolidated around Kubernetes as the dominant
-orchestrator instead — broader ecosystem, every major cloud offers a managed version (Module 7) — which
+orchestrator instead: broader ecosystem, every major cloud offers a managed version (Module 7); this
 is why the rest of this module, and the rest of this course, goes deep on Kubernetes rather than Swarm.</p>
 <h2 id="9-kubernetes-architecture">9. Kubernetes architecture</h2>
 <p><strong>Kubernetes (K8s)</strong> automates deploying, scaling, and healing containerized applications across a
-cluster of machines — restarting a crashed container, spreading replicas across nodes, routing traffic
+cluster of machines: restarting a crashed container, spreading replicas across nodes, routing traffic
 to whichever replicas are healthy. It follows a client-server split between a <strong>control plane</strong> that
 makes decisions and <strong>worker nodes</strong> that run the actual containers:</p>
 <pre class="mermaid"><code>flowchart TB
@@ -1422,11 +1422,11 @@ makes decisions and <strong>worker nodes</strong> that run the actual containers
     CR --&gt; POD
     PROXY -.-&gt; POD</code></pre>
 <ul>
-<li>The <strong>API server</strong> is the single front door every request — from <code>kubectl</code>, from other control-plane
-  components, from the kubelet on each node — goes through.</li>
+<li>The <strong>API server</strong> is the single front door every request (from <code>kubectl</code>, from other control-plane
+  components, from the kubelet on each node) goes through.</li>
 <li><strong>etcd</strong> is the consistent key-value store holding the entire cluster's actual state.</li>
 <li>The <strong>scheduler</strong> decides which node a new Pod should run on; the <strong>controller manager</strong> continuously
-  compares desired state (what you asked for) against actual state and corrects any drift — this
+  compares desired state (what you asked for) against actual state and corrects any drift; this
   reconciliation loop is the mechanism behind everything in §10.</li>
 <li>On each <strong>worker node</strong>, the <strong>kubelet</strong> is the agent that actually starts/stops containers as told,
   the <strong>container runtime</strong> runs them, and <strong>kube-proxy</strong> implements the networking rules that let
@@ -1448,7 +1448,7 @@ one machine:</p>
 <tbody>
 <tr>
 <td><strong>Pod</strong></td>
-<td>The smallest deployable unit — one or more tightly-coupled containers that share networking and storage</td>
+<td>The smallest deployable unit: one or more tightly-coupled containers that share networking and storage</td>
 </tr>
 <tr>
 <td><strong>Deployment</strong></td>
@@ -1456,7 +1456,7 @@ one machine:</p>
 </tr>
 <tr>
 <td><strong>Service</strong></td>
-<td>A stable network name/address that routes traffic to whichever Pods currently match it — Pods come and go, the Service address doesn't</td>
+<td>A stable network name/address that routes traffic to whichever Pods currently match it: Pods come and go, but the Service address doesn't</td>
 </tr>
 <tr>
 <td><strong>Ingress</strong></td>
@@ -1468,7 +1468,7 @@ one machine:</p>
 </tr>
 <tr>
 <td><strong>Secret</strong></td>
-<td>The same idea as a ConfigMap, for sensitive values (API keys, credentials) — access-controlled and encoded at rest</td>
+<td>The same idea as a ConfigMap, for sensitive values (API keys, credentials), access-controlled and encoded at rest</td>
 </tr>
 <tr>
 <td><strong>StatefulSet</strong></td>
@@ -1476,7 +1476,7 @@ one machine:</p>
 </tr>
 <tr>
 <td><strong>DaemonSet</strong></td>
-<td>Guarantees exactly one copy of a Pod runs on every node — the standard shape for log collectors and monitoring agents</td>
+<td>Guarantees exactly one copy of a Pod runs on every node: the standard shape for log collectors and monitoring agents</td>
 </tr>
 <tr>
 <td><strong>PersistentVolumeClaim (PVC)</strong></td>
@@ -1485,31 +1485,31 @@ one machine:</p>
 </tbody>
 </table>
 <p>A <code>Deployment</code> + <code>Service</code> pair is the minimum needed to run an ML model behind a stable address that
-survives a Pod crashing and being replaced — which is exactly the shape §11's project builds.</p>
+survives a Pod crashing and being replaced, which is exactly the shape §11's project builds.</p>
 <h2 id="11-running-locally-with-minikube">11. Running locally with Minikube</h2>
-<p><strong>Minikube</strong> runs a real, single-node Kubernetes cluster inside a local VM/container — enough to learn
+<p><strong>Minikube</strong> runs a real, single-node Kubernetes cluster inside a local VM/container, enough to learn
 and test every resource in §10 without needing an actual multi-machine cluster or a cloud bill:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>minikube<span class="w"> </span>start<span class="w">          </span><span class="c1"># boots the local cluster</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w">       </span><span class="c1"># confirms kubectl can talk to it</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>deployment.yaml
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods
 </span></code></pre></div>
-<p>Everything written against Minikube — the YAML manifests, the <code>kubectl</code> commands — is what you'd run
+<p>Everything written against Minikube (the YAML manifests, the <code>kubectl</code> commands) is what you'd run
 unchanged against a managed cluster in production (Module 7 covers AWS EKS, GCP GKE, and Azure AKS
 specifically). For model-serving specifically, platforms like <a href="https://github.com/bentoml/Yatai">BentoML's
 Yatai</a> build on top of exactly this Deployment/Service pattern to
-simplify packaging and scaling a served model on Kubernetes — worth knowing the name exists once you're
+simplify packaging and scaling a served model on Kubernetes; it's worth knowing the name exists once you're
 past the fundamentals here.</p>
 <h2 id="12-projects-for-this-module">12. Projects for this module</h2>
 <p>Four projects, each building directly on the section before it:</p>
 <ol>
-<li><strong>Deploy a Node.js app in a Docker container</strong> — write a Dockerfile for a minimal Node.js app,
+<li><strong>Deploy a Node.js app in a Docker container</strong>: write a Dockerfile for a minimal Node.js app,
    build it, and run it with a published port (§2-§4).</li>
-<li><strong>Deploy an ML model in a Docker container</strong> — apply the training/serving Dockerfile pattern from
+<li><strong>Deploy an ML model in a Docker container</strong>: apply the training/serving Dockerfile pattern from
    §4 to a real model, including getting the trained artifact out via a volume (§5).</li>
-<li><strong>Deploy a complete end-to-end ML model with Docker Compose</strong> — wire a model-serving backend and a
+<li><strong>Deploy a complete end-to-end ML model with Docker Compose</strong>: wire a model-serving backend and a
    simple frontend together with <code>docker-compose.yml</code> (§7), talking to each other by service name.</li>
-<li><strong>Deploy an ML model in a Kubernetes cluster</strong> — take the image from project 2, run it on Minikube
+<li><strong>Deploy an ML model in a Kubernetes cluster</strong>: take the image from project 2, run it on Minikube
    behind a <code>Deployment</code> + <code>Service</code> (§9-§11), and confirm it survives a Pod being deleted and
    recreated.</li>
 </ol>
@@ -1531,17 +1531,17 @@ control plane, whether or not it calls itself that.</p>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
-  <code>s3_reproducibility/docker.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source material
+  <code>s3_reproducibility/docker.md</code>. DTU course 02476, Apache 2.0 licensed. Primary source material
   this module's Docker concepts, Dockerfile pattern, and command walkthrough (§1-§6) are adapted from.</li>
 <li>Docker Docs. <a href="https://docs.docker.com/get-started/docker-overview/">"Docker overview"</a> and
-  <a href="https://docs.docker.com/engine/network/">"Networking overview."</a> — source for the image/container
+  <a href="https://docs.docker.com/engine/network/">"Networking overview."</a>. Source for the image/container
   model (§2) and network types (§5).</li>
-<li>Docker Docs. <a href="https://docs.docker.com/compose/compose-file/">"Compose file reference."</a> — source for
+<li>Docker Docs. <a href="https://docs.docker.com/compose/compose-file/">"Compose file reference."</a>. Source for
   the Compose example in §7.</li>
 <li>Kubernetes Documentation. <a href="https://kubernetes.io/docs/concepts/overview/components/">"Kubernetes Components"</a>
-  and <a href="https://kubernetes.io/docs/concepts/workloads/">"Workloads."</a> — source for the control
+  and <a href="https://kubernetes.io/docs/concepts/workloads/">"Workloads."</a>. Source for the control
   plane/node architecture (§9) and the resource list (§10).</li>
-<li><a href="https://minikube.sigs.k8s.io/docs/">Minikube documentation</a> — source for the local-cluster workflow
+<li><a href="https://minikube.sigs.k8s.io/docs/">Minikube documentation</a>. Source for the local-cluster workflow
   in §11.</li>
 </ul>
 
@@ -1566,7 +1566,7 @@ control plane, whether or not it calls itself that.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

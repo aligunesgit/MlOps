@@ -1282,7 +1282,7 @@
   
 
 
-<h1 id="module-2-overview-of-ml-and-mlops-stages">Module 2 — Overview of ML and MLOps Stages</h1>
+<h1 id="module-2-overview-of-ml-and-mlops-stages">Module 2: Overview of ML and MLOps Stages</h1>
 <p>Week 2</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1294,7 +1294,7 @@
 </ul>
 <hr />
 <h2 id="1-the-mlops-maturity-model">1. The MLOps maturity model</h2>
-<p>Organizations don't wake up one day fully "MLOps-mature" — they move through recognizable levels,
+<p>Organizations don't wake up one day fully "MLOps-mature"; they move through recognizable levels,
 and two framings are widely used in industry:</p>
 <p><strong>Google Cloud's 3-level model</strong> (the more commonly cited version for describing pipeline automation):</p>
 <table>
@@ -1309,7 +1309,7 @@ and two framings are widely used in industry:</p>
 <tr>
 <td>0</td>
 <td>Manual process</td>
-<td>Every step — data prep, training, validation, deployment — is run by hand from a notebook. No CI/CD, no automated retraining.</td>
+<td>Every step (data prep, training, validation, deployment) is run by hand from a notebook. No CI/CD, no automated retraining.</td>
 </tr>
 <tr>
 <td>1</td>
@@ -1319,7 +1319,7 @@ and two framings are widely used in industry:</p>
 <tr>
 <td>2</td>
 <td>CI/CD pipeline automation</td>
-<td>A robust, automated CI/CD system builds, tests, and deploys both pipeline components and models — the full loop is automated end to end.</td>
+<td>A robust, automated CI/CD system builds, tests, and deploys both pipeline components and models: the full loop is automated end to end.</td>
 </tr>
 </tbody>
 </table>
@@ -1330,7 +1330,7 @@ automated versus manual</strong>, not by how sophisticated any individual model 
 <pre class="mermaid"><code>flowchart LR
     A["Level 0&lt;br/&gt;Manual process"] --&gt; B["Level 1&lt;br/&gt;ML pipeline automation (CT)"]
     B --&gt; C["Level 2&lt;br/&gt;Full CI/CD/CT automation"]</code></pre>
-<p>A team's job is not to chase Level 2 for every project — it's to match the level of automation to how
+<p>A team's job is not to chase Level 2 for every project; it's to match the level of automation to how
 much a project's value depends on speed, reliability, and scale.</p>
 <h2 id="2-detailed-mlops-stages">2. Detailed MLOps stages</h2>
 <p>Zooming into what actually happens inside a mature MLOps pipeline, six recurring stages show up
@@ -1348,43 +1348,43 @@ that implement them.</p>
 <p>Traditional software only needs to version one thing: code. MLOps needs to version <strong>five</strong> things
 that all change independently, and a working system needs a story for keeping them in sync:</p>
 <ul>
-<li><strong>Code</strong> — the usual Git-based version control (Module 3).</li>
-<li><strong>Data</strong> — the raw and processed datasets used for training, since the same code trained on
+<li><strong>Code</strong>: the usual Git-based version control (Module 3).</li>
+<li><strong>Data</strong>: the raw and processed datasets used for training, since the same code trained on
   different data produces a different model (tools like DVC, LakeFS).</li>
-<li><strong>Models</strong> — trained weights/artifacts, tracked with enough metadata to know exactly what code and
-  data produced them (model registries — see Module 10).</li>
-<li><strong>Features</strong> — engineered features need their own versioning once they're shared across multiple
+<li><strong>Models</strong>: trained weights/artifacts, tracked with enough metadata to know exactly what code and
+  data produced them (model registries; see Module 10).</li>
+<li><strong>Features</strong>: engineered features need their own versioning once they're shared across multiple
   models, so training and serving don't silently drift apart (Module 6, Feature Store).</li>
-<li><strong>Containers</strong> — the exact runtime environment (OS, libraries, drivers) a model was trained and is
+<li><strong>Containers</strong>: the exact runtime environment (OS, libraries, drivers) a model was trained and is
   served in (Module 5, Docker).</li>
 </ul>
 <p>The unifying idea: reproducing <em>any</em> result requires knowing the exact combination of all five,
-pinned together — not just the code.</p>
+pinned together, not just the code.</p>
 <h2 id="4-testing">4. Testing</h2>
 <p>Testing an ML system needs everything traditional software testing does, plus tests that have no
 equivalent in traditional software because the "logic" is learned from data rather than written by a
 developer:</p>
 <ul>
-<li><strong>Unit tests</strong> — the usual code-correctness tests (does the preprocessing function do what it should).</li>
-<li><strong>Data tests</strong> — schema validation, range checks, and distribution checks on incoming data.</li>
-<li><strong>Model tests</strong> — behavioral tests on the model itself: does it beat a trivial baseline, does it
-  perform acceptably on known edge cases and slices of the data, is it invariant to changes that
+<li><strong>Unit tests</strong>: the usual code-correctness tests (does the preprocessing function do what it should).</li>
+<li><strong>Data tests</strong>: schema validation, range checks, and distribution checks on incoming data.</li>
+<li><strong>Model tests</strong>: behavioral tests on the model itself, checking whether it beats a trivial baseline,
+  performs acceptably on known edge cases and slices of the data, and is invariant to changes that
   shouldn't matter (e.g. a name swap in a resume-screening model).</li>
-<li><strong>Integration tests</strong> — does the full pipeline, end to end, actually produce a servable model.</li>
+<li><strong>Integration tests</strong>: does the full pipeline, end to end, actually produce a servable model.</li>
 </ul>
 <h2 id="5-automation-cicd">5. Automation (CI/CD)</h2>
 <p>Automation is what turns the stages above from a manual checklist into something that runs on every
 change without a human remembering to do it. In MLOps this splits into two related but distinct
 loops:</p>
 <ul>
-<li><strong>CI (Continuous Integration)</strong> — every code change automatically triggers linting, unit tests, and
+<li><strong>CI (Continuous Integration)</strong>: every code change automatically triggers linting, unit tests, and
   a fast validation training run.</li>
-<li><strong>CD (Continuous Delivery/Deployment)</strong> — a model that passes its quality gates is automatically
+<li><strong>CD (Continuous Delivery/Deployment)</strong>: a model that passes its quality gates is automatically
   packaged and deployed, often progressively (canary or shadow deployment) rather than all at once.</li>
 </ul>
 <p>Module 4 covers this in depth across AWS, GCP, Azure, and GitHub Actions specifically.</p>
 <h2 id="6-reproducibility">6. Reproducibility</h2>
-<p>Reproducibility is the property that lets someone — including future-you — recreate a specific result
+<p>Reproducibility is the property that lets someone (including future-you) recreate a specific result
 exactly. It depends on all of the versioning from §3 being pinned simultaneously: same code, same
 data, same feature definitions, same container, and the same configuration/hyperparameters (typically
 captured in structured config files rather than hardcoded). Without this, debugging a production
@@ -1393,18 +1393,18 @@ incident ("why did the model behave this way on March 3rd?") becomes close to im
 <p>Deployment is the act of making a trained model available to receive real input and return real
 predictions. The two dimensions that matter most:</p>
 <ul>
-<li><strong>How</strong> — as a batch job that scores a dataset periodically, or as a real-time service behind an
+<li><strong>How</strong>: as a batch job that scores a dataset periodically, or as a real-time service behind an
   API that responds to individual requests.</li>
-<li><strong>Where</strong> — locally, on a self-managed cluster, or on a managed cloud service (Module 7 covers AWS
+<li><strong>Where</strong>: locally, on a self-managed cluster, or on a managed cloud service (Module 7 covers AWS
   SageMaker, GCP Vertex AI, and Azure ML specifically).</li>
 </ul>
 <h2 id="8-monitoring">8. Monitoring</h2>
 <p>Monitoring is what tells you a deployed model needs attention <em>before</em> a business metric tells you the
 hard way. Two categories matter, and most teams only build the first:</p>
 <ul>
-<li><strong>Infrastructure monitoring</strong> — latency, throughput, error rate, resource usage (the same telemetry
+<li><strong>Infrastructure monitoring</strong>: latency, throughput, error rate, resource usage (the same telemetry
   any production service needs).</li>
-<li><strong>Model/data monitoring</strong> — is the input data drifting from what the model was trained on, is the
+<li><strong>Model/data monitoring</strong>: is the input data drifting from what the model was trained on, is the
   model's own confidence/accuracy degrading, are predictions becoming skewed toward one class. This
   category has no equivalent in traditional software monitoring (Module 9).</li>
 </ul>
@@ -1456,7 +1456,7 @@ automation on. Broadly, two families of architecture dominate:</p>
 </tr>
 <tr>
 <td><strong>MLflow</strong></td>
-<td>Experiment tracking, model registry, and packaging — often adopted first because it's lightweight and framework-agnostic</td>
+<td>Experiment tracking, model registry, and packaging; often adopted first because it's lightweight and framework-agnostic</td>
 </tr>
 <tr>
 <td><strong>Metaflow</strong></td>
@@ -1491,21 +1491,21 @@ automation on. Broadly, two families of architecture dominate:</p>
 <tbody>
 <tr>
 <td><strong>AWS</strong></td>
-<td>SageMaker — training, tuning, deployment, and pipelines as a managed service</td>
+<td>SageMaker: training, tuning, deployment, and pipelines as a managed service</td>
 </tr>
 <tr>
 <td><strong>GCP</strong></td>
-<td>Vertex AI — unified training, feature store, and deployment platform</td>
+<td>Vertex AI: unified training, feature store, and deployment platform</td>
 </tr>
 <tr>
 <td><strong>Azure</strong></td>
-<td>Azure Machine Learning — pipelines, model registry, and managed endpoints</td>
+<td>Azure Machine Learning: pipelines, model registry, and managed endpoints</td>
 </tr>
 </tbody>
 </table>
 <p>Module 7 goes hands-on with all three cloud-native platforms.</p>
 <h2 id="11-cost-benefit-approach-architecture-choice-and-mlops-maturity">11. Cost-benefit approach: architecture choice and MLOps maturity</h2>
-<p>Neither family is "better" in the abstract — the right choice depends on where a team sits on the
+<p>Neither family is "better" in the abstract; the right choice depends on where a team sits on the
 maturity model from §1:</p>
 <ul>
 <li><strong>Cloud-native</strong> tools generally win on <em>time-to-value</em>: a team can get a working pipeline running
@@ -1520,7 +1520,7 @@ served starting cloud-native, since they don't yet have the platform engineering
 tooling assumes. Teams that have already reached Level 2 maturity and are running at real scale often
 find the economics flip toward investing in an open-source, self-hosted stack.</p>
 <h2 id="12-the-mlops-tool-ecosystem">12. The MLOps tool ecosystem</h2>
-<p>Pulling §3-§10 together into one map — a representative (not exhaustive) tool for each stage:</p>
+<p>Pulling §3-§10 together into one map, here is a representative (not exhaustive) tool for each stage:</p>
 <table>
 <thead>
 <tr>
@@ -1581,7 +1581,7 @@ different priorities:</p>
 </tr>
 <tr>
 <td><strong>MLOps / Platform Engineer</strong></td>
-<td>Building and maintaining the shared infrastructure — CI/CD, orchestration, monitoring — that every model rides on</td>
+<td>Building and maintaining the shared infrastructure (CI/CD, orchestration, monitoring) that every model rides on</td>
 </tr>
 <tr>
 <td><strong>DevOps / SRE</strong></td>
@@ -1598,7 +1598,7 @@ job title. Either way, naming the responsibilities explicitly is what prevents a
 "someone else's problem" the moment it leaves the notebook.</p>
 <hr />
 <h2 id="summary">Summary</h2>
-<p>An MLOps pipeline is not one thing — it's six recurring stages (versioning, testing, automation,
+<p>An MLOps pipeline is not one thing: it's six recurring stages (versioning, testing, automation,
 reproducibility, deployment, monitoring) that a team automates progressively as it matures, built on
 top of either an open-source or cloud-native architecture chosen based on where that team's maturity
 and scale actually sit. The tool ecosystem and the role split exist to make that automation a shared,
@@ -1612,11 +1612,11 @@ sustainable responsibility rather than a single person's heroics.</p>
 <p>Foundational industry sources this module's content draws on:</p>
 <ul>
 <li>Google Cloud. <a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">"MLOps: Continuous Delivery and Automation Pipelines in Machine Learning."</a>
-  Architecture guide. — source for the 3-level maturity model in §1.</li>
+  Architecture guide. Source for the 3-level maturity model in §1.</li>
 <li>Microsoft. <a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/mlops-maturity-model">"MLOps Maturity Model."</a>
-  Azure Architecture Center. — the 5-level model referenced alongside Google's in §1 (see also Module 1, §11).</li>
+  Azure Architecture Center. The 5-level model referenced alongside Google's in §1 (see also Module 1, §11).</li>
 <li>Official documentation for the tools named in §10 and §12 (Kubeflow, MLflow, Metaflow, Kedro,
-  ZenML, MLRun, CML, and the AWS/GCP/Azure ML platforms) — consulted for accuracy of each tool's
+  ZenML, MLRun, CML, and the AWS/GCP/Azure ML platforms), consulted for accuracy of each tool's
   positioning, not quoted directly.</li>
 </ul>
 
@@ -1641,7 +1641,7 @@ sustainable responsibility rather than a single person's heroics.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     

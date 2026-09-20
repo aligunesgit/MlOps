@@ -526,7 +526,7 @@
   <a href="#8-project-mastering-git-commands-branching-and-collaboration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Project: Mastering Git — Commands, Branching, and Collaboration
+        8. Project: Mastering Git (Commands, Branching, and Collaboration)
       
     </span>
   </a>
@@ -1043,7 +1043,7 @@
   <a href="#8-project-mastering-git-commands-branching-and-collaboration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        8. Project: Mastering Git — Commands, Branching, and Collaboration
+        8. Project: Mastering Git (Commands, Branching, and Collaboration)
       
     </span>
   </a>
@@ -1116,7 +1116,7 @@
   
 
 
-<h1 id="module-3-git-essentials-for-mlops-practitioners">Module 3 — Git Essentials for MLOps Practitioners</h1>
+<h1 id="module-3-git-essentials-for-mlops-practitioners">Module 3: Git Essentials for MLOps Practitioners</h1>
 <p>Week 3</p>
 <h2 id="learning-objectives">Learning objectives</h2>
 <ul>
@@ -1128,7 +1128,7 @@
 <hr />
 <h2 id="1-overview-of-git">1. Overview of Git</h2>
 <p><strong>Git</strong> is a distributed version control system: a way to track <em>who</em> changed <em>what</em>, <em>when</em>, across
-a codebase that many people touch at once. "Distributed" is the key word — every clone of a repository
+a codebase that many people touch at once. "Distributed" is the key word: every clone of a repository
 is a full copy of its history, not just a checkout of the current state, so a developer can commit,
 branch, and inspect history entirely offline before ever talking to a server.</p>
 <p>It is worth separating two things that are easy to conflate: <strong>Git is the tool</strong>; <strong>GitHub is one of
@@ -1136,15 +1136,15 @@ several companies that hosts Git repositories online</strong> and layers collabo
 requests, code review, Actions) on top. GitLab and Bitbucket are the other widely-used hosts. This
 course uses Git + GitHub throughout, but the Git commands themselves work identically no matter who
 hosts the remote.</p>
-<p>For MLOps specifically, Git is the versioning mechanism for <strong>code</strong> — one of the five things an MLOps
+<p>For MLOps specifically, Git is the versioning mechanism for <strong>code</strong>, one of the five things an MLOps
 pipeline needs to version, alongside data, models, features, and containers (Module 2, §3). Everything
-else in the stack — CI/CD (Module 4), containerized environments (Module 5), model registries
-(Module 10) — assumes a Git history it can hook into.</p>
+else in the stack, including CI/CD (Module 4), containerized environments (Module 5), and model registries
+(Module 10), assumes a Git history it can hook into.</p>
 <h2 id="2-gits-core-model-commits-staging-and-branches">2. Git's core model: commits, staging, and branches</h2>
 <p>Git's mental model reduces to two ideas: a <strong>graph of commits</strong>, and a <strong>staging area</strong> that sits
 between your files and that graph.</p>
 <p>A <strong>commit</strong> is a snapshot of the entire repository at one point in time, identified by a unique hash.
-Because every commit points back to its parent, the full history forms a directed graph — which is
+Because every commit points back to its parent, the full history forms a directed graph, which is
 exactly what lets you jump back to any prior state, compare two points in time, or reason about how a
 branch diverged from another.</p>
 <p>Getting a local change into that graph, and then sharing it, is a three-step move:</p>
@@ -1157,13 +1157,13 @@ branch diverged from another.</p>
 <li><code>git add</code> moves changes into the <strong>staging area</strong>. Nothing is hashed yet, so staged changes can
   still be freely reverted with <code>git restore --staged</code>.</li>
 <li><code>git commit</code> turns the staged changes into a permanent node in the local commit graph. This is still
-  entirely local — nobody else can see it yet.</li>
+  entirely local: nobody else can see it yet.</li>
 <li><code>git push</code> uploads your local commits to the remote so collaborators (and CI) can see them.</li>
 <li><code>git pull</code> (a <code>git fetch</code> followed by a merge) brings the remote's new commits back down to your
   local repository.</li>
 </ul>
-<p>A <strong>branch</strong> is nothing more than a movable pointer to a commit. Creating a branch is cheap — it does
-not copy any files — which is exactly what makes it safe to try something without touching working
+<p>A <strong>branch</strong> is nothing more than a movable pointer to a commit. Creating a branch is cheap: it does
+not copy any files, which is exactly what makes it safe to try something without touching working
 code. §3 covers how teams organize <em>which</em> branches they create and why.</p>
 <h2 id="3-standard-git-branching-strategies">3. Standard Git branching strategies</h2>
 <p>A single <code>main</code> branch works for a solo project. The moment more than one or two people commit to the
@@ -1182,7 +1182,7 @@ lifetime and purpose:</p>
 <tbody>
 <tr>
 <td><strong><code>main</code></strong></td>
-<td>—</td>
+<td>N/A</td>
 <td>Permanent</td>
 <td>Always deployable / production-representative state</td>
 </tr>
@@ -1190,7 +1190,7 @@ lifetime and purpose:</p>
 <td><strong>Development</strong></td>
 <td><code>main</code></td>
 <td>Long-lived</td>
-<td>Integration branch — ahead of <code>main</code>, where finished features land first</td>
+<td>Integration branch, ahead of <code>main</code>, where finished features land first</td>
 </tr>
 <tr>
 <td><strong>Feature</strong></td>
@@ -1208,7 +1208,7 @@ lifetime and purpose:</p>
 <td><strong>Release</strong></td>
 <td><code>development</code></td>
 <td>Medium-lived, one per release</td>
-<td>Stabilization window — only fixes, no new features, cut before shipping</td>
+<td>Stabilization window: only fixes, no new features, cut before shipping</td>
 </tr>
 <tr>
 <td><strong>UAT</strong></td>
@@ -1277,7 +1277,7 @@ covers the large majority of day-to-day work:</p>
 </tr>
 <tr>
 <td><code>git fetch</code></td>
-<td>Downloads remote commits <em>without</em> merging them — lets you inspect before integrating</td>
+<td>Downloads remote commits <em>without</em> merging them, letting you inspect before integrating</td>
 </tr>
 <tr>
 <td><code>git branch</code></td>
@@ -1317,12 +1317,12 @@ covers the large majority of day-to-day work:</p>
 </tr>
 </tbody>
 </table>
-<p><code>git checkout</code> is the historical Swiss-army-knife command — it can switch branches, restore files, or
+<p><code>git checkout</code> is the historical Swiss-army-knife command: it can switch branches, restore files, or
 create a branch, depending on its flags. <code>git switch</code> and <code>git restore</code> split those jobs into two
 narrower, less error-prone commands and are the modern recommendation; both are used interchangeably
 in the wild, so recognizing <code>checkout</code> in older documentation still matters.</p>
 <p>A good commit message is a skill in its own right: short, in the imperative mood ("add retry logic",
-not "added" or "adds"), and scoped to one logical change — this is what makes <code>git log</code> and
+not "added" or "adds"), and scoped to one logical change. This is what makes <code>git log</code> and
 <code>git blame</code> actually useful six months later.</p>
 <h2 id="5-working-with-a-github-remote-repository">5. Working with a GitHub remote repository</h2>
 <p>A <strong>remote</strong> is just a named URL that a local repository knows how to talk to. The default remote
@@ -1339,7 +1339,7 @@ created by <code>git clone</code> is named <code>origin</code>:</p>
   over SSH uses a locally registered key pair instead and avoids re-authenticating every time.</li>
 <li><strong>Forks and upstream.</strong> Contributing to a repository you don't own works by <em>forking</em> it (GitHub
   creates your own writable copy), cloning your fork, and then adding the original repository as a
-  second remote — conventionally named <code>upstream</code> — so you can pull in its changes without them
+  second remote (conventionally named <code>upstream</code>) so you can pull in its changes without them
   overwriting your fork:</li>
 </ul>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>remote<span class="w"> </span>add<span class="w"> </span>upstream<span class="w"> </span>&lt;url-to-original-repo&gt;
@@ -1364,7 +1364,7 @@ actually want, deleting all three marker lines, then <code>git add</code> and <c
 <p><strong>GitHub Actions</strong> is GitHub's built-in automation engine: a YAML file committed under
 <code>.github/workflows/</code> that defines <em>triggers</em> (a push, a pull request, a schedule) and a sequence of
 <em>jobs/steps</em> that run in response, on GitHub's own runners. Conceptually it is Git history acting as
-the input to a CI/CD system — every commit or PR to a watched branch can automatically kick off linting,
+the input to a CI/CD system: every commit or PR to a watched branch can automatically kick off linting,
 tests, a training run, or a deployment, with zero manual intervention.</p>
 <p>At Module 3's level, the point is just to recognize the shape of a workflow file and know what it's
 for. Module 4 goes hands-on with GitHub Actions specifically, alongside the equivalent CI/CD services on
@@ -1372,7 +1372,7 @@ AWS, GCP, and Azure, including workflows that trigger model retraining and deplo
 <h2 id="7-bonus-sharing-a-repository-with-an-llm">7. Bonus: sharing a repository with an LLM</h2>
 <p>Feeding an entire repository to an LLM for code review, refactoring help, or onboarding a new AI-assisted
 tool works better when the repository is packed into one AI-friendly file rather than pasted piecemeal.
-<a href="https://github.com/yamadashy/repomix">Repomix</a> does exactly this — it walks a repository and produces a
+<a href="https://github.com/yamadashy/repomix">Repomix</a> does exactly this: it walks a repository and produces a
 single, token-counted file in a format built for LLM context windows:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># pack the current directory</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>npx<span class="w"> </span>repomix
@@ -1381,8 +1381,8 @@ single, token-counted file in a format built for LLM context windows:</p>
 </span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>npx<span class="w"> </span>repomix<span class="w"> </span>--remote<span class="w"> </span>https://github.com/&lt;user&gt;/&lt;repository&gt;
 </span></code></pre></div>
 <p><a href="https://uithub.com">uithub.com</a> is a lighter, browser-based alternative for the same job on any public
-GitHub repository — no install required.</p>
-<h2 id="8-project-mastering-git-commands-branching-and-collaboration">8. Project: Mastering Git — Commands, Branching, and Collaboration</h2>
+GitHub repository, with no install required.</p>
+<h2 id="8-project-mastering-git-commands-branching-and-collaboration">8. Project: Mastering Git (Commands, Branching, and Collaboration)</h2>
 <p>The hands-on deliverable for this module is a small, self-contained repository that exercises the
 mechanics above end to end, not just in isolation:</p>
 <ol>
@@ -1393,7 +1393,7 @@ mechanics above end to end, not just in isolation:</p>
 <li>Deliberately reproduce a merge conflict (edit the same lines on two branches) and resolve it using
    the workflow in §5.</li>
 <li>Fork a public repository you don't own, set an <code>upstream</code> remote, and open a pull request against
-   it — a genuine open-source contribution, however small.</li>
+   it: a genuine open-source contribution, however small.</li>
 </ol>
 <p>Every step maps directly to a section above: it exists so that the next time a real PR needs review, a
 release branch needs cutting, or a merge conflict shows up mid-sprint, none of it is unfamiliar.</p>
@@ -1402,7 +1402,7 @@ release branch needs cutting, or a merge conflict shows up mid-sprint, none of i
 <p>Git turns "who changed what, and when" from a question you hope to remember into one the commit graph
 answers for you. The everyday command set (§4) is small; what actually separates a smooth team workflow
 from a chaotic one is agreeing on a branching strategy (§3) and a shared discipline around remotes, pull
-requests, and conflict resolution (§5) — the same Git history that GitHub Actions (§6) and every CI/CD
+requests, and conflict resolution (§5): the same Git history that GitHub Actions (§6) and every CI/CD
 pipeline in Module 4 will build on top of.</p>
 <h2 id="further-reading">Further reading</h2>
 <ul>
@@ -1412,18 +1412,18 @@ pipeline in Module 4 will build on top of.</p>
 <h2 id="references">References</h2>
 <p>Foundational sources this module's content draws on:</p>
 <ul>
-<li>Chacon, Scott &amp; Straub, Ben. <a href="https://git-scm.com/book/en/v2">"Pro Git."</a> 2nd edition — the
+<li>Chacon, Scott &amp; Straub, Ben. <a href="https://git-scm.com/book/en/v2">"Pro Git."</a> 2nd edition. The
   canonical reference for Git's commit/staging/branch model (§1, §2) and the everyday command set
   (§4).</li>
 <li>SkafteNicki, Nicki, et al. <a href="https://github.com/SkafteNicki/dtu_mlops"><code>dtu_mlops</code></a>,
-  <code>s2_organisation_and_version_control/git.md</code>. DTU course 02476, Apache 2.0 licensed. — primary source
+  <code>s2_organisation_and_version_control/git.md</code>. DTU course 02476, Apache 2.0 licensed. Primary source
   material this module's Git walkthrough, remote/fork workflow, and merge-conflict example (§5) are
   adapted from.</li>
 <li>GitHub Docs. <a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork">"Configuring a remote repository for a fork."</a>
-  — source for the <code>upstream</code> remote workflow in §5.</li>
+  Source for the <code>upstream</code> remote workflow in §5.</li>
 <li>GitHub Docs. <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions">"Understanding GitHub Actions."</a>
-  — source for the workflow/trigger model in §6 (Module 4 covers implementation in depth).</li>
-<li><a href="https://github.com/yamadashy/repomix">Repomix</a> documentation — source for the bonus AI-assisted
+  Source for the workflow/trigger model in §6 (Module 4 covers implementation in depth).</li>
+<li><a href="https://github.com/yamadashy/repomix">Repomix</a> documentation. Source for the bonus AI-assisted
   repository packing tool in §7.</li>
 </ul>
 
@@ -1448,7 +1448,7 @@ pipeline in Module 4 will build on top of.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 08:42:26">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 09:32:19">September 20, 2026</span>
   </span>
 
     
