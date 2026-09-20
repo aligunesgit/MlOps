@@ -18,7 +18,7 @@ version conflicts, edit code in something more capable than a plain text box, an
 burning half a day on an installation problem. None of that is MLOps specifically, but all of it is the
 floor everything else in this course stands on, so it gets its own module before anything else starts.
 
-## 2. The command line
+## 2. :material-console: The command line
 
 The command line is a text-based interface for the computer, predating graphical interfaces and still
 essential for MLOps work: many tools have no GUI at all, and cloud environments are usually reached
