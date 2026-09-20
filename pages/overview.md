@@ -1,7 +1,6 @@
 # Summary of course content
 
-This page maps each tool taught in the course to the module it belongs to. Fill this in as each
-module's content is finalized: this table is most useful once every module actually names its tools.
+This page maps each tool taught in the course to the module it belongs to.
 
 | Tool / framework | Role | Module |
 |---|---|---|
@@ -17,11 +16,9 @@ module's content is finalized: this table is most useful once every module actua
 | AWS SageMaker | Managed training/deployment (AWS) | M7 |
 | GCP Vertex AI | Managed training/deployment (GCP) | M7 |
 | Azure Machine Learning | Managed training/deployment (Azure) | M7 |
-| *(LLM tooling, TBD)* | LLMOps | M8 |
+| Vector database + embedding model (RAG) | LLMOps | M8 |
 | Evidently AI (or equivalent) | Data/model drift monitoring | M9 |
 | Cloud-native monitoring (CloudWatch/Cloud Monitoring/Azure Monitor) | Observability | M9 |
 | Weights & Biases | Experiment tracking, sweeps | M10 |
 | Optuna | Hyperparameter optimization | M10 |
 | H2O MLOps / Valohai / Domino / neptune.ai / Iguazio | AutoML/MLOps platforms (survey only) | M10 |
-
-*Stack diagram: add once the tool list above is finalized.*

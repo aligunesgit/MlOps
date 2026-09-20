@@ -10,11 +10,12 @@ apply the tools taught in this course to a real (if modest) end-to-end system.
 
 ## Group size
 
-*TBD: decide group size (DTU's comparable course uses 3–5 students per group).*
+Groups of 2, per the [course information](../README.md#course-information).
 
 ## Assessment
 
-*TBD: decide whether assessment is the project report only (pass/fail), or report + presentation/exam.*
+Pass/Fail, based on a midterm, a final, and the project report, per the
+[course information](../README.md#course-information).
 
 ## Getting started
 
@@ -47,8 +48,8 @@ to.
 ### Weeks 7-11 (Modules 6-10)
 
 * [ ] Set up a feature store (online and/or offline) for the project's features (M6)
-* [ ] Train/deploy a model end-to-end on at least one of AWS SageMaker, GCP Vertex AI, or Azure ML (M7)
-* [ ] Create a CI/CD pipeline for the chosen cloud provider (M4/M7)
+* [ ] Train/deploy a model end-to-end on Azure Machine Learning (M7)
+* [ ] Create a CI/CD pipeline using GitHub Actions and Azure DevOps (M4/M7)
 * [ ] (If relevant to the project) prototype an LLM-driven component and consider its LLMOps needs (M8)
 * [ ] Instrument the deployed model/application with monitoring (M9)
 * [ ] Set up at least one alert for the monitored application (M9)

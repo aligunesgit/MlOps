@@ -11,11 +11,12 @@ basics, and at least 1 year of general programming experience.
 
 ## How many people should be in a project group?
 
-*TBD.*
+2, per the [course information](../README.md#course-information).
 
 ## How is the course graded?
 
-*TBD.*
+Pass/Fail, based on a midterm, a final, and the project report (see
+[course information](../README.md#course-information)).
 
 ## Can I use ChatGPT, Copilot, or other AI tools for the exercises, the project, or the report?
 

@@ -11,13 +11,13 @@
 
 | Resource | Link |
 |---|---|
-| Course materials | *TBD* |
+| Course materials | [GitHub Pages site](https://aligunesgit.github.io/MlOps/) |
 | Video lectures | [YouTube playlist](https://www.youtube.com/playlist?list=PL3MmuxUbc_hIUISrluw_A7wDSmfOhErJK) |
-| Documentation | *TBD* |
+| Documentation | [GitHub Pages site](https://aligunesgit.github.io/MlOps/) |
 | Course platform (deadlines, homework) | Atlas-OIS |
 | Communication channel | Atlas-OIS |
 | Announcements | Atlas-OIS |
-| FAQ | *TBD* |
+| FAQ | [FAQ page](https://aligunesgit.github.io/MlOps/pages/faq/) |
 
 ## Course information
 
