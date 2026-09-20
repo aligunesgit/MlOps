@@ -7,7 +7,7 @@ concepts and a working set of tools the field actually runs on. Think of this co
 fills up module by module — not one you master cover to cover, but one you know well enough to reach
 into whenever a real project calls for it.
 
-![MLOps lifecycle: nine stages, three disciplines, one loop](../figures/mlops_diagram.png)
+![MLOps course toolbox: pipeline, model, deploy, monitor, and the tools that support each stage](../figures/Mlops.png)
 
 This course is a toolbox. You will not become an expert in every tool presented here, but you will get
 an overview of many of the tools that are used in MLOps, and you will be able to pick up new tools as
