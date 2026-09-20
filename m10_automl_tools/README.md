@@ -1,4 +1,4 @@
-# Module 10 — Introduction to AutoML Tools
+# Module 10: Introduction to AutoML Tools
 
 Week 11
 
@@ -18,14 +18,14 @@ Week 11
 The tools this module surveys split into the same two families Module 2, §11 already introduced for
 MLOps architectures in general, just at the tool-selection level instead of the platform level:
 
-* **Point solutions** — a single, focused capability (track experiments, search hyperparameters) that
+* **Point solutions**: a single, focused capability (track experiments, search hyperparameters) that
   a team bolts onto whatever pipeline they already have. §2-§3 cover the two most widely adopted:
   **Weights & Biases** for experiment tracking, and **Optuna** for hyperparameter search.
-* **Full-lifecycle platforms** — a product that tries to own the whole loop from §2's tracking through
+* **Full-lifecycle platforms**: a product that tries to own the whole loop from §2's tracking through
   training, deployment, and monitoring in one system, the same "buy the whole stack" trade-off Module
   2, §11 described for cloud-native MLOps architectures. §4 surveys five of these.
 
-Neither family is objectively better — a team already happy with its own CI/CD (Module 4) and cloud
+Neither family is objectively better: a team already happy with its own CI/CD (Module 4) and cloud
 platform (Module 7) usually only needs the point solutions; a team without that infrastructure already
 built gets more value from a platform that bundles it.
 
@@ -33,8 +33,8 @@ built gets more value from a platform that bundles it.
 
 Logging loss/accuracy to a plain file and plotting it with matplotlib works for a single script run
 alone, but breaks down the moment more than one run needs comparing, or more than one person is
-running experiments. **Weights & Biases (W&B)** — free for personal/academic use, alongside
-open-source-first alternatives like MLflow, Neptune, or Comet — is one standard answer:
+running experiments. **Weights & Biases (W&B)**, free for personal/academic use, alongside
+open-source-first alternatives like MLflow, Neptune, or Comet, is one standard answer:
 
 ```bash
 pip install wandb
@@ -55,7 +55,7 @@ wandb.log({"input_images": wandb.Image(batch)})  # images, histograms, matplotli
   for dashboard filtering.
 
 **The reproducibility payoff** is what makes this more than a nicer plot: every run's page
-automatically records the exact git commit, the exact launch command, and a full dependency snapshot —
+automatically records the exact git commit, the exact launch command, and a full dependency snapshot:
 reproducing a run becomes clone → checkout that commit → install from the snapshot → re-run the logged
 command, closing the loop on Module 1, §3's "reproducibility is multidimensional" problem in practice.
 
@@ -81,7 +81,7 @@ only flips it to `production` once they pass.
 
 ## 3. Hyperparameter search: W&B Sweeps and Optuna
 
-Both tools answer the same question — which hyperparameter combination performs best — with different
+Both tools answer the same question (which hyperparameter combination performs best) with different
 levels of infrastructure.
 
 **W&B Sweeps** run directly inside the tracking setup from §2:
@@ -108,7 +108,7 @@ The sweep dashboard adds parallel-coordinates plots (spotting hyperparameter ten
 and importance/correlation plots (which hyperparameters actually mattered) on top of the regular
 run-comparison view.
 
-**Optuna** is the standalone alternative, built around three concepts — a **trial** (one hyperparameter
+**Optuna** is the standalone alternative, built around three concepts: a **trial** (one hyperparameter
 combination), a **study** (a collection of trials), and an **objective** (the function scoring a
 trial):
 
@@ -126,7 +126,7 @@ study.optimize(objective, n_trials=100)
 ```
 
 Optuna defaults to sample-efficient Bayesian optimization rather than exhaustive grid search, and its
-**pruning** (`MedianPruner` above) stops clearly-unpromising trials early to save compute — a trade-off
+**pruning** (`MedianPruner` above) stops clearly-unpromising trials early to save compute, a trade-off
 worth naming explicitly: pruning can discard a trial that would have improved later (e.g. one with a
 learning-rate warmup that looks temporarily worse early on), so anything affecting training dynamics
 over time makes pruning riskier to rely on blindly. For a search too large to run on one machine,
@@ -144,10 +144,10 @@ architectures generally:
 
 | Platform | Type | Positioning |
 |---|---|---|
-| **H2O MLOps** | Full-lifecycle platform | Pairs H2O's AutoML model training (Driverless AI) with a deployment/monitoring platform — automates architecture/hyperparameter search *and* the path to production |
+| **H2O MLOps** | Full-lifecycle platform | Pairs H2O's AutoML model training (Driverless AI) with a deployment/monitoring platform, automating architecture/hyperparameter search *and* the path to production |
 | **Valohai** | Full-lifecycle platform | MLOps orchestration with a strong pipeline-versioning focus, deployable on any cloud rather than locked to one |
 | **Domino Data Lab** | Full-lifecycle platform | Enterprise data science platform, strongest on governance and compliance for regulated industries |
-| **neptune.ai** | Point solution | An experiment tracker positioned as a lighter-weight, lower-cost alternative to W&B — same job as §2, smaller footprint |
+| **neptune.ai** | Point solution | An experiment tracker positioned as a lighter-weight, lower-cost alternative to W&B (same job as §2, smaller footprint) |
 | **Iguazio** | Full-lifecycle platform | Built around the open-source **MLRun** project (already named in Module 2, §12's tool ecosystem), combining a real-time feature store (Module 6) with model serving in one platform |
 
 The practical takeaway mirrors §1: `neptune.ai` sits with W&B and Optuna as a tool you add to an
@@ -161,8 +161,8 @@ adopt one platform's opinions about the whole lifecycle than assemble Modules 3-
 Weights & Biases and Optuna (§2-§3) are the point-solution answer to "track my experiments" and "search
 my hyperparameters efficiently," and both integrate cleanly into a pipeline built from everything in
 Modules 3-9. H2O MLOps, Valohai, Domino, and Iguazio (§4) are the opposite bet: adopt one platform that
-already bundles most of those modules together. Knowing which family a tool belongs to — and that
-neither family is inherently the right answer — is the actual skill this module builds; the specific
+already bundles most of those modules together. Knowing which family a tool belongs to (and that
+neither family is inherently the right answer) is the actual skill this module builds; the specific
 tool names will keep changing.
 
 ## Further reading
@@ -176,13 +176,13 @@ Foundational sources this module's content draws on:
 
 * SkafteNicki, Nicki, et al. [`dtu_mlops`](https://github.com/SkafteNicki/dtu_mlops),
   `s4_debugging_and_logging/logging.md` (W&B half) and `s10_extra/hyperparameters.md` (Optuna). DTU
-  course 02476, Apache 2.0 licensed. — primary source material this module's W&B and Optuna sections
-  (§2-§3) are adapted from.
-* [Weights & Biases documentation](https://docs.wandb.ai/) — source for the model registry/artifact
+  course 02476, Apache 2.0 licensed. This module's W&B and Optuna sections
+  (§2-§3) are adapted from this primary source material.
+* [Weights & Biases documentation](https://docs.wandb.ai/): source for the model registry/artifact
   alias mechanism in §2.
-* [Optuna documentation](https://optuna.readthedocs.io/) — source for the trial/study/objective model
+* [Optuna documentation](https://optuna.readthedocs.io/): source for the trial/study/objective model
   and pruning behavior in §3.
 * Vendor documentation for the platforms in §4 ([H2O MLOps](https://h2o.ai/platform/enterprise-mlops/),
   [Valohai](https://valohai.com/), [Domino Data Lab](https://domino.ai/), [neptune.ai](https://neptune.ai/),
-  [Iguazio](https://www.iguazio.com/)) — consulted for accuracy of each platform's positioning in the
+  [Iguazio](https://www.iguazio.com/)), consulted for accuracy of each platform's positioning in the
   comparison table, not quoted directly.

@@ -2,7 +2,7 @@
 
 Week 12
 
-Final integration and submission week. No new lecture content — finish the checklist, hook up
+Final integration and submission week. No new lecture content: finish the checklist, hook up
 monitoring, finalize the report, and submit.
 
 ## Goals

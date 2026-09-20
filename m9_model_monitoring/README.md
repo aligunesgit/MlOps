@@ -1,4 +1,4 @@
-# Module 9 — Understanding Model Monitoring (AWS, Azure & GCP)
+# Module 9: Understanding Model Monitoring (AWS, Azure & GCP)
 
 Week 10
 
@@ -16,11 +16,11 @@ Week 10
 
 Module 1, §1 named it directly: **software that isn't touched keeps working; a model that isn't
 touched quietly gets worse** as the world it was trained on drifts away from the world it now sees.
-Unlike a crashed service, a decaying model usually keeps returning HTTP 200 the entire time — nothing
+Unlike a crashed service, a decaying model usually keeps returning HTTP 200 the entire time: nothing
 *fails* in the way traditional infrastructure monitoring is built to catch. Monitoring is what turns
 that silent decay into a signal a team can act on *before* a business metric drops, rather than after.
 
-The remaining question is never "should we monitor" — it's **when should retraining actually trigger**,
+The remaining question is never "should we monitor"; it's **when should retraining actually trigger**,
 which is exactly what §2-§3's drift detection is built to answer, rather than waiting for a human to
 notice something feels off.
 
@@ -28,18 +28,18 @@ notice something feels off.
 
 Module 2, §8 split monitoring into two categories; this module is where each gets its concrete tooling:
 
-* **Infrastructure monitoring** — the same telemetry any production service needs, regardless of
+* **Infrastructure monitoring**: the same telemetry any production service needs, regardless of
   whether it happens to serve a model: latency, error rate, throughput, resource usage.
-* **Model/data monitoring** — signals with no traditional-software equivalent:
-  * **Data drift** — has the *distribution of incoming inputs* shifted from what the model was trained
+* **Model/data monitoring**: signals with no traditional-software equivalent:
+  * **Data drift**: has the *distribution of incoming inputs* shifted from what the model was trained
     on?
-  * **Target/prediction drift** — has the *distribution of the model's own outputs* shifted (e.g. a
-    previously balanced classifier suddenly predicting one class far more often) — often the earliest
+  * **Target/prediction drift**: has the *distribution of the model's own outputs* shifted (e.g. a
+    previously balanced classifier suddenly predicting one class far more often), often the earliest
     visible symptom of an upstream problem?
-  * **Data quality** — missing values, schema violations, out-of-range values in the incoming data
+  * **Data quality**: missing values, schema violations, out-of-range values in the incoming data
     itself.
-  * **Model quality** — accuracy/precision/recall against ground truth, once ground truth eventually
-    becomes available (frequently delayed — a fraud label might not be confirmed for weeks).
+  * **Model quality**: accuracy/precision/recall against ground truth, once ground truth eventually
+    becomes available (frequently delayed, since a fraud label might not be confirmed for weeks).
 
 Underneath both categories, telemetry itself comes in three flavors, and this module focuses on the
 first:
@@ -70,7 +70,7 @@ snapshot.save_html("report.html")
 ```
 
 [Evidently](https://github.com/evidentlyai/evidently) is one of several frameworks built for exactly
-this (alternatives: NannyML, WhyLogs, Deepchecks — the same tools named in Module 2, §12 and Module 6,
+this (alternatives: NannyML, WhyLogs, Deepchecks, the same tools named in Module 2, §12 and Module 6,
 §6). Beyond `DataDriftPreset`, `DataQualityPreset` flags data-quality issues and `TargetDriftPreset`
 watches the prediction distribution from §2. For CI integration (Module 4) rather than a one-off HTML
 report, the same checks run as a pass/fail `TestSuite` instead:
@@ -85,11 +85,11 @@ assert data_test.as_dict()["summary"]["all_passed"]
 ```
 
 Two caveats worth internalizing rather than just the mechanics above: there is no universal threshold
-for "how much drift is too much" — it's application-specific — and standard tooling only tests
+for "how much drift is too much" (it's application-specific), and standard tooling only tests
 **marginal** (per-feature) distributions. Data can drift in a way that preserves every individual
 feature's distribution while the *joint* distribution has shifted; multivariate tests (e.g. Maximum
 Mean Discrepancy) exist for this, and the practical habit worth building is looking at features
-together, not just one at a time. Unstructured data (images/text) needs an extra step first — extract
+together, not just one at a time. Unstructured data (images/text) needs an extra step first: extract
 structured features (brightness/contrast, or embeddings from a model like CLIP) and run drift detection
 on those, since most drift frameworks only natively support tabular data.
 
@@ -126,12 +126,12 @@ flowchart LR
     INF["Inference service<br/>(logs input + output)"] --> STORE["Durable log store<br/>(bucket / database)"]
     STORE --> MON["Monitoring job<br/>(drift + quality checks, §3)"]
     MON --> ALERT["Alerting policy"]
-    ALERT -.triggers.-> RETRAIN["Retraining pipeline<br/>(Module 4, §9 — CML)"]
+    ALERT -.triggers.-> RETRAIN["Retraining pipeline<br/>(Module 4, §9: CML)"]
     RETRAIN -.new model version.-> INF
 ```
 
 A custom metric like §4's Prometheus counter typically needs a **sidecar container** to reach a cloud's
-native monitoring backend — one container runs the app, a second collects `/metrics` and forwards it.
+native monitoring backend: one container runs the app, a second collects `/metrics` and forwards it.
 Kubernetes (Module 5) solves this natively; lighter managed services (Cloud Run, App Runner/Fargate,
 Azure Container Apps) offer a lighter-weight sidecar option to the same end without a full cluster.
 
@@ -141,8 +141,8 @@ Azure Container Apps) offer a lighter-weight sidecar option to the same end with
 | **GCP** | Cloud Monitoring (metrics, logs, alerting) | Vertex AI Model Monitoring (§8) |
 | **Azure** | Azure Monitor + Application Insights | Azure ML model monitoring (§7) |
 
-Every one of these lets you define a **Service Level Objective (SLO)** — e.g. "99% of requests under
-200ms" — and an alerting policy on top of it: notification channel → alerting condition → trigger.
+Every one of these lets you define a **Service Level Objective (SLO)**, e.g. "99% of requests under
+200ms", and an alerting policy on top of it: notification channel → alerting condition → trigger.
 The core tension is the **Goldilocks problem**: alert on too much and important signals drown in noise
 that gets ignored; alert on too little and real problems go unnoticed. Getting the threshold right is
 often as much work as building the metric itself.
@@ -166,7 +166,7 @@ Azure ML's **model monitoring** feature attaches to a managed online endpoint's 
 configuration, which logs request/response payloads to Azure storage; a scheduled monitoring job then
 computes drift signals against a reference dataset, the same shape as §3's Evidently workflow but
 managed inside the Azure ML workspace (Module 7, §4). **Application Insights**, wired into the same
-workspace, covers the infrastructure half from §2 — request rate, latency, and failures — as it would
+workspace, covers the infrastructure half from §2 (request rate, latency, and failures) as it would
 for any web service, ML-specific or not.
 
 ## 8. GCP model monitoring
@@ -185,10 +185,10 @@ retraining a smaller architecture from scratch:
 
 * **Quantization** reduces the numeric precision of a model's weights (e.g. `float32` → `int8`), which
   shrinks it roughly proportionally to the bit-width reduction (an `int8` model is close to 4x smaller
-  than its `float32` original). **Post-training quantization** quantizes an already-trained model —
-  simpler, use when raw accuracy matters most and size is a secondary win. **Quantization-aware
-  training** trains the model knowing it will be quantized — more setup, but yields a better-performing
-  quantized model when there's a hard size/speed constraint to hit.
+  than its `float32` original). **Post-training quantization** quantizes an already-trained model; it's
+  simpler, so use it when raw accuracy matters most and size is a secondary win. **Quantization-aware
+  training** trains the model knowing it will be quantized; that takes more setup, but yields a
+  better-performing quantized model when there's a hard size/speed constraint to hit.
 * **Calibration** makes a model's confidence scores match its actual accuracy (via temperature scaling,
   label smoothing, or techniques like Mixup/CutMix during training). This connects directly back to
   monitoring: a well-calibrated model's confidence score is itself a usable signal for flagging a
@@ -201,12 +201,12 @@ redeploy through the frequent retraining cycles §1's drift detection triggers.
 
 Beyond drift, a short list of failure modes recur across nearly every production ML system:
 
-* **Training/serving skew** (Module 6, §1) — a feature computed differently in training than at
+* **Training/serving skew** (Module 6, §1): a feature computed differently in training than at
   inference time, silently degrading predictions without any monitored metric technically failing.
-* **Silent upstream data pipeline failures** — an upstream system changes a column's units or encoding
+* **Silent upstream data pipeline failures**: an upstream system changes a column's units or encoding
   without the model-serving code ever erroring, since the model happily scores whatever numbers arrive.
-* **No rollback strategy** — a newly deployed model version underperforms and there's no fast, tested
-  path back to the previous version — the gradual-rollout and automatic-rollback pattern from Module 1,
+* **No rollback strategy**: a newly deployed model version underperforms and there's no fast, tested
+  path back to the previous version. The gradual-rollout and automatic-rollback pattern from Module 1,
   §12 exists specifically to avoid this.
 
 The **feedback loop** is what closes the whole system into the cycle shown in §5's diagram: production
@@ -218,7 +218,7 @@ without a human having to notice the problem manually.
 ## 11. Project: Model & infrastructure monitoring using cloud tools (required, on Azure)
 
 This course's required hands-on monitoring project uses Azure (§7), per the [Setup
-page](../pages/before.md#setup) — §6 and §8 (AWS, GCP) are conceptual coverage so you recognize the
+page](../pages/before.md#setup); §6 and §8 (AWS, GCP) are conceptual coverage so you recognize the
 equivalent monitor on either. Deploy a model behind an Azure ML managed endpoint, then:
 
 1. Enable request/response data capture (§6-§8) on the endpoint.
@@ -233,13 +233,13 @@ equivalent monitor on either. Deploy a model behind an Azure ML managed endpoint
 
 ## Summary
 
-Monitoring exists because a decaying model fails silently — the model in §1 that keeps returning valid
+Monitoring exists because a decaying model fails silently: the model in §1 that keeps returning valid
 responses while quietly getting worse. Data/target/quality drift (§2-§3) is the model-specific half of
 that problem; infrastructure telemetry (§4) is the half every service needs regardless of what it
-serves. All three clouds (§6-§8) implement the same underlying loop — log, compare against a baseline,
-alert — differing mainly in what they call each piece. What makes any of it worth building is the
-feedback loop it feeds (§10): a monitoring signal is only useful if something downstream — a human, or
-Module 4's CML automation — is actually listening for it.
+serves. All three clouds (§6-§8) implement the same underlying loop (log, compare against a baseline,
+alert), differing mainly in what they call each piece. What makes any of it worth building is the
+feedback loop it feeds (§10): a monitoring signal is only useful if something downstream (a human, or
+Module 4's CML automation) is actually listening for it.
 
 ## Further reading
 
@@ -252,16 +252,16 @@ Foundational sources this module's content draws on:
 
 * SkafteNicki, Nicki, et al. [`dtu_mlops`](https://github.com/SkafteNicki/dtu_mlops),
   `s8_monitoring/data_drifting.md` and `monitoring.md`, plus `s10_extra/quantization.md` and
-  `calibration.md`. DTU course 02476, Apache 2.0 licensed. — primary source material this module's
-  drift-detection workflow (§3), Prometheus instrumentation (§4), and edge optimization section (§9)
-  are adapted from.
-* [Evidently AI documentation](https://docs.evidentlyai.com/) — source for the drift/quality preset
+  `calibration.md`. DTU course 02476, Apache 2.0 licensed. This module's drift-detection workflow (§3),
+  Prometheus instrumentation (§4), and edge optimization section (§9) are adapted from this primary
+  source material.
+* [Evidently AI documentation](https://docs.evidentlyai.com/): source for the drift/quality preset
   and `TestSuite` usage in §3.
 * Gretton, Arthur, et al. ["A Kernel Two-Sample Test."](https://jmlr.org/papers/v13/gretton12a.html)
-  JMLR, 2012. — source for the Maximum Mean Discrepancy multivariate-drift caveat in §3.
+  JMLR, 2012. Source for the Maximum Mean Discrepancy multivariate-drift caveat in §3.
 * AWS Documentation. ["Amazon SageMaker Model Monitor."](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html)
-  — source for the four monitor types in §6.
+  Source for the four monitor types in §6.
 * Microsoft Learn. ["Monitor performance of models deployed to production."](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-monitor-model-performance)
-  — source for the Azure ML model monitoring workflow in §7.
+  Source for the Azure ML model monitoring workflow in §7.
 * Google Cloud Documentation. ["Introduction to Vertex AI Model Monitoring."](https://cloud.google.com/vertex-ai/docs/model-monitoring/overview)
-  — source for the skew/drift detection modes in §8.
+  Source for the skew/drift detection modes in §8.

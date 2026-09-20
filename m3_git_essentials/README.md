@@ -1,4 +1,4 @@
-# Module 3 — Git Essentials for MLOps Practitioners
+# Module 3: Git Essentials for MLOps Practitioners
 
 Week 3
 
@@ -14,7 +14,7 @@ Week 3
 ## 1. Overview of Git
 
 **Git** is a distributed version control system: a way to track *who* changed *what*, *when*, across
-a codebase that many people touch at once. "Distributed" is the key word — every clone of a repository
+a codebase that many people touch at once. "Distributed" is the key word: every clone of a repository
 is a full copy of its history, not just a checkout of the current state, so a developer can commit,
 branch, and inspect history entirely offline before ever talking to a server.
 
@@ -24,10 +24,10 @@ requests, code review, Actions) on top. GitLab and Bitbucket are the other widel
 course uses Git + GitHub throughout, but the Git commands themselves work identically no matter who
 hosts the remote.
 
-For MLOps specifically, Git is the versioning mechanism for **code** — one of the five things an MLOps
+For MLOps specifically, Git is the versioning mechanism for **code**, one of the five things an MLOps
 pipeline needs to version, alongside data, models, features, and containers (Module 2, §3). Everything
-else in the stack — CI/CD (Module 4), containerized environments (Module 5), model registries
-(Module 10) — assumes a Git history it can hook into.
+else in the stack, including CI/CD (Module 4), containerized environments (Module 5), and model registries
+(Module 10), assumes a Git history it can hook into.
 
 ## 2. Git's core model: commits, staging, and branches
 
@@ -35,7 +35,7 @@ Git's mental model reduces to two ideas: a **graph of commits**, and a **staging
 between your files and that graph.
 
 A **commit** is a snapshot of the entire repository at one point in time, identified by a unique hash.
-Because every commit points back to its parent, the full history forms a directed graph — which is
+Because every commit points back to its parent, the full history forms a directed graph, which is
 exactly what lets you jump back to any prior state, compare two points in time, or reason about how a
 branch diverged from another.
 
@@ -52,13 +52,13 @@ flowchart LR
 * `git add` moves changes into the **staging area**. Nothing is hashed yet, so staged changes can
   still be freely reverted with `git restore --staged`.
 * `git commit` turns the staged changes into a permanent node in the local commit graph. This is still
-  entirely local — nobody else can see it yet.
+  entirely local: nobody else can see it yet.
 * `git push` uploads your local commits to the remote so collaborators (and CI) can see them.
 * `git pull` (a `git fetch` followed by a merge) brings the remote's new commits back down to your
   local repository.
 
-A **branch** is nothing more than a movable pointer to a commit. Creating a branch is cheap — it does
-not copy any files — which is exactly what makes it safe to try something without touching working
+A **branch** is nothing more than a movable pointer to a commit. Creating a branch is cheap: it does
+not copy any files, which is exactly what makes it safe to try something without touching working
 code. §3 covers how teams organize *which* branches they create and why.
 
 ## 3. Standard Git branching strategies
@@ -70,11 +70,11 @@ lifetime and purpose:
 
 | Branch type | Branched from | Lifetime | Purpose |
 |---|---|---|---|
-| **`main`** | — | Permanent | Always deployable / production-representative state |
-| **Development** | `main` | Long-lived | Integration branch — ahead of `main`, where finished features land first |
+| **`main`** | N/A | Permanent | Always deployable / production-representative state |
+| **Development** | `main` | Long-lived | Integration branch, ahead of `main`, where finished features land first |
 | **Feature** | `development` | Short-lived, one per feature | Isolated work on a single feature or story, merged back via pull request |
 | **Bugfix / hotfix** | `development` (or `main` for urgent production fixes) | Short-lived | Fixes one specific defect, reviewed and merged quickly |
-| **Release** | `development` | Medium-lived, one per release | Stabilization window — only fixes, no new features, cut before shipping |
+| **Release** | `development` | Medium-lived, one per release | Stabilization window: only fixes, no new features, cut before shipping |
 | **UAT** | `release` | Short-lived | Deployed to a staging environment for stakeholder sign-off before promoting to `main` |
 
 ```mermaid
@@ -113,7 +113,7 @@ covers the large majority of day-to-day work:
 | `git commit -m "<message>"` | Creates a commit from everything currently staged |
 | `git push` | Uploads local commits to the remote |
 | `git pull` | Fetches remote commits and merges them into the current branch |
-| `git fetch` | Downloads remote commits *without* merging them — lets you inspect before integrating |
+| `git fetch` | Downloads remote commits *without* merging them, letting you inspect before integrating |
 | `git branch` | Lists local branches (add `-a` to include remotes) |
 | `git switch <branch>` / `git checkout <branch>` | Changes to an existing branch |
 | `git switch -c <branch>` / `git checkout -b <branch>` | Creates a new branch and switches to it |
@@ -124,13 +124,13 @@ covers the large majority of day-to-day work:
 | `git remote -v` | Lists configured remotes and their URLs |
 | `git stash` | Temporarily shelves uncommitted changes so you can switch branches cleanly |
 
-`git checkout` is the historical Swiss-army-knife command — it can switch branches, restore files, or
+`git checkout` is the historical Swiss-army-knife command: it can switch branches, restore files, or
 create a branch, depending on its flags. `git switch` and `git restore` split those jobs into two
 narrower, less error-prone commands and are the modern recommendation; both are used interchangeably
 in the wild, so recognizing `checkout` in older documentation still matters.
 
 A good commit message is a skill in its own right: short, in the imperative mood ("add retry logic",
-not "added" or "adds"), and scoped to one logical change — this is what makes `git log` and
+not "added" or "adds"), and scoped to one logical change. This is what makes `git log` and
 `git blame` actually useful six months later.
 
 ## 5. Working with a GitHub remote repository
@@ -152,7 +152,7 @@ Two details matter in practice:
   over SSH uses a locally registered key pair instead and avoids re-authenticating every time.
 * **Forks and upstream.** Contributing to a repository you don't own works by *forking* it (GitHub
   creates your own writable copy), cloning your fork, and then adding the original repository as a
-  second remote — conventionally named `upstream` — so you can pull in its changes without them
+  second remote (conventionally named `upstream`) so you can pull in its changes without them
   overwriting your fork:
 
   ```bash
@@ -185,7 +185,7 @@ actually want, deleting all three marker lines, then `git add` and `git commit` 
 **GitHub Actions** is GitHub's built-in automation engine: a YAML file committed under
 `.github/workflows/` that defines *triggers* (a push, a pull request, a schedule) and a sequence of
 *jobs/steps* that run in response, on GitHub's own runners. Conceptually it is Git history acting as
-the input to a CI/CD system — every commit or PR to a watched branch can automatically kick off linting,
+the input to a CI/CD system: every commit or PR to a watched branch can automatically kick off linting,
 tests, a training run, or a deployment, with zero manual intervention.
 
 At Module 3's level, the point is just to recognize the shape of a workflow file and know what it's
@@ -196,7 +196,7 @@ AWS, GCP, and Azure, including workflows that trigger model retraining and deplo
 
 Feeding an entire repository to an LLM for code review, refactoring help, or onboarding a new AI-assisted
 tool works better when the repository is packed into one AI-friendly file rather than pasted piecemeal.
-[Repomix](https://github.com/yamadashy/repomix) does exactly this — it walks a repository and produces a
+[Repomix](https://github.com/yamadashy/repomix) does exactly this: it walks a repository and produces a
 single, token-counted file in a format built for LLM context windows:
 
 ```bash
@@ -208,9 +208,9 @@ npx repomix --remote https://github.com/<user>/<repository>
 ```
 
 [uithub.com](https://uithub.com) is a lighter, browser-based alternative for the same job on any public
-GitHub repository — no install required.
+GitHub repository, with no install required.
 
-## 8. Project: Mastering Git — Commands, Branching, and Collaboration
+## 8. Project: Mastering Git (Commands, Branching, and Collaboration)
 
 The hands-on deliverable for this module is a small, self-contained repository that exercises the
 mechanics above end to end, not just in isolation:
@@ -222,7 +222,7 @@ mechanics above end to end, not just in isolation:
 4. Deliberately reproduce a merge conflict (edit the same lines on two branches) and resolve it using
    the workflow in §5.
 5. Fork a public repository you don't own, set an `upstream` remote, and open a pull request against
-   it — a genuine open-source contribution, however small.
+   it: a genuine open-source contribution, however small.
 
 Every step maps directly to a section above: it exists so that the next time a real PR needs review, a
 release branch needs cutting, or a merge conflict shows up mid-sprint, none of it is unfamiliar.
@@ -234,7 +234,7 @@ release branch needs cutting, or a merge conflict shows up mid-sprint, none of i
 Git turns "who changed what, and when" from a question you hope to remember into one the commit graph
 answers for you. The everyday command set (§4) is small; what actually separates a smooth team workflow
 from a chaotic one is agreeing on a branching strategy (§3) and a shared discipline around remotes, pull
-requests, and conflict resolution (§5) — the same Git history that GitHub Actions (§6) and every CI/CD
+requests, and conflict resolution (§5): the same Git history that GitHub Actions (§6) and every CI/CD
 pipeline in Module 4 will build on top of.
 
 ## Further reading
@@ -246,16 +246,16 @@ pipeline in Module 4 will build on top of.
 
 Foundational sources this module's content draws on:
 
-* Chacon, Scott & Straub, Ben. ["Pro Git."](https://git-scm.com/book/en/v2) 2nd edition — the
+* Chacon, Scott & Straub, Ben. ["Pro Git."](https://git-scm.com/book/en/v2) 2nd edition. The
   canonical reference for Git's commit/staging/branch model (§1, §2) and the everyday command set
   (§4).
 * SkafteNicki, Nicki, et al. [`dtu_mlops`](https://github.com/SkafteNicki/dtu_mlops),
-  `s2_organisation_and_version_control/git.md`. DTU course 02476, Apache 2.0 licensed. — primary source
+  `s2_organisation_and_version_control/git.md`. DTU course 02476, Apache 2.0 licensed. Primary source
   material this module's Git walkthrough, remote/fork workflow, and merge-conflict example (§5) are
   adapted from.
 * GitHub Docs. ["Configuring a remote repository for a fork."](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/configuring-a-remote-repository-for-a-fork)
-  — source for the `upstream` remote workflow in §5.
+  Source for the `upstream` remote workflow in §5.
 * GitHub Docs. ["Understanding GitHub Actions."](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions)
-  — source for the workflow/trigger model in §6 (Module 4 covers implementation in depth).
-* [Repomix](https://github.com/yamadashy/repomix) documentation — source for the bonus AI-assisted
+  Source for the workflow/trigger model in §6 (Module 4 covers implementation in depth).
+* [Repomix](https://github.com/yamadashy/repomix) documentation. Source for the bonus AI-assisted
   repository packing tool in §7.

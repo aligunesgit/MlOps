@@ -1,7 +1,7 @@
 # Project work
 
 Roughly a sixth of the course's total time (2 of 12 weeks) is dedicated project work, but the group
-project itself is meant to run in parallel with the content weeks — every module's tooling gets applied
+project itself is meant to run in parallel with the content weeks: every module's tooling gets applied
 to the same running project as soon as it's covered, starting in Sprint A (Week 6).
 
 The project serves as the basis for the course's final grading. Groups are free to choose their own
@@ -10,16 +10,16 @@ apply the tools taught in this course to a real (if modest) end-to-end system.
 
 ## Group size
 
-*TBD — decide group size (DTU's comparable course uses 3–5 students per group).*
+*TBD: decide group size (DTU's comparable course uses 3–5 students per group).*
 
 ## Assessment
 
-*TBD — decide whether assessment is the project report only (pass/fail), or report + presentation/exam.*
+*TBD: decide whether assessment is the project report only (pass/fail), or report + presentation/exam.*
 
 ## Getting started
 
 1. **Brainstorm and scope the project.** Pick a problem, a dataset, and a rough idea of what model
-   you'll use. Start small — it's better to ship a small, fully-instrumented pipeline than an ambitious
+   you'll use. Start small: it's better to ship a small, fully-instrumented pipeline than an ambitious
    model with none of the MLOps tooling wired up.
 2. **Write a short project description** (what's the goal, what data, what model) and commit it to the
    project repository's `README.md`.
@@ -27,7 +27,7 @@ apply the tools taught in this course to a real (if modest) end-to-end system.
 
 ## Project checklist
 
-This checklist is *exhaustive* — it lists everything that could be done across the whole curriculum.
+This checklist is *exhaustive*: it lists everything that could be done across the whole curriculum.
 Nobody is expected to check every box. The module tag in parentheses shows which module the item ties
 to.
 
@@ -57,12 +57,12 @@ to.
 ### Extra
 
 * [ ] Write documentation for the application and publish it
-* [ ] Revisit the initial project description — did the project turn out as planned?
+* [ ] Revisit the initial project description: did the project turn out as planned?
 * [ ] Create an architectural diagram of the MLOps pipeline
 * [ ] Make sure all group members understand every part of the project
 
 ## Submission
 
 The report template lives at `reports/README.md` in this repository (excluded from the built docs
-site since it's a template to copy, not a page to publish) — copy it into the group project's own
+site since it's a template to copy, not a page to publish). Copy it into the group project's own
 repository and fill it out. *Deadline TBD once the semester dates are fixed.*

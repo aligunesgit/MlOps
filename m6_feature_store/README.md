@@ -1,4 +1,4 @@
-# Module 6 — Feature Store
+# Module 6: Feature Store
 
 Week 7
 
@@ -14,19 +14,19 @@ Week 7
 ## 1. What problem a feature store solves
 
 Module 2, §3 named **features** as one of the five things an MLOps pipeline needs to version, alongside
-code, data, models, and containers — this module is where that need becomes concrete. Two problems show
+code, data, models, and containers. This module is where that need becomes concrete. Two problems show
 up the moment more than one model, or more than one team, needs the same engineered feature:
 
 * **Training/serving skew.** A feature engineered one way in an offline training notebook and
   re-implemented slightly differently in the online serving path is one of the most common, hardest to
-  detect sources of a model that performs well offline and poorly in production — the two code paths
+  detect sources of a model that performs well offline and poorly in production: the two code paths
   silently drift apart.
 * **Duplicated work.** Without a shared place to define and reuse features, every team recomputes the
   same "average order value over the last 30 days" from scratch, each with its own subtly different
   definition.
 
 A **feature store** is the piece of infrastructure that fixes both: one place where a feature is
-defined once, computed once, and served consistently to both training and inference — the same
+defined once, computed once, and served consistently to both training and inference. It's the same
 underlying idea as a package registry, applied to features instead of code.
 
 ## 2. Online vs. offline: the core split
@@ -43,15 +43,15 @@ flowchart LR
     ON -->|"single-row lookup"| SERVE["Online serving"]
 ```
 
-* The **offline store** holds the full historical record of every feature value over time — large
+* The **offline store** holds the full historical record of every feature value over time: large
   volume, optimized for batch reads, typically backed by a data warehouse or object storage (BigQuery,
   S3 + Parquet, Snowflake). Training reads from it with a **point-in-time join**: for each training
-  example's timestamp, pull the feature values *as they were at that moment*, not the latest values —
-  getting this wrong (using future information) is a specific, common form of data leakage.
+  example's timestamp, pull the feature values *as they were at that moment*, not the latest values.
+  Getting this wrong (using future information) is a specific, common form of data leakage.
 * The **online store** holds only the *current* value of each feature, indexed for millisecond-latency
-  single-row lookups — optimized for read speed, typically backed by a key-value store (DynamoDB,
+  single-row lookups, optimized for read speed, typically backed by a key-value store (DynamoDB,
   Redis, Bigtable). A live prediction request reads from here.
-* **Materialization** is the job that keeps the online store in sync with the offline store — computing
+* **Materialization** is the job that keeps the online store in sync with the offline store: computing
   the latest feature values and pushing them into the low-latency store on a schedule.
 
 Getting the same feature definition to produce both a historical column in the offline store and a
@@ -79,10 +79,10 @@ specifically because it's the one option usable identically on a laptop and on a
 Feast organizes everything around three declared objects, defined once in Python and applied to a
 registry:
 
-* An **Entity** — the join key features are looked up by, e.g. `user_id` or `product_id`.
-* A **data source** — where raw feature values already live (a Parquet file, a BigQuery table), with a
+* An **Entity**: the join key features are looked up by, e.g. `user_id` or `product_id`.
+* A **data source**: where raw feature values already live (a Parquet file, a BigQuery table), with a
   timestamp column Feast uses for point-in-time correctness.
-* A **FeatureView** — which columns from a data source count as features, grouped together with a
+* A **FeatureView**: which columns from a data source count as features, grouped together with a
   freshness TTL.
 
 ```python
@@ -116,13 +116,13 @@ from feast import FeatureStore
 
 store = FeatureStore(repo_path=".")
 
-# Training — point-in-time correct historical values, joined against your own labeled examples
+# Training: point-in-time correct historical values, joined against your own labeled examples
 training_df = store.get_historical_features(
     entity_df=entity_df,  # has user_id + event_timestamp columns
     features=["user_order_stats:avg_order_value_30d"],
 ).to_df()
 
-# Serving — the current value for one specific user, in milliseconds
+# Serving: the current value for one specific user, in milliseconds
 online_features = store.get_online_features(
     features=["user_order_stats:avg_order_value_30d"],
     entity_rows=[{"user_id": 123}],
@@ -132,7 +132,7 @@ online_features = store.get_online_features(
 ## 5. Feast on the cloud
 
 The same three Python objects from §4 stay identical; what changes is the `feature_store.yaml` backend
-configuration. Locally, Feast defaults to a file-based offline store and a local SQLite online store —
+configuration. Locally, Feast defaults to a file-based offline store and a local SQLite online store,
 enough to develop and test against. Pointed at a cloud:
 
 ```yaml
@@ -145,16 +145,16 @@ online_store:
   type: dynamodb        # or: redis, datastore, sqlite
 ```
 
-only the `offline_store`/`online_store` blocks change — a BigQuery/Snowflake/Redshift offline store
+only the `offline_store`/`online_store` blocks change: a BigQuery/Snowflake/Redshift offline store
 paired with a DynamoDB/Redis/Datastore online store, run on whichever cloud a team's other
-infrastructure already lives on (Module 7 covers the managed ML platforms — SageMaker, Vertex AI, Azure
-ML — those backends plug into).
+infrastructure already lives on (Module 7 covers the managed ML platforms those backends plug into:
+SageMaker, Vertex AI, and Azure ML).
 
 ## 6. Monitoring features programmatically, and visualizing drift over time
 
 Module 2, §8 named model/data monitoring as the category with no equivalent in traditional software.
 A feature store is exactly where that monitoring should attach, because it's the one place every
-feature's history — training-time and serving-time — already lives.
+feature's history (training-time and serving-time) already lives.
 
 **What to compute.** The question is always the same: has the *distribution* of a feature's values in
 current online traffic diverged from the distribution it had at training time? Three standard
@@ -162,15 +162,15 @@ statistical tests answer this:
 
 | Method | What it measures |
 |---|---|
-| **Population Stability Index (PSI)** | A single score summarizing how much a distribution has shifted between two time windows — the standard industry threshold is PSI > 0.25 signaling a real shift worth investigating |
+| **Population Stability Index (PSI)** | A single score summarizing how much a distribution has shifted between two time windows; the standard industry threshold is PSI > 0.25, signaling a real shift worth investigating |
 | **Kolmogorov–Smirnov (KS) test** | A statistical test for whether two samples come from the same continuous distribution |
 | **KL divergence** | An information-theoretic measure of how one distribution diverges from a reference distribution |
 
-**Where to run it.** In practice, nobody hand-rolls PSI/KS/KL every day — tools like [Evidently
+**Where to run it.** In practice, nobody hand-rolls PSI/KS/KL every day; tools like [Evidently
 AI](https://docs.evidentlyai.com/) or WhyLabs (both already named in Module 2, §12's tool ecosystem
 table) compute these automatically over a reference window (e.g. the training set) versus a current
 window (e.g. the last day of served traffic), and can render them as a drift report or a time series of
-drift scores per feature — the visualization half of this section's learning objective. Module 9 covers
+drift scores per feature: the visualization half of this section's learning objective. Module 9 covers
 wiring that report into a production alerting pipeline; this module's job is knowing which numbers feed
 into it and why they're computed against the feature store specifically, rather than against raw logs.
 
@@ -181,7 +181,7 @@ Stand up a small end-to-end Feast deployment against a real (if small) dataset:
 1. Define at least one `Entity` and one `FeatureView` (§4) against a local Parquet data source.
 2. Run `feast apply`, then materialize features into a local online store.
 3. Pull a training dataframe with `get_historical_features` and confirm the point-in-time join is
-   correct — no feature value should reflect information from *after* its row's timestamp.
+   correct: no feature value should reflect information from *after* its row's timestamp.
 4. Pull the same feature for a single entity with `get_online_features` and confirm it matches the most
    recent materialized value.
 5. Compute a PSI or KS score (§6) comparing the feature's distribution in the training data against a
@@ -194,8 +194,8 @@ Stand up a small end-to-end Feast deployment against a real (if small) dataset:
 A feature store turns "the training script and the serving code compute this feature slightly
 differently" from a routine, hard-to-catch bug into an impossible one, by making every feature's
 definition, its historical values, and its current value all trace back to one registered source
-(§1-§4). The online/offline split (§2) is the entire idea; everything else — which backend, which cloud,
-which drift metric (§5-§6) — is an implementation detail on top of it.
+(§1-§4). The online/offline split (§2) is the entire idea; everything else, including which backend,
+which cloud, and which drift metric (§5-§6), is an implementation detail on top of it.
 
 ## Further reading
 
@@ -206,13 +206,13 @@ which drift metric (§5-§6) — is an implementation detail on top of it.
 
 Foundational sources this module's content draws on:
 
-* [Feast documentation](https://docs.feast.dev/) — source for the core object model, point-in-time
+* [Feast documentation](https://docs.feast.dev/). Source for the core object model, point-in-time
   join semantics, and the `feature_store.yaml` configuration in §4-§5.
 * AWS Documentation. ["Amazon SageMaker Feature Store."](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store.html)
-  — source for the SageMaker Feature Store entry in §3.
+  Source for the SageMaker Feature Store entry in §3.
 * Google Cloud Documentation. ["Vertex AI Feature Store overview."](https://cloud.google.com/vertex-ai/docs/featurestore/overview)
-  — source for the Vertex AI Feature Store entry in §3.
+  Source for the Vertex AI Feature Store entry in §3.
 * Databricks Documentation. ["Databricks Feature Store."](https://docs.databricks.com/en/machine-learning/feature-store/index.html)
-  — source for the Databricks Feature Store entry in §3.
-* [Evidently AI documentation](https://docs.evidentlyai.com/) — source for the PSI/KS/KL drift
+  Source for the Databricks Feature Store entry in §3.
+* [Evidently AI documentation](https://docs.evidentlyai.com/). Source for the PSI/KS/KL drift
   detection methodology and reporting workflow in §6.

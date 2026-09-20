@@ -1,4 +1,4 @@
-# Module 2 — Overview of ML and MLOps Stages
+# Module 2: Overview of ML and MLOps Stages
 
 Week 2
 
@@ -14,16 +14,16 @@ Week 2
 
 ## 1. The MLOps maturity model
 
-Organizations don't wake up one day fully "MLOps-mature" — they move through recognizable levels,
+Organizations don't wake up one day fully "MLOps-mature"; they move through recognizable levels,
 and two framings are widely used in industry:
 
 **Google Cloud's 3-level model** (the more commonly cited version for describing pipeline automation):
 
 | Level | Name | What it looks like |
 |---|---|---|
-| 0 | Manual process | Every step — data prep, training, validation, deployment — is run by hand from a notebook. No CI/CD, no automated retraining. |
+| 0 | Manual process | Every step (data prep, training, validation, deployment) is run by hand from a notebook. No CI/CD, no automated retraining. |
 | 1 | ML pipeline automation | Training itself is automated into a repeatable pipeline, enabling continuous training (CT), but deployment of the resulting model is still a manual step. |
-| 2 | CI/CD pipeline automation | A robust, automated CI/CD system builds, tests, and deploys both pipeline components and models — the full loop is automated end to end. |
+| 2 | CI/CD pipeline automation | A robust, automated CI/CD system builds, tests, and deploys both pipeline components and models: the full loop is automated end to end. |
 
 **Microsoft's 5-level model** (covered in Module 1, §11) is a finer-grained version of the same idea,
 adding explicit levels for basic DevOps hygiene and for continuous training with human oversight.
@@ -36,7 +36,7 @@ flowchart LR
     B --> C["Level 2<br/>Full CI/CD/CT automation"]
 ```
 
-A team's job is not to chase Level 2 for every project — it's to match the level of automation to how
+A team's job is not to chase Level 2 for every project; it's to match the level of automation to how
 much a project's value depends on speed, reliability, and scale.
 
 ## 2. Detailed MLOps stages
@@ -62,18 +62,18 @@ that implement them.
 Traditional software only needs to version one thing: code. MLOps needs to version **five** things
 that all change independently, and a working system needs a story for keeping them in sync:
 
-* **Code** — the usual Git-based version control (Module 3).
-* **Data** — the raw and processed datasets used for training, since the same code trained on
+* **Code**: the usual Git-based version control (Module 3).
+* **Data**: the raw and processed datasets used for training, since the same code trained on
   different data produces a different model (tools like DVC, LakeFS).
-* **Models** — trained weights/artifacts, tracked with enough metadata to know exactly what code and
-  data produced them (model registries — see Module 10).
-* **Features** — engineered features need their own versioning once they're shared across multiple
+* **Models**: trained weights/artifacts, tracked with enough metadata to know exactly what code and
+  data produced them (model registries; see Module 10).
+* **Features**: engineered features need their own versioning once they're shared across multiple
   models, so training and serving don't silently drift apart (Module 6, Feature Store).
-* **Containers** — the exact runtime environment (OS, libraries, drivers) a model was trained and is
+* **Containers**: the exact runtime environment (OS, libraries, drivers) a model was trained and is
   served in (Module 5, Docker).
 
 The unifying idea: reproducing *any* result requires knowing the exact combination of all five,
-pinned together — not just the code.
+pinned together, not just the code.
 
 ## 4. Testing
 
@@ -81,12 +81,12 @@ Testing an ML system needs everything traditional software testing does, plus te
 equivalent in traditional software because the "logic" is learned from data rather than written by a
 developer:
 
-* **Unit tests** — the usual code-correctness tests (does the preprocessing function do what it should).
-* **Data tests** — schema validation, range checks, and distribution checks on incoming data.
-* **Model tests** — behavioral tests on the model itself: does it beat a trivial baseline, does it
-  perform acceptably on known edge cases and slices of the data, is it invariant to changes that
+* **Unit tests**: the usual code-correctness tests (does the preprocessing function do what it should).
+* **Data tests**: schema validation, range checks, and distribution checks on incoming data.
+* **Model tests**: behavioral tests on the model itself, checking whether it beats a trivial baseline,
+  performs acceptably on known edge cases and slices of the data, and is invariant to changes that
   shouldn't matter (e.g. a name swap in a resume-screening model).
-* **Integration tests** — does the full pipeline, end to end, actually produce a servable model.
+* **Integration tests**: does the full pipeline, end to end, actually produce a servable model.
 
 ## 5. Automation (CI/CD)
 
@@ -94,16 +94,16 @@ Automation is what turns the stages above from a manual checklist into something
 change without a human remembering to do it. In MLOps this splits into two related but distinct
 loops:
 
-* **CI (Continuous Integration)** — every code change automatically triggers linting, unit tests, and
+* **CI (Continuous Integration)**: every code change automatically triggers linting, unit tests, and
   a fast validation training run.
-* **CD (Continuous Delivery/Deployment)** — a model that passes its quality gates is automatically
+* **CD (Continuous Delivery/Deployment)**: a model that passes its quality gates is automatically
   packaged and deployed, often progressively (canary or shadow deployment) rather than all at once.
 
 Module 4 covers this in depth across AWS, GCP, Azure, and GitHub Actions specifically.
 
 ## 6. Reproducibility
 
-Reproducibility is the property that lets someone — including future-you — recreate a specific result
+Reproducibility is the property that lets someone (including future-you) recreate a specific result
 exactly. It depends on all of the versioning from §3 being pinned simultaneously: same code, same
 data, same feature definitions, same container, and the same configuration/hyperparameters (typically
 captured in structured config files rather than hardcoded). Without this, debugging a production
@@ -114,9 +114,9 @@ incident ("why did the model behave this way on March 3rd?") becomes close to im
 Deployment is the act of making a trained model available to receive real input and return real
 predictions. The two dimensions that matter most:
 
-* **How** — as a batch job that scores a dataset periodically, or as a real-time service behind an
+* **How**: as a batch job that scores a dataset periodically, or as a real-time service behind an
   API that responds to individual requests.
-* **Where** — locally, on a self-managed cluster, or on a managed cloud service (Module 7 covers AWS
+* **Where**: locally, on a self-managed cluster, or on a managed cloud service (Module 7 covers AWS
   SageMaker, GCP Vertex AI, and Azure ML specifically).
 
 ## 8. Monitoring
@@ -124,9 +124,9 @@ predictions. The two dimensions that matter most:
 Monitoring is what tells you a deployed model needs attention *before* a business metric tells you the
 hard way. Two categories matter, and most teams only build the first:
 
-* **Infrastructure monitoring** — latency, throughput, error rate, resource usage (the same telemetry
+* **Infrastructure monitoring**: latency, throughput, error rate, resource usage (the same telemetry
   any production service needs).
-* **Model/data monitoring** — is the input data drifting from what the model was trained on, is the
+* **Model/data monitoring**: is the input data drifting from what the model was trained on, is the
   model's own confidence/accuracy degrading, are predictions becoming skewed toward one class. This
   category has no equivalent in traditional software monitoring (Module 9).
 
@@ -153,7 +153,7 @@ automation on. Broadly, two families of architecture dominate:
 | Tool | What it's known for |
 |---|---|
 | **Kubeflow** | Kubernetes-native ML pipeline orchestration; the "default" open-source choice if you're already running Kubernetes |
-| **MLflow** | Experiment tracking, model registry, and packaging — often adopted first because it's lightweight and framework-agnostic |
+| **MLflow** | Experiment tracking, model registry, and packaging; often adopted first because it's lightweight and framework-agnostic |
 | **Metaflow** | Pipeline authoring designed for data scientists, originally built at Netflix, strong on human-friendly workflow definition |
 | **Kedro** | Opinionated project structure and pipeline framework for reproducible data science code |
 | **ZenML** | A pipeline abstraction layer designed to be portable across many backends (local, cloud, Kubeflow, etc.) |
@@ -164,15 +164,15 @@ automation on. Broadly, two families of architecture dominate:
 
 | Provider | Platform |
 |---|---|
-| **AWS** | SageMaker — training, tuning, deployment, and pipelines as a managed service |
-| **GCP** | Vertex AI — unified training, feature store, and deployment platform |
-| **Azure** | Azure Machine Learning — pipelines, model registry, and managed endpoints |
+| **AWS** | SageMaker: training, tuning, deployment, and pipelines as a managed service |
+| **GCP** | Vertex AI: unified training, feature store, and deployment platform |
+| **Azure** | Azure Machine Learning: pipelines, model registry, and managed endpoints |
 
 Module 7 goes hands-on with all three cloud-native platforms.
 
 ## 11. Cost-benefit approach: architecture choice and MLOps maturity
 
-Neither family is "better" in the abstract — the right choice depends on where a team sits on the
+Neither family is "better" in the abstract; the right choice depends on where a team sits on the
 maturity model from §1:
 
 * **Cloud-native** tools generally win on *time-to-value*: a team can get a working pipeline running
@@ -189,7 +189,7 @@ find the economics flip toward investing in an open-source, self-hosted stack.
 
 ## 12. The MLOps tool ecosystem
 
-Pulling §3-§10 together into one map — a representative (not exhaustive) tool for each stage:
+Pulling §3-§10 together into one map, here is a representative (not exhaustive) tool for each stage:
 
 | Stage | Representative tools |
 |---|---|
@@ -212,7 +212,7 @@ different priorities:
 | **Data Scientist** | Model design, offline experimentation, and evaluation |
 | **ML Engineer** | Turning a validated model into productionized, tested, deployable code |
 | **Data Engineer** | Building and maintaining the pipelines that produce clean, reliable training data |
-| **MLOps / Platform Engineer** | Building and maintaining the shared infrastructure — CI/CD, orchestration, monitoring — that every model rides on |
+| **MLOps / Platform Engineer** | Building and maintaining the shared infrastructure (CI/CD, orchestration, monitoring) that every model rides on |
 | **DevOps / SRE** | Infrastructure reliability, incident response, and the non-ML-specific parts of the production stack |
 | **Product owner / domain expert** | Defines what "good" looks like for the business problem, and is accountable for the model's real-world impact |
 
@@ -224,7 +224,7 @@ job title. Either way, naming the responsibilities explicitly is what prevents a
 
 ## Summary
 
-An MLOps pipeline is not one thing — it's six recurring stages (versioning, testing, automation,
+An MLOps pipeline is not one thing: it's six recurring stages (versioning, testing, automation,
 reproducibility, deployment, monitoring) that a team automates progressively as it matures, built on
 top of either an open-source or cloud-native architecture chosen based on where that team's maturity
 and scale actually sit. The tool ecosystem and the role split exist to make that automation a shared,
@@ -240,9 +240,9 @@ sustainable responsibility rather than a single person's heroics.
 Foundational industry sources this module's content draws on:
 
 * Google Cloud. ["MLOps: Continuous Delivery and Automation Pipelines in Machine Learning."](https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning)
-  Architecture guide. — source for the 3-level maturity model in §1.
+  Architecture guide. Source for the 3-level maturity model in §1.
 * Microsoft. ["MLOps Maturity Model."](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/mlops-maturity-model)
-  Azure Architecture Center. — the 5-level model referenced alongside Google's in §1 (see also Module 1, §11).
+  Azure Architecture Center. The 5-level model referenced alongside Google's in §1 (see also Module 1, §11).
 * Official documentation for the tools named in §10 and §12 (Kubeflow, MLflow, Metaflow, Kedro,
-  ZenML, MLRun, CML, and the AWS/GCP/Azure ML platforms) — consulted for accuracy of each tool's
+  ZenML, MLRun, CML, and the AWS/GCP/Azure ML platforms), consulted for accuracy of each tool's
   positioning, not quoted directly.

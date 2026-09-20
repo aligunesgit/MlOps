@@ -41,8 +41,8 @@
 **General course objective**
 
 This course exists to take a student who already knows how to *build* a machine learning model and
-teach them how to *run* one — organizing, versioning, automating, scaling, monitoring, and deploying
-it as a system other people can actually rely on, whether in a research or a production setting. The
+teach them how to *run* one: organizing, versioning, automating, scaling, monitoring, and deploying it
+as a system other people can actually rely on, whether in a research or a production setting. The
 emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker,
 Kubernetes, Azure, Feast, Weights & Biases, and more) rather than staying at the level of theory.
 
@@ -60,13 +60,13 @@ This includes:
 * Deploy machine learning models, both locally and in the cloud
 * Conduct a project in collaboration with fellow students, applying every framework taught in the
   course end to end
-* Have fun along the way — most of MLOps is genuinely learned by watching something fail first :)
+* Have fun along the way. Most of MLOps is genuinely learned by watching something fail first :)
 
 ## 🔥 Where to start
 
 We recommend going through the material on this repository's **[GitHub Pages
-site](https://aligunesgit.github.io/MlOps/)** rather than reading raw markdown here — it renders the
-same content through Material for MkDocs, with proper navigation, search, and diagram rendering.
+site](https://aligunesgit.github.io/MlOps/)** rather than reading raw markdown here, since it renders
+the same content through Material for MkDocs, with proper navigation, search, and diagram rendering.
 
 Specifically, start at the [Introduction page](https://aligunesgit.github.io/MlOps/pages/before/) for a
 soft introduction to MLOps and how this course is organized, then follow the
@@ -88,22 +88,22 @@ git clone https://github.com/aligunesgit/MlOps.git
 ```
 
 No Git installed yet? Grab the ZIP from this page's "Code" button and unzip it into that same folder
-for now — Module 3 covers Git itself in depth. This repository does get updated during the semester, so
+for now (Module 3 covers Git itself in depth). This repository does get updated during the semester, so
 get in the habit of running `git pull` from time to time to pick up the latest changes. See the
 [Setup section](https://aligunesgit.github.io/MlOps/pages/before/#setup) of the Introduction page for
 the full account/tool checklist.
 
 ## 📢 Communication
 
-This course uses **Atlas-OIS** for official announcements, deadlines, and course materials — check it
-at least once a day during the semester so you don't miss an update. For a question about a specific
+This course uses **Atlas-OIS** for official announcements, deadlines, and course materials, so check it
+at least once a day during the semester to avoid missing an update. For a question about a specific
 module or the group project, email the course instructor directly rather than waiting for the next
-session — there's a good chance someone else has the exact same question, so don't hesitate to ask
+session: there's a good chance someone else has the exact same question, so don't hesitate to ask
 early.
 
 ## 📂 Course organization
 
-Every module below is required — unlike some MLOps courses, there's no optional/core split, since the
+Every module below is required. Unlike some MLOps courses, there's no optional/core split, since the
 group project in Sprint A and Sprint B builds directly on tools introduced in each one. The course is
 organized into 10 content modules (M1-M10) and 2 project sprint weeks (Sprint A, Sprint B). Each module
 has its own folder with a `README.md` and `exercise_files/`.
@@ -148,26 +148,26 @@ mlops-course/                        # call this whatever you like
     └── ...                           # any other personal notes
 ```
 
-* `MlOps/` is this repository — every module's hands-on exercises live inside its own
+* `MlOps/` is this repository. Every module's hands-on exercises live inside its own
   `exercise_files/` folder, so there's no separate exercises folder to maintain outside of it.
 * `group-project/` is a completely separate repository that you and your teammates create yourselves
   in Sprint A (see Module 3 for the Git workflow) and carry through to submission in Sprint B. Keeping
   it separate means its `pyproject.toml`/`uv.lock` and virtual environment never conflict with this
   repository's.
 
-Avoid spaces in folder names — command-line tools handle them poorly. If you need example code or
+Avoid spaces in folder names, since command-line tools handle them poorly. If you need example code or
 exercise files from this repository for your group project, just copy the relevant file over.
 
 ## Course books
 
 The following books are suggested reading for the course:
 
-* Emmanuel Ameisen — *Building Machine Learning Powered Applications: Going from Idea to Product*
+* Emmanuel Ameisen, *Building Machine Learning Powered Applications: Going from Idea to Product*
   (O'Reilly)
-* Todd M. Chen, Niall Richard Murphy, and Kasey Parisa — *Reliable Machine Learning: Applying SRE
+* Todd M. Chen, Niall Richard Murphy, and Kasey Parisa, *Reliable Machine Learning: Applying SRE
   Principles to ML in Production* (O'Reilly)
-* Ben Wilson — *Machine Learning Engineering in Action* (O'Reilly)
-* Martin Kleppmann — *Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable,
+* Ben Wilson, *Machine Learning Engineering in Action* (O'Reilly)
+* Martin Kleppmann, *Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable,
   and Maintainable Systems* (O'Reilly)
 
 ## 📓 References
