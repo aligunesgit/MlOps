@@ -21,7 +21,7 @@ time. The usual remedy is to retrain on newly received data and redeploy, a cycl
 life of the application. The real question monitoring exists to answer is *when*: waiting until
 performance visibly degrades means you've already been serving bad predictions for a while.
 
-## 2. Detecting data drift with Evidently
+## 2. :material-chart-bell-curve: Detecting data drift with Evidently
 
 The standard pattern, regardless of tool, is to log every production request's input and prediction
 somewhere durable, then periodically compare that **current data** against the **reference data** the
@@ -80,7 +80,7 @@ contrast, or embeddings from a model like CLIP) and run drift detection on those
 
 This module focuses on metrics, the telemetry type most teams instrument first.
 
-## 4. Instrumenting metrics with Prometheus
+## 4. :material-fire: Instrumenting metrics with Prometheus
 
 [Prometheus](https://prometheus.io/) defines four metric types: a **Counter** only increases (total
 request count), a **Gauge** moves up and down (current memory usage), a **Histogram** buckets

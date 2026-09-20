@@ -30,7 +30,7 @@ print(response.status_code, response.json())
 Always check `response.status_code` before assuming a failure is your own bug; unauthenticated API
 calls are often rate-limited far below an authenticated request's limit.
 
-## 2. Building an API with FastAPI
+## 2. :material-api: Building an API with FastAPI
 
 [FastAPI](https://fastapi.tiangolo.com/) is the framework of choice here over Flask or Django, for its
 balance of flexibility without excess boilerplate:
@@ -87,7 +87,7 @@ COPY ./app /code/app
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
 ```
 
-## 3. Deploying to Google Cloud
+## 3. :material-cloud-upload: Deploying to Google Cloud
 
 GCP offers two **serverless** deployment targets, meaning there's no infrastructure to manage
 yourself:
@@ -126,7 +126,7 @@ flowchart LR
 Extending Module 5's CI pipeline with a third step that calls `gcloud run deploy` after the build/push
 steps turns this into continuous deployment: every push to `main` automatically rebuilds and redeploys.
 
-## 4. Testing a deployed API
+## 4. :material-test-tube: Testing a deployed API
 
 Two distinct concerns, both worth testing separately:
 
@@ -170,7 +170,7 @@ Two distinct concerns, both worth testing separately:
   deploy step succeeds, extract the deployed service's URL and run Locust against it automatically as
   a follow-up step.
 
-## 5. ML-specific serving: ONNX and BentoML
+## 5. :material-package-variant: ML-specific serving: ONNX and BentoML
 
 FastAPI is a *general* web framework; it wasn't built with ML serving in mind, so it lacks dynamic
 batching, native async inference, and native GPU scheduling. Two tools fill that gap:
@@ -211,7 +211,7 @@ batching, native async inference, and native GPU scheduling. Two tools fill that
           return self.pipeline(text)[0]["summary_text"]
   ```
 
-## 6. Frontend
+## 6. :material-monitor-dashboard: Frontend
 
 The deployed API is the **backend**, functional but not user-friendly. A **frontend** gives end users
 a proper interface, and splitting the two also lets you scale the usually-heavier backend

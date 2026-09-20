@@ -22,7 +22,7 @@ compute, and in the cloud (Module 6), wasted money. Everything in this module is
 compute fed and used efficiently, at three different scales: loading data, training across devices, and
 running inference once a model is deployed (Module 7).
 
-## 2. Distributed data loading
+## 2. :simple-pytorch: Distributed data loading
 
 PyTorch parallelizes the data loading step itself across CPU worker threads:
 
@@ -46,7 +46,7 @@ when the whole dataset comfortably fits in GPU memory.
 few different `num_workers` values on a disk-backed dataset, and identify the point past which adding
 more workers stops helping.
 
-## 3. Distributed training: from Data Parallel to Distributed Data Parallel
+## 3. :material-flash: Distributed training: from Data Parallel to Distributed Data Parallel
 
 Training a frontier model is fundamentally impossible on a single device within a reasonable
 timeframe: AlphaFold, for example, trained on the equivalent of 100 to 200 modern GPUs for weeks, a
@@ -62,6 +62,18 @@ runs the backward pass in parallel, and reduces (sums) the gradients back on the
 ```python
 model = nn.DataParallel(model, device_ids=[0, 1])
 preds = model(input)  # otherwise identical usage
+```
+
+```mermaid
+flowchart LR
+    B["Batch"] --> S1["Shard 1<br/>(device 1, primary)"]
+    B --> S2["Shard 2<br/>(device 2)"]
+    S1 --> F1["Forward"]
+    S2 --> F2["Forward"]
+    F1 --> G["Gather outputs<br/>(back to device 1)"]
+    F2 --> G
+    G --> L["Loss + backward<br/>(on device 1 only)"]
+    L --> SC["Scatter gradients<br/>out to every device"]
 ```
 
 The core problem: the model gets re-replicated on *every single step*, since it's destroyed after each

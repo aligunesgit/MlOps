@@ -28,7 +28,7 @@ turning hyperparameters into a versioned file instead of a value living only in 
 history. This module covers both, since together they are what "reproduce this exact result" actually
 requires.
 
-## 2. Docker core concepts
+## 2. :material-docker: Docker core concepts
 
 Docker reduces to three ideas, each built from the one before it:
 
@@ -123,7 +123,7 @@ changes, and a value passed only on the command line is not written down anywher
 closes. Command-line arguments (`argparse`, `typer`) are more configurable than a hardcoded value, but
 still do not guarantee that a specific run's exact configuration gets systematically tracked.
 
-## 8. Config files with Hydra and OmegaConf
+## 8. :material-file-cog: Config files with Hydra and OmegaConf
 
 **OmegaConf** is a YAML-based hierarchical configuration library; **Hydra** builds on top of it to wire
 a config file directly into a script's entry point. A `config.yaml`:

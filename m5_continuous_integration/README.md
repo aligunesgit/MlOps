@@ -25,7 +25,7 @@ because the "logic" is learned from data, not written by a developer. That means
 needs data tests and model tests on top of the usual code tests, since a change in the data pipeline
 or the training data itself can silently break a model without a single line of code changing.
 
-## 2. Unit testing with pytest
+## 2. :material-test-tube: Unit testing with pytest
 
 Start by creating a `tests/` folder. Any file except `__init__.py` should start with `test_*.py`, and
 any test function should start with `test_*`, or `pytest` won't discover it:
@@ -106,7 +106,7 @@ Exclude the test files themselves from that measurement in `pyproject.toml`:
 omit = ["tests/*"]
 ```
 
-## 3. Automating tests with GitHub Actions
+## 3. :material-github: Automating tests with GitHub Actions
 
 Running tests locally is cumbersome: it needs to happen often to catch bugs early, and high coverage
 means many tests that take real time to run. **GitHub Actions** is GitHub's own CI engine, free for
@@ -200,7 +200,7 @@ updates:
 it (GitHub-hosted or self-hosted). A **job** is a series of steps run on the same runner. An **action**
 is the smallest unit inside a workflow: jobs consist of multiple actions run sequentially.
 
-## 4. Pre-commit: catching problems before they even reach CI
+## 4. :material-check-decagram: Pre-commit: catching problems before they even reach CI
 
 Pre-commit hooks run on your own machine, before a commit is even created, which is the cheapest place
 to catch a problem: formatting, linting, large-file checks, and more, all before the commit ever
@@ -236,7 +236,7 @@ and deliberately, not by default; disabling them entirely is `pre-commit uninsta
 setup wires a scheduled `pre-commit autoupdate` workflow that opens a PR bumping the hook versions, and
 a `pre-commit/action` step in CI that auto-commits any fixes the hooks make.
 
-## 5. Continuous Machine Learning (CML)
+## 5. :material-robot: Continuous Machine Learning (CML)
 
 Everything in §2-§4 is DevOps automation that applies to any software project. **Continuous Machine
 Learning (CML)** is the layer specific to ML, automating the questions classical CI can't answer: did I

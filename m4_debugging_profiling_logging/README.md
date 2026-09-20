@@ -12,7 +12,7 @@ Week 4
 
 ---
 
-## 1. Debugging without print statements
+## 1. :material-bug: Debugging without print statements
 
 `print()` works for a five-line script, but it stops scaling the moment a bug hides inside a training
 loop that takes minutes to reach the failing line. Python's built-in debugger, `pdb`, drops you into an
@@ -47,7 +47,7 @@ The last two are the dangerous ones: nothing crashes, so the only sign is a mode
 it should. Stepping through the training loop with `pdb` and checking a tensor's actual values at each
 line is how you catch what a stack trace never will.
 
-## 2. Profiling: measure before you optimize
+## 2. :material-speedometer: Profiling: measure before you optimize
 
 Profiling answers two questions: how many times is each function called, and how long does each call
 take. The first tells you what to prioritize (a function called a thousand times more often than
@@ -103,7 +103,7 @@ single expensive line inside an otherwise-fast function (an inefficient array in
 `cProfile`'s function-level granularity can't see; `py-spy` is another solid standalone Python profiler
 worth knowing exists.
 
-## 4. Logging experiments with Weights & Biases
+## 4. :simple-weightsandbiases: Logging experiments with Weights & Biases
 
 Once a script is debugged and profiled, the next problem is remembering what you actually ran. Writing
 loss values to a text file works for one run; it stops working the moment you're comparing many runs,
@@ -155,7 +155,7 @@ own machine) is one environment variable:
 docker run -e WANDB_API_KEY=<your-api-key> my_training_image:latest
 ```
 
-## 5. Minimizing boilerplate with PyTorch Lightning
+## 5. :material-lightning-bolt: Minimizing boilerplate with PyTorch Lightning
 
 Every ML project ends up with the same shape: the model itself (the part that actually differs between
 projects), plus training-loop boilerplate and saving/logging utilities that look nearly identical

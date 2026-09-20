@@ -11,7 +11,7 @@ Week 11
 
 ---
 
-## 1. Why documentation matters
+## 1. :material-file-document-outline: Why documentation matters
 
 A project without documentation has a way of quietly turning into a project nobody reuses: code that
 looked useful gets abandoned the moment someone else has to guess how to run it. Documentation covers
@@ -110,7 +110,7 @@ a reference page for at least one module's public functions or classes, and add 
 workflow modeled on §4's. Confirm the published site is reachable at its GitHub Pages URL, not just
 locally via `mkdocs serve`.
 
-## 6. Hyperparameter optimization with Optuna
+## 6. :material-tune: Hyperparameter optimization with Optuna
 
 Deep learning models are often sensitive to hyperparameter choice, but an exhaustive grid search is
 infeasible once a single training run takes hours. [Optuna](https://optuna.readthedocs.io/) searches
@@ -147,7 +147,7 @@ This is the systematic alternative to the manual sweeps Module 4's Weights & Bia
 lets you compare by hand; reach for Optuna once "try a few values and eyeball the dashboard" stops
 scaling.
 
-## 7. High Performance Clusters
+## 7. :material-server-network: High Performance Clusters
 
 Cloud compute (Module 6) is not the only way to get more compute than a laptop: most universities
 already run their own **High Performance Cluster (HPC)**, and EuroHPC is the EU-wide public alternative

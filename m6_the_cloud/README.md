@@ -71,7 +71,7 @@ the job done rather than a broad role:
 A service account key is a downloadable JSON credential: treat it exactly like a password, and never
 commit it to a repository.
 
-## 4. Compute
+## 4. :material-server: Compute
 
 Virtual machines let you scale horizontally, access hardware you do not own locally (a specific GPU
 configuration), and run long background jobs without tying up a laptop.
@@ -95,7 +95,7 @@ gcloud compute instances create my-training-vm \
 SSH in via the CLI or a browser-based terminal, and stop the VM the moment it is not in use: GCP bills
 by the minute regardless of whether the machine is doing anything.
 
-## 5. Data storage
+## 5. :material-database: Data storage
 
 Cloud object storage (Cloud Storage) is cheap, durable through multi-location replication, and,
 critically for a team using DVC (Module 2, §4), accessible via API without repeated interactive login,
