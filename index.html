@@ -346,7 +346,7 @@
   <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Learning objectives
+        ❔ Learning objectives
       
     </span>
   </a>
@@ -357,7 +357,7 @@
   <a href="#where-to-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where to start
+        🔥 Where to start
       
     </span>
   </a>
@@ -380,6 +380,17 @@
     <span class="md-ellipsis">
       
         Course books
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📓 References
       
     </span>
   </a>
@@ -903,7 +914,7 @@
   <a href="#learning-objectives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Learning objectives
+        ❔ Learning objectives
       
     </span>
   </a>
@@ -914,7 +925,7 @@
   <a href="#where-to-start" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Where to start
+        🔥 Where to start
       
     </span>
   </a>
@@ -937,6 +948,17 @@
     <span class="md-ellipsis">
       
         Course books
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📓 References
       
     </span>
   </a>
@@ -1045,21 +1067,36 @@
 </ul>
 </li>
 </ul>
-<h2 id="learning-objectives">Learning objectives</h2>
+<h2 id="learning-objectives">❔ Learning objectives</h2>
+<p><strong>General course objective</strong></p>
+<p>This course exists to take a student who already knows how to <em>build</em> a machine learning model and
+teach them how to <em>run</em> one — organizing, versioning, automating, scaling, monitoring, and deploying
+it as a system other people can actually rely on, whether in a research or a production setting. The
+emphasis throughout is hands-on: every module pairs its concepts with a real tool (Git, Docker,
+Kubernetes, Azure, Feast, Weights &amp; Biases, and more) rather than staying at the level of theory.</p>
+<p>This includes:</p>
 <ul>
-<li>Understand MLOps fundamentals and how it relates to DevOps/AIOps/ModelOps/LLMOps/FMOps/GitOps</li>
-<li>Master Git and CI/CD across GitHub Actions, AWS, Azure and GCP</li>
-<li>Containerize and orchestrate ML workloads with Docker and Kubernetes</li>
-<li>Use feature stores for online/offline feature management</li>
-<li>Build and deploy end-to-end ML pipelines on AWS SageMaker, GCP Vertex AI and Azure ML</li>
-<li>Understand LLMOps: operationalizing generative AI / foundation models</li>
-<li>Monitor deployed models and infrastructure across the major clouds</li>
-<li>Get oriented in the AutoML / MLOps platform tooling ecosystem</li>
-<li>Apply all of the above to a self-directed group project, end-to-end</li>
+<li>Structure and version-control an ML codebase so it stays maintainable and easy to collaborate on</li>
+<li>Understand reproducibility, and package experiments and applications into reproducible containers</li>
+<li>Apply continuous integration and continuous machine learning (CI/CML) to automate the path from a
+  code change to a validated, deployable model</li>
+<li>Debug, track, and visualize experiments, and monitor a deployed model's behavior and infrastructure
+  over time</li>
+<li>Use a cloud-based platform to scale training and serving beyond a single machine</li>
+<li>Build and query a feature store for consistent online/offline feature serving</li>
+<li>Understand the operational concerns specific to large language models and generative AI</li>
+<li>Deploy machine learning models, both locally and in the cloud</li>
+<li>Conduct a project in collaboration with fellow students, applying every framework taught in the
+  course end to end</li>
+<li>Have fun along the way — most of MLOps is genuinely learned by watching something fail first :)</li>
 </ul>
-<h2 id="where-to-start">Where to start</h2>
-<p>Start at the <a href="pages/before/">Introduction page</a> for a soft introduction to MLOps and how this course
-is organized, then follow the <a href="pages/timeplan/">Time plan</a> week by week.</p>
+<h2 id="where-to-start">🔥 Where to start</h2>
+<p>We recommend going through the material on this repository's <strong><a href="https://aligunesgit.github.io/MlOps/">GitHub Pages
+site</a></strong> rather than reading raw markdown here — it renders the
+same content through Material for MkDocs, with proper navigation, search, and diagram rendering.</p>
+<p>Specifically, start at the <a href="https://aligunesgit.github.io/MlOps/before/">Introduction page</a> for a soft
+introduction to MLOps and how this course is organized, then follow the
+<a href="https://aligunesgit.github.io/MlOps/timeplan/">Time plan</a> week by week.</p>
 <h2 id="course-organization">Course organization</h2>
 <p>The course is organized into 10 content modules (M1-M10) and 2 project sprint weeks (Sprint A, Sprint
 B). Each module has its own folder with a <code>README.md</code> and <code>exercise_files/</code>.</p>
@@ -1145,6 +1182,29 @@ B). Each module has its own folder with a <code>README.md</code> and <code>exerc
 <li>Martin Kleppmann — <em>Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable,
   and Maintainable Systems</em> (O'Reilly)</li>
 </ul>
+<h2 id="references">📓 References</h2>
+<p>Additional reading resources (in no particular order):</p>
+<ul>
+<li><a href="https://neptune.ai/blog/mlops-what-it-is-why-it-matters-and-how-to-implement-it-from-a-data-scientist-perspective">Ref 1</a>
+  Introduction blog post for those who have never heard of MLOps and want a quick overview.</li>
+<li><a href="https://cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning">Ref 2</a>
+  Google's own document on the different levels of MLOps maturity.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/mlops-maturity-model">Ref 3</a>
+  Microsoft's parallel take on MLOps maturity, with a finer-grained level breakdown.</li>
+<li><a href="https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf">Ref 4</a>
+  The classic paper on hidden technical debt in machine learning systems.</li>
+<li><a href="https://arxiv.org/abs/2209.09125">Ref 5</a>
+  An interview study uncovering many of the pain points ML engineers run into doing MLOps in practice.</li>
+</ul>
+<p>Other courses with content similar to this one:</p>
+<ul>
+<li><a href="https://madewithml.com/">Made With ML</a>. A great free course on combining ML with software
+  engineering foundations, in addition to MLOps specifically.</li>
+<li><a href="https://fullstackdeeplearning.com/">Full Stack Deep Learning</a>. Another course going through the
+  whole developer pipeline from trained model to production system.</li>
+<li><a href="https://github.com/DataTalksClub/mlops-zoomcamp">MLOps Zoomcamp</a>. A free, self-paced MLOps course
+  covering many of the same topics as this one.</li>
+</ul>
 
 
 
@@ -1167,7 +1227,7 @@ B). Each module has its own folder with a <code>README.md</code> and <code>exerc
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 19, 2026 15:36:29">September 19, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 08:32:15">September 20, 2026</span>
   </span>
 
     
