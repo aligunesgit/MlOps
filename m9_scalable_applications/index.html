@@ -1045,7 +1045,7 @@ into a potential bottleneck: if a GPU sits idle waiting for the next batch, that
 compute, and in the cloud (Module 6), wasted money. Everything in this module is about keeping expensive
 compute fed and used efficiently, at three different scales: loading data, training across devices, and
 running inference once a model is deployed (Module 7).</p>
-<h2 id="2-distributed-data-loading">2. Distributed data loading</h2>
+<h2 id="2-distributed-data-loading">2. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.005 0 4.952 7.053a9.865 9.865 0 0 0 0 14.022 9.866 9.866 0 0 0 14.022 0c3.984-3.9 3.986-10.205.085-14.023l-1.744 1.743c2.904 2.905 2.904 7.634 0 10.538s-7.634 2.904-10.538 0-2.904-7.634 0-10.538l4.647-4.646.582-.665zm3.568 3.899a1.327 1.327 0 0 0-1.327 1.327 1.327 1.327 0 0 0 1.327 1.328A1.327 1.327 0 0 0 16.9 5.226 1.327 1.327 0 0 0 15.573 3.9z"/></svg></span> Distributed data loading</h2>
 <p>PyTorch parallelizes the data loading step itself across CPU worker threads:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">dataloader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </span></code></pre></div>
@@ -1062,7 +1062,7 @@ when the whole dataset comfortably fits in GPU memory.</p>
 <p><strong>Project: data loading benchmark (required):</strong> profile a training loop's data loading time across a
 few different <code>num_workers</code> values on a disk-backed dataset, and identify the point past which adding
 more workers stops helping.</p>
-<h2 id="3-distributed-training-from-data-parallel-to-distributed-data-parallel">3. Distributed training: from Data Parallel to Distributed Data Parallel</h2>
+<h2 id="3-distributed-training-from-data-parallel-to-distributed-data-parallel">3. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg></span> Distributed training: from Data Parallel to Distributed Data Parallel</h2>
 <p>Training a frontier model is fundamentally impossible on a single device within a reasonable
 timeframe: AlphaFold, for example, trained on the equivalent of 100 to 200 modern GPUs for weeks, a
 job that would take a single GPU years. Two paradigms cover almost every practical multi-GPU setup, in
@@ -1075,6 +1075,15 @@ runs the backward pass in parallel, and reduces (sums) the gradients back on the
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">model</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">DataParallel</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">device_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">preds</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>  <span class="c1"># otherwise identical usage</span>
 </span></code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    B["Batch"] --&gt; S1["Shard 1&lt;br/&gt;(device 1, primary)"]
+    B --&gt; S2["Shard 2&lt;br/&gt;(device 2)"]
+    S1 --&gt; F1["Forward"]
+    S2 --&gt; F2["Forward"]
+    F1 --&gt; G["Gather outputs&lt;br/&gt;(back to device 1)"]
+    F2 --&gt; G
+    G --&gt; L["Loss + backward&lt;br/&gt;(on device 1 only)"]
+    L --&gt; SC["Scatter gradients&lt;br/&gt;out to every device"]</code></pre>
 <p>The core problem: the model gets re-replicated on <em>every single step</em>, since it's destroyed after each
 backward pass, so DP pays a large communication cost repeatedly (three times <code>M</code> communication calls
 per step). That repeated cost is exactly why it fell out of favor.</p>
@@ -1201,7 +1210,7 @@ matters.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 14:33:28">September 20, 2026</span>
   </span>
 
     

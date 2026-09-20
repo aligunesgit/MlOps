@@ -1081,7 +1081,7 @@
 <li>Understand what a high-level training framework like PyTorch Lightning removes from a project</li>
 </ul>
 <hr />
-<h2 id="1-debugging-without-print-statements">1. Debugging without print statements</h2>
+<h2 id="1-debugging-without-print-statements">1. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14 12h-4v-2h4m0 6h-4v-2h4m6-6h-2.81a6 6 0 0 0-1.82-1.96L17 4.41 15.59 3l-2.17 2.17a6 6 0 0 0-2.83 0L8.41 3 7 4.41l1.62 1.63C7.88 6.55 7.26 7.22 6.81 8H4v2h2.09c-.05.33-.09.66-.09 1v1H4v2h2v1c0 .34.04.67.09 1H4v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3H20v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1H20z"/></svg></span> Debugging without print statements</h2>
 <p><code>print()</code> works for a five-line script, but it stops scaling the moment a bug hides inside a training
 loop that takes minutes to reach the failing line. Python's built-in debugger, <code>pdb</code>, drops you into an
 interactive session at the exact point something goes wrong, so you can inspect variables live instead
@@ -1126,7 +1126,7 @@ answer rather than a crash:</p>
 <p>The last two are the dangerous ones: nothing crashes, so the only sign is a model that trains worse than
 it should. Stepping through the training loop with <code>pdb</code> and checking a tensor's actual values at each
 line is how you catch what a stack trace never will.</p>
-<h2 id="2-profiling-measure-before-you-optimize">2. Profiling: measure before you optimize</h2>
+<h2 id="2-profiling-measure-before-you-optimize">2. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 16a3 3 0 0 1-3-3c0-1.12.61-2.1 1.5-2.61l9.71-5.62-5.53 9.58c-.5.98-1.51 1.65-2.68 1.65m0-13c1.81 0 3.5.5 4.97 1.32l-2.1 1.21C14 5.19 13 5 12 5a8 8 0 0 0-8 8c0 2.21.89 4.21 2.34 5.65h.01c.39.39.39 1.02 0 1.41s-1.03.39-1.42.01A9.97 9.97 0 0 1 2 13 10 10 0 0 1 12 3m10 10c0 2.76-1.12 5.26-2.93 7.07-.39.38-1.02.38-1.41-.01a.996.996 0 0 1 0-1.41A7.95 7.95 0 0 0 20 13c0-1-.19-2-.54-2.9L20.67 8C21.5 9.5 22 11.18 22 13"/></svg></span> Profiling: measure before you optimize</h2>
 <p>Profiling answers two questions: how many times is each function called, and how long does each call
 take. The first tells you what to prioritize (a function called a thousand times more often than
 another, at similar per-call cost, dominates total runtime); the second tells you which calls are
@@ -1168,7 +1168,7 @@ runs against each other.</p>
 single expensive line inside an otherwise-fast function (an inefficient array index, say) that
 <code>cProfile</code>'s function-level granularity can't see; <code>py-spy</code> is another solid standalone Python profiler
 worth knowing exists.</p>
-<h2 id="4-logging-experiments-with-weights-biases">4. Logging experiments with Weights &amp; Biases</h2>
+<h2 id="4-logging-experiments-with-weights-biases">4. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.48 0a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1m19.04 0a1.55 1.55 0 1 0 0 3.101 1.55 1.55 0 0 0 0-3.101M12 2.295a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1M2.48 5.272a2.48 2.48 0 1 0 0 4.96 2.48 2.48 0 0 0 0-4.96m19.04 0a2.48 2.48 0 1 0 0 4.96 2.48 2.48 0 0 0 0-4.96M12 8.496a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1m-9.52 3.907a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1m19.04 0a1.55 1.55 0 1 0 0 3.102 1.55 1.55 0 0 0 0-3.102M12 13.767a2.48 2.48 0 1 0 0 4.962 2.48 2.48 0 0 0 0-4.962m-9.52 3.907a2.48 2.48 0 1 0 .001 4.962 2.48 2.48 0 0 0 0-4.962zm19.04.93a1.55 1.55 0 1 0 0 3.102 1.55 1.55 0 0 0 0-3.101zM12 20.9a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1"/></svg></span> Logging experiments with Weights &amp; Biases</h2>
 <p>Once a script is debugged and profiled, the next problem is remembering what you actually ran. Writing
 loss values to a text file works for one run; it stops working the moment you're comparing many runs,
 or collaborating with teammates on the same project. <strong>Weights &amp; Biases (W&amp;B)</strong> is one standard answer
@@ -1207,7 +1207,7 @@ in depth.</p>
 own machine) is one environment variable:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-e<span class="w"> </span><span class="nv">WANDB_API_KEY</span><span class="o">=</span>&lt;your-api-key&gt;<span class="w"> </span>my_training_image:latest
 </span></code></pre></div>
-<h2 id="5-minimizing-boilerplate-with-pytorch-lightning">5. Minimizing boilerplate with PyTorch Lightning</h2>
+<h2 id="5-minimizing-boilerplate-with-pytorch-lightning">5. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 15H6l7-14v8h5l-7 14z"/></svg></span> Minimizing boilerplate with PyTorch Lightning</h2>
 <p>Every ML project ends up with the same shape: the model itself (the part that actually differs between
 projects), plus training-loop boilerplate and saving/logging utilities that look nearly identical
 across all of them. High-level training frameworks (fast.ai, Ignite, <strong>PyTorch Lightning</strong> among
@@ -1301,7 +1301,7 @@ built into the training loop itself rather than bolted on separately.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 14:33:28">September 20, 2026</span>
   </span>
 
     

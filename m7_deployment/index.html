@@ -1116,7 +1116,7 @@ self-contained, and the server never relies on memory of a previous one.</p>
 </span></code></pre></div>
 <p>Always check <code>response.status_code</code> before assuming a failure is your own bug; unauthenticated API
 calls are often rate-limited far below an authenticated request's limit.</p>
-<h2 id="2-building-an-api-with-fastapi">2. Building an API with FastAPI</h2>
+<h2 id="2-building-an-api-with-fastapi">2. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7H5a2 2 0 0 0-2 2v8h2v-4h2v4h2V9a2 2 0 0 0-2-2m0 4H5V9h2m7-2h-4v10h2v-4h2a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2m0 4h-2V9h2m6 0v6h1v2h-4v-2h1V9h-1V7h4v2Z"/></svg></span> Building an API with FastAPI</h2>
 <p><a href="https://fastapi.tiangolo.com/">FastAPI</a> is the framework of choice here over Flask or Django, for its
 balance of flexibility without excess boilerplate:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span>
@@ -1160,7 +1160,7 @@ time rather than on every request:</p>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="k">COPY</span><span class="w"> </span>./app<span class="w"> </span>/code/app
 </span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"uvicorn"</span><span class="p">,</span><span class="w"> </span><span class="s2">"app.main:app"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--host"</span><span class="p">,</span><span class="w"> </span><span class="s2">"0.0.0.0"</span><span class="p">,</span><span class="w"> </span><span class="s2">"--port"</span><span class="p">,</span><span class="w"> </span><span class="s2">"80"</span><span class="p">]</span>
 </span></code></pre></div>
-<h2 id="3-deploying-to-google-cloud">3. Deploying to Google Cloud</h2>
+<h2 id="3-deploying-to-google-cloud">3. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 20H6.5q-2.28 0-3.89-1.57Q1 16.85 1 14.58q0-1.95 1.17-3.48 1.18-1.53 3.08-1.95.63-2.3 2.5-3.72Q9.63 4 12 4q2.93 0 4.96 2.04Q19 8.07 19 11q1.73.2 2.86 1.5 1.14 1.28 1.14 3 0 1.88-1.31 3.19T18.5 20H13v-7.15l1.6 1.55L16 13l-4-4-4 4 1.4 1.4 1.6-1.55Z"/></svg></span> Deploying to Google Cloud</h2>
 <p>GCP offers two <strong>serverless</strong> deployment targets, meaning there's no infrastructure to manage
 yourself:</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1190,7 +1190,7 @@ yourself:</p>
   via <code>--update-secrets</code>, backed by the Secret Manager covered in Module 6.</p>
 <p>Extending Module 5's CI pipeline with a third step that calls <code>gcloud run deploy</code> after the build/push
 steps turns this into continuous deployment: every push to <code>main</code> automatically rebuilds and redeploys.</p>
-<h2 id="4-testing-a-deployed-api">4. Testing a deployed API</h2>
+<h2 id="4-testing-a-deployed-api">4. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 2v2h1v14a4 4 0 0 0 4 4 4 4 0 0 0 4-4V4h1V2zm4 14c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m2-4c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1m1-5h-4V4h4z"/></svg></span> Testing a deployed API</h2>
 <p>Two distinct concerns, both worth testing separately:</p>
 <ul>
 <li><strong>Functional testing</strong>, does the API return the expected output for a given input, using FastAPI's
@@ -1226,7 +1226,7 @@ steps turns this into continuous deployment: every push to <code>main</code> aut
   the small number of very slow requests an average quietly hides. A good pattern for CI: after a
   deploy step succeeds, extract the deployed service's URL and run Locust against it automatically as
   a follow-up step.</p>
-<h2 id="5-ml-specific-serving-onnx-and-bentoml">5. ML-specific serving: ONNX and BentoML</h2>
+<h2 id="5-ml-specific-serving-onnx-and-bentoml">5. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 10.96a.985.985 0 0 1-.37-1.37L3.13 7c.11-.2.28-.34.47-.42l7.83-4.4c.16-.12.36-.18.57-.18s.41.06.57.18l7.9 4.44c.19.1.35.26.44.46l1.45 2.52c.28.48.11 1.09-.36 1.36l-1 .58v4.96c0 .38-.21.71-.53.88l-7.9 4.44c-.16.12-.36.18-.57.18s-.41-.06-.57-.18l-7.9-4.44A.99.99 0 0 1 3 16.5v-5.54c-.3.17-.68.18-1 0m10-6.81v6.7l5.96-3.35zM5 15.91l6 3.38v-6.71L5 9.21zm14 0v-3.22l-5 2.9c-.33.18-.7.17-1 .01v3.69zm-5.15-2.55 6.28-3.63-.58-1.01-6.28 3.63z"/></svg></span> ML-specific serving: ONNX and BentoML</h2>
 <p>FastAPI is a <em>general</em> web framework; it wasn't built with ML serving in mind, so it lacks dynamic
 batching, native async inference, and native GPU scheduling. Two tools fill that gap:</p>
 <ul>
@@ -1262,7 +1262,7 @@ batching, native async inference, and native GPU scheduling. Two tools fill that
 </span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">summarize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 </span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pipeline</span><span class="p">(</span><span class="n">text</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"summary_text"</span><span class="p">]</span>
 </span></code></pre></div>
-<h2 id="6-frontend">6. Frontend</h2>
+<h2 id="6-frontend">6. <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 16V4H3v12zm0-14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-7v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4c0-1.11.89-2 2-2zM5 6h9v5H5zm10 0h4v2h-4zm4 3v5h-4V9zM5 12h4v2H5zm5 0h4v2h-4z"/></svg></span> Frontend</h2>
 <p>The deployed API is the <strong>backend</strong>, functional but not user-friendly. A <strong>frontend</strong> gives end users
 a proper interface, and splitting the two also lets you scale the usually-heavier backend
 independently, a basic instance of microservice architecture. <strong>Streamlit</strong> is the easiest Python-native
@@ -1338,7 +1338,7 @@ correctly is a monitoring problem.</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 13:45:37">September 20, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="September 20, 2026 14:33:28">September 20, 2026</span>
   </span>
 
     
