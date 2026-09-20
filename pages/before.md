@@ -1,9 +1,17 @@
 # Introduction
 
-Welcome to **1413211011 — MLOps and AI Systems Engineering**. This course exists to fill a specific gap:
-most students and practitioners coming out of a machine learning education know how to build a model,
-but not how to take that model from a notebook to a system that other people can actually rely on. This
-course is about that second half — the "Operations" in MLOps.
+Welcome to **Machine Learning Operations (MLOps)**! Everything for this course — lecture notes,
+exercises, and further reading — lives in this repository. I won't pretend you'll walk out an MLOps
+expert twelve weeks from now, but I will promise something more useful: you'll leave knowing the core
+concepts and a working set of tools the field actually runs on. Think of this course as a toolbox that
+fills up module by module — not one you master cover to cover, but one you know well enough to reach
+into whenever a real project calls for it.
+
+![MLOps lifecycle: nine stages, three disciplines, one loop](../figures/mlops_diagram.png)
+
+This course is a toolbox. You will not become an expert in every tool presented here, but you will get
+an overview of many of the tools that are used in MLOps, and you will be able to pick up new tools as
+needed in the future.
 
 ## What is MLOps?
 

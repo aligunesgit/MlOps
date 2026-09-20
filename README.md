@@ -68,9 +68,9 @@ We recommend going through the material on this repository's **[GitHub Pages
 site](https://aligunesgit.github.io/MlOps/)** rather than reading raw markdown here — it renders the
 same content through Material for MkDocs, with proper navigation, search, and diagram rendering.
 
-Specifically, start at the [Introduction page](https://aligunesgit.github.io/MlOps/before/) for a soft
-introduction to MLOps and how this course is organized, then follow the
-[Time plan](https://aligunesgit.github.io/MlOps/timeplan/) week by week.
+Specifically, start at the [Introduction page](https://aligunesgit.github.io/MlOps/pages/before/) for a
+soft introduction to MLOps and how this course is organized, then follow the
+[Time plan](https://aligunesgit.github.io/MlOps/pages/timeplan/) week by week.
 
 ## Course organization
 
